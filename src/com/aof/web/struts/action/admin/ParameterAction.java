@@ -13,7 +13,7 @@
 /*     */ import com.aof.service.admin.DataTransferManager;
 /*     */ import com.aof.service.admin.ParameterManager;
 /*     */ import com.aof.service.admin.SiteManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.aof.web.struts.action.BaseAction;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -167,22 +167,22 @@
 /* 167 */     String[] intervalDay = request.getParameterValues("intervalDay");
 /* 168 */     String[] maxTime = request.getParameterValues("maxTime");
 /*     */     
-/* 170 */     List<GlobalMailReminder> reminderList = new ArrayList();
+/* 170 */     List reminderList = new ArrayList();
 /* 171 */     for (int index = 0; index < typeId.length; index++) {
 /* 172 */       if (isGlobal(request)) {
 /* 173 */         GlobalMailReminder reminder = new GlobalMailReminder();
 /* 174 */         reminder.setType((GlobalMailReminderType)PersistentEnum.fromEnumCode(GlobalMailReminderType.class, new Integer(typeId[index])));
-/* 175 */         reminder.setDueDay(ActionUtils.parseInt(dueDay[index]).intValue());
-/* 176 */         reminder.setIntervalDay(ActionUtils.parseInt(intervalDay[index]).intValue());
-/* 177 */         reminder.setMaxTime(ActionUtils.parseInt(maxTime[index]).intValue());
+/* 175 */         reminder.setDueDay(ActionUtils2.parseInt(dueDay[index]).intValue());
+/* 176 */         reminder.setIntervalDay(ActionUtils2.parseInt(intervalDay[index]).intValue());
+/* 177 */         reminder.setMaxTime(ActionUtils2.parseInt(maxTime[index]).intValue());
 /* 178 */         reminderList.add(reminder);
 /*     */       } else {
 /* 180 */         SiteMailReminder reminder = new SiteMailReminder();
 /* 181 */         reminder.setSite(site);
 /* 182 */         reminder.setType((SiteMailReminderType)PersistentEnum.fromEnumCode(SiteMailReminderType.class, new Integer(typeId[index])));
-/* 183 */         reminder.setDueDay(ActionUtils.parseInt(dueDay[index]).intValue());
-/* 184 */         reminder.setIntervalDay(ActionUtils.parseInt(intervalDay[index]).intValue());
-/* 185 */         reminder.setMaxTime(ActionUtils.parseInt(maxTime[index]).intValue());
+/* 183 */         reminder.setDueDay(ActionUtils2.parseInt(dueDay[index]).intValue());
+/* 184 */         reminder.setIntervalDay(ActionUtils2.parseInt(intervalDay[index]).intValue());
+/* 185 */         reminder.setMaxTime(ActionUtils2.parseInt(maxTime[index]).intValue());
 /* 186 */         reminderList.add(reminder);
 /*     */       } 
 /*     */     } 
@@ -223,7 +223,7 @@
 /*     */   }
 /*     */   
 /*     */   private Site getSiteFromRequest(HttpServletRequest request) {
-/* 226 */     Integer id = ActionUtils.parseInt(request.getParameter("site_id"));
+/* 226 */     Integer id = ActionUtils2.parseInt(request.getParameter("site_id"));
 /* 227 */     if (id != null) {
 /* 228 */       SiteManager sm = ServiceLocator.getSiteManager(request);
 /* 229 */       return sm.getSite(id);

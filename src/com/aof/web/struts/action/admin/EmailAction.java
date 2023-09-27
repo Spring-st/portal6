@@ -3,7 +3,7 @@
 /*     */ import com.aof.model.admin.query.EmailQueryCondition;
 /*     */ import com.aof.model.admin.query.EmailQueryOrder;
 /*     */ import com.aof.service.admin.EmailManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.aof.web.struts.action.BaseAction;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.EmailQueryForm;
@@ -78,7 +78,7 @@
 /*  78 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
 /*     */     
 /*  80 */     Integer id = 
-/*  81 */       ActionUtils.parseInt(queryForm.getId());
+/*  81 */       ActionUtils2.parseInt(queryForm.getId());
 /*  82 */     if (id != null)
 /*     */     {
 /*  84 */       conditions.put(EmailQueryCondition.ID_EQ, 
@@ -130,8 +130,8 @@
 /*     */       
 /* 131 */       if (createTimeBegin == null || createTimeBegin.trim().length() == 0) createTimeBegin = "1900/01/01"; 
 /* 132 */       if (createTimeTo == null || createTimeTo.trim().length() == 0) createTimeTo = "2099/01/01"; 
-/* 133 */       Date queryCreateTimeBegin = ActionUtils.getQueryBeginDateFromDisplayDate(createTimeBegin);
-/* 134 */       Date queryCreateTimeTo = ActionUtils.getQueryToDateFromDisplayDate(createTimeTo);
+/* 133 */       Date queryCreateTimeBegin = ActionUtils2.getQueryBeginDateFromDisplayDate(createTimeBegin);
+/* 134 */       Date queryCreateTimeTo = ActionUtils2.getQueryToDateFromDisplayDate(createTimeTo);
 /* 135 */       conditions.put(EmailQueryCondition.CREATETIME_BT, new Object[] { queryCreateTimeBegin, queryCreateTimeTo });
 /*     */     } 
 /*     */     
@@ -143,20 +143,20 @@
 /*     */       
 /* 144 */       if (sentTimeBegin == null || sentTimeBegin.trim().length() == 0) sentTimeBegin = "1900/01/01"; 
 /* 145 */       if (sentTimeTo == null || sentTimeTo.trim().length() == 0) sentTimeTo = "2099/01/01"; 
-/* 146 */       Date querySentTimeBegin = ActionUtils.getQueryBeginDateFromDisplayDate(sentTimeBegin);
-/* 147 */       Date querySentTimeTo = ActionUtils.getQueryToDateFromDisplayDate(sentTimeTo);
+/* 146 */       Date querySentTimeBegin = ActionUtils2.getQueryBeginDateFromDisplayDate(sentTimeBegin);
+/* 147 */       Date querySentTimeTo = ActionUtils2.getQueryToDateFromDisplayDate(sentTimeTo);
 /* 148 */       conditions.put(EmailQueryCondition.SENTTIME_BT, new Object[] { querySentTimeBegin, querySentTimeTo });
 /*     */     } 
 /*     */     
 /* 151 */     Integer failCount = 
-/* 152 */       ActionUtils.parseInt(queryForm.getFailCount());
+/* 152 */       ActionUtils2.parseInt(queryForm.getFailCount());
 /* 153 */     if (failCount != null)
 /*     */     {
 /* 155 */       conditions.put(EmailQueryCondition.FAILCOUNT_GE, 
 /* 156 */           failCount);
 /*     */     }
 /* 158 */     Integer waitToSend = 
-/* 159 */       ActionUtils.parseInt(queryForm.getWaitToSend());
+/* 159 */       ActionUtils2.parseInt(queryForm.getWaitToSend());
 /* 160 */     if (waitToSend != null)
 /*     */     {
 /* 162 */       conditions.put(EmailQueryCondition.WAITTOSEND_EQ, 

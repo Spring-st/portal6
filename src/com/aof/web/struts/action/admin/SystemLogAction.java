@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.admin.query.SystemLogQueryOrder;
 /*     */ import com.aof.service.admin.SystemLogManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.aof.web.struts.action.BaseAction;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.SystemLogQueryForm;
@@ -73,14 +73,14 @@
 /*     */     }
 /*     */     
 /*  75 */     if (queryForm.getActionDateFrom() != null && queryForm.getActionDateFrom().trim().length() != 0) {
-/*  76 */       Date actionTimeFrom = ActionUtils.getDateFromDisplayDate(queryForm.getActionDateFrom());
+/*  76 */       Date actionTimeFrom = ActionUtils2.getDateFromDisplayDate(queryForm.getActionDateFrom());
 /*  77 */       if (actionTimeFrom != null) {
 /*  78 */         conditions.put(SystemLogQueryCondition.ACTION_TIME_GT, actionTimeFrom);
 /*     */       }
 /*     */     } 
 /*     */     
 /*  82 */     if (queryForm.getActionDateTo() != null && queryForm.getActionDateTo().trim().length() != 0) {
-/*  83 */       Date actionTimeTo = ActionUtils.getDateFromDisplayDate(queryForm.getActionDateTo());
+/*  83 */       Date actionTimeTo = ActionUtils2.getDateFromDisplayDate(queryForm.getActionDateTo());
 /*  84 */       if (actionTimeTo != null) {
 /*  85 */         conditions.put(SystemLogQueryCondition.ACTION_TIME_LT, actionTimeTo);
 /*     */       }

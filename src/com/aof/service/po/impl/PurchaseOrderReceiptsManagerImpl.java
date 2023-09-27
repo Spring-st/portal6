@@ -37,7 +37,7 @@
 /*     */ import com.aof.service.po.PurchaseOrderInspectionPendingManager;
 /*     */ import com.aof.service.po.PurchaseOrderRQCManager;
 /*     */ import com.aof.service.po.PurchaseOrderReceiptsManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.text.DecimalFormat;
 /*     */ import java.text.SimpleDateFormat;
@@ -179,13 +179,13 @@
 /* 179 */     StringBuffer sb = new StringBuffer("PQ");
 /* 180 */     for (int i = 0; i < 3; i++)
 /* 181 */       sb.append('0'); 
-/* 182 */     sb.append(StringUtils.right(ActionUtils.get8CharsFromDate(date), 6));
+/* 182 */     sb.append(StringUtils.right(ActionUtils2.get8CharsFromDate(date), 6));
 /* 183 */     String prefix = sb.toString();
 /* 184 */     String maxId = this.dao.getMaxPoReceiptsBeginWith(prefix);
 /*     */     
 /* 186 */     int serialNo = 1;
 /* 187 */     if (maxId != null) {
-/* 188 */       Integer maxSN = ActionUtils.parseInt(StringUtils.right(maxId, 5));
+/* 188 */       Integer maxSN = ActionUtils2.parseInt(StringUtils.right(maxId, 5));
 /* 189 */       if (maxSN == null)
 /* 190 */         throw new RuntimeException("max serial no. is not digit"); 
 /* 191 */       serialNo = maxSN.intValue() + 1;
@@ -237,7 +237,7 @@
 /*     */     
 /* 238 */     SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 /*     */     
-/* 240 */     List<E> list = this.dao
+/* 240 */     List list = this.dao
 /* 241 */       .getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + 
 /* 242 */         suppCode + "-" + format.format(date) + "-" + "%'");
 /* 243 */     String maxnumber = "";

@@ -10,7 +10,7 @@
 /*     */ import com.aof.service.admin.EmailManager;
 /*     */ import com.aof.service.admin.FunctionManager;
 /*     */ import com.aof.service.admin.UserManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.aof.web.struts.action.BaseAction;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -148,7 +148,7 @@
 /*     */ 
 /*     */   
 /*     */   private Country getCountryFromRequest(HttpServletRequest request) throws Exception {
-/* 151 */     Integer id = ActionUtils.parseInt(request.getParameter("id"));
+/* 151 */     Integer id = ActionUtils2.parseInt(request.getParameter("id"));
 /* 152 */     CountryManager countryManager = ServiceLocator.getCountryManager(request);
 /* 153 */     Country country = countryManager.getCountry(id);
 /* 154 */     if (country == null)

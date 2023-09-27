@@ -81,7 +81,7 @@
 /*     */     }
 /*  82 */     else if (idType.equals(Integer.class)) {
 /*     */       
-/*  84 */       idValue = ActionUtils.parseInt(str_param_value);
+/*  84 */       idValue = ActionUtils2.parseInt(str_param_value);
 /*  85 */       if (idValue == null) throw new ActionException("errors.parameter.notInteger", parameterName); 
 /*     */     } else {
 /*  87 */       throw new RuntimeException("unsupported id type: " + idType);
@@ -319,7 +319,7 @@
 /*     */ 
 /*     */   
 /*     */   protected Department getAndCheckDepartment(String paramterName, HttpServletRequest request) {
-/* 322 */     return getAndCheckDepartment(ActionUtils.parseInt(request.getParameter(paramterName)), request);
+/* 322 */     return getAndCheckDepartment(ActionUtils2.parseInt(request.getParameter(paramterName)), request);
 /*     */   }
 /*     */ 
 /*     */ 
@@ -418,7 +418,7 @@
 /*     */ 
 /*     */   
 /*     */   protected Site getAndCheckSite(String parameterName, HttpServletRequest request) {
-/* 421 */     return getAndCheckSite(ActionUtils.parseInt(request.getParameter(parameterName)), request);
+/* 421 */     return getAndCheckSite(ActionUtils2.parseInt(request.getParameter(parameterName)), request);
 /*     */   }
 /*     */ 
 /*     */ 
@@ -483,7 +483,7 @@
 /*     */ 
 /*     */   
 /*     */   private Map getTokenMap(HttpSession session) {
-/*     */     FastHashMap fastHashMap;
+/*     */     FastHashMap fastHashMap = null;
 /* 487 */     Map tokenMap = (Map)session.getAttribute("com.shcnc.struts.PreventRepeatSubmitPlugIn.tokenmap");
 /* 488 */     if (tokenMap == null) {
 /* 489 */       fastHashMap = new FastHashMap();
@@ -735,9 +735,9 @@
 /* 735 */     List<BasicConditionModel> modelList = new ArrayList<BasicConditionModel>();
 /* 736 */     List<BasicConditionModel> smodelList = new ArrayList<BasicConditionModel>();
 /*     */     
-/* 738 */     AutoArrayList<String> autoArrayList1 = queryForm.getField();
-/* 739 */     AutoArrayList<String> autoArrayList2 = queryForm.getFieldValue();
-/* 740 */     AutoArrayList<String> autoArrayList3 = queryForm.getFieldCondition();
+/* 738 */     AutoArrayList autoArrayList1 = queryForm.getField();
+/* 739 */     AutoArrayList autoArrayList2 = queryForm.getFieldValue();
+/* 740 */     AutoArrayList autoArrayList3 = queryForm.getFieldCondition();
 /*     */     
 /* 742 */     if (autoArrayList1.size() != autoArrayList2.size() && 
 /* 743 */       autoArrayList1.size() != autoArrayList3.size() && 
@@ -748,17 +748,17 @@
 /* 748 */     for (int i = 0; i < autoArrayList1.size(); i++) {
 /*     */ 
 /*     */       
-/* 751 */       String field = autoArrayList1.get(i);
+/* 751 */       String field = (String)autoArrayList1.get(i);
 /* 752 */       if (field != null && !field.equals("") && autoArrayList3 != null && !autoArrayList3.equals("") && autoArrayList2 != null && !autoArrayList2.equals("")) {
 /* 753 */         isQurey = Boolean.valueOf(true);
-/* 754 */         String condition = autoArrayList3.get(i);
+/* 754 */         String condition = (String)autoArrayList3.get(i);
 /* 755 */         BasicConditionType type = BasicConditionType.getEnum(condition);
 /* 756 */         if (type == null) {
 /* 757 */           throw new ActionException("query.fail3");
 /*     */         }
 /*     */ 
 /*     */         
-/* 761 */         String fieldValue = autoArrayList2.get(i);
+/* 761 */         String fieldValue = (String)autoArrayList2.get(i);
 /* 762 */         if (fieldValue != null && fieldValue.trim().length() > 0) {
 /* 763 */           BasicConditionModel model = new BasicConditionModel(field, 
 /* 764 */               type, fieldValue);

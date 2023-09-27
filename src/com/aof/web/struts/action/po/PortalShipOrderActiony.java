@@ -34,7 +34,7 @@
 /*      */ import com.aof.service.quartz.job.DeliverMinuteSyncJob;
 /*      */ import com.aof.service.schedule.ProjectedInventoryManager;
 /*      */ import com.aof.utils.SessionTempFile;
-/*      */ import com.aof.web.struts.action.ActionUtils;
+/*      */ import com.aof.web.struts.action.ActionUtils2;
 /*      */ import com.aof.web.struts.action.BaseAction;
 /*      */ import com.aof.web.struts.action.ServiceLocator;
 /*      */ import com.aof.web.struts.form.BaseSessionQueryForm;
@@ -311,7 +311,7 @@
 /*  311 */     if (code != null && code.trim().length() != 0) {
 /*  312 */       conditions.put(PortalShipOrderQueryCondition.CODE_EQ, code);
 /*      */     }
-/*  314 */     Integer enabled = ActionUtils.parseInt(queryForm.getEnabled());
+/*  314 */     Integer enabled = ActionUtils2.parseInt(queryForm.getEnabled());
 /*  315 */     if (enabled != null && enabled.intValue() != 0) {
 /*  316 */       conditions.put(PortalShipOrderQueryCondition.ENABLED_EQ, enabled);
 /*      */     }

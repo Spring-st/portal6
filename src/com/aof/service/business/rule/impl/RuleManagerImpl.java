@@ -20,7 +20,7 @@
 /*     */ import com.aof.service.BaseManager;
 /*     */ import com.aof.service.business.rule.FlowManager;
 /*     */ import com.aof.service.business.rule.RuleManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.util.Collection;
@@ -455,7 +455,7 @@
 /* 455 */         compareTarget = new BigDecimal(value);
 /* 456 */       } else if (ConditionType.DEPARTMENT.equals(ct)) {
 /* 457 */         compareSource = "approveDepartment";
-/* 458 */         compareTarget = ActionUtils.parseInt(value);
+/* 458 */         compareTarget = ActionUtils2.parseInt(value);
 /*     */ 
 /*     */ 
 /*     */ 
@@ -486,32 +486,32 @@
 /* 486 */         compareTarget = new BigDecimal(value);
 /* 487 */       } else if (ConditionType.EXPENSE_CATEGORY.equals(ct)) {
 /* 488 */         compareSource = "approveExpenseCategory";
-/* 489 */         compareTarget = ActionUtils.parseInt(value);
+/* 489 */         compareTarget = ActionUtils2.parseInt(value);
 /* 490 */       } else if (ConditionType.PURCHASE_CATEGORY.equals(ct)) {
 /* 491 */         if (value.charAt(0) == 'p') {
 /* 492 */           compareSource = "approvePurchaseCategory";
 /*     */         } else {
 /* 494 */           compareSource = "approvePurchaseSubCategory";
 /*     */         } 
-/* 496 */         compareTarget = ActionUtils.parseInt(value.substring(1));
+/* 496 */         compareTarget = ActionUtils2.parseInt(value.substring(1));
 /* 497 */       } else if (ConditionType.TRAVEL_FROM.equals(ct)) {
 /* 498 */         compareSource = "approveTravelFrom";
-/* 499 */         compareTarget = PersistentEnum.fromEnumCode(TravelType.class, ActionUtils.parseInt(value));
+/* 499 */         compareTarget = PersistentEnum.fromEnumCode(TravelType.class, ActionUtils2.parseInt(value));
 /* 500 */       } else if (ConditionType.TRAVEL_MODE.equals(ct)) {
 /* 501 */         compareSource = "approveTravellingMode";
-/* 502 */         compareTarget = PersistentEnum.fromEnumCode(TravellingMode.class, ActionUtils.parseInt(value));
+/* 502 */         compareTarget = PersistentEnum.fromEnumCode(TravellingMode.class, ActionUtils2.parseInt(value));
 /* 503 */       } else if (ConditionType.TRAVEL_TO.equals(ct)) {
 /* 504 */         compareSource = "approveTravelTo";
-/* 505 */         compareTarget = PersistentEnum.fromEnumCode(TravelType.class, ActionUtils.parseInt(value));
+/* 505 */         compareTarget = PersistentEnum.fromEnumCode(TravelType.class, ActionUtils2.parseInt(value));
 /* 506 */       } else if (ConditionType.BUDGET_TYPE.equals(ct)) {
 /* 507 */         compareSource = "notifyBudgetType";
-/* 508 */         compareTarget = PersistentEnum.fromEnumCode(BudgetType.class, ActionUtils.parseInt(value));
+/* 508 */         compareTarget = PersistentEnum.fromEnumCode(BudgetType.class, ActionUtils2.parseInt(value));
 /* 509 */       } else if (ConditionType.REMAIN_AMOUNT.equals(ct)) {
 /* 510 */         compareSource = "notifyRemainAmount";
 /* 511 */         compareTarget = new BigDecimal(value);
 /* 512 */       } else if (ConditionType.WITH_BUDGET.equals(ct)) {
 /* 513 */         compareSource = "approveWithBudget";
-/* 514 */         compareTarget = PersistentEnum.fromEnumCode(YesNo.class, ActionUtils.parseInt(value));
+/* 514 */         compareTarget = PersistentEnum.fromEnumCode(YesNo.class, ActionUtils2.parseInt(value));
 /* 515 */       } else if (ConditionType.PR_REQUEST_ITEM_MAX_PRICE.equals(ct)) {
 /* 516 */         compareSource = "maxItemPrice";
 /* 517 */         compareTarget = new BigDecimal(value);

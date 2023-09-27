@@ -7,7 +7,7 @@
 /*     */ import com.aof.model.po.query.ProductionplanningQueryOrder;
 /*     */ import com.aof.service.po.ProductionplanningManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.aof.web.struts.action.BaseAction;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
@@ -222,7 +222,7 @@
 /* 222 */       model.setUploadUser(user);
 /* 223 */       if (formFile.getFileSize() > 0) {
 /* 224 */         model.setFileContSize(formFile.getFileSize());
-/* 225 */         model.setPath(ActionUtils.savaFile(formFile.getInputStream()));
+/* 225 */         model.setPath(ActionUtils2.savaFile(formFile.getInputStream()));
 /*     */       } else {
 /* 227 */         throw new ActionException("inboundOrderAttach.error.f ileSize.zero");
 /*     */       } 
@@ -349,7 +349,7 @@
 /* 349 */     if (planning.getFileContSize() == 0) {
 /* 350 */       throw new ActionException("RemoteReturnAttach.error.fileSize.zero");
 /*     */     }
-/* 352 */     InputStream in = ActionUtils.getFile(planning.getPath());
+/* 352 */     InputStream in = ActionUtils2.getFile(planning.getPath());
 /* 353 */     if (in != null) {
 /*     */       try {
 /* 355 */         DownloadUploadHelper.download(in, planning.getUploadFileName(), 

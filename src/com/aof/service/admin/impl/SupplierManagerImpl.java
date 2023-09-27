@@ -24,7 +24,7 @@
 /*     */ import com.aof.service.BaseManager;
 /*     */ import com.aof.service.admin.SupplierManager;
 /*     */ import com.aof.service.basic.WmsPartManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.Date;
@@ -135,9 +135,9 @@
 /*     */   
 /*     */   private void setContractDate(Supplier supplier) {
 /* 137 */     if (supplier.getContractStartDate() != null)
-/* 138 */       supplier.setContractStartDate(ActionUtils.getStartDate(supplier.getContractStartDate())); 
+/* 138 */       supplier.setContractStartDate(ActionUtils2.getStartDate(supplier.getContractStartDate()));
 /* 139 */     if (supplier.getContractExpireDate() != null)
-/* 140 */       supplier.setContractExpireDate(ActionUtils.getExpireDate(supplier.getContractExpireDate())); 
+/* 140 */       supplier.setContractExpireDate(ActionUtils2.getExpireDate(supplier.getContractExpireDate()));
 /*     */   }
 /*     */   
 /*     */   public void cancelSupplier(Supplier supplier) {

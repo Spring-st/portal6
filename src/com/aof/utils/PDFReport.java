@@ -13,7 +13,7 @@
 /*     */ import com.aof.model.metadata.RechargeType;
 /*     */ import com.aof.model.metadata.YesNo;
 /*     */ import com.aof.service.admin.SiteManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.lowagie.text.Document;
 /*     */ import com.lowagie.text.DocumentException;
@@ -281,7 +281,7 @@
 /* 281 */         cellFont = getFont(metadata.getColor());
 /*     */       } 
 /* 283 */     } else if (content instanceof Date) {
-/* 284 */       cellContent = ActionUtils.getDisplayDateFromDate((Date)content);
+/* 284 */       cellContent = ActionUtils2.getDisplayDateFromDate((Date)content);
 /* 285 */     } else if (content instanceof String) {
 /* 286 */       if (resource) {
 /* 287 */         cellContent = this.messages.getMessage(this.locale, (String)content);

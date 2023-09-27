@@ -28,7 +28,7 @@
 /*     */ import com.aof.service.basic.WmsPartManager;
 /*     */ import com.aof.service.inventory.InventoryManager;
 /*     */ import com.aof.service.plantWarehouse.WmsUWManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.shcnc.struts.action.ActionException;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.text.ParseException;
@@ -217,13 +217,13 @@
 /*     */   private String getLastCode(Date date) {
 /* 218 */     StringBuffer sb = new StringBuffer("UW");
 /* 219 */     sb.append('0');
-/* 220 */     sb.append(StringUtils.right(ActionUtils.get8CharsFromDate(date), 6));
+/* 220 */     sb.append(StringUtils.right(ActionUtils2.get8CharsFromDate(date), 6));
 /* 221 */     String prefix = sb.toString();
 /* 222 */     String maxId = this.wmsUWDAO.getMaxPoApplicationIdBeginWith(prefix);
 /*     */     
 /* 224 */     int serialNo = 1;
 /* 225 */     if (maxId != null) {
-/* 226 */       Integer maxSN = ActionUtils.parseInt(StringUtils.right(maxId, 3));
+/* 226 */       Integer maxSN = ActionUtils2.parseInt(StringUtils.right(maxId, 3));
 /* 227 */       if (maxSN == null)
 /* 228 */         throw new RuntimeException("max serial no. is not digit"); 
 /* 229 */       serialNo = maxSN.intValue() + 1;

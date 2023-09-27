@@ -18,7 +18,7 @@
 /*     */ import com.aof.service.admin.UserManager;
 /*     */ import com.aof.service.business.rule.ApproverDelegateManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import com.aof.web.struts.action.BaseAction;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.business.rule.ApproverDelegateQueryForm;
@@ -45,31 +45,6 @@
 /*     */ import org.apache.struts.action.ActionForward;
 /*     */ import org.apache.struts.action.ActionMapping;
 /*     */ import org.apache.struts.util.MessageResources;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
 /*     */ 
 /*     */ public class ApproverDelegateAction
 /*     */   extends BaseAction
@@ -108,7 +83,7 @@
 /* 108 */     UserManager um = ServiceLocator.getUserManager(request);
 /*     */     
 /* 110 */     if (queryForm.isFirstInit())
-/* 111 */     { Integer pageSize = ActionUtils.parseInt(queryForm.getPageSize());
+/* 111 */     { Integer pageSize = ActionUtils2.parseInt(queryForm.getPageSize());
 /* 112 */       if (pageSize != null) {
 /* 113 */         queryForm.init(um.getUserListCount(conds), pageSize.intValue());
 /*     */       } else {
@@ -166,7 +141,7 @@
 /*     */   }
 /*     */   
 /*     */   private RuleType getRuleTypeFromRequest(HttpServletRequest request) {
-/* 169 */     Integer ruleTypeId = ActionUtils.parseInt(request.getParameter("ruleType"));
+/* 169 */     Integer ruleTypeId = ActionUtils2.parseInt(request.getParameter("ruleType"));
 /* 170 */     if (ruleTypeId == null) {
 /* 171 */       throw new ActionException("approverDelegate.ruleType.notSet");
 /*     */     }
@@ -216,7 +191,7 @@
 /* 216 */           throw new ActionException("approverDelegate.ruleType.notApprove"); 
 /* 217 */         queryForm.setType(type.getEnumCode().toString());
 /*     */       } else {
-/* 219 */         Integer typeId = ActionUtils.parseInt(queryForm.getType());
+/* 219 */         Integer typeId = ActionUtils2.parseInt(queryForm.getType());
 /* 220 */         type = (ApproverDelegateType)ApproverDelegateType.fromEnumCode(ApproverDelegateType.class, typeId);
 /* 221 */         if (type == null) {
 /* 222 */           throw new RuntimeException("type error");
@@ -232,8 +207,8 @@
 /* 232 */     if (StringUtils.isEmpty(queryForm.getOrder())) {
 /* 233 */       queryForm.setOrder(ApproverDelegateQueryOrder.DELEGATEAPPROVER_NAME.getName());
 /* 234 */       queryForm.setDescend(false);
-/* 235 */       queryForm.setFromDate2(ActionUtils.getTodayAsDisplayDate());
-/* 236 */       queryForm.setToDate1(ActionUtils.getTodayAsDisplayDate());
+/* 235 */       queryForm.setFromDate2(ActionUtils2.getTodayAsDisplayDate());
+/* 236 */       queryForm.setToDate1(ActionUtils2.getTodayAsDisplayDate());
 /* 237 */     } else if (ApproverDelegateQueryOrder.getEnum(queryForm.getOrder()) == null) {
 /* 238 */       throw new RuntimeException("order error");
 /*     */     } 
@@ -266,7 +241,7 @@
 /* 266 */               if (date == null) {
 /* 267 */                 return "";
 /*     */               }
-/* 269 */               return ActionUtils.getDisplayDateFromDate(date);
+/* 269 */               return ActionUtils2.getDisplayDateFromDate(date);
 /*     */             }
 /*     */           });
 /*     */       
@@ -285,17 +260,11 @@
 /* 285 */     request.setAttribute("X_RESULTLIST", result);
 /* 286 */     return mapping.findForward("page");
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
 /*     */   private Map constructQueryMap(ApproverDelegateQueryForm queryForm) {
 /* 296 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
 /*     */     
-/* 298 */     Integer id = ActionUtils.parseInt(queryForm.getId());
+/* 298 */     Integer id = ActionUtils2.parseInt(queryForm.getId());
 /* 299 */     if (id != null) {
 /* 300 */       conditions.put(ApproverDelegateQueryCondition.ID_EQ, id);
 /*     */     }
@@ -305,11 +274,11 @@
 /*     */ 
 /*     */ 
 /*     */     
-/* 308 */     Integer originalApprover_id = ActionUtils.parseInt(queryForm.getOriginalApprover_id());
+/* 308 */     Integer originalApprover_id = ActionUtils2.parseInt(queryForm.getOriginalApprover_id());
 /* 309 */     if (originalApprover_id != null) {
 /* 310 */       conditions.put(ApproverDelegateQueryCondition.ORIGINALAPPROVER_ID_EQ, originalApprover_id);
 /*     */     }
-/* 312 */     Integer delegateApprover_id = ActionUtils.parseInt(queryForm.getDelegateApprover_id());
+/* 312 */     Integer delegateApprover_id = ActionUtils2.parseInt(queryForm.getDelegateApprover_id());
 /* 313 */     if (delegateApprover_id != null) {
 /* 314 */       conditions.put(ApproverDelegateQueryCondition.DELEGATEAPPROVER_ID_EQ, delegateApprover_id);
 /*     */     }
@@ -330,25 +299,25 @@
 /*     */     
 /* 331 */     if (StringUtils.isNotEmpty(queryForm.getFromDate1())) {
 /*     */       
-/* 333 */       Date d = ActionUtils.getDateFromDisplayDate(queryForm.getFromDate1());
+/* 333 */       Date d = ActionUtils2.getDateFromDisplayDate(queryForm.getFromDate1());
 /* 334 */       conditions.put(ApproverDelegateQueryCondition.FROMDATE_GE, d);
 /*     */     } 
 /*     */     
 /* 337 */     if (StringUtils.isNotEmpty(queryForm.getFromDate2())) {
 /*     */       
-/* 339 */       Date d = ActionUtils.getDateFromDisplayDate(queryForm.getFromDate2());
+/* 339 */       Date d = ActionUtils2.getDateFromDisplayDate(queryForm.getFromDate2());
 /* 340 */       conditions.put(ApproverDelegateQueryCondition.FROMDATE_LT, getNextDate(d));
 /*     */     } 
 /*     */     
 /* 343 */     if (StringUtils.isNotEmpty(queryForm.getToDate1())) {
 /*     */       
-/* 345 */       Date d = ActionUtils.getDateFromDisplayDate(queryForm.getToDate1());
+/* 345 */       Date d = ActionUtils2.getDateFromDisplayDate(queryForm.getToDate1());
 /* 346 */       conditions.put(ApproverDelegateQueryCondition.TODATE_GE, d);
 /*     */     } 
 /*     */     
 /* 349 */     if (StringUtils.isNotEmpty(queryForm.getToDate2())) {
 /*     */       
-/* 351 */       Date d = ActionUtils.getDateFromDisplayDate(queryForm.getToDate2());
+/* 351 */       Date d = ActionUtils2.getDateFromDisplayDate(queryForm.getToDate2());
 /* 352 */       conditions.put(ApproverDelegateQueryCondition.TODATE_LT, getNextDate(d));
 /*     */     } 
 /*     */     
@@ -370,7 +339,7 @@
 /*     */ 
 /*     */   
 /*     */   private ApproverDelegate getApproverDelegateFromRequest(HttpServletRequest request) throws Exception {
-/* 373 */     Integer id = ActionUtils.parseInt(request.getParameter("id"));
+/* 373 */     Integer id = ActionUtils2.parseInt(request.getParameter("id"));
 /* 374 */     ApproverDelegateManager approverDelegateManager = ServiceLocator.getApproverDelegateManager(request);
 /* 375 */     ApproverDelegate approverDelegate = approverDelegateManager.getApproverDelegate(id);
 /* 376 */     if (approverDelegate == null)
@@ -392,10 +361,10 @@
 /* 392 */     processSelfPostfix(request);
 /* 393 */     ApproverDelegate approverDelegate = getApproverDelegateFromRequest(request);
 /* 394 */     request.setAttribute("x_ad", approverDelegate);
-/* 395 */     String today = ActionUtils.getTodayAsDisplayDate();
-/* 396 */     boolean fromDateBeforeToday = (ActionUtils.getDisplayDateFromDate(approverDelegate.getFromDate()).compareTo(today) <= 0);
+/* 395 */     String today = ActionUtils2.getTodayAsDisplayDate();
+/* 396 */     boolean fromDateBeforeToday = (ActionUtils2.getDisplayDateFromDate(approverDelegate.getFromDate()).compareTo(today) <= 0);
 /*     */     
-/* 398 */     boolean toDateBeforeToday = (ActionUtils.getDisplayDateFromDate(approverDelegate.getToDate()).compareTo(today) <= 0);
+/* 398 */     boolean toDateBeforeToday = (ActionUtils2.getDisplayDateFromDate(approverDelegate.getToDate()).compareTo(today) <= 0);
 /*     */     
 /* 400 */     if (fromDateBeforeToday)
 /* 401 */       request.setAttribute("x_fromBefore", Boolean.TRUE); 
@@ -471,7 +440,7 @@
 /* 471 */       BeanForm approverDelegateForm = (BeanForm)getForm("/insertApproverDelegate", request);
 /* 472 */       approverDelegateForm.populate(approverDelegate, "to_form");
 /*     */     } 
-/* 474 */     request.setAttribute("x_today", ActionUtils.getTodayAsDisplayDate());
+/* 474 */     request.setAttribute("x_today", ActionUtils2.getTodayAsDisplayDate());
 /* 475 */     return mapping.findForward("page");
 /*     */   }
 /*     */ 
@@ -482,7 +451,7 @@
 /*     */ 
 /*     */   
 /*     */   private ApproverDelegateType getApproverDelegateTypeFromRequest(HttpServletRequest request) {
-/* 485 */     Integer id = ActionUtils.parseInt(request.getParameter("type"));
+/* 485 */     Integer id = ActionUtils2.parseInt(request.getParameter("type"));
 /* 486 */     if (id == null)
 /* 487 */       throw new ActionException("approverDelegate.type.notSet"); 
 /* 488 */     ApproverDelegateType type = (ApproverDelegateType)ApproverDelegateType.fromEnumCode(ApproverDelegateType.class, id);
@@ -518,10 +487,10 @@
 /*     */     
 /* 519 */     ApproverDelegate approverDelegate = getApproverDelegateFromRequest(request);
 /*     */     
-/* 521 */     String today = ActionUtils.getTodayAsDisplayDate();
-/* 522 */     boolean oldFromDateBeforeToday = (ActionUtils.getDisplayDateFromDate(approverDelegate.getFromDate()).compareTo(today) <= 0);
+/* 521 */     String today = ActionUtils2.getTodayAsDisplayDate();
+/* 522 */     boolean oldFromDateBeforeToday = (ActionUtils2.getDisplayDateFromDate(approverDelegate.getFromDate()).compareTo(today) <= 0);
 /*     */     
-/* 524 */     boolean oldToDateBeforeToday = (ActionUtils.getDisplayDateFromDate(approverDelegate.getToDate()).compareTo(today) <= 0);
+/* 524 */     boolean oldToDateBeforeToday = (ActionUtils2.getDisplayDateFromDate(approverDelegate.getToDate()).compareTo(today) <= 0);
 /*     */     
 /* 526 */     if (oldFromDateBeforeToday && oldToDateBeforeToday) {
 /* 527 */       throw new RuntimeException("can't edit old");
@@ -538,8 +507,8 @@
 /* 538 */     approverDelegate.setOriginalApprover(oUser);
 /* 539 */     approverDelegate.setDelegateApprover(dUser);
 /*     */     
-/* 541 */     String sFromDate = ActionUtils.getDisplayDateFromDate(approverDelegate.getFromDate());
-/* 542 */     String sToDate = ActionUtils.getDisplayDateFromDate(approverDelegate.getToDate());
+/* 541 */     String sFromDate = ActionUtils2.getDisplayDateFromDate(approverDelegate.getFromDate());
+/* 542 */     String sToDate = ActionUtils2.getDisplayDateFromDate(approverDelegate.getToDate());
 /*     */     
 /* 544 */     if (sFromDate.compareTo(sToDate) > 0) {
 /* 545 */       throw new ActionException("approverDelegate.fromDateAfterToDate");
@@ -572,8 +541,8 @@
 /* 572 */       ApproverDelegate ad = iter.next();
 /* 573 */       if (ad.equals(approverDelegate))
 /*     */         continue; 
-/* 575 */       String oldSFromDate = ActionUtils.getDisplayDateFromDate(ad.getFromDate());
-/* 576 */       String oldSToDate = ActionUtils.getDisplayDateFromDate(ad.getToDate());
+/* 575 */       String oldSFromDate = ActionUtils2.getDisplayDateFromDate(ad.getFromDate());
+/* 576 */       String oldSToDate = ActionUtils2.getDisplayDateFromDate(ad.getToDate());
 /* 577 */       if (sToDate.compareTo(oldSFromDate) < 0)
 /*     */         continue; 
 /* 579 */       if (sFromDate.compareTo(oldSToDate) > 0)
@@ -597,7 +566,7 @@
 /*     */   }
 /*     */   
 /*     */   private User getOriginalApproverFromRequest(HttpServletRequest request) throws Exception {
-/* 600 */     Integer id = ActionUtils.parseInt(request.getParameter("originalApprover_id"));
+/* 600 */     Integer id = ActionUtils2.parseInt(request.getParameter("originalApprover_id"));
 /* 601 */     if (id == null)
 /* 602 */       throw new ActionException("approverDelegate.delegateApprover.notSet"); 
 /* 603 */     UserManager um = ServiceLocator.getUserManager(request);
@@ -640,9 +609,9 @@
 /* 640 */     approverDelegate.setOriginalApprover(originalUser);
 /* 641 */     approverDelegate.setDelegateApprover(delegateApprover);
 /*     */     
-/* 643 */     String today = ActionUtils.getTodayAsDisplayDate();
-/* 644 */     String sFromDate = ActionUtils.getDisplayDateFromDate(approverDelegate.getFromDate());
-/* 645 */     String sToDate = ActionUtils.getDisplayDateFromDate(approverDelegate.getToDate());
+/* 643 */     String today = ActionUtils2.getTodayAsDisplayDate();
+/* 644 */     String sFromDate = ActionUtils2.getDisplayDateFromDate(approverDelegate.getFromDate());
+/* 645 */     String sToDate = ActionUtils2.getDisplayDateFromDate(approverDelegate.getToDate());
 /* 646 */     if (sFromDate.compareTo(sToDate) > 0) {
 /* 647 */       throw new ActionException("approverDelegate.fromDateAfterToDate");
 /*     */     }
@@ -661,8 +630,8 @@
 /* 661 */     List dList = approverDelegateManager.getApproverDelegateList(conds, 0, -1, ApproverDelegateQueryOrder.FROMDATE, false);
 /* 662 */     for (Iterator<ApproverDelegate> iter = dList.iterator(); iter.hasNext(); ) {
 /* 663 */       ApproverDelegate ad = iter.next();
-/* 664 */       String oldSFromDate = ActionUtils.getDisplayDateFromDate(ad.getFromDate());
-/* 665 */       String oldSToDate = ActionUtils.getDisplayDateFromDate(ad.getToDate());
+/* 664 */       String oldSFromDate = ActionUtils2.getDisplayDateFromDate(ad.getFromDate());
+/* 665 */       String oldSToDate = ActionUtils2.getDisplayDateFromDate(ad.getToDate());
 /* 666 */       if (sToDate.compareTo(oldSFromDate) < 0)
 /*     */         continue; 
 /* 668 */       if (sFromDate.compareTo(oldSToDate) > 0)
@@ -684,7 +653,7 @@
 /*     */   }
 /*     */   
 /*     */   private User getDelegateApproverFromRequest(HttpServletRequest request) throws Exception {
-/* 687 */     Integer id = ActionUtils.parseInt(request.getParameter("delegateApprover_id"));
+/* 687 */     Integer id = ActionUtils2.parseInt(request.getParameter("delegateApprover_id"));
 /* 688 */     if (id == null)
 /* 689 */       throw new ActionException("approverDelegate.delegateApprover.notSet"); 
 /* 690 */     UserManager um = ServiceLocator.getUserManager(request);

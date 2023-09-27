@@ -8,7 +8,7 @@
 /*     */ import com.aof.model.metadata.EnabledDisabled;
 /*     */ import com.aof.service.BaseManager;
 /*     */ import com.aof.service.basic.CostCenterManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import java.util.Date;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.List;
@@ -85,13 +85,13 @@
 /*  85 */     for (int i = 0; i < 3 - siteId.length(); i++)
 /*  86 */       sb.append('0'); 
 /*  87 */     sb.append(siteId);
-/*  88 */     sb.append(StringUtils.right(ActionUtils.get8CharsFromDate(date), 6));
+/*  88 */     sb.append(StringUtils.right(ActionUtils2.get8CharsFromDate(date), 6));
 /*  89 */     String prefix = sb.toString();
 /*  90 */     String maxId = this.dao.getMaxCostCenterCodeBeginWith(prefix);
 /*     */     
 /*  92 */     int serialNo = 1;
 /*  93 */     if (maxId != null) {
-/*  94 */       Integer maxSN = ActionUtils.parseInt(StringUtils.right(maxId, 5));
+/*  94 */       Integer maxSN = ActionUtils2.parseInt(StringUtils.right(maxId, 5));
 /*  95 */       if (maxSN == null)
 /*  96 */         throw new RuntimeException("max serial no. is not digit"); 
 /*  97 */       serialNo = maxSN.intValue() + 1;

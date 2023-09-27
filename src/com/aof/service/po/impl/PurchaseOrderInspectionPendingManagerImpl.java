@@ -18,7 +18,7 @@
 /*     */ import com.aof.service.basic.FPSMaterialPriceManager;
 /*     */ import com.aof.service.po.BoxManager;
 /*     */ import com.aof.service.po.PurchaseOrderInspectionPendingManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.text.DecimalFormat;
 /*     */ import java.text.SimpleDateFormat;
@@ -109,14 +109,14 @@
 /* 109 */     for (int i = 0; i < 3 - siteId.length(); i++)
 /* 110 */       sb.append('0'); 
 /* 111 */     sb.append(siteId);
-/* 112 */     sb.append(StringUtils.right(ActionUtils.get8CharsFromDate(date), 6));
+/* 112 */     sb.append(StringUtils.right(ActionUtils2.get8CharsFromDate(date), 6));
 /* 113 */     String prefix = sb.toString();
 /* 114 */     String maxId = this.dao.getMaxPoApplicationIdBeginWith(prefix);
 /*     */     
 /* 116 */     int serialNo = 1;
 /* 117 */     if (maxId != null) {
 /*     */       
-/* 119 */       Integer maxSN = ActionUtils.parseInt(StringUtils.right(maxId, 5));
+/* 119 */       Integer maxSN = ActionUtils2.parseInt(StringUtils.right(maxId, 5));
 /* 120 */       if (maxSN == null) throw new RuntimeException("max serial no. is not digit"); 
 /* 121 */       serialNo = maxSN.intValue() + 1;
 /*     */     } 
@@ -360,13 +360,13 @@
 /* 360 */     for (int i = 0; i < 3 - siteId.length(); i++)
 /* 361 */       sb.append('0'); 
 /* 362 */     sb.append(siteId);
-/* 363 */     sb.append(StringUtils.right(ActionUtils.get8CharsFromDate(date), 6));
+/* 363 */     sb.append(StringUtils.right(ActionUtils2.get8CharsFromDate(date), 6));
 /* 364 */     String prefix = sb.toString();
 /* 365 */     String maxId = this.dao.getMaxPoApplicationIdBeginWithReceipts(prefix);
 /*     */     
 /* 367 */     int serialNo = 1;
 /* 368 */     if (maxId != null) {
-/* 369 */       Integer maxSN = ActionUtils.parseInt(StringUtils.right(maxId, 5));
+/* 369 */       Integer maxSN = ActionUtils2.parseInt(StringUtils.right(maxId, 5));
 /* 370 */       if (maxSN == null)
 /* 371 */         throw new RuntimeException("max serial no. is not digit"); 
 /* 372 */       serialNo = maxSN.intValue() + 1;
@@ -446,7 +446,7 @@
 /* 446 */     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 /* 447 */     String dates = dateFormat.format(date);
 /*     */     
-/* 449 */     List<E> list = this.dao.getObjectList("select max(box.number) from Box box where box.lotSer.id like" + 
+/* 449 */     List list = this.dao.getObjectList("select max(box.number) from Box box where box.lotSer.id like" +
 /* 450 */         supplierCode + dates + " ");
 /* 451 */     String maxnumber = "";
 /* 452 */     if (list.size() == 0) {

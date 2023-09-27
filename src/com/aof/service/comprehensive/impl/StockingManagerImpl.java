@@ -20,7 +20,7 @@
 /*     */ import com.aof.service.Properties;
 /*     */ import com.aof.service.basic.StorageLocationManager;
 /*     */ import com.aof.service.comprehensive.StockingManager;
-/*     */ import com.aof.web.struts.action.ActionUtils;
+/*     */ import com.aof.web.struts.action.ActionUtils2;
 /*     */ import java.io.Serializable;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.util.ArrayList;
@@ -78,14 +78,14 @@
 /*     */   private String getLastCode(Date date) {
 /*  79 */     StringBuffer sb = new StringBuffer("SM");
 /*     */     
-/*  81 */     sb.append(StringUtils.right(ActionUtils.get8CharsFromDate(date), 6));
+/*  81 */     sb.append(StringUtils.right(ActionUtils2.get8CharsFromDate(date), 6));
 /*  82 */     String prefix = sb.toString();
 /*  83 */     String maxId = this.dao.getMaxStockingIdBeginWith(prefix);
 /*     */     
 /*  85 */     int serialNo = 1;
 /*  86 */     if (maxId != null) {
 /*     */       
-/*  88 */       Integer maxSN = ActionUtils.parseInt(StringUtils.right(maxId, 3));
+/*  88 */       Integer maxSN = ActionUtils2.parseInt(StringUtils.right(maxId, 3));
 /*  89 */       if (maxSN == null) throw new RuntimeException("max serial no. is not digit"); 
 /*  90 */       serialNo = maxSN.intValue() + 1;
 /*     */     } 
