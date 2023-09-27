@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.product">
+<!-- ==============================成品业务开始2015-02-12-st================================================ -->
+	<class name="Product" table="product">
+		<id name="id" column="id" type="integer">
+			<generator class="native" /> 
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="box" column="box" class="com.aof.model.po.Box" />
+		<many-to-one name="userId" column="userId" class="com.aof.model.admin.User" />
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		
+		<property name="isSync" column="isSync" type="com.aof.model.metadata.YesNo" />
+		<property name="isSync_date" column="isSync_date" type="date" />
+		<property name="domain" column="domain" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="qty" column="qty" type="big_decimal" />
+		
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart"></many-to-one>
+		<property name="isPrint" column="isPrint" type="com.aof.model.metadata.YesNo" />
+		<property name="strDate" column="strDate" type="string" />
+	</class>
+	<class name="ProductBelowLine" table="product_belowLine">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="tool" column="tool" class="com.aof.model.basic.WmsTool" />
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="user" column="user_id" class="com.aof.model.admin.User" />
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="date" column="date" type="date" />
+		<property name="status" column="status" type="com.aof.model.metadata.ProductBelowLineStatus" />
+		
+		<property name="test1" column="test1" type="string" />
+		<property name="test2" column="test2" type="string" />
+		<property name="test3" column="test3" type="string" />
+	</class>
+	<class name="ProductBelowlineCasade" table="product_belowline_casade">
+		<id name="id" column="id" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		
+		<many-to-one name="product" column="product_id" class="Product" />
+		<many-to-one name="productBelowLine"  column="product_belowline_id" class="ProductBelowLine"></many-to-one>
+	</class>
+	<!-- ==============================成品业务结束================================================ -->
+	<!--成品上线 -->
+	<class name="ProductGoline" table="product_goline">
+        <id name="id" column="id" type="integer">
+            <generator class="native" />
+        </id>
+        <property name="shCode" column="sh_code" type="string"/>
+        <property name="totalNumber" column="total_number" type="string"/>
+        <property name="hncCode" column="hnc_code" type="string"/>
+        <property name="partTireCode" column="part_tire_code" type="string"/>
+        <property name="tireDesc" column="tire_desc" type="string"/>
+        <property name="partHubCode" column="part_hub_code" type="string"/>
+        <property name="hubDesc" column="hub_desc" type="string"/>
+        <property name="qty" column="qty" type="integer"/>
+        <many-to-one name="locationCode" column="location_code" class="com.aof.model.basic.StorageLocation"/>
+        <property name="storageDate" column="storage_date" type="timestamp"/>
+        <property name="status" column="status" type="integer"/>
+        <many-to-one name="tool" column="tool" class="com.aof.model.admin.FinishedToolPutnumber"/>
+    	<property name="partValvestemCode" column="part_valvestem_code" type="string"/>
+    	<property name="valvestemDesc" column="valvestem_desc" type="string"/>
+    	<property name="buckleMaterialDate" column="buckle_material_date" type="date"/>
+    	<property name="hncDesc" column="hnc_desc" type="string"/>
+    </class>
+    <!-- 成品出库 -->
+    <class name="ProductOutStorage" table="product_OutStorage">
+        <id name="id" type="integer" column="id" >
+            <generator class="native" />
+        </id>
+        <property name="hncCode" type="string" column="hnc_code" />
+        <property name="saiheCode" type="string" column="saihe_code" />
+        <property name="description" type="string" column="description" />
+        <property name="qty" type="integer" column="qty" />
+        <property name="outDate" type="timestamp" column="out_date" />
+        <property name="deliverDate" type="timestamp" column="deliver_date" />
+        <property name="status" type="integer" column="status"></property>
+         <property name="issync" type="integer" column="is_sync"></property>
+         <many-to-one name="storeroom" column="store_room" class="com.aof.model.basic.StoreRoom"/>
+         
+         
+    </class>
+</hibernate-mapping>

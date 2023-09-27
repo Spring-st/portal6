@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+<hibernate-mapping package="com.aof.model.product">
+	<class name="SalesOrder" table="sales_order">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<property name="soNumber" column="SO_NUMBER" type="string" />
+		<many-to-one name="site" column="SITE" class="com.aof.model.admin.Site" />
+		<property name="createDate" column="CREATE_DATE" type="timestamp" />
+		<many-to-one name="customer" column="CUSTOMER" class="com.aof.model.product.BasicCustomer" />
+		<property name="status" column="STATUS" type="com.aof.model.metadata.PurchaseOrderStatus" />
+		<property name="custCode" column="CUST_CODE" type="string" />
+		<property name="custAddress" column="CUST_ADDRESS" type="string" />
+		<property name="custName" column="CUST_NAME" type="string" />
+		<property name="createtype" column="CREATETYPE" type="integer" />
+		<property name="remark" column="REMARK" type="string" />
+		<property name="describe" column="DESCRIBE" type="string" />
+		<property name="isprint" column="ISPRINT" type="com.aof.model.metadata.YesNo" />
+		<property name="issync" column="ISSYNC" type="com.aof.model.metadata.YesNo" />
+
+	</class>
+</hibernate-mapping>

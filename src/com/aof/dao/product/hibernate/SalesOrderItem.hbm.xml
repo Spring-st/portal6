@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+<hibernate-mapping package="com.aof.model.product">
+	<class name="SalesOrderItem" table="sales_order_item">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="soId" column="SO_ID" class="com.aof.model.product.SalesOrder" />
+		<many-to-one name="site" column="SITE" class="com.aof.model.admin.Site" />
+		<many-to-one name="itemNumber" column="ITEM_NUMBER" class="com.aof.model.basic.WmsPart" />
+		<property name="soipNumber" column="SOIP_NUMBER" type="string" />
+		<property name="line" column="LINE" type="string" />
+		<property name="supplierItemNumber" column="SUPPLIER_ITEM_NUMBER" type="string" />
+		<property name="um" column="UM" type="string" />
+		<property name="rum" column="RUM" type="string" />
+		<property name="qty" column="QTY" type="big_decimal" />
+		<property name="status" column="STATUS" type="integer" />
+		<property name="dueDate" column="DUE_DATE" type="timestamp" />
+		<property name="receiptQty" column="RECEIPT_QTY" type="big_decimal" />
+		<property name="isPrintLabels" column="IS_PRINT_LABELS" type="integer" />
+		<property name="boxcount" column="QTY_STD" type="big_decimal" />
+		<property name="describe" column="DESCRIBE" type="string" />
+		<property name="returnQtySum" column="RETURN_QTY_SUM" type="big_decimal" />
+		<property name="conversionRatio" column="CONVERSION_RATIO" type="big_decimal" />
+		<property name="partType" column="PART_TYPE" type="string" />
+		<property name="factory" column="FACTORY" type="string" />
+		<property name="poDomain" column="PO_DOMAIN" type="string" />
+		<property name="issync" column="ISSYNC" type="com.aof.model.metadata.YesNo" />
+		<property name="istxt" column="ISTXT" type="com.aof.model.metadata.YesNo" />
+		<property name="qtyopen" column="qty_open" type="big_decimal" />
+		<property name="sotype" column="so_type" type="integer" />
+	</class>
+</hibernate-mapping>

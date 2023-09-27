@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.schedule">
+
+    <class name="QadOrEdi" table="portalv6_qad_or_edi">
+        <id name="id" column="ID" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="models" column="models" type="string" />
+        <many-to-one name="qadPart" column="qad_part" class="com.aof.model.basic.WmsPart"  />
+        <property name="createDate" column="createDate" type="timestamp"/>
+        <property name="qty" column="qty" type="big_decimal"/>
+        <property name="des" column="des" type="string"/>
+    </class>
+
+</hibernate-mapping>

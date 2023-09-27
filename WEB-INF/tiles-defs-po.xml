@@ -1,0 +1,564 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<tiles-definitions>
+	<!-- purchaseOrder -->
+	<definition name="site.purchaseOrder.view.dialog" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/viewDialog.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrder.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/view.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.view.title"/>
+	</definition>
+	<definition name="site.purchaseOrder.edit" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/edit.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.edit.title"/>
+	</definition>
+	
+	<definition name="site.purchaseOrder.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmspo/purchaseOrder/list.jsp"/>
+	</definition>
+	<definition name="editCapacity.purchaseOrder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/editCapacity/list.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrder.print" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmspo/purchaseOrder/poPrint.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrder.report" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrder/report.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.report.title"/>
+	</definition>
+	
+	<!-- end of purchaseOrder -->			
+	
+	<!-- purchaseOrderItem -->
+	<definition name="site.purchaseOrder.editItem" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/editItem.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrder.confirm.editItem" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrderConfirm/editItem.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrder.viewItem" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/viewItem.jsp"/>
+	</definition>
+	<!-- end of purchaseOrderItem -->			
+	
+	<!-- purchaseOrderAttachment -->
+	<definition name="site.purchaseOrderAttachment.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/newAttachment.jsp"/>
+	</definition>
+	<!-- end of purchaseOrderAttachment -->
+	
+	<!-- purchaseOrderItemAttachment -->
+	<definition name="site.purchaseOrderItemAttachment.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/newItemAttachment.jsp"/>
+	</definition>
+	<!-- end of purchaseOrderItemAttachment -->
+	
+	<!-- begin of PaymentScheduleDetail-->	
+	<definition name="site.paymentScheduleDetail.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/purchaseOrder/editPaymentScheduleDetail.jsp"/>
+	</definition>
+	<!-- end of PaymentScheduleDetail -->
+
+	<!-- purchaseOrderApproveRequest -->
+	<definition name="site.purchaseOrderApproveRequest.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderApproveRequest/list.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrderApproveRequest.list.title"/>
+	</definition>
+	<definition name="site.purchaseOrderApproveRequest.view" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderApproveRequest/view.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrderApproveRequest.view.title"/>
+	</definition>		
+	<definition name="site.purchaseOrderApproveRequest.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderApproveRequest/edit.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrderApproveRequest.edit.title"/>
+	</definition>		
+	<!-- end of purchaseOrderApproveRequest -->
+	
+	<!-- begin of PurchaseOrder Confirm -->
+	<definition name="site.purchaseOrder.confirm.selectInspecor" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderConfirm/selectInspector.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrder.confirm.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderConfirm/list.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.confirm.list.title"/>
+	</definition>
+	<definition name="site.purchaseOrder.confirm" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderConfirm/confirm.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.confirm.title"/>
+	</definition>
+	<definition name="site.purchaseOrder.editConfirm" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderConfirm/editConfirm.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.editConfirm.title"/>
+	</definition>
+	
+	<definition name="site.purchaseOrder.confirmSupplier.confirmNew" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/edit.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.confirm.title"/>
+		<put name="pageSubTitle" 	value="supplier.confirm.subTitleNew"/>
+	</definition>
+	<definition name="site.purchaseOrder.confirmSupplier.confirmModify" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/edit.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.confirm.title"/>
+		<put name="pageSubTitle" 	value="supplier.confirm.subTitleModify"/>
+	</definition>
+	
+	<!-- end of PurchaseOrder Confirm -->	
+	
+	<!-- begin of PurchaseOrder Cancel -->
+	<definition name="site.purchaseOrder.cancel.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderCancel/list.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.cancel.list.title"/>
+	</definition>
+	<definition name="site.purchaseOrder.cancel.view" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderCancel/view.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.cancel.view.title"/>
+	</definition>
+	<definition name="site.purchaseOrder.cancel.cancel" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderCancel/cancel.jsp"/>
+	</definition>
+	 
+	<!-- end of PurchaseOrder Confirm -->	
+
+	<!-- purchaseOrder assign -->
+	<definition name="site.purchaseOrder.assign.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderAssign/listAssign.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.assign.title"/>
+	</definition>
+	<definition name="site.purchaseOrder.assign" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseOrderAssign/assign.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrder.assign.title"/>
+	</definition>
+	<!-- end of purchaseOrder assign -->
+	<definition name="purchaseOrder.condiment.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmspo/purchaseOrder/listCondiment.jsp"/>
+	</definition>
+<!--	<definition name="purchaseOrder.condiment.print" extends="site.mainFrameLayout">-->
+<!--		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrder/printCondiment.jsp"/>-->
+<!--	</definition>-->
+	<definition name="purchaseOrder.condiment.print" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmspo/purchaseOrder/condimentPrint.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.condiment.printCode" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmspo/purchaseOrder/printCondiment.jsp"/>
+	</definition>
+	
+	<definition name="portalShipOrder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrder/listPortalShipOrder.jsp"/>
+	</definition>
+	<definition name="portalShipOrderConfirm.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrder/listPortalShipOrderConfirm.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderReceipts.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmspo/purchaseOrderReceipts/list.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseOrderReceipts.list.title"/>
+	</definition>
+	<definition name="site.box.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmspo/printCode.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.receipts.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderReceipts/boxList.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.rqc.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderRQC/boxList.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.putInStorage.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poPutInStorage/boxList.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.out.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/po_out/boxList.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.out.boxReport" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/po_out/boxReport.jsp"/>
+	</definition>
+ 	<definition name="site.purchaseOrderRQC.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderRQC/list.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.rqcDetermine" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderRQC/rqcDetermine.jsp"/>
+	</definition>
+	<definition name="productOutbound.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsproduce/productOutbound/boxList.jsp"/>
+		<put name="pageMainTitle" value="productOutbound.box.title"/>
+	</definition>
+	<definition name="productOutbound.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsproduce/productOutbound/list.jsp"/>
+	</definition>
+	<definition name="purchaseOrderPutInStorage.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poPutInStorage/list.jsp"/>
+	</definition>
+	<definition name="po.putinstorageMaterial.box.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poPuInStorageMaterial/boxList.jsp"/>
+	</definition>
+	<definition name="selectBox.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/box/selectList.jsp"/>
+	</definition>
+	<!--入库后退货记录报表-->
+	<definition name="po.rejectedMaterial.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poRejectedMaterial/list.jsp"/>
+	</definition>
+	<definition name="po.rejectedMaterial.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poRejectedMaterial/printRecord.jsp"/>
+	</definition>
+	<!--入库前退货记录报表-->
+	<definition name="po.rejectedMaterialBefore.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poRejectedMaterialBefore/list.jsp"/>
+	</definition>
+	<definition name="po.rejectedMaterialBefore.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poRejectedMaterialBefore/printRecordBefore.jsp"/>
+	</definition>
+	
+	<definition name="po.rejectedMaterial.box.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poRejectedMaterial/boxList.jsp"/>
+	</definition>
+	<definition name="po.rejectedMaterial.box.reasons" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poRejectedMaterial/rejectedBoxByReasons.jsp"/>
+	</definition>
+	<definition name="inventory.iransit.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsInventory/inventoryTransit/list.jsp"/>
+	</definition>
+	<definition name="site.produceBuckleMaterial" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/produceBuckleMaterial/list.jsp"/>
+	</definition>
+	<definition name="site.moveLibrary.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/moveLocation/list.jsp"/>
+	</definition>
+	<definition name="site.moveLibrary.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/moveLocation/new.jsp"/>
+	</definition>
+	
+	<definition name="site.box.report" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/box/list.jsp"/>
+	</definition>
+	<definition name="site.box.detail.report" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/box/boxList.jsp"/>
+	</definition>
+	<definition name="site.box.abolition" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/abolition/list.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.highLine.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/highLines/boxList.jsp"/>
+	</definition>
+	
+	<definition name="purchaseOrder.highTwoLine.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/highLines/boxTwoList.jsp"/>
+	</definition>
+	
+	<definition name="purchaseOrder.highLine.one.select" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/highLines/selectHignLineLot.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.belowLine.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/belowLine/boxList.jsp"/>
+	</definition>
+	<definition name="poHighLine.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poHighLine/list.jsp"/>
+	</definition>
+	<definition name="poHighLine.select" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poHighLine/select.jsp"/>
+	</definition>
+	<definition name="poHighLine.two.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/poHighLine/listTwo.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderClose.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/closePo/list.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderOpen.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/openPo/list.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderRQCClose.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderRQC/listClose.jsp"/>
+	</definition>
+	<definition name="po.lot.print.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/box/printList.jsp"/>
+	</definition>
+	<definition name="po.lot.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/box/printCode.jsp"/>
+	</definition>
+	<definition name="poRqc.unqualified.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/poRqcUnqualified/list.jsp"/>
+	</definition>
+	<definition name="site.productOffline.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/list.jsp"/>
+	</definition>
+	<definition name="site.productOffline.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/productOfflineNew.jsp"/>
+	</definition>
+	<definition name="highLineBoxTwo.select" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/highLines/selectHignLineTwoLot.jsp"/>
+	</definition>
+	<definition name="purchaseOrder.box.freeze" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/boxFreeze/list.jsp"/>
+	</definition>
+	
+	<definition name="purchaseOrder.box.freeze.open" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/boxFreeze/boxList.jsp"/>
+	</definition>
+	<definition name="product.scanningOutbound.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/productScanningOutbound.jsp"/>
+	</definition>
+	
+	<definition name="product.out.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/productScanningOutbound.jsp"/>
+	</definition>
+	<definition name="product.in.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/productScanningOutbound.jsp"/>
+	</definition>
+	
+	<definition name="site.productOut.new" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/new.jsp"/>
+	</definition>
+	<definition name="site.productOut.selectBig" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/selectBigStroage.jsp"/>
+	</definition>
+	<definition name="site.productOut.print" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productOut/printCode.jsp"/>
+	</definition>
+	<definition name="list.productGoline.site" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productGoline/list.jsp"/>
+		<put name="pageMainTitle" 	value="list.productGoline.title"/>
+	</definition>
+	<!-- 成品上线-同步失败 -->
+	<definition name="qad.productGoline.site" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productGoline/listNotQAD.jsp"/>
+	</definition>
+	<!-- 成品下线 -->
+	<definition name="site.productdownline.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productIn/productInbound.jsp"/>
+	</definition>
+	<definition name="site.productdownline.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productIn/productInNew.jsp"/>
+	</definition>
+	<!-- 成品出库 -->
+	<definition name="site.productoutstorage.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/finishedProduct/finishedProductList.jsp"/>
+	</definition>
+	<definition name="site.productoutstorage.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/finishedProduct/finishedProductNew.jsp"/>
+	</definition>
+	<definition name="site.productgoline.select" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/finishedProduct/select.jsp"/>
+	</definition>
+	<definition name="site.productTransfer.select" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/ProductTransfer/ProductTransferList.jsp"/>
+	</definition>
+	<definition name="site.ProductTransferNew.select" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/ProductTransfer/ProductTransferNew.jsp"/>
+	</definition>
+	<definition name="site.newDefeScanning.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/poRqcUnqualified/NewStorage.jsp"/>
+	</definition>
+	<!-- customerPlan -->
+	<definition name="site.customerPlan.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerPlan/list.jsp"/>
+	</definition>
+	<definition name="site.customerPlan.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerPlan/new.jsp"/>
+		<put name="pageMainTitle" 	value="request.customerPlan.title"/>
+	</definition>
+	<definition name="site.customerPlan.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/customerPlan/edit.jsp"/>
+	</definition>
+	<definition name="site.customerPlan.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerPlan/view.jsp"/>
+		<put name="pageMainTitle" 	value="view.customerPlan.title"/>
+	</definition>
+	<!-- basicCustomer -->
+	<definition name="site.basicCustomer.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/basicCustomer/list.jsp"/>
+	</definition>
+	<definition name="site.basicCustomer.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/basicCustomer/new.jsp"/>
+	</definition>
+	<definition name="site.basicCustomer.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/basicCustomer/edit.jsp"/>
+	</definition>
+	<definition name="site.basicCustomer.select" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/basicCustomer/select.jsp"/>
+	</definition>
+	<!-- dailyProductPlan -->
+	<definition name="site.dailyProductPlan.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/dailyProductPlan/list.jsp"/>
+	</definition>
+	<definition name="site.dailyProductPlan.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/dailyProductPlan/new.jsp"/>
+	</definition>
+	<definition name="site.dailyProductPlan.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/dailyProductPlan/edit.jsp"/>
+	</definition>
+	<!-- salesOrder -->
+	<!--<definition name="site.salesOrder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/list.jsp"/>
+	</definition>
+	<definition name="site.salesOrder.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/new.jsp"/>
+	</definition>
+	<definition name="site.salesOrder.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/edit.jsp"/>
+	</definition>
+	--><!-- workOrderBom -->
+	<definition name="site.workOrderBom.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/workOrderBom/list.jsp"/>
+	</definition>
+	<definition name="site.workOrderBom.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/workOrderBom/new.jsp"/>
+	</definition>
+	<definition name="site.workOrderBom.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/workOrderBom/edit.jsp"/>
+	</definition>
+	<!-- salesOrderItem -->
+	<definition name="site.salesOrderItem.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/list.jsp"/>
+	</definition>
+	<definition name="site.salesOrderItem.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/new.jsp"/>
+	</definition>
+	<definition name="site.salesOrderItem.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/edit.jsp"/>
+	</definition>
+	<definition name="site.salesPreshiporder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrder/listSalesPreShipOrder.jsp"/>
+	</definition>
+	<definition name="site.salesPickingOrder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPickingOrder/listSalesPickingOrder.jsp"/>
+	</definition>
+	<definition name="site.salesPreshiporder.new" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrder/new.jsp"/>
+		<put name="pageMainTitle" 	value="title.newCreateSalesPreShipOrder.new"/>
+	</definition>
+	<definition name="site.createSalesPreShipOrder.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrder/viewCreateSalesPreShipOrder.jsp"/>
+		<put name="pageMainTitle" 	value="title.viewCreateSalesPreShipOrder.view"/>
+	</definition>
+	<definition name="site.SalesPickingOrderBatch.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPickingOrder/viewSalesPickingOrderBatch.jsp"/>
+		<put name="pageMainTitle" 	value="title.SalesPreShipOrderBatch.view"/>
+	</definition>
+	<definition name="select.salesOrderItem" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrder/salesOrderItem.jsp"/>
+	</definition>
+	<definition name="site.SalesPickingOrderBatch.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPickingOrder/printSalesPickingsOrderBatch.jsp"/>
+	</definition>
+	<definition name="site.SalesPickingOrderBatch.print2" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPickingOrder/printSalesPickingsOrderBatch2.jsp"/>
+	</definition>
+	<definition name="site.salesWorkorder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesWorkShipOrder/listSalesWorkShipOrder.jsp"/>
+	</definition>
+	<definition name="site.SalesPreShipOrder.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesWorkShipOrder/viewSalesWorkShipOrder.jsp"/>
+		<put name="pageMainTitle" 	value="title.SalesPreShipOrder.view"/>
+	</definition>
+	<definition name="site.SalesWorkShipOrder.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/salesWorkShipOrder/printSalesWorkShipOrder.jsp"/>
+	</definition>
+	<!-- 创建客户需求发货单 -->
+	<definition name="site.customerPlanPreshiporder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerPlanPreShipOrder/listCustomerPlanPreShipOrder.jsp"/>
+	</definition>
+	<definition name="site.CustomerPlanPreshiporder.new" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerPlanPreShipOrder/new.jsp"/>
+		<put name="pageMainTitle" 	value="title.newCreateSalesPreShipOrder.new"/>
+	</definition>
+	<definition name="select.customerPlan" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/customerPlan/selectCustomerPlan.jsp"/>
+	</definition>
+	<definition name="site.salesPreshiporderPlan.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrderPlan/list.jsp"/>
+	</definition>
+	<definition name="site.salesPreshiporderPlan.new" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrderPlan/new.jsp"/>
+	</definition>
+	<definition name="site.createSalesPreShipOrderPlan.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrderPlan/viewCreateSalesPreShipOrderPlan.jsp"/>
+	</definition>
+	<definition name="site.customerPlan.select" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/salesPreShipOrderPlan/selectCustomerPlan.jsp"/>
+	</definition>
+	<definition name="site.createCustomerPlanPreShipOrder.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerPlanPreShipOrder/viewCreateCustomerPlanPreShipOrder.jsp"/>
+		<put name="pageMainTitle" 	value="title.viewCreateSalesPreShipOrder.view"/>
+	</definition>
+	<!-- 采购单实收数量 -->
+	<definition name="list.shippingOrder.Actualreport" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderActualReceipts/purchaseOrderActualReceipts.jsp"/>
+	</definition>
+	<definition name="view.shippingOrder.Actualreport" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderActualReceipts/viewPurchaseOrderActualReceipts.jsp"/>
+		<put name="pageMainTitle" 	value="title.shippingOrder.Actualreport.view"/>
+	</definition>
+	<definition name="print.PurchaseOrder.ActualReceipts" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmspo/purchaseOrderActualReceipts/printPurchaseOrderActualReceipts.jsp"/>
+	</definition>
+	<!-- 关闭销售订单 -->
+	<definition name="site.salesOrderItem.Close.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/closeList.jsp"/>
+	</definition>
+	<!-- 打开销售订单 -->
+	<definition name="site.salesOrderItem.Open.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/salesOrder/openList.jsp"/>
+	</definition>
+	<!-- 出库明细报表 -->
+	<definition name="site.outStorageDetailReport.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/salesWorkorder/list.jsp"/>
+	</definition>
+	<!-- 出库明细报表 -->
+	<definition name="site.customerPlan.CloseOrOpen.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerPlan/listEdit.jsp"/>
+	</definition>
+	<!-- 销售记录报表 -->
+	<definition name="site.salesRecordReport.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/salesRecordReport/list.jsp"/>
+	</definition>
+	<!-- 销售分析报表 -->
+	<definition name="site.salesAnalysisReport.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/salesAnalysisReport/list.jsp"/>
+	</definition>
+	<!-- 销售明细报表 -->
+	<definition name="site.salesDetailedReport.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/salesDetailedReport/list.jsp"/>
+	</definition>
+	<!-- 销售明细报表 -->
+	<definition name="site.salesSummaryReport.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/salesSummaryReport/list.jsp"/>
+	</definition>
+	<!-- 生产计划上传下载 -->
+	<definition name="site.Productionplanning.list" extends="site.mainFrameLayout">
+			<put name="body" value="/WEB-INF/jsp/Productionplanning/list.jsp" />
+	</definition>
+	<definition name="site.ProductionplanningDownload.list" extends="site.mainFrameLayout">
+			<put name="body" value="/WEB-INF/jsp/Productionplanning/listDownload.jsp" />
+	</definition>
+	<!-- 期初打印条码 -->
+	<definition name="site.Purchasemanualcreatebarcode.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/manualCreateBarcode/list.jsp"></put>
+	</definition>
+	<definition name="site.purchaseManualCreateBarcodeMin.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/manualCreateBarcode/printListCodeMin.jsp"></put>
+	</definition>
+	
+	
+	
+	<definition name="site.purchaseManualCreateBarQEcodeMin.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/manualCreateBarcode/QeCodeMin.jsp"></put>
+	</definition>
+	<definition name="site.purchaseManualCreateBarQEcodeMax.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/manualCreateBarcode/QeCodeMax.jsp"></put>
+	</definition>
+	<definition name="site.purchaseManualCreateBarQEcodeZhong.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/manualCreateBarcode/QeCodeZhong.jsp"></put>
+	</definition>
+	
+	
+	
+	
+		<definition name="site.purchaseManualCreateBarcodeZhong.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/manualCreateBarcode/printListCodeZhong.jsp"></put>
+	</definition>
+		<definition name="site.purchaseManualCreateBarcodeMax.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/manualCreateBarcode/printListCodeMax.jsp"></put>
+	</definition>
+	<definition name="site.barcode.Group.add" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/manualCreateBarcode/mesgadd.jsp"/>
+	</definition>
+	</tiles-definitions>

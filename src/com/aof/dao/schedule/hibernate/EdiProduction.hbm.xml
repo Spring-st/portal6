@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.schedule">
+
+    <class name="EdiProduction" table="portalv6_edi_production">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+		<property name="asnNo" column="ASN_NO" type="string" />
+		<property name="number" column="NUMBER" type="string" />
+		<property name="models" column="MODELS" type="string" />
+		<property name="describe" column="DESCRIBE" type="string" />
+		<property name="productlinecode" column="PRODUCTLINECODE" type="string" />
+		<property name="shiftcode" column="SHIFTCODE" type="string" />
+		<property name="staffcode" column="STAFFCODE" type="string" />
+		<property name="taskDate" column="TASK_DATE" type="date" />
+		<property name="time" column="TIME" type="string" />
+		<property name="qty" column="QTY" type="integer" />
+		<property name="syncTime" column="SYNC_TIME" type="timestamp" />
+		<property name="status" column="STATUS" type="integer" />
+		<property name="type" column="TYPE" type="integer" />
+		<property name="unit" column="UNIT" type="string" />
+		<property name="supplier" column="supplier" type="string" />
+		<property name="uploader" column="uploader" type="string" />
+		<property name="uploadTime" column="upload_time" type="timestamp" />
+		<property name="uploadFileName" column="upload_file_name" type="string" />
+		<property name="handStatus" column="hand_status" type="integer"/>
+		<property name="enabled" column="enabled" type="integer"/>
+		<property name="taskTime" column="task_time" type="timestamp" />
+    </class>
+	<class name="EdiProductionErrorLog" table="portalv6_edi_production_error_log">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+		<property name="asnNo" column="ASN_NO" type="string" />
+		<property name="number" column="NUMBER" type="string" />
+		<property name="models" column="MODELS" type="string" />
+		<property name="describe" column="DESCRIBE" type="string" />
+		<property name="productlinecode" column="PRODUCTLINECODE" type="string" />
+		<property name="shiftcode" column="SHIFTCODE" type="string" />
+		<property name="staffcode" column="STAFFCODE" type="string" />
+		<property name="taskDate" column="TASK_DATE" type="date" />
+		<property name="time" column="TIME" type="string" />
+		<property name="qty" column="QTY" type="integer" />
+		<property name="syncTime" column="SYNC_TIME" type="timestamp" />
+		<property name="type" column="TYPE" type="integer" />
+		<property name="unit" column="UNIT" type="string" />
+		<property name="errorInfo" column="errorInfo" type="string"/>
+    </class>
+</hibernate-mapping>

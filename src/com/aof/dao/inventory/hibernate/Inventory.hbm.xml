@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+	<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+	<!-- by MyEclipse Hibernate tool integration.                   -->
+	<!-- Created Fri Sep 23 14:49:10 CST 2005                         -->
+<hibernate-mapping package="com.aof.model.inventory">
+<!-- ==============================库存业务开始2015-01-28-st================================================ -->
+<!-- 库存主表  -->
+	<class name="Inventory" table="inventory">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="tool" column="tool" class="com.aof.model.basic.WmsTool" /> 
+		<many-to-one name="box" column="lot" class="com.aof.model.po.Box" />
+		
+		<property name="address" column="address" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="ref" column="ref" type="string" />
+		<property name="enabled" column="status" type="com.aof.model.metadata.EnabledDisabled" />
+	</class>
+	<!-- 库位库存  -->
+	<class name="InventoryDetial" table="inventory_detial">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" /> 
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		
+		<property name="number" column="number" type="big_decimal" />
+		<property name="part_qty" column="part_qty" type="big_decimal" />
+	</class>
+	<!-- 库位库存  -->
+	<class name="InventoryOccupiedDetial" table="inventory_occupied_detial">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" /> 
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<property name="number" column="number" type="big_decimal" />
+	</class>
+	<!-- 物料库存  -->
+	<class name="InventoryTotal" table="inventory_total">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		
+		<property name="number" column="number" type="big_decimal" />
+	</class>
+	<!-- 库存变动记录  -->
+	<class name="InventoryRecord" table="inventory_record">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="inventory_detial_id" column="inventory_detial_id" class="InventoryDetial" />
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="lot" column="lot" class="com.aof.model.po.WmsLot" />
+		
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="date" column="date" type="date" />
+		<property name="part" column="part" type="string" />
+		<property name="type" column="type" type="com.aof.model.metadata.InventoryRecordType" />
+		<property name="status" column="status" type="com.aof.model.metadata.YesNo" />
+		<property name="location_init_number" column="location_init_number" type="big_decimal" />
+		<property name="part_init_number" column="part_init_number" type="big_decimal" />
+	</class>	
+	<!-- 库存移库记录  -->
+	<class name="InventoryMoving" table="basic_inventory_moving">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="old_location" column="old_location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="new_location" column="new_location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="user" column="user_id" class="com.aof.model.admin.User" />
+		<many-to-one name="lotSer" column="lot_ser" class="com.aof.model.po.WmsLot" />
+		
+		<property name="domain" column="domain" type="string" />
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="date" column="date" type="date" />
+		<property name="is_sync" column="is_sync" type="com.aof.model.metadata.YesNo" />
+		<property name="is_sync_date" column="is_sync_date" type="date" />
+		<property name="remark" column="remark" type="string" />
+		<many-to-one name="oldLotSer" column="old_lot_ser" class="com.aof.model.po.WmsLot" />
+	</class>
+	
+	<!-- 中转库库存  -->
+	<class name="InventoryTransit" table="inventory_transit">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="test1" column="test1" type="string" />
+		<property name="test2" column="test2" type="string" />
+		<property name="test3" column="test3" type="string" />
+	</class>
+	<!-- ==============================库存业务结束2015-01-28-st================================================ -->
+</hibernate-mapping>

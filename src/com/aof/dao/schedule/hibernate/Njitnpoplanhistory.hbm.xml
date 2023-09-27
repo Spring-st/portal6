@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.schedule">
+
+    <class name="Njitnpoplanhistory" table="portalV6_mrp_part_plan_history">
+        <id name="id" column="ID" type="integer">
+            <generator class="native"/>
+        </id>
+		<many-to-one name="partId" column="PART_ID" class="com.aof.model.basic.WmsPart"  />
+		<property name="qty" column="QTY" type="big_decimal" />
+		<property name="unit" column="UNIT" type="string" />
+		<property name="needDate" column="NEED_DATE" type="date" />
+		<property name="createDate" column="CREATE_DATE" type="timestamp" />
+		<property name="isEnabled" column="IS_ENABLED" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="dataset" column="DATASET" type="string" />
+		<property name="nbr" column="NBR" type="string" />
+		<property name="line" column="LINE" type="string" />
+		<property name="reldate" column="RELDATE" type="date" />
+		<property name="time" column="TIME" type="integer" />
+		<property name="type" column="TYPE" type="string" />
+		<property name="detail" column="DETAIL" type="string" />
+		<property name="version" column="VERSION" type="string" />
+    </class>
+
+</hibernate-mapping>

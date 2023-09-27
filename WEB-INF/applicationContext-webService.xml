@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:jaxws="http://cxf.apache.org/jaxws" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		 http://cxf.apache.org/jaxws
+		 http://cxf.apache.org/schemas/jaxws.xsd"
+       default-lazy-init="false">
+       <import resource="classpath:META-INF/cxf/cxf.xml"/>
+       <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
+       <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+       
+       <bean id="wmsScanningWebServiceImpl" class="com.aof.web.webService.impl.WmsScanningWebServiceImpl">
+			<property name="boxManager"><ref bean="boxManager"/></property>
+			<property name="purchaseOrderPutInStorageManager"><ref bean="purchaseOrderPutInStorageManager"/></property>
+			<property name="purchaseOrderReceiptsManager"><ref bean="purchaseOrderReceiptsManager"/></property>
+			<property name="purchaseOrderRQCManager"><ref bean="purchaseOrderRQCManager"/></property>
+			<property name="productManager"><ref bean="productManager"/></property>
+			<property name="inventoryManager"><ref bean="inventoryManager"/></property>
+			<property name="badReasonsManager"><ref bean="badReasonsManager"/></property>
+			<property name="wmsPlanToGoOutManager"><ref bean="wmsPlanToGoOutManager"/></property>
+			<property name="wmsUWManager"><ref bean="wmsUWManager"/></property>
+			<property name="boxAdjustmentManager"><ref bean="boxAdjustmentManager"/></property>
+			<property name="salesPreshiporderManager"><ref bean="salesPreshiporderManager"/></property>
+			<property name="salesWorkorderManager"><ref bean="salesWorkorderManager"/></property>
+			<property name="stockingManager"><ref bean="stockingManager"/></property>
+    	</bean>
+       
+		<jaxws:endpoint implementorClass="com.aof.web.webService.WmsScanningWebService" address="/wmsScanningWebService">
+       		<jaxws:implementor ref="wmsScanningWebServiceImpl"/>
+       </jaxws:endpoint>
+       
+</beans>

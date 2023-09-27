@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+<hibernate-mapping package="com.aof.model.product">
+	<class name="SalesPreshiporderItem" table="sales_preShipOrder_item">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="spsoId" column="SPSO_ID" class="com.aof.model.product.SalesPreshiporder" />
+		<many-to-one name="soipitemId" column="SOIPITEM_ID" class="com.aof.model.product.SalesOrderItem" />
+		<many-to-one name="customerPlanId" column="customerPlan_id" class="com.aof.model.product.CustomerPlan" />
+		<property name="deliverynumber" column="DELIVERYNUMBER" type="big_decimal" />
+		<property name="status" column="STATUS" type="com.aof.model.metadata.YesNo" />
+		<property name="statusConfirm" column="STATUS_CONFIRM" type="com.aof.model.metadata.YesNo" />
+		<property name="qtyStd" column="QTY_STD" type="big_decimal" />
+		<property name="soRemark" column="so_remark" type="string" />
+		<property name="stockQty" column="stock_qty" type="big_decimal" />
+		<property name="shipQty" column="ship_qty" type="big_decimal" />
+		
+	</class>
+</hibernate-mapping>

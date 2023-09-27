@@ -1,0 +1,68 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<tiles-definitions>
+	<definition name="site.UnfinishPlan.Group.add" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/schedule/unfinishPlan/mesgadd.jsp"/>
+	</definition>
+	<definition name="site.qadOrEdi.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/qadoredi/list.jsp"/>
+	</definition>
+	<definition name="site.qadOrEdi.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/qadoredi/new.jsp"/>
+	</definition>
+	<definition name="site.qadOrEdi.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/qadoredi/edit.jsp"/>
+	</definition>
+	<definition name="site.ediProduction.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/ediproduction/list.jsp"/>
+	</definition>
+	<definition name="site.ediProductionReport.RawData.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/ediproduction/listRawDataReport.jsp"/>
+	</definition>
+	<definition name="site.ediProduction.RawData.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/ediproduction/listRawData.jsp"/>
+	</definition>
+	<definition name="site.ediProduction.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/ediproduction/new.jsp"/>
+	</definition>
+	<definition name="site.ediProduction.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/ediproduction/edit.jsp"/>
+	</definition>
+	<definition name="site.jitProductionPlan.view.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/jitproductionplan/listView.jsp"/>
+	</definition>
+	<definition name="site.MergerPlanSummary.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/mergerPlanSummary/list.jsp"/>
+	</definition>
+	<definition name="site.UnfinishPlan.Group.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/unfinishPlan/listGroup.jsp"/>
+	</definition>
+	<definition name="site.UnfinishPlan.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/unfinishPlan/list.jsp"/>
+	</definition>
+	<definition name="site.UnfinishPlan.view.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/unfinishPlan/listView.jsp"/>
+	</definition>
+	<definition name="site.projectedInventory.report.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/scheduleReport/projectedInventory/list.jsp"/>
+	</definition>
+	<definition name="site.forecastPeriodInventory.report.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/scheduleReport/forecastPeriodInventory/list.jsp"/>
+	</definition>
+	<definition name="site.njitNpoPlan.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/njitNpoPlan/list.jsp"/>
+	</definition>
+	<definition name="site.supplierPurchaseOrdermerge.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/schedule/mergerPlanView/list.jsp"/>
+	</definition>
+	<definition name="site.produtionDayPlan.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/scheduleReport/productionDayPlanReport/list.jsp"></put>
+	</definition>
+	<definition name="site.prodution72HourPlan.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/scheduleReport/production72HourPlanReport/list.jsp"></put>
+	</definition>
+	<!-- 自动分解错误信息 -->
+	<definition name="site.ediProductionErrorLog.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/schedule/ediProductionErrorLog/list.jsp"></put>
+	</definition>
+</tiles-definitions>

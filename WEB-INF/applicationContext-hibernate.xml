@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="hibernateSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <property name="dataSource"><ref bean="dataSource"/></property>
+        <property name="mappingResources">
+            <list>
+                <value>com/aof/dao/admin/hibernate/User.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Role.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Metadata.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Currency.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Site.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Function.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Department.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Menu.hbm.xml</value>                
+                <value>com/aof/dao/admin/hibernate/Country.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/TravelGroup.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/ExpenseCategory.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Customer.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/ExchangeRate.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/GlobalParameter.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Supplier.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Purchase.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/Email.hbm.xml</value>
+                <value>com/aof/dao/business/rule/hibernate/Rule.hbm.xml</value>
+                <value>com/aof/dao/business/rule/hibernate/ApproverDelegate.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/SystemLog.hbm.xml</value>
+                <value>com/aof/dao/kpi/hibernate/KPISummary.hbm.xml</value>
+                
+                <value>com/aof/dao/basic/hibernate/BasicData.hbm.xml</value>
+                <value>com/aof/dao/comprehensive/hibernate/Comprehensive.hbm.xml</value>
+                <value>com/aof/dao/po/hibernate/PurchaseOrder.hbm.xml</value>
+                <value>com/aof/dao/plantWarehouse/hibernate/Unplanned.hbm.xml</value>
+                <value>com/aof/dao/basic/hibernate/log.hbm.xml</value>
+                <value>com/aof/dao/inventory/hibernate/Inventory.hbm.xml</value>
+                <value>com/aof/dao/product/hibernate/Product.hbm.xml</value>
+                <value>com/aof/dao/admin/hibernate/FinishedSaiheAndToolPutnumber.hbm.xml</value>
+                 <value>com/aof/dao/product/hibernate/CustomerPlan.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/BasicCustomer.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/DailyProductPlan.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/SalesOrder.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/WorkOrderBom.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/SalesOrderItem.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/SalesPreshiporder.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/SalesPreshiporderItem.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/SalesPreshiporderBatch.hbm.xml</value>
+               	<value>com/aof/dao/product/hibernate/SalesWorkorder.hbm.xml</value>
+               	<value>com/aof/dao/basicDataView/hibernate/BasicDataView.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/EdiProduction.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/QadOrEdi.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/JitProductionPlan.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/ProjectedInventory.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/NjitNpoPlan.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/ProductionDayPlan.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/Njitnpoplanhistory.hbm.xml</value>
+               	<value>com/aof/dao/schedule/hibernate/Production72HourPlan.hbm.xml</value>
+             </list>
+        </property>
+        
+        <property name="hibernateProperties">
+        <props>
+         <prop key="hibernate.dialect">net.sf.hibernate.dialect.SQLServerDialect</prop> 
+           <!--   <prop key="hibernate.dialect">net.sf.hibernate.dialect.MySQLDialect</prop>-->
+            <prop key="hibernate.show_sql">false</prop>
+            <!--<prop key="hibernate.max_fetch_depth">1</prop>
+        --></props>
+        </property>
+    </bean>
+    
+    <!-- 中间数据库连接 -->
+     <bean id="sharedHibernateSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <property name="dataSource"><ref bean="dataSourceShared"/></property>
+        <property name="mappingResources">
+            <list>
+                <value>com/aof/dao/sync/hibernate/SyncQADhbm.xml</value>
+                <value>com/aof/dao/sync/hibernate/SyncShared.hbm.xml</value>
+             </list>
+        </property>
+        <property name="hibernateProperties">
+        <props>
+            <prop key="hibernate.dialect">net.sf.hibernate.dialect.SQLServerDialect</prop> 
+            <prop key="hibernate.show_sql">false</prop>
+            <!--<prop key="hibernate.max_fetch_depth">1</prop>
+        --></props>
+        </property>
+    </bean>
+
+    <bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+	<bean id="universalDAO" class="com.aof.dao.hibernate.UniversalDAOImpl">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+    <!-- CurrencyDAO: Hibernate implementation -->
+    <bean id="currencyDAO" class="com.aof.dao.admin.hibernate.CurrencyDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+    <!-- UserDAO: Hibernate implementation -->
+    <bean id="userDAO" class="com.aof.dao.admin.hibernate.UserDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- UserRoleDAO: Hibernate implementation -->
+    <bean id="userRoleDAO" class="com.aof.dao.admin.hibernate.UserRoleDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+
+    <!-- UserSiteDAO: Hibernate implementation -->
+    <bean id="userSiteDAO" class="com.aof.dao.admin.hibernate.UserSiteDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- UserDepartmentDAO: Hibernate implementation -->
+    <bean id="userDepartmentDAO" class="com.aof.dao.admin.hibernate.UserDepartmentDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- MetadataDAO: Hibernate implementation -->
+    <bean id="metadataDAO" class="com.aof.dao.admin.hibernate.MetadataDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- FunctionDAO: Hibernate implementation -->
+    <bean id="functionDAO" class="com.aof.dao.admin.hibernate.FunctionDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- SiteDAO: Hibernate implementation -->
+    <bean id="siteDAO" class="com.aof.dao.admin.hibernate.SiteDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- GolbalDAO: Hibernate implementation -->
+    <bean id="globalDAO" class="com.aof.dao.admin.hibernate.GlobalDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>    
+
+    <!-- RoleDAO: Hibernate implementation -->
+    <bean id="roleDAO" class="com.aof.dao.admin.hibernate.RoleDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- MenuDAO: Hibernate implementation -->
+    <bean id="menuDAO" class="com.aof.dao.admin.hibernate.MenuDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- ExchangeRateDAO: Hibernate implementation -->
+    <bean id="exchangeRateDAO" class="com.aof.dao.admin.hibernate.ExchangeRateDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- DepartmentDAO: Hibernate implementation -->
+    <bean id="departmentDAO" class="com.aof.dao.admin.hibernate.DepartmentDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- expenseCategoryDAO: Hibernate implementation -->
+    <bean id="expenseCategoryDAO" class="com.aof.dao.admin.hibernate.ExpenseCategoryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- expenseSubCategoryDAO: Hibernate implementation -->
+    <bean id="expenseSubCategoryDAO" class="com.aof.dao.admin.hibernate.ExpenseSubCategoryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+
+    <!-- travelGroupDAO: Hibernate implementation -->
+    <bean id="travelGroupDAO" class="com.aof.dao.admin.hibernate.TravelGroupDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- travelGroupDetailDAO: Hibernate implementation -->
+    <bean id="travelGroupDetailDAO" class="com.aof.dao.admin.hibernate.TravelGroupDetailDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- countryDAO: Hibernate implementation -->
+    <bean id="countryDAO" class="com.aof.dao.admin.hibernate.CountryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- provinceDAO: Hibernate implementation -->
+    <bean id="provinceDAO" class="com.aof.dao.admin.hibernate.ProvinceDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- cityDAO: Hibernate implementation -->
+    <bean id="cityDAO" class="com.aof.dao.admin.hibernate.CityDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+
+    <!-- purchaseCategoryDAO: Hibernate implementation -->
+    <bean id="purchaseCategoryDAO" class="com.aof.dao.admin.hibernate.PurchaseCategoryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+
+    <!-- purchaseSubCategoryDAO: Hibernate implementation -->
+    <bean id="purchaseSubCategoryDAO" class="com.aof.dao.admin.hibernate.PurchaseSubCategoryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- emailDAO: Hibernate implementation -->
+    <bean id="emailDAO" class="com.aof.dao.admin.hibernate.EmailDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- supplierDAO: Hibernate implementation -->
+    <bean id="supplierDAO" class="com.aof.dao.admin.hibernate.SupplierDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+	<!-- supplierContractDAO: Hibernate implementation -->
+    <bean id="supplierContractDAO" class="com.aof.dao.admin.hibernate.SupplierContractDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+
+
+    <!-- priceDAO: Hibernate implementation -->
+    <bean id="priceDAO" class="com.aof.dao.admin.hibernate.PriceDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+
+    <!-- supplierHistoryDAO: Hibernate implementation -->
+    <bean id="supplierHistoryDAO" class="com.aof.dao.admin.hibernate.SupplierHistoryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- supplierItemDAO: Hibernate implementation -->
+    <bean id="supplierItemDAO" class="com.aof.dao.admin.hibernate.SupplierItemDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- ruleDAO: Hibernate implementation -->
+    <bean id="ruleDAO" class="com.aof.dao.business.rule.hibernate.RuleDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- flowDAO: Hibernate implementation -->
+    <bean id="flowDAO" class="com.aof.dao.business.rule.hibernate.FlowDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+
+    <!-- approverDelegateDAO: Hibernate implementation -->
+    <bean id="approverDelegateDAO" class="com.aof.dao.business.rule.hibernate.ApproverDelegateDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <!-- CustomerDAO: Hibernate implementation -->
+    <bean id="customerDAO" class="com.aof.dao.admin.hibernate.CustomerDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+    <bean id="purchaseTypeDAO" class="com.aof.dao.admin.hibernate.PurchaseTypeDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+    <!-- parameterDAO: Hibernate implementation -->
+    <bean id="parameterDAO" class="com.aof.dao.admin.hibernate.ParameterDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+	<!-- dataTransferDAO: Hibernate implementation -->
+    <bean id="dataTransferDAO" class="com.aof.dao.admin.hibernate.DataTransferDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+
+
+
+    <!-- systemLogDAO: Hibernate implementation -->
+    <bean id="systemLogDAO" class="com.aof.dao.admin.hibernate.SystemLogDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+    <!-- kpiSummaryDAO: Hibernate implementation -->
+    <bean id="kpiSummaryDAO" class="com.aof.dao.kpi.hibernate.KPISummaryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+    <!-- 2015-01-30-start-st -->
+    <!-- 库位维护 -->
+    <bean id="storageLocationDAO" class="com.aof.dao.basic.hibernate.StorageLocationDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!-- 库房维护 -->
+    <bean id="storeRoomDAO" class="com.aof.dao.basic.hibernate.StoreRoomDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!-- 物料维护 -->
+    <bean id="wmsPartDAO" class="com.aof.dao.basic.hibernate.WmsPartDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <!-- 供应商物料 -->
+    <bean id="supplierPartDAO" class="com.aof.dao.basic.hibernate.SupplierPartDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <!-- 批次调整维护 -->
+    <bean id="boxAdjustmentDAO" class="com.aof.dao.comprehensive.hibernate.BoxAdjustmentDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <!-- 盘点 -->
+    <bean id="stockingDAO" class="com.aof.dao.comprehensive.hibernate.StockingDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <!-- 库存 -->
+    <bean id="inventoryDAO" class="com.aof.dao.inventory.hibernate.InventoryDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <!-- 批次 -->
+    <bean id="boxDAO" class="com.aof.dao.po.hibernate.BoxDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!--   -->
+    <bean id="purchaseOrderCondimentSingleDAO" class="com.aof.dao.po.hibernate.PurchaseOrderCondimentSingleDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!-- 采购 -->
+    <bean id="purchaseOrderDAO" class="com.aof.dao.po.hibernate.PurchaseOrderDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!-- 采购入库 -->
+    <bean id="purchaseOrderPutInStorageDAO" class="com.aof.dao.po.hibernate.PurchaseOrderPutInStorageDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!-- 采购收货 -->
+    <bean id="purchaseOrderReceiptsDAO" class="com.aof.dao.po.hibernate.PurchaseOrderReceiptsDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!-- 采购质检 -->
+    <bean id="purchaseOrderRQCDAO" class="com.aof.dao.po.hibernate.PurchaseOrderRQCDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <!-- 计划外出 -->
+<!--    <bean id="unplannedOutboundDAO" class="com.aof.dao.unplanned.hibernate.UnplannedOutboundDAOHibernate">-->
+<!--        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>-->
+<!--    </bean>-->
+    <!-- 计划外入 -->
+<!--    <bean id="unplannedWarehousingDAO" class="com.aof.dao.unplanned.hibernate.UnplannedWarehousingDAOHibernate">-->
+<!--        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>-->
+<!--    </bean>-->
+    <!-- 2015-01-30-end-st -->
+    <!-- 2015-02-03-start-st -->
+    <!-- 采购单明细 -->
+    <bean id="purchaseOrderInspectionPendingDAO" class="com.aof.dao.po.hibernate.PurchaseOrderInspectionPendingDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="portalShipOrderItemDAO" class="com.aof.dao.po.hibernate.PortalShipOrderItemDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="wmsToolDAO" class="com.aof.dao.basic.hibernate.WmsToolDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="scanLogDAO" class="com.aof.dao.basic.hibernate.ScanLogDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="badReasonsDAO" class="com.aof.dao.basic.hibernate.BadReasonsDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="basicPartLocationDAO" class="com.aof.dao.basic.hibernate.BasicPartLocationDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <!-- 2015-02-03-end-st -->
+     <bean id="productDAO" class="com.aof.dao.product.hibernate.ProductDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="wmsUWDAO" class="com.aof.dao.plantWarehouse.hibernate.WmsUWDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="wmsPlanToGoOutDAO" class="com.aof.dao.plantWarehouse.hibernate.WmsPlanToGoOutDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="inventoryMovingDAO" class="com.aof.dao.admin.hibernate.InventoryMovingDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <bean id="produceRejectedMaterialDAO" class="com.aof.dao.po.hibernate.ProduceRejectedMaterialDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+	<bean id="partDecompositionDAO" class="com.aof.dao.basic.hibernate.PartDecompositionDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="uselessPartDAO" class="com.aof.dao.basic.hibernate.UselessPartDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="inventoryTransitDAO" class="com.aof.dao.inventory.hibernate.InventoryTransitDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="bomDAO" class="com.aof.dao.comprehensive.hibernate.BomDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="produceBuckleMaterialDAO" class="com.aof.dao.po.hibernate.ProduceBuckleMaterialDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="poHighLineDAO" class="com.aof.dao.po.hibernate.PoHighLineDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="productBelowLineDAO" class="com.aof.dao.product.hibernate.ProductBelowLineDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+	<bean id="synBaseDAO" class="com.aof.dao.admin.hibernate.SynBaseDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="syncDAO" class="com.aof.dao.sync.hibernate.SyncDAOHibernate">
+        <property name="sessionFactory"><ref local="sharedHibernateSessionFactory"/></property>
+    </bean>
+    <bean id="costCenterDAO" class="com.aof.dao.basic.hibernate.CostCenterDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="expensesCourseDAO" class="com.aof.dao.basic.hibernate.ExpensesCourseDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="unplannedReasonsDAO" class="com.aof.dao.basic.hibernate.UnplannedReasonsDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="reportEntersSellsSavesDAO" class="com.aof.dao.basic.hibernate.ReportEntersSellsSavesDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <bean id="productBelowlineCasadeDAO" class="com.aof.dao.product.hibernate.ProductBelowlineCasadeDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+     <bean id="finishedSaiheRelationDAO" class="com.aof.dao.admin.hibernate.FinishedSaiheRelationDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="finishedToolPutnumberDAO" class="com.aof.dao.admin.hibernate.FinishedToolPutnumberDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+    <bean id="productGolineDAO" class="com.aof.dao.product.hibernate.ProductGolineDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+    <bean id="productOutStorageDAO" class="com.aof.dao.product.hibernate.ProductOutStorageDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    <bean id="productOutGolineDAO" class="com.aof.dao.product.hibernate.ProductOutGolineDAOHibernate">
+        <property name="sessionFactory"><ref local="sharedHibernateSessionFactory"/></property>
+    </bean>
+    <!-- customerPlan -->
+	<bean id="customerPlanDao" class="com.aof.dao.product.hibernate.CustomerPlanDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+    <!-- basicCustomer -->
+	<bean id="basicCustomerDao" class="com.aof.dao.product.hibernate.BasicCustomerDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- dailyProductPlan -->
+	<bean id="dailyProductPlanDao" class="com.aof.dao.product.hibernate.DailyProductPlanDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- salesOrder -->
+	<bean id="salesOrderDao" class="com.aof.dao.product.hibernate.SalesOrderDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- workOrderBom -->
+	<bean id="workOrderBomDao" class="com.aof.dao.product.hibernate.WorkOrderBomDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- salesOrderItem -->
+	<bean id="salesOrderItemDao" class="com.aof.dao.product.hibernate.SalesOrderItemDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- salesPreshiporder -->
+	<bean id="salesPreshiporderDao" class="com.aof.dao.product.hibernate.SalesPreshiporderDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- salesPreshiporderItem -->
+	<bean id="salesPreshiporderItemDao" class="com.aof.dao.product.hibernate.SalesPreshiporderItemDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- salesPreshiporderBatch -->
+	<bean id="salesPreshiporderBatchDao" class="com.aof.dao.product.hibernate.SalesPreshiporderBatchDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- salesWorkorder -->
+	<bean id="salesWorkorderDao" class="com.aof.dao.product.hibernate.SalesWorkorderDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	 <bean id="portalShipOrderDAO" class="com.aof.dao.po.hibernate.PortalShipOrderDAOHibernate">
+        <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+    </bean>
+    
+    <!-- 客户退货 -->
+    <bean id="customerreturnsDao" 
+		class="com.aof.dao.basic.hibernate.CustomerreturnsDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- 客户退货明细表 -->
+	<bean id="customerReturnItemDao" class="com.aof.dao.basic.hibernate.CustomerReturnItemDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory"/>
+		</property>
+	</bean>
+	
+	<!-- 物料价格表 -->
+	<bean id="basicPartPriceDao" class="com.aof.dao.basic.hibernate.BasicPartPriceDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- 视图 -->
+	<bean id="basicDataViewDao" class="com.aof.dao.basicDataView.hibernate.BasicDataViewDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+    <bean id="ediProductionDao" 
+		class="com.aof.dao.schedule.hibernate.EdiProductionDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	 <bean id="ediProductionReportDao" 
+		class="com.aof.dao.basicDataView.hibernate.EditProductionReportDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="qadOrEdiDao" 
+		class="com.aof.dao.schedule.hibernate.QadOrEdiDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="jitProductionPlanDao" 
+		class="com.aof.dao.schedule.hibernate.JitProductionPlanDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- 生产计划上传下载 -->
+    <bean id="productionPlanningDao" class="com.aof.dao.po.hibernate.ProductionplanningDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- 实时库存 -->
+	<bean id="projectedInventoryDao" 
+		class="com.aof.dao.schedule.hibernate.ProjectedInventoryDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- 合并计划查看历史表-->
+	<bean id="jitProductionPlanHistoryDao" 
+		class="com.aof.dao.schedule.hibernate.JitProductionPlanHistoryDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+		<!--非JIT 非PO 计划 -->
+	<bean id="njitNpoPlanDao" 
+		class="com.aof.dao.schedule.hibernate.NjitNpoPlanDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="portalv6MrpPartPlanViewDao" 
+		class="com.aof.dao.schedule.hibernate.Portalv6MrpPartPlanViewDaoImpl">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="productionDayPlanDao" 
+		class="com.aof.dao.schedule.hibernate.ProductionDayPlanDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="productionDayPlanHistoryDao" 
+		class="com.aof.dao.schedule.hibernate.ProductionDayPlanHistoryDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- 72小时预计需求报表 -->
+	<bean id="production72HourPlanDao" 
+		class="com.aof.dao.schedule.hibernate.Production72HourPlanDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory" />
+		</property>
+	</bean>
+	<!-- 期初打印条码 -->
+	<bean id="purchaseManualCreateBarcodeDao" class="com.aof.dao.po.hibernate.PurchaseManualCreateBarcodeDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory"/>
+		</property>
+	</bean>
+	<!-- 自动分解错误信息 -->
+	<bean id="ediProductionErrorLogDao" class="com.aof.dao.schedule.hibernate.EdiProductionErrorLogDaoHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory"/>
+		</property>
+	</bean>
+	<!-- 同步时间设置 -->
+	<bean id="sycSleepTimeDao" class="com.aof.dao.basic.hibernate.SycSleepTimeDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="hibernateSessionFactory"/>
+		</property>
+	</bean>
+</beans>

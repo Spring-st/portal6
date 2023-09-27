@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration. -->
+<!-- Created Fri Sep 23 14:49:10 CST 2005 -->
+<hibernate-mapping package="com.aof.model.basicDataView">
+	<!-- ==============================视图2016-03-30-llz================================================ -->
+	<!--<class name="BoxRecordLocation" table="box_record_location">
+	 	<composite-id>
+	  		<key-many-to-one name="box_id" column="box_id" class="com.aof.model.po.Box"></key-many-to-one>
+	  	</composite-id>
+	  	<many-to-one name="lot_ser" column="lot_ser" class="com.aof.model.po.WmsLot" />
+	  	<many-to-one name="record_id" column="record_id" class="com.aof.model.comprehensive.StockingRecord" />
+		<many-to-one name="stocking_id" column="stocking_id" class="com.aof.model.comprehensive.Stocking" />
+		<many-to-one name="record_location_id" column="record_location_id" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="storage_location_id" column="storage_location_id" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="basic_storeroom_id" column="basic_storeroom_id" class="com.aof.model.basic.StoreRoom" />
+		
+		<property name="count" column="count" type="big_decimal" />
+		<property name="status" column="status" type="com.aof.model.metadata.BoxStatus" />
+		<property name="createDate" column="createDate" type="date" />
+		<property name="code" column="code" type="string" />
+		<property name="description" column="description" type="string" />
+		<property name="is_enabled" column="is_enabled" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="freeae_status" column="freeae_status" type="com.aof.model.metadata.YesNo" />
+		<property name="inventory_qty" column="inventory_qty" type="big_decimal" />
+		<property name="stocking_qty" column="stocking_qty" type="big_decimal" />
+		<property name="box_enabled" column="box_enabled" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="box_status_freeze" column="box_status_freeze" type="com.aof.model.metadata.YesNo" />
+		<property name="type" column="handle_type" type="integer" />		
+	</class>
+	--><class name="LocationPartNo" table="location_part_no">
+	 	<composite-id>
+	  		<key-many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation"></key-many-to-one>
+	  	</composite-id>
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<property name="sumNumber" column="sumNumber" type="big_decimal" />
+		<property name="count" column="count" type="integer" />
+	</class>
+	<class name="LocationPartNumber" table="location_part_number">
+	 	<composite-id>
+	  		<key-many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation"></key-many-to-one>
+	  		<key-many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart"></key-many-to-one>
+	  	</composite-id>
+		<property name="number" column="number" type="big_decimal" />
+		<property name="partQty" column="part_qty" type="big_decimal" />
+		<property name="occupiedNumber" column="occupied_number" type="big_decimal" />
+	</class>
+	<class name="PoPartSumNumber" table="po_part_sumNumber">
+	 	<composite-id>
+	  		<key-many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart"></key-many-to-one>
+	  	</composite-id>
+		<property name="sumNumber" column="sumNumber" type="big_decimal" />
+	</class>
+	<class name="SkPartSumNumber" table="sk_part_sumNumber" lazy="false">
+	 	<composite-id>
+	  		<key-many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart"></key-many-to-one>
+	  	</composite-id>
+		<property name="sumNumber" column="sumNumber" type="big_decimal" />
+		<property name="count" column="count" type="integer" />
+	</class>
+	<class name="JitShipPart" table="jit_ship_part">
+	 	<composite-id>
+	  		<key-many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart"></key-many-to-one>
+	  	</composite-id>
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="currentQty" column="current_qty" type="big_decimal" />
+	</class>
+	<class name="PartForecastNeedReport" table="PART_FORECAST_NEED_REPORT">
+       <composite-id>
+	  		<key-many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart"></key-many-to-one>
+	  	</composite-id>
+        <property name="currentQty" column="CURRENT_QTY" type="big_decimal" />
+        <property name="neddPastQty" column="NEDD_PAST_QTY" type="big_decimal" />
+        <property name="transitPastQty" column="TRANSIT_PAST_QTY" type="big_decimal" />
+		<property name="pastQty" column="PAST_QTY" type="big_decimal" />
+		<property name="no0Needqty" column="NO0_NEEDQTY" type="big_decimal" />
+		<property name="no1Needqty" column="NO1_NEEDQTY" type="big_decimal" />
+		<property name="no2Needqty" column="NO2_NEEDQTY" type="big_decimal" />
+		<property name="no3Needqty" column="NO3_NEEDQTY" type="big_decimal" />
+		<property name="no4Needqty" column="NO4_NEEDQTY" type="big_decimal" />
+		<property name="no5Needqty" column="NO5_NEEDQTY" type="big_decimal" />
+		<property name="no6Needqty" column="NO6_NEEDQTY" type="big_decimal" />
+		<property name="no7Needqty" column="NO7_NEEDQTY" type="big_decimal" />
+		<property name="no8Needqty" column="NO8_NEEDQTY" type="big_decimal" />
+		<property name="no9Needqty" column="NO9_NEEDQTY" type="big_decimal" />
+		<property name="no10Needqty" column="NO10_NEEDQTY" type="big_decimal" />
+		<property name="no11Needqty" column="NO11_NEEDQTY" type="big_decimal" />
+		<property name="no12Needqty" column="NO12_NEEDQTY" type="big_decimal" />
+		<property name="no13Needqty" column="NO13_NEEDQTY" type="big_decimal" />
+		<property name="no14Needqty" column="NO14_NEEDQTY" type="big_decimal" />
+		<property name="no15Needqty" column="NO15_NEEDQTY" type="big_decimal" />
+		<property name="no16Needqty" column="NO16_NEEDQTY" type="big_decimal" />
+		<property name="no17Needqty" column="NO17_NEEDQTY" type="big_decimal" />
+		<property name="no18Needqty" column="NO18_NEEDQTY" type="big_decimal" />
+		<property name="no19Needqty" column="NO19_NEEDQTY" type="big_decimal" />
+		<property name="no20Needqty" column="NO20_NEEDQTY" type="big_decimal" />
+		<property name="no21Needqty" column="NO21_NEEDQTY" type="big_decimal" />
+		<property name="no22Needqty" column="NO22_NEEDQTY" type="big_decimal" />
+		<property name="no23Needqty" column="NO23_NEEDQTY" type="big_decimal" />
+		<property name="no24Needqty" column="NO24_NEEDQTY" type="big_decimal" />
+		<property name="no25Needqty" column="NO25_NEEDQTY" type="big_decimal" />
+		<property name="no26Needqty" column="NO26_NEEDQTY" type="big_decimal" />
+		<property name="no27Needqty" column="NO27_NEEDQTY" type="big_decimal" />
+		<property name="no28Needqty" column="NO28_NEEDQTY" type="big_decimal" />
+		<property name="no29Needqty" column="NO29_NEEDQTY" type="big_decimal" />
+		<property name="no30Needqty" column="NO30_NEEDQTY" type="big_decimal" />
+		<property name="no31Needqty" column="NO31_NEEDQTY" type="big_decimal" />
+		<property name="no32Needqty" column="NO32_NEEDQTY" type="big_decimal" />
+		<property name="no33Needqty" column="NO33_NEEDQTY" type="big_decimal" />
+		<property name="no34Needqty" column="NO34_NEEDQTY" type="big_decimal" />
+		<property name="no35Needqty" column="NO35_NEEDQTY" type="big_decimal" />
+		<property name="no36Needqty" column="NO36_NEEDQTY" type="big_decimal" />
+		<property name="no37Needqty" column="NO37_NEEDQTY" type="big_decimal" />
+		<property name="no38Needqty" column="NO38_NEEDQTY" type="big_decimal" />
+		<property name="no39Needqty" column="NO39_NEEDQTY" type="big_decimal" />
+		<property name="no40Needqty" column="NO40_NEEDQTY" type="big_decimal" />
+		<property name="no41Needqty" column="NO41_NEEDQTY" type="big_decimal" />
+		<property name="no42Needqty" column="NO42_NEEDQTY" type="big_decimal" />
+		<property name="no43Needqty" column="NO43_NEEDQTY" type="big_decimal" />
+		<property name="no44Needqty" column="NO44_NEEDQTY" type="big_decimal" />
+		<property name="no0Knotqty" column="NO0_KNOTQTY" type="big_decimal" />
+		<property name="no1Knotqty" column="NO1_KNOTQTY" type="big_decimal" />
+		<property name="no2Knotqty" column="NO2_KNOTQTY" type="big_decimal" />
+		<property name="no3Knotqty" column="NO3_KNOTQTY" type="big_decimal" />
+		<property name="no4Knotqty" column="NO4_KNOTQTY" type="big_decimal" />
+		<property name="no5Knotqty" column="NO5_KNOTQTY" type="big_decimal" />
+		<property name="no6Knotqty" column="NO6_KNOTQTY" type="big_decimal" />
+		<property name="no7Knotqty" column="NO7_KNOTQTY" type="big_decimal" />
+		<property name="no8Knotqty" column="NO8_KNOTQTY" type="big_decimal" />
+		<property name="no9Knotqty" column="NO9_KNOTQTY" type="big_decimal" />
+		<property name="no10Knotqty" column="NO10_KNOTQTY" type="big_decimal" />
+		<property name="no11Knotqty" column="NO11_KNOTQTY" type="big_decimal" />
+		<property name="no12Knotqty" column="NO12_KNOTQTY" type="big_decimal" />
+		<property name="no13Knotqty" column="NO13_KNOTQTY" type="big_decimal" />
+		<property name="no14Knotqty" column="NO14_KNOTQTY" type="big_decimal" />
+		<property name="no15Knotqty" column="NO15_KNOTQTY" type="big_decimal" />
+		<property name="no16Knotqty" column="NO16_KNOTQTY" type="big_decimal" />
+		<property name="no17Knotqty" column="NO17_KNOTQTY" type="big_decimal" />
+		<property name="no18Knotqty" column="NO18_KNOTQTY" type="big_decimal" />
+		<property name="no19Knotqty" column="NO19_KNOTQTY" type="big_decimal" />
+		<property name="no20Knotqty" column="NO20_KNOTQTY" type="big_decimal" />
+		<property name="no21Knotqty" column="NO21_KNOTQTY" type="big_decimal" />
+		<property name="no22Knotqty" column="NO22_KNOTQTY" type="big_decimal" />
+		<property name="no23Knotqty" column="NO23_KNOTQTY" type="big_decimal" />
+		<property name="no24Knotqty" column="NO24_KNOTQTY" type="big_decimal" />
+		<property name="no25Knotqty" column="NO25_KNOTQTY" type="big_decimal" />
+		<property name="no26Knotqty" column="NO26_KNOTQTY" type="big_decimal" />
+		<property name="no27Knotqty" column="NO27_KNOTQTY" type="big_decimal" />
+		<property name="no28Knotqty" column="NO28_KNOTQTY" type="big_decimal" />
+		<property name="no29Knotqty" column="NO29_KNOTQTY" type="big_decimal" />
+		<property name="no30Knotqty" column="NO30_KNOTQTY" type="big_decimal" />
+		<property name="no31Knotqty" column="NO31_KNOTQTY" type="big_decimal" />
+		<property name="no32Knotqty" column="NO32_KNOTQTY" type="big_decimal" />
+		<property name="no33Knotqty" column="NO33_KNOTQTY" type="big_decimal" />
+		<property name="no34Knotqty" column="NO34_KNOTQTY" type="big_decimal" />
+		<property name="no35Knotqty" column="NO35_KNOTQTY" type="big_decimal" />
+		<property name="no36Knotqty" column="NO36_KNOTQTY" type="big_decimal" />
+		<property name="no37Knotqty" column="NO37_KNOTQTY" type="big_decimal" />
+		<property name="no38Knotqty" column="NO38_KNOTQTY" type="big_decimal" />
+		<property name="no39Knotqty" column="NO39_KNOTQTY" type="big_decimal" />
+		<property name="no40Knotqty" column="NO40_KNOTQTY" type="big_decimal" />
+		<property name="no41Knotqty" column="NO41_KNOTQTY" type="big_decimal" />
+		<property name="no42Knotqty" column="NO42_KNOTQTY" type="big_decimal" />
+		<property name="no43Knotqty" column="NO43_KNOTQTY" type="big_decimal" />
+		<property name="no44Knotqty" column="NO44_KNOTQTY" type="big_decimal" />
+		<property name="projected0Qty" column="PROJECTED0_QTY" type="big_decimal" />
+		<property name="projected1Qty" column="PROJECTED1_QTY" type="big_decimal" />
+		<property name="projected2Qty" column="PROJECTED2_QTY" type="big_decimal" />
+		<property name="projected3Qty" column="PROJECTED3_QTY" type="big_decimal" />
+		<property name="projected4Qty" column="PROJECTED4_QTY" type="big_decimal" />
+		<property name="projected5Qty" column="PROJECTED5_QTY" type="big_decimal" />
+		<property name="projected6Qty" column="PROJECTED6_QTY" type="big_decimal" />
+		<property name="projected7Qty" column="PROJECTED7_QTY" type="big_decimal" />
+		<property name="projected8Qty" column="PROJECTED8_QTY" type="big_decimal" />
+		<property name="projected9Qty" column="PROJECTED9_QTY" type="big_decimal" />
+		<property name="projected10Qty" column="PROJECTED10_QTY" type="big_decimal" />
+		<property name="projected11Qty" column="PROJECTED11_QTY" type="big_decimal" />
+		<property name="projected12Qty" column="PROJECTED12_QTY" type="big_decimal" />
+		<property name="projected13Qty" column="PROJECTED13_QTY" type="big_decimal" />
+		<property name="projected14Qty" column="PROJECTED14_QTY" type="big_decimal" />
+		<property name="projected15Qty" column="PROJECTED15_QTY" type="big_decimal" />
+		<property name="projected16Qty" column="PROJECTED16_QTY" type="big_decimal" />
+		<property name="projected17Qty" column="PROJECTED17_QTY" type="big_decimal" />
+		<property name="projected18Qty" column="PROJECTED18_QTY" type="big_decimal" />
+		<property name="projected19Qty" column="PROJECTED19_QTY" type="big_decimal" />
+		<property name="projected20Qty" column="PROJECTED20_QTY" type="big_decimal" />
+		<property name="projected21Qty" column="PROJECTED21_QTY" type="big_decimal" />
+		<property name="projected22Qty" column="PROJECTED22_QTY" type="big_decimal" />
+		<property name="projected23Qty" column="PROJECTED23_QTY" type="big_decimal" />
+		<property name="projected24Qty" column="PROJECTED24_QTY" type="big_decimal" />
+		<property name="projected25Qty" column="PROJECTED25_QTY" type="big_decimal" />
+		<property name="projected26Qty" column="PROJECTED26_QTY" type="big_decimal" />
+		<property name="projected27Qty" column="PROJECTED27_QTY" type="big_decimal" />
+		<property name="projected28Qty" column="PROJECTED28_QTY" type="big_decimal" />
+		<property name="projected29Qty" column="PROJECTED29_QTY" type="big_decimal" />
+		<property name="projected30Qty" column="PROJECTED30_QTY" type="big_decimal" />
+		<property name="projected31Qty" column="PROJECTED31_QTY" type="big_decimal" />
+		<property name="projected32Qty" column="PROJECTED32_QTY" type="big_decimal" />
+		<property name="projected33Qty" column="PROJECTED33_QTY" type="big_decimal" />
+		<property name="projected34Qty" column="PROJECTED34_QTY" type="big_decimal" />
+		<property name="projected35Qty" column="PROJECTED35_QTY" type="big_decimal" />
+		<property name="projected36Qty" column="PROJECTED36_QTY" type="big_decimal" />
+		<property name="projected37Qty" column="PROJECTED37_QTY" type="big_decimal" />
+		<property name="projected38Qty" column="PROJECTED38_QTY" type="big_decimal" />
+		<property name="projected39Qty" column="PROJECTED39_QTY" type="big_decimal" />
+		<property name="projected40Qty" column="PROJECTED40_QTY" type="big_decimal" />
+		<property name="projected41Qty" column="PROJECTED41_QTY" type="big_decimal" />
+		<property name="projected42Qty" column="PROJECTED42_QTY" type="big_decimal" />
+		<property name="projected43Qty" column="PROJECTED43_QTY" type="big_decimal" />
+		<property name="projected44Qty" column="PROJECTED44_QTY" type="big_decimal" />
+    </class>
+    
+    <class name="EditProductionReport" table="edi_production_date">
+    	<composite-id>
+	  		<key-many-to-one name="ediProduction" column="ediProduction" class="com.aof.model.schedule.EdiProduction"></key-many-to-one>
+	  	</composite-id>
+		<property name="asn_no" column="asn_no" type="string" />
+		<property name="task_date" column="taskDate" type="date" />
+		<property name="quty" column="quty" type="string" />
+		<property name="a" column="a" type="string" />
+		<property name="b" column="b" type="string" />
+		<property name="c" column="c" type="string" />
+		<property name="d" column="d" type="string" />
+		<property name="e" column="e" type="string" />
+		<property name="f" column="f" type="string" />
+		<property name="g" column="g" type="string" />
+		<property name="h" column="h" type="string" />
+		<property name="i" column="i" type="string" />
+		<property name="j" column="j" type="string" />
+		<property name="k" column="k" type="string" />
+		<property name="l" column="l" type="string" />
+	</class>
+</hibernate-mapping>

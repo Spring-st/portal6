@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.admin">
+
+    <class name="FinishedSaiheRelation" table="basic_finishedcode_saihecode_relation">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="saiheCode" column="saiheCode" type="string" not-null="true" />
+        <property name="finishedCode" column="finishedCode" type="string" />
+        <property name="finishedProductDesc" column="finishedProductDesc" type="string" not-null="true" />
+        <property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled"  not-null="true" />
+    </class>
+    
+    <class name="FinishedToolPutnumber" table="basic_finishedtool_putnumber">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+         <property name="toolCode" column="toolCode" type="string" not-null="true" />
+        <property name="finishedCode" column="finishedCode" type="string" />
+        <property name="putNumber" column="putNumber" type="big_decimal" not-null="true" />
+        <property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled"  not-null="true" />
+    </class>	
+</hibernate-mapping>

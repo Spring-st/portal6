@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.schedule">
+
+    <class name="ProjectedInventory" table="portalv6_projected_inventory">
+        <id name="id" column="ID" type="integer">
+            <generator class="native"/>
+        </id>
+         <many-to-one name="part" column="PART" class="com.aof.model.basic.WmsPart"  />
+		<property name="location" column="LOCATION" type="string" />
+		<property name="currentQty" column="CURRENT_QTY" type="big_decimal" />
+		<property name="hour2Qty" column="HOUR2_QTY" type="big_decimal" />
+		<property name="hour4Qty" column="HOUR4_QTY" type="big_decimal" />
+		<property name="hour6Qty" column="HOUR6_QTY" type="big_decimal" />
+		<property name="hour8Qty" column="HOUR8_QTY" type="big_decimal" />
+		<property name="hour10Qty" column="HOUR10_QTY" type="big_decimal" />
+		<property name="hour12Qty" column="HOUR12_QTY" type="big_decimal" />
+		<property name="hour14Qty" column="HOUR14_QTY" type="big_decimal" />
+		<property name="hour16Qty" column="HOUR16_QTY" type="big_decimal" />
+		<property name="hour18Qty" column="HOUR18_QTY" type="big_decimal" />
+		<property name="hour20Qty" column="HOUR20_QTY" type="big_decimal" />
+		<property name="hour22Qty" column="HOUR22_QTY" type="big_decimal" />
+		<property name="hour24Qty" column="HOUR24_QTY" type="big_decimal" />
+		<property name="syncDate" column="syncDate" type="timestamp" />
+		<property name="createDate" column="createDate" type="timestamp" />
+		
+    </class>
+</hibernate-mapping>

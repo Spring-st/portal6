@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.sync.shared">
+	<!-- 采购入库  -->
+ 	<class name="PurchaseReceipt" table="XXMES_PORC_DET">
+		<id name="xxmes_porc_id" column="xxmes_porc_id" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="xxmes_porc_date1" column="xxmes_porc_date_1" type="integer"></property>
+		<property name="xxmes_porc_det_id" column="xxmes_porc_det_id" type="integer"></property>
+		<property name="xxmes_porc_site" column="xxmes_porc_site" type="string"></property>
+		<property name="xxmes_porc_domain" column="xxmes_porc_domain" type="string"></property>
+		
+		<property name="xxmes_porc_seq" column="xxmes_porc_seq" type="string"></property>
+		<property name="xxmes_porc_txnbr" column="xxmes_porc_txnbr" type="string"></property>
+		<property name="xxmes_porc_ponbr" column="xxmes_porc_ponbr" type="string"></property>
+		<property name="xxmes_porc_poline" column="xxmes_porc_poline" type="integer"></property>
+		<property name="xxmes_porc_part" column="xxmes_porc_part" type="string"></property>
+		<property name="xxmes_porc_date" column="xxmes_porc_date" type="date"></property>
+		<property name="xxmes_porc_boxcode" column="xxmes_porc_boxcode" type="string"></property>
+		
+		<property name="xxmes_porc_qty_real" column="xxmes_porc_qty_real" type="big_decimal"></property>
+		<property name="xxmes_porc_loc" column="xxmes_porc_loc" type="string"></property>
+		<property name="xxmes_porc_poum" column="xxmes_porc_poum" type="string"></property>
+		<property name="xxmes_porc_qc" column="xxmes_porc_qc" type="string"></property>
+		<property name="xxmes_porc_potype" column="xxmes_porc_potype" type="string"></property>
+		<property name="xxmes_porc_qadread" column="xxmes_porc_qadread" type="string"></property>
+		<property name="xxmes_porc_mesread" column="xxmes_porc_mesread" type="string"></property>
+		<property name="xxmes_porc_portalread" column="xxmes_porc_portalread" type="string"></property>
+		<property name="xxmes_porc_ediread" column="xxmes_porc_ediread" type="string"></property>
+		<property name="xxmes_porc_rmks" column="xxmes_porc_rmks" type="string"></property>
+		<property name="xxmes_porc_createdt" column="xxmes_porc_createdt" type="date"></property>
+		<property name="xxmes_porc_createdt1" column="xxmes_porc_createdt_1" type="integer"></property>
+		<property name="xxmes_porc_createur" column="xxmes_porc_createur" type="string"></property>
+		<property name="xxmes_porc_updatedt" column="xxmes_porc_updatedt" type="date"></property>
+		<property name="xxmes_porc_updatedt1" column="xxmes_porc_updatedt_1" type="integer"></property>
+		<property name="xxmes_porc_updateur" column="xxmes_porc_updateur" type="string"></property>
+	</class>
+	
+	<!-- 移库信息  -->
+	<class name="TransferStorage" table="xxmes_ic_det">
+		<id name="xxmes_ic_box_id" column="xxmes_ic_box_id" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxmes_ic_det_id" column="xxmes_ic_det_id" type="integer"></property>
+		<property name="xxmes_ic_seq" column="xxmes_ic_seq" type="string"></property>
+		<property name="xxmes_ic_box_code" column="xxmes_ic_box_code" type="string"></property>
+		<property name="xxmes_ic_part" column="xxmes_ic_part" type="string"></property>
+		<property name="xxmes_ic_qty" column="xxmes_ic_qty" type="big_decimal"></property>
+		<property name="xxmes_ic_loc_from" column="xxmes_ic_loc_from" type="string"></property>
+		<property name="xxmes_ic_loc_to" column="xxmes_ic_loc_to" type="string"></property>
+		<property name="xxmes_ic_nbr" column="xxmes_ic_nbr" type="string"></property>
+		<property name="xxmes_ic_date" column="xxmes_ic_date" type="date"></property>
+		<property name="xxmes_ic_date1" column="xxmes_ic_date_1" type="integer"></property>
+		<property name="xxmes_ic_site" column="xxmes_ic_site" type="string"></property>
+		<property name="xxmes_ic_qadread" column="xxmes_ic_qadread" type="string"></property>
+		<property name="xxmes_ic_mesread" column="xxmes_ic_mesread" type="string"></property> 
+		<property name="xxmes_ic_portalread" column="xxmes_ic_portalread" type="string"></property>
+		<property name="xxmes_ic_ediread" column="xxmes_ic_ediread" type="string"></property>
+		<property name="xxmes_ic_rmks" column="xxmes_ic_rmks" type="string"></property>
+		
+		<property name="xxmes_ic_createdt" column="xxmes_ic_createdt" type="date"></property>
+		<property name="xxmes_ic_createdt1" column="xxmes_ic_createdt_1" type="integer"></property>
+		<property name="xxmes_ic_createur" column="xxmes_ic_createur" type="string"></property>
+		<property name="xxmes_ic_updatedt" column="xxmes_ic_updatedt" type="date"></property>
+		<property name="xxmes_ic_updatedt1" column="XXMES_IC_UPDATED_1" type="integer"></property>
+		<property name="xxmes_ic_updateur" column="xxmes_ic_updateur" type="string"></property>
+		<property name="xxmes_ic_domain" column="xxmes_ic_domain" type="string"></property>
+		<property name="xxmes_ic_box_code_to" column="xxmes_ic_box_code_to" type="string"></property>
+	</class>
+	
+	<!-- 成品出库  -->
+	<class name="ProductOutStorage" table="xxmes_ship_det">
+		<id name="xxmes_ship_id" column="xxmes_ship_id" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxmes_ship_date1" column="xxmes_ship_date_1" type="integer"></property>
+		<property name="xxmes_ship_det_id" column="xxmes_ship_det_id" type="integer"></property>
+		<property name="xxmes_ship_time1" column="xxmes_ship_time_1" type="integer"></property>
+		
+		<property name="xxmes_ship_seq" column="xxmes_ship_seq" type="string"></property>
+		<property name="xxmes_ship_cust" column="xxmes_ship_cust" type="string"></property>
+		<property name="xxmes_ship_shipto" column="xxmes_ship_shipto" type="string"></property>
+		<property name="xxmes_ship_part" column="xxmes_ship_part" type="string"></property>
+		<property name="xxmes_ship_qty" column="xxmes_ship_qty" type="big_decimal"></property>
+		<property name="xxmes_ship_loc" column="xxmes_ship_loc" type="string"></property>
+		<property name="xxmes_ship_date" column="xxmes_ship_date" type="date"></property>
+		<property name="xxmes_ship_time" column="xxmes_ship_time" type="date"></property>
+		<property name="xxmes_ship_nbr" column="xxmes_ship_nbr" type="string"></property>
+		
+		<property name="xxmes_ship_boxcode" column="xxmes_ship_boxcode" type="string"></property>
+		<property name="xxmes_ship_line" column="xxmes_ship_line" type="integer"></property>
+		<property name="xxmes_ship_type" column="xxmes_ship_type" type="string"></property>
+		<property name="xxmes_ship_site" column="xxmes_ship_site" type="string"></property>
+		<property name="xxmes_ship_qadread" column="xxmes_ship_qadread" type="string"></property>
+		<property name="xxmes_ship_mesread" column="xxmes_ship_mesread" type="string"></property>
+		<property name="xxmes_ship_portalread" column="xxmes_ship_portalread" type="string"></property>
+		<property name="xxmes_ship_ediread" column="xxmes_ship_ediread" type="string"></property>
+		<property name="xxmes_ship_rmks" column="xxmes_ship_rmks" type="string"></property>
+		<property name="xxmes_ship_createdt" column="xxmes_ship_createdt" type="date"></property>
+		<property name="xxmes_ship_createdt1" column="xxmes_ship_createdt_1" type="integer"></property>
+		<property name="xxmes_ship_createur" column="xxmes_ship_createur" type="string"></property>
+		<property name="xxmes_ship_updatedt" column="xxmes_ship_updatedt" type="date"></property>
+		<property name="xxmes_ship_updatedt1" column="xxmes_ship_updatedt_1" type="integer"></property>
+		<property name="xxmes_ship_updateur" column="xxmes_ship_updateur" type="string"></property>
+		<property name="xxmes_ship_domain" column="xxmes_ship_domain" type="string"></property>
+	</class>
+	<!-- 成品上线扫描 -->
+	<class name="ProductOutGoline" table="xxsh_worc_mstr">
+		<id name="xxsh_worc_number" column="xxsh_worc_number" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxsh_worc_item" column="xxsh_worc_item" type="string"></property>
+		<property name="xxsh_worc_qty" column="xxsh_worc_qty" type="string"></property>
+		<property name="xxsh_worc_date" column="xxsh_worc_date" type="timestamp"></property>
+		
+		<property name="xxsh_worc_loc" column="xxsh_worc_loc" type="string"></property>
+		<property name="xxsh_worc_cr_date" column="xxsh_worc_cr_date" type="timestamp"></property>
+		<property name="xxsh_worc_up_date" column="xxsh_worc_up_date" type="timestamp"></property>
+		<property name="xxsh_worc_status" column="xxsh_worc_status" type="string"></property>
+		<property name="xxsh_worc_rmks" column="xxsh_worc_rmks" type="string"></property>
+		<property name="xxsh_worc_rmks1" column="xxsh_worc_rmks1" type="string"></property>
+		<property name="xxsh_worc_rmks2" column="xxsh_worc_rmks2" type="string"></property>
+	</class>
+	<!-- 采购检验后入库信息   （I类型国外的直接做移库，国内的话，直接做采购入库）  -->
+	<class name="InspectInstroage" table="xxmes_inrc_det">
+		<id name="xxmes_inrc_id" column="xxmes_inrc_id" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="xxmes_inrc_date1" column="xxmes_inrc_date_1" type="integer"></property>
+		<property name="xxmes_inrc_det_id" column="xxmes_inrc_det_id" type="integer"></property>
+		<property name="xxmes_inrc_site" column="xxmes_inrc_site" type="string"></property>
+		<property name="xxmes_inrc_seq" column="xxmes_inrc_seq" type="string"></property>
+		<property name="xxmes_inrc_txnbr" column="xxmes_inrc_txnbr" type="string"></property>
+		<property name="xxmes_inrc_ponbr" column="xxmes_inrc_ponbr" type="string"></property>
+		<property name="xxmes_inrc_poline" column="xxmes_inrc_poline" type="integer"></property>
+		<property name="xxmes_inrc_part" column="xxmes_inrc_part" type="string"></property>
+		<property name="xxmes_inrc_date" column="xxmes_inrc_date" type="date"></property>
+		<property name="xxmes_inrc_boxcode" column="xxmes_inrc_boxcode" type="string"></property>
+		<property name="xxmes_inrc_qty_real" column="xxmes_inrc_qty_real" type="big_decimal"></property>
+		<property name="xxmes_inrc_loc" column="xxmes_inrc_loc" type="string"></property>
+		<property name="xxmes_inrc_loc_from" column="xxmes_inrc_loc_from" type="string"></property>
+		<property name="xxmes_inrc_poum" column="xxmes_inrc_poum" type="string"></property>
+		<property name="xxmes_inrc_potype" column="xxmes_inrc_potype" type="string"></property>
+		<property name="xxmes_inrc_qadread" column="xxmes_inrc_qadread" type="string"></property>
+		<property name="xxmes_inrc_mesread" column="xxmes_inrc_mesread" type="string"></property>
+		<property name="xxmes_inrc_portalrea" column="xxmes_inrc_portalread" type="string"></property>
+	
+		<property name="xxmes_inrc_ediread" column="xxmes_inrc_ediread" type="string"></property>
+		<property name="xxmes_inrc_rmks" column="xxmes_inrc_rmks" type="string"></property>
+		<property name="xxmes_inrc_createdt" column="xxmes_inrc_createdt" type="date"></property>
+		<property name="xxmes_inrc_createdt1" column="xxmes_inrc_createdt_1" type="integer"></property>
+		<property name="xxmes_inrc_createur" column="xxmes_inrc_createur" type="string"></property>
+		<property name="xxmes_inrc_updatedt" column="xxmes_inrc_updatedt" type="date"></property>
+		<property name="xxmes_inrc_updatedt1" column="xxmes_inrc_updatedt_1" type="integer"></property>
+		<property name="xxmes_inrc_updateur" column="xxmes_inrc_updateur" type="string"></property>
+		<property name="xxmes_inrc_domain" column="xxmes_inrc_domain" type="string"></property>
+	</class>
+	
+	<!-- 采购检验后入库信息（直接做移库  -->
+	<class name="SupplierUnqualifiedPart" table="xxmes_iqc_det">
+		<id name="xxmes_iqc_id" column="xxmes_iqc_id" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="xxmes_iqc_det_id" column="xxmes_iqc_det_id" type="integer"></property>
+		<property name="xxmes_iqc_date1" column="xxmes_iqc_date_1" type="integer"></property>
+		<property name="xxmes_iqc_site" column="xxmes_iqc_site" type="string"></property>
+		<property name="xxmes_iqc_seq" column="xxmes_iqc_seq" type="string"></property>
+		<property name="xxmes_iqc_txnbr" column="xxmes_iqc_txnbr" type="string"></property>
+		<property name="xxmes_iqc_ponbr" column="xxmes_iqc_ponbr" type="string"></property>
+		<property name="xxmes_iqc_poline" column="xxmes_iqc_poline" type="integer"></property>
+		<property name="xxmes_iqc_part" column="xxmes_iqc_part" type="string"></property>
+		<property name="xxmes_iqc_date" column="xxmes_iqc_date" type="date"></property>
+		<property name="xxmes_iqc_boxcode" column="xxmes_iqc_boxcode" type="string"></property>
+		<property name="xxmes_iqc_qty_real" column="xxmes_iqc_qty_real" type="big_decimal"></property>
+		<property name="xxmes_iqc_loc" column="xxmes_iqc_loc" type="string"></property>
+		<property name="xxmes_iqc_loc_from" column="xxmes_iqc_loc_from" type="string"></property>
+		<property name="xxmes_iqc_poum" column="xxmes_iqc_poum" type="string"></property>
+		<property name="xxmes_iqc_potype" column="xxmes_iqc_potype" type="string"></property>
+		<property name="xxmes_iqc_reasom" column="xxmes_iqc_reasom" type="string"></property>
+		<property name="xxmes_iqc_qadread" column="xxmes_iqc_qadread" type="string"></property>
+		<property name="xxmes_iqc_mesread" column="xxmes_iqc_mesread" type="string"></property>
+		<property name="xxmes_iqc_portalread" column="xxmes_iqc_portalread" type="string"></property>
+		<property name="xxmes_iqc_ediread" column="xxmes_iqc_ediread" type="string"></property>
+		<property name="xxmes_iqc_rmks" column="xxmes_iqc_rmks" type="string"></property>
+		<property name="xxmes_iqc_createdt" column="xxmes_iqc_createdt" type="date"></property>
+		<property name="xxmes_iqc_createdt1" column="xxmes_iqc_createdt_1" type="integer"></property>
+		<property name="xxmes_iqc_createur" column="xxmes_iqc_createur" type="string"></property>
+		<property name="xxmes_iqc_updatedt" column="xxmes_iqc_updatedt" type="date"></property>
+		<property name="xxmes_iqc_updatedt1" column="xxmes_iqc_updatedt_1" type="integer"></property>
+		<property name="xxmes_iqc_updateur" column="xxmes_iqc_updateur" type="string"></property>
+	</class>
+	
+	<class name="WorkOrderInfo" table="xxmes_wois_det">
+		<id name="xxmes_wois_id" column="xxmes_wois_id">
+		
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="xxmes_wois_date1" column="xxmes_wois_date_1" type="integer"></property>
+		<property name="xxmes_wois_det_id" column="xxmes_wois_det_id" type="integer"></property>
+		<property name="xxmes_wois_domain" column="xxmes_wois_domain" type="string"></property>
+		<property name="xxmes_wois_site" column="xxmes_wois_site" type="string"></property>
+		
+		<property name="xxmes_wois_seq" column="xxmes_wois_seq" type="string"></property>
+		<property name="xxmes_wois_nbr" column="xxmes_wois_nbr" type="string"></property>
+		<property name="xxmes_wois_lot" column="xxmes_wois_lot" type="string"></property>
+		<property name="xxmes_wois_part" column="xxmes_wois_part" type="string"></property>
+		<property name="xxmes_wois_loc" column="xxmes_wois_loc" type="string"></property>
+		<property name="xxmes_wois_qty" column="xxmes_wois_qty" type="big_decimal"></property>
+		<property name="xxmes_wois_gw" column="xxmes_wois_gw" type="string"></property>
+		<property name="xxmes_wois_op" column="xxmes_wois_op" type="string"></property>
+		<property name="xxmes_wois_date" column="xxmes_wois_date" type="date"></property>
+		<property name="xxmes_wois_boxcode" column="xxmes_wois_boxcode" type="string"></property>
+		<property name="xxmes_wois_qadread" column="xxmes_wois_qadread" type="string"></property>
+		<property name="xxmes_wois_mesread" column="xxmes_wois_mesread" type="string"></property>
+		<property name="xxmes_wois_portalread" column="xxmes_wois_portalread" type="string"></property>
+		<property name="xxmes_wois_ediread" column="xxmes_wois_ediread" type="string"></property>
+		<property name="xxmes_wois_rmks" column="xxmes_wois_rmks" type="string"></property>
+		<property name="xxmes_wois_createdt" column="xxmes_wois_createdt" type="date"></property>
+		<property name="xxmes_wois_createdt1" column="xxmes_wois_createdt_1" type="integer"></property>
+		<property name="xxmes_wois_createur" column="xxmes_wois_createur" type="string"></property>
+		<property name="xxmes_wois_updatedt" column="xxmes_wois_updatedt" type="date"></property>
+		<property name="xxmes_wois_updatedt1" column="xxmes_wois_updatedt_1" type="integer"></property>
+		<property name="xxmes_wois_updateur" column="xxmes_wois_updateur" type="string"></property>
+	</class>
+	
+	<class name="ProductInStorage" table="xxmes_worc_det">
+		<id name="xxmes_worc_id" column="xxmes_worc_id">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="xxmes_worc_date1" column="xxmes_worc_date_1" type="integer"></property>
+		<property name="xxmes_worc_det_id" column="xxmes_worc_det_id" type="integer"></property>
+		<property name="xxmes_worc_domain" column="xxmes_worc_domain" type="string"></property>
+		<property name="xxmes_worc_site" column="xxmes_worc_site" type="string"></property>
+		
+		<property name="xxmes_worc_seq" column="xxmes_worc_seq" type="string"></property>
+		<property name="xxmes_worc_nbr" column="xxmes_worc_nbr" type="string"></property>
+		<property name="xxmes_worc_lot" column="xxmes_worc_lot" type="string"></property>
+		<property name="xxmes_worc_part" column="xxmes_worc_part" type="string"></property>
+		<property name="xxmes_worc_loc" column="xxmes_worc_loc" type="string"></property>
+		<property name="xxmes_worc_qty" column="xxmes_worc_qty" type="big_decimal"></property>
+		<property name="xxmes_worc_date" column="xxmes_worc_date" type="date"></property>
+		<property name="xxmes_worc_boxcode" column="xxmes_worc_boxcode" type="string"></property>
+		<property name="xxmes_worc_qadread" column="xxmes_worc_qadread" type="string"></property>
+		<property name="xxmes_worc_mesread" column="xxmes_worc_mesread" type="string"></property>
+		<property name="xxmes_worc_portalread" column="xxmes_worc_portalread" type="string"></property>
+		<property name="xxmes_worc_ediread" column="xxmes_worc_ediread" type="string"></property>
+		
+		<property name="xxmes_worc_rmks" column="xxmes_worc_rmks" type="string"></property>
+		<property name="xxmes_worc_createdt" column="xxmes_worc_createdt" type="date"></property>
+		<property name="xxmes_worc_createdt1" column="xxmes_worc_createdt_1" type="integer"></property>
+		<property name="xxmes_worc_createur" column="xxmes_worc_createur" type="string"></property>
+		<property name="xxmes_worc_updatedt" column="xxmes_worc_updatedt" type="date"></property>
+		<property name="xxmes_worc_updatedt1" column="xxmes_worc_updatedt_1" type="integer"></property>
+		<property name="xxmes_worc_updateur" column="xxmes_worc_updateur" type="string"></property>
+	</class>
+
+	<!-- 采购退货  -->
+	<class name="SupplierReturnPart" table="xxmes_stk_det">
+		<id name="xxmes_stk_id" column="xxmes_stk_id" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="xxmes_stk_det_id" column="xxmes_stk_det_id" type="integer"></property>
+		<property name="xxmes_stk_seq" column="xxmes_stk_seq" type="string"></property>
+		<property name="xxmes_stk_vend" column="xxmes_stk_vend" type="string"></property>
+		<property name="xxmes_stk_part" column="xxmes_stk_part" type="string"></property>
+		<property name="xxmes_stk_loc" column="xxmes_stk_loc" type="string"></property>
+		<property name="xxmes_stk_qty" column="xxmes_stk_qty" type="big_decimal"></property>
+		<property name="xxmes_stk_date" column="xxmes_stk_date" type="date"></property>
+		<property name="xxmes_stk_date1" column="xxmes_stk_date_1" type="integer"></property>
+		<property name="xxmes_stk_reason" column="xxmes_stk_reason" type="string"></property>
+		<property name="xxmes_stk_po_nbr" column="xxmes_stk_po_nbr" type="string"></property>
+		<property name="xxmes_stk_po_line" column="xxmes_stk_po_line" type="integer"></property>
+		<property name="xxmes_stk_boxcode" column="xxmes_stk_boxcode" type="string"></property>
+		<property name="xxmes_stk_nbr" column="xxmes_stk_nbr" type="string"></property>
+		<property name="xxmes_stk_txnbr" column="xxmes_stk_txnbr" type="string"></property>
+		<property name="xxmes_stk_site" column="xxmes_stk_site" type="string"></property>
+		<property name="xxmes_stk_qadread" column="xxmes_stk_qadread" type="string"></property>
+		<property name="xxmes_stk_mesread" column="xxmes_stk_mesread" type="string"></property>
+		<property name="xxmes_stk_portalread" column="xxmes_stk_portalread" type="string"></property>
+		<property name="xxmes_stk_ediread" column="xxmes_stk_ediread" type="string"></property>
+		<property name="xxmes_stk_rmks" column="xxmes_stk_rmks" type="string"></property>
+		<property name="xxmes_stk_createdt" column="xxmes_stk_createdt" type="date"></property>
+		<property name="xxmes_stk_createdt1" column="xxmes_stk_createdt_1" type="integer"></property>
+		<property name="xxmes_stk_createur" column="xxmes_stk_createur" type="string"></property>
+		<property name="xxmes_stk_updatedt" column="xxmes_stk_updatedt" type="date"></property>
+		<property name="xxmes_stk_updatedt1" column="xxmes_stk_updatedt_1" type="integer"></property>
+		<property name="xxmes_stk_updateur" column="xxmes_stk_updateur" type="string"></property>
+	</class>
+	
+	<!-- 报废信息  -->
+	<class name="Scraped" table="xxmes_bf_det">
+	
+		<id name="xxmes_bf_id" column="xxmes_bf_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxmes_bf_loc" column="xxmes_bf_loc" type="string"></property>
+		<property name="xxmes_bf_det_id" column="xxmes_bf_det_id" type="integer"></property>
+		<property name="xxmes_bf_seq" column="xxmes_bf_seq" type="string"></property>
+		<property name="xxmes_bf_part" column="xxmes_bf_part" type="string"></property>
+		<property name="xxmes_bf_qty" column="xxmes_bf_qty" type="big_decimal"></property>
+		<property name="xxmes_bf_date" column="xxmes_bf_date" type="date"></property>
+		<property name="xxmes_bf_date1" column="xxmes_bf_date_1" type="integer"></property>
+		<property name="xxmes_bf_reason" column="xxmes_bf_reason" type="string"></property>
+		<property name="xxmes_bf_boxcode" column="xxmes_bf_boxcode" type="string"></property>
+		
+		<property name="xxmes_bf_site" column="xxmes_bf_site" type="string"></property>
+		<property name="xxmes_bf_qadread" column="xxmes_bf_qadread" type="string"></property>
+		<property name="xxmes_bf_mesread" column="xxmes_bf_mesread" type="string"></property>
+		<property name="xxmes_bf_portalread" column="xxmes_bf_portalread" type="string"></property>
+		<property name="xxmes_bf_ediread" column="xxmes_bf_ediread" type="string"></property>
+		<property name="xxmes_bf_rmks" column="xxmes_bf_rmks" type="string"></property>
+		
+		<property name="xxmes_bf_createdt" column="xxmes_bf_createdt" type="date"></property>
+		<property name="xxmes_bf_createdt1" column="xxmes_bf_createdt_1" type="integer"></property>
+		<property name="xxmes_bf_createur" column="xxmes_bf_createur" type="string"></property>
+		<property name="xxmes_bf_updatedt" column="xxmes_bf_updatedt" type="date"></property>
+		
+		<property name="xxmes_bf_updatedt1" column="xxmes_bf_updatedt_1" type="integer"></property>
+		<property name="xxmes_bf_updateur" column="xxmes_bf_updateur" type="string"></property>
+	</class>
+	
+	<!-- 部门领用信息  -->
+	<class name="DepartmentReceiveParts" table="xxmes_ly_det">
+		<id name="xxmes_ly_id" column="xxmes_ly_id">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="xxmes_ly_date1" column="xxmes_ly_date_1" type="integer"></property>
+		<property name="xxmes_ly_time1" column="xxmes_ly_time_1" type="integer"></property>
+		<property name="xxmes_ly_det_id" column="xxmes_ly_det_id" type="integer"></property>
+		<property name="xxmes_ly_project" column="xxmes_ly_project" type="string"></property>
+		<property name="xxmes_ly_seq" column="xxmes_ly_seq" type="string"></property>
+		<property name="xxmes_ly_part" column="xxmes_ly_part" type="string"></property>
+		<property name="xxmes_ly_qty" column="xxmes_ly_qty" type="big_decimal"></property>
+		<property name="xxmes_ly_loc" column="xxmes_ly_loc" type="string"></property>
+		<property name="xxmes_ly_dept" column="xxmes_ly_dept" type="string"></property>
+		<property name="xxmes_ly_reason" column="xxmes_ly_reason" type="string"></property>
+		<property name="xxmes_ly_date" column="xxmes_ly_date" type="date"></property>
+		<property name="xxmes_ly_time" column="xxmes_ly_time" type="date"></property>
+		<property name="xxmes_ly_site" column="xxmes_ly_site" type="string"></property>
+		<property name="xxmes_ly_qadread" column="xxmes_ly_qadread" type="string"></property>
+		<property name="xxmes_ly_mesread" column="xxmes_ly_mesread" type="string"></property>
+		<property name="xxmes_ly_portalread" column="xxmes_ly_portalread" type="string"></property>
+		
+		<property name="xxmes_ly_ediread" column="xxmes_ly_ediread" type="string"></property>
+		<property name="xxmes_ly_rmks" column="xxmes_ly_rmks" type="string"></property>
+		<property name="xxmes_ly_createdt" column="xxmes_ly_createdt" type="date"></property>
+		<property name="xxmes_ly_createdt1" column="xxmes_ly_createdt_1" type="integer"></property>
+		<property name="xxmes_ly_createur" column="xxmes_ly_createur" type="string"></property>
+		<property name="xxmes_ly_updatedt" column="xxmes_ly_updatedt" type="date"></property>
+		<property name="xxmes_ly_updatedt1" column="xxmes_ly_updatedt_1" type="integer"></property>
+		<property name="xxmes_ly_updateur" column="xxmes_ly_updateur" type="string"></property>
+		<property name="xxmes_ly_domain" column="xxmes_ly_domain" type="string"></property>
+		<property name="xxmes_ly_boxcode" column="xxmes_ly_boxcode" type="string"></property>
+	</class>
+	
+	<!-- 计划外出入库（1计划外出，其它为计划外入）  -->
+	<class name="UnplanInAndOutStorage" table="xxmes_upiss_det">
+	
+		<id name="xxmes_upiss_id" column="xxmes_upiss_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxmes_upiss_char1" column="xxmes_upiss__char1" type="string"></property>
+		<property name="xxmes_upiss_char2" column="xxmes_upiss__char2" type="string"></property>
+		<property name="xxmes_upiss_date1" column="xxmes_upiss_date_1" type="integer"></property>
+		<property name="xxmes_upiss_time1" column="xxmes_upiss_time_1" type="integer"></property>
+		<property name="xxmes_upiss_det_id" column="xxmes_upiss_det_id" type="integer"></property>
+		<property name="xxmes_upiss_reason" column="xxmes_upiss_reason" type="string"></property>
+		<property name="xxmes_upiss_workcenter" column="xxmes_upiss_workcenter" type="string"></property>
+		
+		<property name="xxmes_upiss_seq" column="xxmes_upiss_seq" type="string"></property>
+		<property name="xxmes_upiss_part" column="xxmes_upiss_part" type="string"></property>
+		<property name="xxmes_upiss_qty" column="xxmes_upiss_qty" type="big_decimal"></property>
+		<property name="xxmes_upiss_loc" column="xxmes_upiss_loc"  type="string"></property>
+	
+		<property name="xxmes_upiss_dir" column="xxmes_upiss_dir" type="string"></property> 
+		<property name="xxmes_upiss_date" column="xxmes_upiss_date" type="date"></property>
+		<property name="xxmes_upiss_time" column="xxmes_upiss_time" type="date"></property>
+		<property name="xxmes_upiss_site" column="xxmes_upiss_site" type="string"></property>
+		<property name="xxmes_upiss_qadread" column="xxmes_upiss_qadread" type="string"></property>
+		<property name="xxmes_upiss_mesread" column="xxmes_upiss_mesread" type="string"></property>
+		<property name="xxmes_upiss_portalread" column="xxmes_upiss_portalread" type="string"></property>
+		<property name="xxmes_upiss_ediread" column="xxmes_upiss_ediread" type="string"></property>
+		<property name="xxmes_upiss_rmks" column="xxmes_upiss_rmks" type="string"></property>
+		<property name="xxmes_upiss_createdt" column="xxmes_upiss_createdt" type="date"></property>
+		<property name="xxmes_upiss_createdt1" column="xxmes_upiss_createdt_1" type="integer"></property>
+		<property name="xxmes_upiss_createur" column="xxmes_upiss_createur" type="string"></property>
+		<property name="xxmes_upiss_updatedt" column="xxmes_upiss_updatedt" type="date"></property>
+		<property name="xxmes_upiss_updatedt1" column="xxmes_upiss_updatedt_1" type="integer"></property>
+		<property name="xxmes_upiss_updateur" column="xxmes_upiss_updateur" type="string"></property>
+		<property name="xxmes_upiss_domain" column="xxmes_upiss_domain" type="string"></property>
+		<property name="xxmes_upiss_boxcode" column="xxmes_upiss_boxcode" type="string"></property>
+		
+	</class>
+	
+	<!-- 盘点信息  -->
+	<class name="MakeAnInventory" table="xxmes_tag_det">
+		<id name="xxmes_tag_id" column="xxmes_tag_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxmes_tag_date1" column="xxmes_tag_date_1" type="integer"></property>
+		<property name="xxmes_tag_det_id" column="xxmes_tag_det_id" type="integer"></property>
+		<property name="xxmes_tag_time1" column="xxmes_tag_time_1" type="integer"></property>
+		
+		<property name="xxmes_tag_seq" column="xxmes_tag_seq" type="string"></property>
+		<property name="xxmes_tag_part" column="xxmes_tag_part" type="string"></property>
+		<property name="xxmes_tag_loc" column="xxmes_tag_loc" type="string"></property>
+		<property name="xxmes_tag_qty_cnt" column="xxmes_tag_qty_cnt" type="big_decimal"></property>
+		<property name="xxmes_tag_qty_var" column="xxmes_tag_qty_var" type="big_decimal"></property>
+		
+		<property name="xxmes_tag_date" column="xxmes_tag_date" type="date"></property>
+		<property name="xxmes_tag_time" column="xxmes_tag_time" type="date"></property>
+		<property name="xxmes_tag_site" column="xxmes_tag_site" type="string"></property>
+		<property name="xxmes_tag_qadread" column="xxmes_tag_qadread" type="string"></property>
+		
+		<property name="xxmes_tag_mesread" column="xxmes_tag_mesread" type="string"></property>
+		<property name="xxmes_tag_portalread" column="xxmes_tag_portalread" type="string"></property>
+		<property name="xxmes_tag_ediread" column="xxmes_tag_ediread" type="string"></property>
+		<property name="xxmes_tag_rmks" column="xxmes_tag_rmks" type="string"></property>
+		<property name="xxmes_tag_createdt" column="xxmes_tag_createdt" type="date"></property>
+		<property name="xxmes_tag_createdt1" column="xxmes_tag_createdt_1" type="integer"></property>
+		<property name="xxmes_tag_createur" column="xxmes_tag_createur" type="string"></property>
+		<property name="xxmes_tag_updatedt" column="xxmes_tag_updatedt" type="date"></property>
+		<property name="xxmes_tag_updatedt1" column="xxmes_tag_updatedt_1" type="integer"></property>
+		<property name="xxmes_tag_updateur" column="xxmes_tag_updateur" type="string"></property>
+		<property name="xxmes_tag_domain" column="xxmes_tag_domain" type="string"></property>
+		<property name="xxmes_tag_boxcode" column="xxmes_tag_boxcode" type="string"></property>
+	</class>
+	
+	<!-- 倒冲入库信息  -->
+	<class name="WorkOrderBackFlushInStroage" table="shmes_worc_det">
+		<id name="shmes_worc_det_number" column="shmes_worc_det_number">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="shmes_worc_det_id" column="shmes_worc_det_id" type="integer"> </property>
+		<property name="shmes_worc_seq" column="shmes_worc_seq" type="string"></property>
+		<property name="shmes_rworc_id" column="shmes_worc_id" type="string"></property>
+		<property name="shmes_worc_item" column="shmes_worc_item" type="string"></property>
+		<property name="shmes_worc_loc" column="shmes_worc_loc" type="string"></property>
+		<property name="shmes_worc_qty" column="shmes_worc_qty" type="big_decimal"></property>
+		<property name="shmes_worc_date" column="shmes_worc_date" type="timestamp"></property>
+		<property name="shmes_worc_domain" column="shmes_worc_domain" type="string"></property>
+		<property name="shmes_worc_site" column="shmes_worc_site" type="string"></property>
+		<property name="shmes_rworc_note" column="shmes_worc_note" type="string"></property>
+		<property name="shmes_worc_qadread" column="shmes_worc_qadread" type="string"></property>
+		<property name="shmes_worc_mesread" column="shmes_worc_mesread" type="string"></property>
+		<property name="shmes_worc_portalread" column="shmes_worc_portalread" type="string"></property>
+		<property name="shmes_worc_ediread" column="shmes_worc_ediread" type="string"></property>
+		<property name="shmes_worc_rmks" column="shmes_worc_rmks" type="string"></property>
+		<property name="shmes_worc_createdt" column="shmes_worc_createdt" type="timestamp"></property>
+		<property name="shmes_worc_createdt1" column="shmes_worc_createdt_1" type="integer"></property>
+		<property name="shmes_worc_createur" column="shmes_worc_createur" type="string"></property>
+		<property name="shmes_worc_updatedt" column="shmes_worc_updatedt" type="timestamp"></property>
+		<property name="shmes_worc_updatedt1" column="shmes_worc_updatedt_1" type="integer"></property>
+		<property name="shmes_worc_updateur" column="shmes_worc_updateur" type="string"></property>
+	
+	</class>
+	
+	<!-- 倒冲扣料信息  -->
+	<class name="WorkOrderBuckleMaterial" table="shmes_wois_det">
+		<id name="shmes_wois_det_number" column="shmes_wois_det_number">
+			<generator class="identity"></generator>
+		
+		</id>
+	    <property name="shmes_wois_det_id" column="shmes_wois_det_id" type="integer"></property>
+		<property name="shmes_wois_seq" column="shmes_wois_seq" type="string"></property>
+		<property name="shmes_wois_id" column="shmes_wois_id" type="string"></property>
+		<property name="shmes_wois_item" column="shmes_wois_item" type="string"></property>
+		<property name="shmes_wois_part" column="shmes_wois_part" type="string"></property>
+		<property name="shmes_wois_loc" column="shmes_wois_loc" type="string"></property>
+		<property name="shmes_wois_qty" column="shmes_wois_qty" type="big_decimal"></property>
+		<property name="shmes_wois_gw" column="shmes_wois_gw" type="string"></property>
+		<property name="shmes_wois_op" column="shmes_wois_op" type="string"></property>
+		
+		<property name="shmes_wois_date" column="shmes_wois_date" type="date"></property>
+		<property name="shmes_worc_domain" column="shmes_wois_domain" type="string"></property>
+		<property name="shmes_worc_site" column="shmes_wois_site" type="string"></property>
+		
+		<property name="shmes_wois_fk" column="shmes_wois_fk" type="string"></property>
+		<property name="shmes_wois_qadread" column="shmes_wois_qadread" type="string"></property>
+		<property name="shmes_wois_mesread" column="shmes_wois_mesread" type="string"></property>
+		<property name="shmes_wois_portalread" column="shmes_wois_portalread" type="string"></property>
+		<property name="shmes_wois_ediread" column="shmes_wois_ediread" type="string"></property>
+		<property name="shmes_wois_rmks" column="shmes_wois_rmks" type="string"></property>
+		<property name="shmes_wois_createdt" column="shmes_wois_createdt" type="date" ></property>
+		<property name="shmes_wois_createdt1" column="shmes_wois_createdt_1" type="integer"></property>
+		<property name="shmes_wois_createur" column="shmes_wois_createur" type="string"></property>
+		<property name="shmes_wois_updatedt" column="shmes_wois_updatedt" type="date"></property>
+		<property name="shmes_wois_updatedt1" column="shmes_wois_updatedt_1" type="integer"></property>
+		<property name="shmes_wois_updateur" column="shmes_wois_updateur" type="string"></property>
+	</class>
+	<!-- 发货同步给中间表 -->
+	 <class name="XbipdmMstr" table="xbipdm_mstr" >
+   		 <id name="xbipdm_number" column="xbipdm_number" type="integer">
+            <generator class="identity"/>
+       	 </id>
+       	 <property name="xbipdm_nbr" column="xbipdm_nbr" type="string"/>
+       	 <property name="xbipdm_vend" column="xbipdm_vend" type="string"/>
+       	 <property name="xbipdm_date" column="xbipdm_date" type="timestamp"/>
+       	 <property name="xbipdm_site" column="xbipdm_site" type="string"/>
+       	 <property name="xbipdm_uf1" column="xbipdm_uf1" type="string"/>
+       	 <property name="xbipdm_uf2" column="xbipdm_uf2" type="string"/>
+       	 <property name="xbipdm_uf3" column="xbipdm_uf3" type="string"/>
+       	 <property name="xbipdm_qadread" column="xbipdm_qadread" type="string"/>
+       	 <property name="xbipdm_mesread" column="xbipdm_mesread" type="string"/>
+       	 <property name="xbipdm_ediread" column="xbipdm_ediread" type="string"/>
+       	 <property name="xbipdm_portalread" column="xbipdm_portalread" type="string"/>
+       	 <property name="xbipdm_createdt" column="xbipdm_createdt" type="timestamp"/>
+       	 <property name="xbipdm_createur" column="xbipdm_createur" type="string"/>
+       	 <property name="xbipdm_updatedt" column="xbipdm_updatedt" type="timestamp"/>
+       	 <property name="xbipdm_updateur" column="xbipdm_updateur" type="string"/>
+    </class>
+    
+    <class name="XbipddDet" table="xbipdd_det">
+    	<id name="xbipdd_number" column="xbipdd_number" type="integer">
+    		<generator class="identity"/>
+    	</id>
+    	<property name="xbipdd_nbr" column="xbipdd_nbr" type="string"/>
+    	<property name="xbipdd_line" column="xbipdd_line" type="integer"/>
+    	<property name="xbipdd_ponbr" column="xbipdd_ponbr" type="string"/>
+    	<property name="xbipdd_poline" column="xbipdd_poline" type="integer"/>
+    	<property name="xbipdd_ctnbr" column="xbipdd_ctnbr" type="string"/>
+    	<property name="xbipdd_part" column="xbipdd_part" type="string"/>
+    	<property name="xbipdd_lot" column="xbipdd_lot" type="string"/>
+    	<property name="xbipdd_qty" column="xbipdd_qty" type="integer"/>
+    	<property name="xbipdd_uf1" column="xbipdd_uf1" type="string"/>
+    	<property name="xbipdd_uf2" column="xbipdd_uf2" type="string"/>
+    	<property name="xbipdd_uf3" column="xbipdd_uf3" type="string"/>
+    	<property name="xbipdd_qadread" column="xbipdd_qadread" type="string"/>
+    	<property name="xbipdd_mesread" column="xbipdd_mesread" type="string"/>
+    	<property name="xbipdd_portalread" column="xbipdd_portalread" type="string"/>
+    	<property name="xbipdd_ediread" column="xbipdd_ediread" type="string"/>
+    	<property name="xbipdd_createdt" column="xbipdd_createdt" type="timestamp"/>
+    	<property name="xbipdd_createur" column="xbipdd_createur" type="string"/>
+    	<property name="xbipdd_updatedt" column="xbipdd_updatedt" type="timestamp"/>
+    	<property name="xbipdd_updateur" column="xbipdd_updateur" type="string"/>
+    </class>
+    </hibernate-mapping>

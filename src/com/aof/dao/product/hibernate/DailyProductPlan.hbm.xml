@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+<hibernate-mapping package="com.aof.model.product">
+	<class name="DailyProductPlan" table="daily_product_plan">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<property name="workOrderNo" column="work_order_no" type="string" />
+		<property name="workOrderId" column="WORK_ORDER_ID" type="string" />
+		<property name="part" column="PART" type="string" />
+		<property name="orderType" column="ORDER_TYPE" type="string" />
+		<property name="orderAttribute" column="ORDER_ATTRIBUTE" type="string" />
+		<property name="site" column="SITE" type="string" />
+		<property name="lineNo" column="LINE_NO" type="string" />
+		<property name="qty" column="QTY" type="big_decimal" />
+		<property name="golineDate" column="GOLINE_DATE" type="date" />
+		<property name="offlineDate" column="OFFLINE_DATE" type="date" />
+		<property name="procedureCode" column="PROCEDURE_CODE" type="string" />
+		<property name="bomCode" column="BOM_CODE" type="string" />
+		<property name="shift" column="SHIFT" type="string" />
+		<property name="bomOutFinish" column="BOM_OUT_FINISH" type="string" />
+		<property name="domain" column="DOMAIN" type="string" />
+		<property name="seqNo" column="SEQ_NO" type="string" />
+	</class>
+</hibernate-mapping>

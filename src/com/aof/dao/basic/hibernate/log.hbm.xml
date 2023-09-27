@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.basic">
+	<!-- 扫描日志  -->
+	<class name="ScanLog" table="basic_scan_log">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<property name="describe" column="describe" type="string" />
+		<property name="date" column="date" type="timestamp" />
+		<property name="type" column="type" type="integer" />
+		<many-to-one name="userId" column="userId" class="com.aof.model.admin.User" />
+	</class>
+	<!-- 同步日志  -->
+ 	<class name="SyncLog" table="basic_sync_log">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<property name="sync_date" column="sync_date" type="timestamp"/>
+		<property name="sync_object" column="sync_object" type="string"/>
+		<property name="sync_content" column="sync_content" type="string"/>
+		<property name="sync_results" column="sync_results" type="string"/>
+		<property name="sync_describe" column="sync_describe" type="string"/>
+	</class>
+	 
+</hibernate-mapping>

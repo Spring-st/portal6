@@ -1,0 +1,1149 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<tiles-definitions>
+	<definition name="site.noFrameLayout" path="/WEB-INF/layout/noFrameLayout.jsp">
+		<put name="title"	value="Win-in Portal" type="string"/>
+		<put name="top"		value="/WEB-INF/jsp/basic/top.jsp"/>
+	</definition>
+
+	<definition name="site.frame" path="/WEB-INF/layout/frame.jsp">
+		<put name="title"	value="Win-in Portal" type="string"/>
+	</definition>
+
+	<definition name="site.topFrameLayout" path="/WEB-INF/layout/topFrameLayout.jsp">
+		<put name="title"	value="" type="string"/>
+	</definition>
+
+	<definition name="site.leftFrameLayout" path="/WEB-INF/layout/leftFrameLayout.jsp">
+		<put name="title"	value="" type="string"/>
+	</definition>
+
+	<definition name="site.mainFrameLayout" path="/WEB-INF/layout/mainFrameLayout.jsp">
+		<put name="title"	value="" type="string"/>
+	</definition>
+
+	<definition name="dialog.mainLayout" path="/WEB-INF/layout/dialogMainLayout.jsp">
+		<put name="title"	value="" type="string"/>
+	</definition>
+
+	<definition name="site.error" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/error.jsp"/>
+	</definition>
+
+	<definition name="dialog.error" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/dialogError.jsp"/>
+	</definition>
+
+	<definition name="site.confirmOperation" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/confirmOperationDialog.jsp"/>
+	</definition>
+	
+	<definition name="site.confirm" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/confirm.jsp"/>
+	</definition>
+	
+	<definition name="site.basic.top" extends="site.topFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/basic/top.jsp"/>
+	</definition>
+
+	<definition name="site.basic.blank" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/basic/blank.jsp"/>
+	</definition>
+
+	<definition name="site.basic.menu" extends="site.leftFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/basic/menu.jsp"/>
+	</definition>
+
+	<definition name="site.basic.login" extends="site.noFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/basic/login.jsp"/>
+	</definition>
+
+	<definition name="site.basic.changePassword" extends="site.noFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/basic/changePassword.jsp"/>
+	</definition>
+	<definition name="site.basic.forgetPassword" extends="site.noFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/basic/forget.jsp"/>
+	</definition>
+
+	<definition name="site.user.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/list.jsp"/>
+		<put name="pageMainTitle" 	value="user.list"/>
+	</definition>
+	
+	<definition name="site.user.userRole.report" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/userRoleReport.jsp"/>
+		<put name="pageMainTitle" 	value="user.userRole.report"/>
+	</definition>
+	<definition name="site.user.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/new.jsp"/>
+	</definition>
+	<definition name="site.user.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/edit.jsp"/>
+	</definition>
+	<definition name="site.user.changePassword" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/changePassword.jsp"/>
+	</definition>
+	<definition name="site.user.switchLocale" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/switchLocale.jsp"/>
+		<put name="pageMainTitle" 	value="user.switchLocale"/>
+	</definition>
+	<definition name="site.user.checkLoginName" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/checkLoginName.jsp"/>
+	</definition>
+	<definition name="site.user.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/user/select.jsp"/>
+	</definition>
+
+
+	<definition name="site.userSiteDepartment.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/userSiteDepartment/list.jsp"/>
+		<put name="pageMainTitle" 	value="userSiteDepartment.list"/>
+	</definition>
+	<definition name="site.userSiteDepartment.newSite" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/userSiteDepartment/newSite.jsp"/>
+	</definition>
+	<definition name="site.userSiteDepartment.editSite" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/userSiteDepartment/editSite.jsp"/>
+	</definition>
+	<definition name="site.userSiteDepartment.newDepartment" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/userSiteDepartment/newDepartment.jsp"/>
+	</definition>
+	<definition name="site.userSiteDepartment.editDepartment" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/userSiteDepartment/editDepartment.jsp"/>
+	</definition>
+
+	<definition name="site.userRole.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/userRole/list.jsp"/>
+		<put name="pageMainTitle" 	value="userRole.list"/>
+	</definition>
+	<definition name="site.userRole.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/userRole/new.jsp"/>
+	</definition>
+	<definition name="site.userRole.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/userRole/edit.jsp"/>
+	</definition>
+
+	<definition name="site.role.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/role/list.jsp"/>
+		<put name="pageMainTitle" 	value="role.list"/>
+	</definition>
+	<definition name="site.role.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/role/new.jsp"/>
+	</definition>
+	<definition name="site.role.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/role/edit.jsp"/>
+	</definition>
+	<definition name="site.role.grantFunction" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/role/grantFunction.jsp"/>
+		<put name="pageMainTitle" 	value="role.grantFunction"/>
+	</definition>
+	<definition name="site.role.grantMenu" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/role/grantMenu.jsp"/>
+		<put name="pageMainTitle" 	value="role.grantMenu"/>
+	</definition>
+
+	<definition name="site.metadata.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/metadata/list.jsp"/>
+		<put name="pageMainTitle" 	value="metadata.list"/>
+	</definition>
+	
+	<definition name="site.metadata.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/metadata/edit.jsp"/>
+		<put name="pageMainTitle" 	value="metadata.edit"/>
+	</definition>
+
+	<definition name="site.currency.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/currency/list.jsp"/>
+		<put name="pageMainTitle" 	value="currency.list"/>
+	</definition>
+	<definition name="site.currency.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/currency/new.jsp"/>
+	</definition>
+	<definition name="site.currency.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/currency/edit.jsp"/>
+	</definition>
+	
+	<definition name="site.function.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/function/list.jsp"/>
+		<put name="pageMainTitle" 	value="function.list"/>
+	</definition>
+
+	<definition name="site.function.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/function/edit.jsp"/>
+	</definition>
+	
+	<definition name="site.menu.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/menu/list.jsp"/>
+		<put name="pageMainTitle" 	value="menu.list"/>
+	</definition>
+	<definition name="site.menu.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/menu/new.jsp"/>
+	</definition>
+	<definition name="site.menu.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/menu/edit.jsp"/>
+	</definition>
+
+	<definition name="site.mailsetup.show" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/mailSetup/mailSetup.jsp"/>
+	</definition>
+	
+	<definition name="site.parasetup.show" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/parameter/para.jsp"/>
+	</definition>
+	<definition name="site.exchangeRate.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/exchangeRate/list.jsp"/>
+		<put name="pageMainTitle" 	value="exchangeRate.list"/>
+	</definition>
+	<definition name="site.exchangeRate.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/exchangeRate/new.jsp"/>
+	</definition>
+	<definition name="site.exchangeRate.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/exchangeRate/edit.jsp"/>
+	</definition>
+
+	<definition name="site.site.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/site/list.jsp"/>
+		<put name="pageMainTitle" 	value="site.list"/>
+	</definition>
+	<definition name="site.site.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/site/new.jsp"/>
+	</definition>
+	<definition name="site.site.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/site/edit.jsp"/>
+	</definition>
+
+	<definition name="site.department.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/department/list.jsp"/>
+		<put name="pageMainTitle" 	value="department.list"/>
+	</definition>
+	<definition name="site.department.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/department/new.jsp"/>
+	</definition>
+	<definition name="site.department.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/department/edit.jsp"/>
+	</definition>
+
+	<definition name="site.webmonitor.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/webMonitor/list.jsp"/>
+		<put name="pageMainTitle" 	value="webMonitor.list"/>
+	</definition>
+
+
+	<!-- expenseCategory -->
+	<definition name="site.expenseCategory.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/expenseCategory/list.jsp"/>
+		<put name="pageMainTitle" 	value="expenseCategory.list.title"/>
+	</definition>
+	<definition name="site.expenseCategory.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/expenseCategory/new.jsp"/>
+	</definition>
+	<definition name="site.expenseCategory.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/expenseCategory/edit.jsp"/>
+	</definition>
+	<!-- end of expenseCategory -->
+
+	
+
+	<!-- expenseSubCategory -->
+	<definition name="site.expenseSubCategory.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/expenseSubCategory/list.jsp"/>
+	</definition>
+	<definition name="site.expenseSubCategory.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/expenseSubCategory/new.jsp"/>
+	</definition>
+	<definition name="site.expenseSubCategory.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/expenseSubCategory/edit.jsp"/>
+	</definition>
+	<!-- end of expenseSubCategory -->
+
+
+
+	<!-- travelGroup -->
+	<definition name="site.travelGroup.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/travelGroup/list.jsp"/>
+		<put name="pageMainTitle" 	value="travelGroup.list.title"/>
+	</definition>
+	<definition name="site.travelGroup.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/travelGroup/new.jsp"/>
+		<put name="pageMainTitle" 	value="travelGroup.new.title"/>
+	</definition>
+	<definition name="site.travelGroup.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/travelGroup/edit.jsp"/>
+		<put name="pageMainTitle" 	value="travelGroup.edit.title"/>		
+	</definition>
+	<!-- end of travelGroup -->
+
+
+
+	<!-- country -->
+	<definition name="site.country.listCountryProvinceCity" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/country/listCountryProvinceCity.jsp"/>
+		<put name="pageMainTitle" 	value="country.listCPC.title"/>
+	</definition>
+	<definition name="site.country.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/country/list.jsp"/>
+		<put name="pageMainTitle" 	value="user.list"/>
+	</definition>
+	<definition name="site.country.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/country/new.jsp"/>
+	</definition>
+	<definition name="site.country.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/country/edit.jsp"/>
+	</definition>
+	<!-- end of country -->
+
+	<!-- province -->
+	<definition name="site.province.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/province/list.jsp"/>
+		<put name="pageMainTitle" 	value="user.list"/>
+	</definition>
+	<definition name="site.province.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/province/new.jsp"/>
+	</definition>
+	<definition name="site.province.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/province/edit.jsp"/>
+	</definition>
+	<!-- end of province -->
+
+	<!-- city -->
+	<definition name="site.city.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/city/list.jsp"/>
+		<put name="pageMainTitle" 	value="user.list"/>
+	</definition>
+	<definition name="site.city.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/city/new.jsp"/>
+	</definition>
+	<definition name="site.city.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/city/edit.jsp"/>
+	</definition>
+	<!-- end of city -->
+
+
+	<!-- purchaseCategory -->
+	<definition name="site.purchaseCategory.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseCategory/list.jsp"/>
+		<put name="pageMainTitle" 	value="purchaseCategory.list"/>
+	</definition>
+	<definition name="site.purchaseCategory.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseCategory/new.jsp"/>
+	</definition>
+	<definition name="site.purchaseCategory.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseCategory/edit.jsp"/>
+	</definition>
+	<!-- end of purchaseCategory -->
+
+
+	<!-- hotel -->
+	<definition name="site.hotel.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/hotel/list.jsp"/>
+		<put name="pageMainTitle" 	value="hotel.list.title"/>
+	</definition>
+	<definition name="site.hotel.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/hotel/new.jsp"/>
+		<put name="pageMainTitle" 	value="hotel.list.title"/>
+	</definition>
+	<definition name="site.hotel.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/hotel/edit.jsp"/>
+		<put name="pageMainTitle" 	value="hotel.list.title"/>
+	</definition>	
+	
+	<definition name="site.hotel.promote.request" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/hotel/requestPromote.jsp"/>
+	</definition>	
+	
+	<!-- end of hotel -->
+
+
+	<!-- purchaseSubCategory -->
+	<definition name="site.purchaseSubCategory.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseSubCategory/list.jsp"/>
+	</definition>
+	<definition name="site.purchaseSubCategory.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseSubCategory/new.jsp"/>
+	</definition>
+	<definition name="site.purchaseSubCategory.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseSubCategory/edit.jsp"/>
+	</definition>
+	<definition name="site.purchaseSubCategory.selectInspector" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/purchaseSubCategory/selectInspector.jsp"/>
+	</definition>
+	
+	<!-- end of purchaseSubCategory -->
+
+	<!-- email -->
+	<definition name="site.email.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/email/list.jsp"/>
+		<put name="pageMainTitle" 	value="email.list.title"/>
+	</definition>
+	<!-- end of email -->
+
+	<!-- supplier -->
+	<definition name="site.supplier.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/list.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.list.title"/>
+	</definition>
+	<definition name="site.supplier.listConfirm" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/listConfirm.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.listConfirm.title"/>
+	</definition>
+	<definition name="site.supplier.confirmNew" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/edit.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.confirm.title"/>
+		<put name="pageSubTitle" 	value="supplier.confirm.subTitleNew"/>
+	</definition>
+	<definition name="site.supplier.confirmModify" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/edit.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.confirm.title"/>
+		<put name="pageSubTitle" 	value="supplier.confirm.subTitleModify"/>
+	</definition>
+	<definition name="site.supplier.selectSupplier" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/select.jsp"/>
+	</definition>
+	<definition name="site.supplier.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/new.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.new.title"/>
+	</definition>
+	<definition name="site.supplier.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/edit.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.edit.title"/>
+	</definition>
+	<definition name="site.supplier.view" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/view.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.view.title"/>
+	</definition>
+	<definition name="site.supplier.promote.request" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/requestPromote.jsp"/>
+	</definition>
+	<definition name="site.supplier.promote.response" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/response.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.promote.title"/>
+	</definition>
+	<definition name="site.supplier.promote.promote" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/promote.jsp"/>
+		<put name="pageMainTitle" 	value="supplier.promote.title"/>
+	</definition>
+	<definition name="site.supplier.viewBaseInfo" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/viewBaseInfo.jsp"/>
+	</definition>
+	<definition name="site.supplier.viewAviableSupplier" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplier/viewAviableSupplier.jsp"/>
+	</definition>
+	<!-- end of supplier -->
+
+	<!-- supplierContract -->
+	<definition name="site.supplierContract.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplierContract/list.jsp"/>
+		<put name="pageMainTitle" 	value="supplierContract.list.title"/>
+	</definition>
+	<definition name="site.supplierContract.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplierContract/new.jsp"/>
+	</definition>
+	<definition name="site.supplierContract.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplierContract/edit.jsp"/>
+	</definition>
+	<!-- end of supplierContract -->
+	
+	
+	<!-- hotelContract -->
+	<definition name="site.hotelContract.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/hotelContract/list.jsp"/>
+		<put name="pageMainTitle" 	value="hotelContract.list.title"/>
+	</definition>
+	<definition name="site.hotelContract.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/hotelContract/new.jsp"/>
+	</definition>
+	<definition name="site.hotelContract.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/hotelContract/edit.jsp"/>
+	</definition>
+	<!-- end of hotelContract -->
+
+	<!-- price -->
+	<definition name="site.price.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/price/list.jsp"/>
+		<put name="pageMainTitle" 	value="price.list.title"/>
+	</definition>
+	<definition name="site.price.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/price/new.jsp"/>
+	</definition>
+	<definition name="site.price.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/price/edit.jsp"/>
+	</definition>
+	<!-- end of price -->
+
+	<!-- supplierItem -->
+	<definition name="site.supplierItem.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplierItem/list.jsp"/>
+		<put name="pageMainTitle" 	value="supplierItem.list.title"/>
+	</definition>
+	<definition name="site.supplierItem.list.dialog" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplierItem/list.jsp"/>
+		<put name="pageMainTitle" 	value="supplierItem.list.title"/>
+	</definition>
+	<definition name="site.supplierItem.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplierItem/new.jsp"/>
+	</definition>
+	<definition name="site.supplierItem.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/supplierItem/edit.jsp"/>
+	</definition>
+	<!-- end of supplierItem -->
+
+	<!-- approveRequest -->
+	<definition name="site.approve.addComment" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/approve/addComment.jsp"/>
+		<put name="pageMainTitle" 	value="approveRequest.comment"/>
+	</definition>
+	<definition name="site.approve.viewApprover" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/approve/viewApprover.jsp"/>
+	</definition>
+	<!-- end of travelApplicationApproveRequest -->	
+	
+	<!-- recharge -->
+	<definition name="site.recharge.listCustomer" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/recharge/listCustomer.jsp"/>
+	</definition>		
+	<definition name="site.recharge.listPerson" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/recharge/listPerson.jsp"/>
+	</definition>		
+	<!-- end of recharge -->
+
+
+	<!-- globalParameter -->
+	<definition name="site.globalParameter.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/parameter/editGlobal.jsp"/>
+		<put name="pageMainTitle" 	value="globalParameter.edit.title"/>
+	</definition>		
+	<definition name="site.siteParameter.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/parameter/editSite.jsp"/>
+		<put name="pageMainTitle" 	value="siteParameter.edit.title"/>
+	</definition>		
+	<!-- end of parameter -->
+
+	<!-- systemLog -->
+	<definition name="site.systemLog.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/systemLog/list.jsp"/>
+		<put name="pageMainTitle" 	value="systemLog.list"/>
+	</definition>
+	<!-- end of systemLog -->
+	<!-- 物料维护start -->
+	<definition name="site.wmsPart.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/list.jsp"/>
+	</definition>
+	<definition name="site.wmsPart.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/new.jsp"/>
+	</definition>
+	<definition name="site.wmsPart.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/wmsPart/edit.jsp"/>
+	</definition>
+	<definition name="site.wmsPart.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/select.jsp"/>
+	</definition>
+	<definition name="site.wmsPartStocking.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/selectWmsPart.jsp"/>
+	</definition>
+	<definition name="site.wmsPartShipOrder.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/selectWmsPartShipOrder.jsp"/>
+	</definition>
+	<definition name="site.selectWmsPartByPortalShipOrder.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/selectWmsPartByPortalShipOrder.jsp"/>
+	</definition>
+	
+	<definition name="site.wmsPartDelivery.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/selectDelivery.jsp"/>
+	</definition>
+	<definition name="site.CustomerPlanDeliveryWmsPart.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/wmsPart/selectCustomerPlanDelivery.jsp"/>
+	</definition>
+	<!-- 物料维护end --> 
+	<definition name="site.storageLocation.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storageLocation/list.jsp"/>
+	</definition>
+	<definition name="site.storageLocation.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storageLocation/new.jsp"/>
+	</definition>
+	<definition name="site.storageLocation.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storageLocation/edit.jsp"/>
+	</definition>
+	<definition name="site.storageLocation.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storageLocation/select.jsp"/>
+	</definition>
+	<definition name="site.storageLocationType.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storageLocation/selectLocation.jsp"/>
+	</definition>
+	<definition name="site.storageLocationLF.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsSycann/poRqcUnqualified/selectLf.jsp"/>
+	</definition>
+	<definition name="site.storageLocation.select1" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsSycann/productIn/select.jsp"/>
+	</definition>
+	<!-- 查询成品库和线边库 -->
+	<definition name="site.storageLocation.selectStorage" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsSycann/productIn/selectStorage.jsp"/>
+	</definition>
+	
+	<definition name="site.storageLocation.select.radio" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storageLocation/selectRadio.jsp"/>
+	</definition>
+	
+	<definition name="site.storeRoom.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storeRoom/list.jsp"/>
+	</definition>
+	<definition name="site.storeRoom.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storeRoom/new.jsp"/>
+	</definition>
+	<definition name="site.storeRoom.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/storeRoom/edit.jsp"/>
+	</definition>
+	
+	<definition name="site.supplierPart.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/supplierPart/edit.jsp"/>
+	</definition>
+	<definition name="site.supplierPart.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/supplierPart/new.jsp"/>
+	</definition>
+	<definition name="site.supplierPart.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/supplierPart/list.jsp"/>
+		<put name="pageMainTitle" 	value="supplierPart.list.title"/>
+	</definition>
+	<definition name="site.selectTool.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/wmsTool/select.jsp"/>
+	</definition>
+	<definition name="site.selectToolNext.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/wmsTool/selectToolNext.jsp"/>
+	</definition>
+	
+	<definition name="site.wmsTool.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/wmsTool/list.jsp"/>
+	</definition>
+	 <definition name="site.wmsTool.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/wmsTool/new.jsp"/>
+	</definition>
+	 <definition name="site.wmsTool.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/wmsTool/edit.jsp"/>
+	</definition>
+	
+	<definition name="site.badReasons.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/badReasons/list.jsp"/>
+	</definition>
+	<definition name="site.badReasons.select" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/badReasons/selectList.jsp"/>
+	</definition>
+	<definition name="site.badReasons.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/badReasons/new.jsp"/>
+	</definition>
+	<definition name="site.badReasons.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/badReasons/edit.jsp"/>
+	</definition>
+	
+	<definition name="site.partLocation.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/basicPartLocation/list.jsp"/>
+	</definition>
+	<definition name="site.partLocation.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/basicPartLocation/new.jsp"/>
+	</definition>
+	<definition name="site.partLocation.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/basicPartLocation/edit.jsp"/>
+	</definition>
+	<definition name="site.inventory.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsInventory/inventory/list.jsp"/>
+	</definition>
+	<definition name="site.recommendLot" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsInventory/inventory/boxList.jsp"/>
+	</definition>
+	
+	<definition name="site.storageLocation.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/storageLocation/listPrint.jsp"/>
+	</definition>
+	<definition name="site.wmsPart.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/wmsPart/printCode.jsp"/>
+	</definition>
+	<definition name="site.batchAdjustment.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/adjustment/list.jsp"/>
+	</definition>
+	<definition name="batch.Adjustment.box" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/adjustment/listBox.jsp"/>
+	</definition>
+	<definition name="site.batchAdjustment.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/adjustment/new.jsp"/>
+	</definition>
+	<definition name="site.unplannedWarehousing.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/list.jsp"/>
+	</definition>
+	<definition name="site.wmsUnplannedWarehousing.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/new.jsp"/>
+	</definition>
+	<definition name="site.wmsUnplannedWarehousing.edit" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/edit.jsp"/>
+	</definition>
+	<definition name="site.wmsUnplannedWarehousing.view" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/view.jsp"/>
+	</definition>
+	
+	<definition name="site.wmsUnplannedWarehousing.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/printCode.jsp"/>
+	</definition>
+	<definition name="site.wmsUnplannedWarehousing.printOrder" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/printPlantGoOut.jsp"/>
+	</definition>
+	
+	
+	<definition name="site.wmsPlanToGoOut.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedOutbound/list.jsp"/>
+	</definition>
+	<definition name="site.wmsPlanToGoOut.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedOutbound/list.jsp"/>
+	</definition>
+	<definition name="site.wmsPlanToGoOut.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedOutbound/new.jsp"/>
+	</definition>
+	<definition name="site.wmsPlanToGoOut.edit" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedOutbound/edit.jsp"/>
+	</definition>
+	<definition name="part.decomposition.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/partDecomposition/list.jsp"/>
+	</definition>
+	<definition name="part.decomposition.new" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/partDecomposition/new.jsp"/>
+	</definition>
+	<definition name="site.inventory.report" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/inventory/list.jsp"/>
+	</definition>
+	<definition name="site.inventory.occupied.detial.report" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/inventoryOccupiedDetial/list.jsp"/>
+	</definition>
+	<definition name="site.inventoryMoving.report" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/moveInventory/list.jsp"/>
+	</definition>
+	<definition name="site.scanLog.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/scannLog/list.jsp"/>
+	</definition>
+	<definition name="scann.unplannedWarehousing.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedOutbound/scannlist.jsp"/>
+	</definition>
+	<definition name="scann.wmsPlanToGoOut.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/scannlist.jsp"/>
+	</definition>
+	<definition name="scann.unplannedWarehousing.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedOutbound/scannNew.jsp"/>
+	</definition>
+	<definition name="scann.planToGoOut.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/scannNew.jsp"/>
+	</definition>
+	<definition name="site.supplier.selectSupplierPart" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/partDecomposition/listSupplier.jsp"/>
+	</definition>
+	<definition name="site.bom.list" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/bom/list.jsp"/>
+	</definition>
+	<definition name="site.inventory.location" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/inventoryLocation/list.jsp"/>
+	</definition>
+	<definition name="site.inventory.part" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/inventoryPart/list.jsp"/>
+	</definition>
+	<definition name="site.samplingRatio.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/supplierPart/listSamplingRatio.jsp"/>
+	</definition>
+	
+	
+	<!-- wmsStocking -->
+	<definition name="site.wmsStocking.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/list.jsp"/>
+	</definition>
+	<definition name="site.wmsStocking.listReport" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/reportlist.jsp"/>
+		<put name="pageMainTitle" 	value="wmsStocking.listReport.title"/>
+	</definition>
+	<definition name="site.wmsStocking.view" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/viewReport.jsp"/>
+		<put name="pageMainTitle" 	value="wmsStocking.viewReport.title"/>
+	</definition>
+	<definition name="site.wmsStocking.view2" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/view.jsp"/>
+	</definition>
+	<definition name="site.wmsStocking.lookOver" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/lookOverReport.jsp"/>
+		<put name="pageMainTitle" 	value="wmsStocking.viewReport.title"/>
+	</definition>
+	<definition name="site.wmsStocking.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/new.jsp"/>
+		<put name="pageMainTitle" 	value="wmsStocking.new.title"/>
+	</definition>
+	<definition name="site.wmsStocking.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/edit.jsp"/>
+	</definition>
+	<definition name="site.wmsStockingByPart.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/editByPart.jsp"/>
+	</definition>
+	<definition name="site.WmsStockingAll.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/editWmsStockingAll.jsp"/>
+		<put name="pageMainTitle" 	value="wmsStocking.edit.title"/>
+	</definition>
+	<definition name="site.ScanRecord.select" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/selectScanRecord.jsp"/>
+	</definition>
+	
+	<definition name="site.stocking.inventory.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/newItemViewList.jsp"/>
+	</definition>
+	<definition name="site.stocking.item.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/editItemViewList.jsp"/>
+	</definition>
+	<definition name="site.stocking.item.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsStocking/editItemViewList.jsp"/>
+	</definition>
+	<!--<definition name="wmsStocking.difference.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/stocking/list.jsp"/>
+	</definition>-->
+	<definition name="wmsStocking.difference.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/stocking/listStocking.jsp"/>
+	</definition>
+	<definition name="site.Difference.view" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/stocking/view.jsp"/>
+	</definition>
+	<definition name="site.DifferenceByPart.view" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsReport/stocking/viewByPart.jsp"/>
+	</definition>
+	<definition name="site.expensesCourse.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/expensesCourse/list.jsp"/>
+	</definition>
+	<definition name="site.expensesCourse.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/expensesCourse/new.jsp"/>
+	</definition>
+	<definition name="site.expensesCourse.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/expensesCourse/edit.jsp"/>
+	</definition>
+	<definition name="site.costCenter.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/costCenter/list.jsp"/>
+	</definition>
+	<definition name="site.costCenter.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/costCenter/new.jsp"/>
+	</definition>
+	<definition name="site.costCenter.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/costCenter/edit.jsp"/>
+	</definition>
+	
+	<definition name="site.unplannedReasons.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/unplannedReasons/list.jsp"/>
+	</definition>
+	<definition name="site.unplannedReasons.select" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/unplannedReasons/selectList.jsp"/>
+	</definition>
+	<definition name="site.unplannedReasons.new" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/unplannedReasons/new.jsp"/>
+	</definition>
+	<definition name="site.unplannedReasons.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/unplannedReasons/edit.jsp"/>
+	</definition>
+	<definition name="site.entersSellsSaves.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/entersSellsSaves/list.jsp"/>
+	</definition>
+	<definition name="site.entersSellsSaves.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/entersSellsSaves/new.jsp"/>
+	</definition>
+	
+	<definition name="site.batchAdjustment.view" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/adjustment/view.jsp"/>
+	</definition>
+	<definition name="site.wmsPlanToGoOut.printOrder" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsComprehensive/unplannedOutbound/printWmsUW.jsp"/>
+	</definition>
+	<definition name="site.finishedSaiheRelation.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/finishedSaiheRelation/list.jsp"/>
+	</definition>
+	<definition name="site.finishedSaiheRelation.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/finishedSaiheRelation/new.jsp"/>
+	</definition>
+	<definition name="site.finishedSaiheRelation.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/finishedSaiheRelation/edit.jsp"/>
+	</definition>
+	
+	<definition name="site.finishedToolPutnumber.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/finishedToolPutnumber/list.jsp"/>
+	</definition>
+	<definition name="site.finishedToolPutnumber.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/finishedToolPutnumber/new.jsp"/>
+	</definition>
+	<definition name="site.finishedToolPutnumber.edit" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/finishedToolPutnumber/edit.jsp"/>
+	</definition>
+	
+	
+	<definition name="site.selectToolCode.list1" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsSycann/productIn/selectToolCode1.jsp"/>
+	</definition>
+	<!-- 客户退货 -->
+	<definition name="site.customerreturns.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerreturns/list.jsp"/>
+	</definition>
+	<definition name="site.customerreturns.new" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerreturns/new.jsp"/>
+		<put name="pageMainTitle" value="site.newCustomerreturns.title" />
+	</definition>
+	<definition name="site.customerreturns.edit" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/customerreturns/new.jsp"/>
+	</definition>
+	<definition name="site.customerreturns.itemlist" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/customerreturns/itemList.jsp"/>
+	</definition>
+	
+	<definition name="site.selectCustomerReturn.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerreturns/listCustomer.jsp"/>
+	</definition>
+	<definition name="site.selectProductCode.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerreturns/listProduct.jsp"/>
+	</definition>
+	
+	
+	<!-- 客户退货明细 -->
+	<definition name="site.customerReturnItem.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerReturnItem/list.jsp"/>
+	</definition>
+	<!-- 客户退货及明细view显示页面-->
+	<definition name="site.CustomerreturnsByItem.edit" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerreturns/view.jsp"/>
+		<put name="pageMainTitle" value="site.viewCustomerreturns.title" />
+	</definition>
+	<!-- 客户退货及明细print显示页面-->
+	<definition name="site.CustomerreturnsByItem.print" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerreturns/printCustomerreturnsByItem.jsp"/>
+	</definition>
+	
+	<!-- 客户物料价格报表-->
+	<definition name="site.basicPartPrice.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/basicPartPrice/list.jsp"/>
+	</definition>
+	<!-- 客户退货 -->
+	<definition name="site.BasicPartPriceMaintenance.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/basicPartPrice/list.jsp"/>
+	</definition>
+	<definition name="site.BasicPartPriceMaintenance.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/basicPartPrice/new.jsp"/>
+	</definition>
+	<definition name="site.BasicPartPriceMaintenance.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/basicPartPrice/edit.jsp"/>
+	</definition>
+	<!-- 退货库位 -->
+	<definition name="site.CustomerReturn.storageLocation.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/customerreturns/selectCustomerReturnLocation.jsp"/>
+	</definition>
+	<definition name="site.CustomerReturnReport.list" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsReport/customerReturnReport/list.jsp"/>
+	</definition>
+	
+	<definition name="site.portalShipOrderReport.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/reportPortalShipOrder.jsp"/>
+	</definition>
+
+	
+	<!-- 库存预警报表 -->
+	<definition name="site.portalShipOrderReport.listy" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/yujingbaobiao.jsp"/>
+	</definition>
+	
+	
+	
+	
+	<definition name="site.portalShipOrder.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/portalShipOrder.jsp"/>
+	</definition>
+	<definition name="site.portalShipPurchaseOrder" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwo/viewPortalShipPurchaseOrder.jsp"/>
+		<put name="pageMainTitle"  value="site.portalShipPurchaseOrder"/>
+	</definition>
+	<definition name="site.PortalShipOrder.lot.list.print" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/printLotList.jsp"/>
+		<put name="pageMainTitle"  value="printLotList.list"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/printCode.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printMin" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/printCodeMin.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printZhong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/printCodeZhong.jsp"/>
+	</definition>
+	<!-- PO 二维码  start-->
+	<definition name="site.purchaseOrderInspectionPendingQRCode.item.print" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/printQrCode.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPendingQRCode.item.printMin" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/printQrCodeMin.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPendingQRCode.item.printZhong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/printQrCodeZhong.jsp"/>
+	</definition>
+	<!-- end -->
+	<definition name="site.portalShipPurchaseOrder.print2" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwo/printPortalShipOrder.jsp"/>
+	</definition>
+	<definition name="site.shippingOrder.report.site" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/portalShipOrderReportSite.jsp"/>
+		<put name="pageMainTitle"  value="portalShipOrder.view"/>
+	</definition>
+	<definition name="site.withdrawPortalShipOrderTwo" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwo/viewPortalShipPurchaseOrder.jsp"/>
+		<put name="pageMainTitle"  value="site.portalShipPurchaseOrder"/>
+	</definition>
+	
+	<definition name="site.supplierPurchaseOrder.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalBackLoad/purchaseItem.jsp"/>
+	</definition>
+	
+	<!--<definition name="site.supplierPurchaseOrdermerge.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalBackLoad/purchaseMerge.jsp"/>
+	</definition>
+	--><definition name="site.viewBySupplierPurchaseOrderItem.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalBackLoad/viewBySupplierItem.jsp"/>
+		<put name="pageMainTitle"  value="purchaseOrder.updateBox"/>
+	</definition>
+	<definition name="site.portalShipOrderTwo.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalShipOrderTwo/new.jsp"/>
+		<put name="pageMainTitle" 	value="portalShipOrder.new.title"/>
+	</definition>
+	<definition name="site.purchaseItemTwo" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoad/purchaseItemTwo.jsp"/>
+	</definition>
+	
+	
+	<!-- 非PO计划查看 -->
+	<definition name="site.supplierPurchaseOrder.listWrong" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalBackLoadWrong/purchaseItem.jsp"/>
+	</definition>
+	<definition name="site.daorushibai.Group.add" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalBackLoadWrong/mesgadd.jsp"/>
+	</definition>
+	<definition name="site.viewBySupplierPurchaseOrderItemWrong.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalBackLoadWrong/viewBySupplierItem.jsp"/>
+		<put name="pageMainTitle"  value="purchaseOrder.updateBox"/>
+	</definition>
+	<!-- 创建非PO发货单 -->
+	<definition name="site.portalShipOrderWrong.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/portalShipOrder.jsp"/>
+	</definition>
+	<definition name="site.portalShipOrderWrongSupplier.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/portalShipOrderSupplier.jsp"/>
+	</definition>
+	<definition name="site.portalShipPurchaseOrderWrong" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwoWrong/viewPortalShipPurchaseOrder.jsp"/>
+		<put name="pageMainTitle"  value="site.portalShipPurchaseOrder"/>
+	</definition>
+	<definition name="site.PortalShipOrder.lot.list.printWrong" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/printLotList.jsp"/>
+		<put name="pageMainTitle"  value="printLotList.list"/>
+	</definition>
+	<definition name="site.portalShipPurchaseOrder.print2Wrong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwoWrong/printPortalShipOrder.jsp"/>
+	</definition>
+	<definition name="site.withdrawPortalShipOrderTwoWrong" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwoWrong/viewPortalShipPurchaseOrder.jsp"/>
+		<put name="pageMainTitle"  value="site.portalShipPurchaseOrder"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printWrong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/printCode.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printQrCode" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/printQrCode.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printWrongMin" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/printCodeMin.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printQrCodeMin" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/QrCodelist.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printQrCodeZhong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/QrCodeZhong.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printWrongMinZhong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/printCodeZhong.jsp"/>
+	</definition>
+	<definition name="site.portalShipOrderTwoWrong.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalShipOrderTwoWrong/new.jsp"/>
+		<put name="pageMainTitle" 	value="portalShipOrder.new.title"/>
+	</definition>
+	<definition name="site.purchaseItemTwoWrong" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/purchaseItemTwo.jsp"/>
+		<put name="pageMainTitle"  value="purchaseItem.list"/>
+	</definition>
+	
+	<!-- 创建成品发货单 -->
+	<definition name="site.portalShipOrderProduct.list" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadProduct/portalShipOrder.jsp"/>
+	</definition>
+	<definition name="site.portalShipPurchaseOrderProduct" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwoProduct/viewPortalShipPurchaseOrder.jsp"/>
+		<put name="pageMainTitle"  value="site.portalShipPurchaseOrder"/>
+	</definition>
+	<definition name="site.PortalShipOrder.lot.list.printProduct" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadProduct/printLotList.jsp"/>
+		<put name="pageMainTitle"  value="printLotList.list"/>
+	</definition>
+	<definition name="site.portalShipPurchaseOrder.print2Product" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwoProduct/printPortalShipOrder.jsp"/>
+	</definition>
+	<definition name="site.withdrawPortalShipOrderTwoProduct" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalShipOrderTwoProduct/viewPortalShipPurchaseOrder.jsp"/>
+		<put name="pageMainTitle"  value="site.portalShipPurchaseOrder"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printProduct" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadProduct/printCode.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printProductMin" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadProduct/printCodeMin.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printProductZhong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadProduct/printCodeZhong.jsp"/>
+	</definition>
+	<!-- 二维码 start -->
+	<definition name="site.purchaseOrderInspectionPending.item.printQRCoduct" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/QrCode.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printQRCoductMin" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/QeCodeMin.jsp"/>
+	</definition>
+	<definition name="site.purchaseOrderInspectionPending.item.printQRCoductZhong" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/QeCodeZhong.jsp"/>
+	</definition>
+	<!-- end -->
+	<definition name="site.portalShipOrderTwoProduct.new" extends="site.mainFrameLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalShipOrderTwoProduct/new.jsp"/>
+		<put name="pageMainTitle" 	value="portalShipOrder.new.title"/>
+	</definition>
+	
+	<definition name="site.purchaseItemTwoProduct" extends="site.mainFrameLayout">
+		<put name="body" value="/WEB-INF/jsp/portalBackLoadProduct/purchaseItemTwo.jsp"/>
+		<!--<put name="pageMainTitle"  value="purchaseItem.list"/>
+	--></definition>
+	
+	<!--每日预计库存报表-->
+	<definition name="site.partExpectedInventoryReport.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/scheduleReport/partForecastNeedReport/listExpectedInventory.jsp"/>
+	</definition>
+	
+	<!--原材料预计需求量报表-->
+	<definition name="site.partNeedReport.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/scheduleReport/partForecastNeedReport/listNeed.jsp"/>
+	</definition>
+	
+	<!--原材料预计需求报表-->
+	<definition name="site.partForecastNeedReport.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/scheduleReport/partForecastNeedReport/list.jsp"/>
+	</definition>
+	<!-- 选择供应商 -->
+	
+	<definition name="site.selectSupperByPortalShipOrder.select" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalShipOrderTwoWrong/selectSupplier.jsp"/>
+	</definition>
+	
+	<!-- 同步时间设置 -->
+	<definition name="site.SycSleepTime.list" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/wmsbasic/sycSleepTime/list.jsp"/>
+	</definition>
+	<definition name="site.SycSleepTimeMaintenance.new" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/sycSleepTime/new.jsp"/>
+	</definition>
+	<definition name="site.SycSleepTimeMaintenance.edit" extends="dialog.mainLayout">
+		<put name="body" value="/WEB-INF/jsp/wmsbasic/sycSleepTime/edit.jsp"/>
+	</definition>
+	
+</tiles-definitions>

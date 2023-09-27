@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 条码数据库  -->
+	<bean id="dataSource" 
+	    class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+	    <property name="driverClassName"><value>com.microsoft.sqlserver.jdbc.SQLServerDriver</value></property>
+	    <property name="url"><value>jdbc:sqlserver://10.71.64.64;databaseName=portal;autoReconnect=true</value></property>
+	    <property name="username"><value>sa</value></property>
+	    <property name="password"><value>Lear0108</value></property>
+	    
+	    <!-- 配置连接池初始化大小、最小空闲、最大活动连接数量 -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="2000" />
+
+		<!-- 配置获取连接等待超时的时间、空闲连接检测时间 -->
+		<property name="maxWait" value="10000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+
+		<!-- 配置连接的最小空闲时间 -->
+		<property name="minEvictableIdleTimeMillis" value="30000" />
+
+		<!-- 活动校验 -->
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- PreparedStatement -->
+		<property name="poolPreparedStatements" value="true" />
+
+		<!-- 强制释放 -->
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="1200" />
+		<property name="logAbandoned" value="true" />
+	</bean>
+	
+	<!-- 中间数据库连接 -->
+	<bean id="dataSourceShared" 
+	    class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName"><value>com.microsoft.sqlserver.jdbc.SQLServerDriver</value></property>
+	    <property name="url"><value>jdbc:sqlserver://10.71.64.64;databaseName=LD-interface</value></property>
+	  
+	    <property name="username"><value>sa</value></property>
+	    <property name="password"><value>Lear0108</value></property>
+	    
+	    <!-- 配置连接池初始化大小、最小空闲、最大活动连接数量 -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="2000" />
+
+		<!-- 配置获取连接等待超时的时间、空闲连接检测时间 -->
+		<property name="maxWait" value="10000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+
+		<!-- 配置连接的最小空闲时间 -->
+		<property name="minEvictableIdleTimeMillis" value="30000" />
+
+		<!-- 活动校验 -->
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- PreparedStatement -->
+		<property name="poolPreparedStatements" value="true" />
+
+		<!-- 强制释放 -->
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="1200" />
+		<property name="logAbandoned" value="true" />
+	</bean>
+	
+</beans>

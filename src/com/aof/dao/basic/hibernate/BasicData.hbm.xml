@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration. -->
+<!-- Created Fri Sep 23 14:49:10 CST 2005 -->
+<hibernate-mapping package="com.aof.model.basic">
+	<!-- ==============================基础数据维护开始2015-01-28-st================================================ -->
+	<class name="WmsPart" table="basic_part">
+		<id name="id" column="id" type="string">
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+
+		<property name="name" column="name" type="string" />
+		<property name="unit" column="unit" type="string" />
+		<property name="describe1" column="describe1" type="string" />
+		<property name="describe2" column="describe2" type="string" />
+		<property name="largest_inventory" column="largest_inventory" type="big_decimal" />
+		<property name="freeze_status" column="freeze_status" type="com.aof.model.metadata.YesNo" />
+		<property name="productClass" column="product_class" type="string" />
+		<property name="recommend_date" column="recommend_date" type="integer" />
+		<property name="enabled" column="status" type="com.aof.model.metadata.EnabledDisabled"
+			not-null="true" />
+		<property name="remark" column="remark" type="string" />
+		<property name="domain" column="domain" type="string" />
+		<property name="ord_mult" column="ord_mult" type="big_decimal" />
+		<property name="date" column="date" type="string" />
+		<property name="type" column="type" type="com.aof.model.metadata.PartType" />
+		<property name="partType" column="partType" type="string" />
+		<property name="productLine" column="productLine" type="string" />
+		
+		<property name="productSpecifications" column="productspecifications" type="string" />
+		<property name="vend" column="VEND" type="string" />
+		<property name="highQty" column="high_qty" type="big_decimal" />
+		<property name="lowQty" column="low_qty" type="big_decimal" />
+		<property name="securityQty" column="security_qty" type="big_decimal" />
+		<property name="drwgLoc" column="drwgLoc" type="string"/>
+	</class>
+	<!-- 推荐库位 -->
+	<class name="RecommendLocation" table="basic_recommend_location">
+		<id name="id" column="id" type="integer">
+			<generator class="assigned" />
+		</id>
+
+		<property name="code" column="code" type="string" />
+		<property name="description" column="description" type="string" />
+		<property name="is_enabled" column="is_enabled" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	<!-- 车辆信息维护 -->
+	<class name="CarNumber" table="basic_car_number">
+		<id name="id" column="id" type="integer">
+			<generator class="assigned" />
+		</id>
+
+		<property name="car_number" column="car_number" type="string" />
+		<property name="address" column="address" type="string" />
+		<property name="name" column="name" type="string" />
+		<property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	<!-- 不良品原因维护 -->
+	<class name="ReasonCode" table="basic_reason_code">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+
+		<property name="domain" column="domain" type="string" />
+		<property name="instructions" column="instructions" type="string" />
+		<property name="describe" column="describe" type="string" />
+		<property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	<!-- 不良品原因维护 -->
+	<class name="BadReasons" table="basic_bad_reasons">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="user" column="user_id" class="com.aof.model.admin.User" />
+
+		<property name="domain" column="domain" type="string" />
+		<property name="instructions" column="instructions" type="string" />
+		<property name="describe" column="describe" type="string" />
+		<property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="remark" column="remark" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="type" column="type" type="com.aof.model.metadata.BadReasonsType" />
+	</class>
+	<!-- 器具维护 -->
+	<class name="WmsTool" table="basic_tool">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="part" column="part" class="WmsPart" />
+		<many-to-one name="location" column="location" class="StorageLocation" />
+
+		<property name="code" column="tool_no" type="string" />
+		<property name="capacity" column="capacity" type="big_decimal" />
+		<property name="date" column="date" type="date" />
+		<property name="enabled" column="enabled" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="remark" column="remark" type="string" />
+		<property name="type" column="type" type="com.aof.model.metadata.YesNo" />
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="in_date" column="in_date" type="date" />
+		<property name="status" column="status" type="com.aof.model.metadata.YesNo" />
+	</class>
+
+	<!-- 库房信息 -->
+	<class name="StoreRoom" table="basic_storeroom">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+
+		<property name="domain" column="domain" type="string" />
+		<property name="code" column="code" type="string" />
+		<property name="name" column="name" type="string" />
+		<property name="address" column="address" type="string" />
+		<property name="date" column="date" type="date" />
+
+		<property name="largest_inventory" column="largest_inventory" type="big_decimal" />
+		<property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="type" column="type" type="com.aof.model.metadata.StoreRoomType" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	<!-- 库位信息 -->
+	<class name="StorageLocation" table="basic_storage_location">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="basic_storeroom_id" column="basic_storeroom_id" class="StoreRoom" />
+		<many-to-one name="site" column="siteId" class="com.aof.model.admin.Site" />
+
+		<property name="code" column="code" type="string" />
+		<property name="address" column="address" type="string" />
+		<property name="description" column="description" type="string" />
+		<property name="max_inventory" column="max_inventory" type="big_decimal" />
+		<property name="freeae_status" column="freeae_status" type="com.aof.model.metadata.YesNo" />
+		<property name="recommend_status" column="recommend_status" type="com.aof.model.metadata.YesNo" />
+		<property name="f_in_f_out_status" column="f_in_f_out_status" type="com.aof.model.metadata.YesNo" />
+		<property name="enabled" column="is_enabled" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	<!-- 供应商物料维护 -->
+	<class name="SupplierPart" table="basic_supplier_part">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="partId" column="partId" class="WmsPart" />
+		<many-to-one name="supplierId" column="supplierId" class="com.aof.model.admin.Supplier" />
+
+		<property name="supplierPart" column="supplier_part" type="string" />
+		<property name="sampling_rate" column="sampling_rate" type="big_decimal" />
+		<property name="capacity" column="supplier_capacity" type="big_decimal" />
+	</class>
+	<!-- 物料单价维护 -->
+	<class name="FPSMaterialPrice" table="basic_fps_material_price">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="wmsPart" column="wmsPart" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="supplier" column="supplier_id" class="com.aof.model.admin.Supplier" />
+
+		<property name="supplierName" column="supplier_name" type="string" />
+		<property name="unit" column="unit" type="string" />
+		<property name="startDate" column="start_date" type="date" />
+		<property name="endDate" column="end_date" type="date" />
+		<property name="unitPrice" column="unit_price" type="big_decimal" />
+		<property name="enabled" column="is_enabled" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="description1" column="description1" type="string" />
+		<property name="description2" column="description2" type="string" />
+		<property name="currencyType" column="currency_type" type="com.aof.model.metadata.CurrencyType" />
+	</class>
+	<!-- 物料库位维护 -->
+	<class name="BasicPartLocation" table="basic_part_location">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="location" column="location" class="StorageLocation" />
+	</class>
+
+	<class name="PartDecomposition" table="part_decomposition">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="box" column="box_id" class="com.aof.model.po.Box"></many-to-one>
+
+		<property name="date" column="date" type="date"></property>
+		<property name="domain" column="domain" type="string"></property>
+		<property name="isPrint" column="print_status" type="com.aof.model.metadata.YesNo"></property>
+		<many-to-one name="operation" column="operation" class="com.aof.model.admin.User"></many-to-one>
+		<many-to-one name="part" column="part" class="WmsPart"></many-to-one>
+		<property name="qty" column="qty" type="big_decimal" />
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site"></many-to-one>
+		<property name="type" column="type" type="com.aof.model.metadata.YesNo"></property>
+	</class>
+	<class name="UselessPart" table="useless_part">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="fatherPart" column="fatherPart" class="WmsPart"></many-to-one>
+		<many-to-one name="part" column="part" class="WmsPart"></many-to-one>
+		<many-to-one name="lot" column="lot" class="com.aof.model.po.WmsLot"></many-to-one>
+		<property name="amount" column="amount" type="big_decimal"></property>
+		<many-to-one name="partDecomposition" column="partDecomposition" class="PartDecomposition"></many-to-one>
+	</class>
+
+	<class name="SupplierPartSamplingRatio" table="basic_supplier_part_samplingRatio">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="supplierId" column="supp_id" class="com.aof.model.admin.Supplier" />
+		<many-to-one name="part" column="part" class="WmsPart"></many-to-one>
+		<many-to-one name="user_id" column="user_id" class="com.aof.model.admin.User"></many-to-one>
+
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="date" column="date" type="date" />
+		<property name="enabled" column="enabled" type="com.aof.model.metadata.EnabledDisabled"
+			not-null="true" />
+		<property name="test1" column="test1" type="string" />
+		<property name="test2" column="test2" type="string" />
+	</class>
+	<!-- -->
+	<class name="ExpensesCourse" table="basic_expense_course">
+		<id name="id" column="id" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="code" column="code" type="string" />
+		<property name="description" column="description" type="string" />
+		<property name="type" column="type" type="string" />
+		<property name="currency" column="currency" type="string" />
+		<property name="format_position" column="format_position" type="string" />
+		<property name="expense_index" column="expense_index" type="string" />
+		<property name="sun_model" column="sun_model" type="string" />
+		<property name="statistical_expense" column="statistical_expense" type="string" />
+		<property name="enabled" column="enabled" type="com.aof.model.metadata.EnabledDisabled"
+			not-null="true" />
+	</class>
+	<!-- -->
+	<class name="CostCenter" table="basic_cost_center">
+		<id name="id" column="id" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="code" column="code" type="string" />
+		<property name="description" column="description" type="string" />
+		<property name="enabled" column="enabled" type="com.aof.model.metadata.EnabledDisabled"
+			not-null="true" />
+	</class>
+	<!-- 计划外出入库原因代码 -->
+	<class name="UnplannedReasons" table="basic_unplanned_reasons">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="user" column="user_id" class="com.aof.model.admin.User" />
+
+		<property name="domain" column="domain" type="string" />
+		<property name="expenses_course" column="expenses_course" type="string" />
+		<property name="department_cost" column="department_cost" type="string" />
+		<property name="instructions" column="instructions" type="string" />
+		<property name="describe" column="describe" type="string" />
+		<property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="remark" column="remark" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="type" column="type" type="com.aof.model.metadata.YesNo" />
+	</class>
+
+	<!-- 进销存 -->
+	<class name="ReportEntersSellsSaves" table="report_enters_sells_saves">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="user" column="user_id" class="com.aof.model.admin.User" />
+
+		<property name="initial_qty" column="initial_qty" type="big_decimal" />
+		<property name="balance_qty" column="balance_qty" type="big_decimal" />
+		<property name="start_date" column="start_date" type="date" />
+		<property name="end_date" column="end_date" type="date" />
+		<property name="month" column="month" type="int" />
+
+	</class>
+	<!-- 客户退货 -->
+ 	<class name="Customerreturns" table="customer_returns">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="returnNumber" column="returnNumber" type="string" />
+        <many-to-one name="basicCustomer" column="customerCode" class="com.aof.model.product.BasicCustomer" />
+        <property name="customerDescription" column="customerDescription" type="string" />
+        <property name="materialCode" column="materialCode" type="string" />
+        <property name="materialName" column="materialName" type="string" />
+        <property name="returnQuantity" column="returnQuantity" type="integer" />
+        <property name="returnLocation" column="returnLocation" type="string" />
+        <property name="returnDate" column="returnDate" type="date" />
+        <property name="returnPerson" column="returnPerson" type="string" />
+        <property name="returnPersonContact" column="returnPersonContact" type="string" />
+        <property name="delStatus" column="delstatus" type="integer" />
+        <property name="returnReasons" column="returnReasons" type="string" />
+        <property name="returnStorage" column="returnStorage" type="string" /> 
+        <property name="invoiceStatus" column="invoiceStatus" type="com.aof.model.metadata.YesNo" /> 
+        <property name="printStatus" column="printStatus" type="com.aof.model.metadata.YesNo" /> 
+    </class>
+    
+    <!-- 客户退货明细-->
+    <class name="CustomerReturnItem" table="customer_returns_item">
+		<id name="id" column="id" type="integer">
+			<generator class="native"/>
+		</id>
+		<many-to-one name="customerreturns" column="cusId" class="com.aof.model.basic.Customerreturns" />
+		<many-to-one name="workorderId" column="workorderId" class="com.aof.model.product.SalesWorkorder" />
+		<property name="batchNumber" column="batchNumber" type="string"/>
+		<many-to-one name="part" column="part_id" class="com.aof.model.basic.WmsPart"/>
+		<property name="materialDescription" column="materialDescription" type="string"/>
+		<property name="dpi" column="DPI" type="string"/>
+		<property name="qty" column="qty" type="integer"/>
+		<property name="salesDeliveryDate" column="salesDeliveryDate" type="date"/>
+		<property name="returnStorage" column="returnStorage" type="string" />
+		<property name="isSync" column="is_sync" type="com.aof.model.metadata.YesNo"/>
+		
+		
+		
+	</class>
+	
+    <class name="BasicPartPrice" table="BASIC_PART_PRICE">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+		<property name="customer" column="customer" type="string" />
+		<property name="sotaxc" column="sotaxc" type="string" />
+		<property name="partId" column="part_id" type="string" />
+		<property name="solist" column="solist" type="string" />
+		<property name="pcDesc" column="pc_desc" type="string" />
+		<property name="curr" column="curr" type="string" />
+		<property name="pcUm" column="pc_um" type="string" />
+		<property name="startDate" column="start_date" type="timestamp" />
+		<property name="expireDate" column="expire_date" type="timestamp" />
+		<property name="amtType" column="amt_type" type="string" />
+		<property name="amt" column="amt" type="big_decimal" />
+		<property name="domain" column="domain" type="string" />
+		<property name="site" column="site" type="string" />
+		<property name="rmks" column="rmks" type="string" />
+		<property name="createDate" column="create_date" type="timestamp" />
+		<property name="createUser" column="create_user" type="string" />
+		<property name="updateDate" column="update_date" type="timestamp" />
+		<property name="updateUser" column="update_user" type="string" />
+		<property name="seq" column="seq" type="string" />
+		<property name="mtType" column="mt_type" type="string" />
+		
+    </class>
+    
+    
+    <!-- 同步时间设置-->
+    <class name="SycSleepTime" table="basic_sleepTime">
+		<id name="id" column="id" type="integer">
+			<generator class="native"/>
+		</id>
+		<property name="type" column="type" type="string"/>
+		<property name="sleepTime" column="sleepTime" type="string"/>
+	</class>
+	<!-- ==============================基础数据维护结束2015-01-28-st================================================ -->
+	
+</hibernate-mapping>

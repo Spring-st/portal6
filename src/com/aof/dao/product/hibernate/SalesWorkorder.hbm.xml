@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+<hibernate-mapping package="com.aof.model.product">
+	<class name="SalesWorkorder" table="sales_work_order">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="shipId" column="SHIP_ID" class="com.aof.model.product.SalesPreshiporder" />
+		<many-to-one name="shipItemId" column="shipItem_id" class="com.aof.model.product.SalesPreshiporderItem" />
+		<many-to-one name="lotSer" column="LOT_SER" class="com.aof.model.po.WmsLot" />
+		<many-to-one name="location" column="LOCATION" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="part" column="PART" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="scanUser" column="SCAN_USER" class="com.aof.model.admin.User" />
+		
+		<property name="status1" column="STATUS1" type="com.aof.model.metadata.SalesPreshiporderBatchStatus" />
+		<property name="scanDate" column="SCAN_DATE" type="timestamp" />
+		<property name="count" column="count" type="big_decimal" />
+		<property name="isSync" column="is_sync" type="com.aof.model.metadata.YesNo" />
+		<property name="outDate" column="out_date" type="timestamp" />
+	</class>
+</hibernate-mapping>

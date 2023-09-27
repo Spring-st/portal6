@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.schedule">
+
+    <class name="JitProductionPlan" table="portalv6_jit_production_plan">
+        <id name="id" column="ID" type="integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="productionId" column="PRODUCTION_ID" class="com.aof.model.schedule.EdiProduction"  />
+        
+        <many-to-one name="fatherPart" column="FATHER_PART" class="com.aof.model.basic.WmsPart"  />
+		<many-to-one name="childPart" column="CHILD_PART" class="com.aof.model.basic.WmsPart"  />
+		<property name="qty" column="QTY" type="big_decimal" />
+		<property name="type" column="TYPE" type="integer" />
+		<property name="status" column="status" type="integer" />
+		<property name="currentQty" column="current_qty" type="big_decimal" />
+		<property name="hour2DemandQty" column="hour2_demand_qty" type="big_decimal" />
+		<property name="hour4DemandQty" column="hour4_demand_qty" type="big_decimal" />
+		<property name="hour6DemandQty" column="hour6_demand_qty" type="big_decimal" />
+		<property name="hour8DemandQty" column="hour8_demand_qty" type="big_decimal" />
+		<property name="hour10DemandQty" column="hour10_demand_qty" type="big_decimal" />
+		<property name="hour12DemandQty" column="hour12_demand_qty" type="big_decimal" />
+		<property name="hour14DemandQty" column="hour14_demand_qty" type="big_decimal" />
+		<property name="hour16DemandQty" column="hour16_demand_qty" type="big_decimal" />
+		<property name="hour18DemandQty" column="hour18_demand_qty" type="big_decimal" />
+		<property name="hour20DemandQty" column="hour20_demand_qty" type="big_decimal" />
+		<property name="hour22DemandQty" column="hour22_demand_qty" type="big_decimal" />
+		<property name="hour24DemandQty" column="hour24_demand_qty" type="big_decimal" />
+		<property name="date" column="date" type="date"/>
+    </class>
+     <class name="JitProductionPlanHistory" table="portalv6_jit_production_plan_history">
+        <id name="id" column="ID" type="integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="productionId" column="PRODUCTION_ID" class="com.aof.model.schedule.EdiProduction"  />
+        
+        <many-to-one name="fatherPart" column="FATHER_PART" class="com.aof.model.basic.WmsPart"  />
+		<many-to-one name="childPart" column="CHILD_PART" class="com.aof.model.basic.WmsPart"  />
+		 <many-to-one name="production_plan_id" column="production_plan_id" class="JitProductionPlan"  />
+		<property name="qty" column="QTY" type="big_decimal" />
+		<property name="type" column="TYPE" type="integer" />
+		<property name="status" column="status" type="integer" />
+		<property name="currentQty" column="current_qty" type="big_decimal" />
+		<property name="hour2DemandQty" column="hour2_demand_qty" type="big_decimal" />
+		<property name="hour4DemandQty" column="hour4_demand_qty" type="big_decimal" />
+		<property name="hour6DemandQty" column="hour6_demand_qty" type="big_decimal" />
+		<property name="hour8DemandQty" column="hour8_demand_qty" type="big_decimal" />
+		<property name="hour10DemandQty" column="hour10_demand_qty" type="big_decimal" />
+		<property name="hour12DemandQty" column="hour12_demand_qty" type="big_decimal" />
+		<property name="hour14DemandQty" column="hour14_demand_qty" type="big_decimal" />
+		<property name="hour16DemandQty" column="hour16_demand_qty" type="big_decimal" />
+		<property name="hour18DemandQty" column="hour18_demand_qty" type="big_decimal" />
+		<property name="hour20DemandQty" column="hour20_demand_qty" type="big_decimal" />
+		<property name="hour22DemandQty" column="hour22_demand_qty" type="big_decimal" />
+		<property name="hour24DemandQty" column="hour24_demand_qty" type="big_decimal" />
+		<property name="date" column="date" type="date"/>
+    </class>
+</hibernate-mapping>

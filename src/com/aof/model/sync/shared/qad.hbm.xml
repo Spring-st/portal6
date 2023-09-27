@@ -1,0 +1,810 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.qad">
+
+	<class name="QADMessCtrl" table="xxmes_ctrl">
+
+		<id name="xxmes_id" column="xxmes_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxmes_site" column="xxmes_site" type="string"></property>
+		<property name="xxems_ctrl_id" column="xxems_ctrl_id" type="integer"></property>
+		<property name="xxmes_seq" column="xxmes_seq" type="string"></property>
+		<property name="xxmes_table" column="xxmes_table" type="string"></property>
+		<property name="xxmes_table_qty" column="xxmes_table_qty" type="big_decimal"></property>
+		<property name="xxmes_qad" column="xxmes_qad" type="string"></property>
+		<property name="xxmes_mes" column="xxmes_mes" type="string"></property>
+		<property name="xxmes_portal" column="xxmes_portal" type="string"></property>
+		<property name="xxmes_edi" column="xxmes_edi" type="string"></property>
+		<property name="xxmes_rmks" column="xxmes_rmks" type="string"></property>
+		<property name="xxmes_domain" column="xxmes_domain" type="string"></property>
+	</class>
+
+
+	<class name="QADCtrl" table="xxqad_ctrl">
+
+		<id name="xxqad_id" column="xxqad_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_ctrl_id" column="xxqad_ctrl_id" type="integer"></property>
+		<property name="xxqad_site" column="xxqad_site" type="string"></property>
+		<property name="xxqad_seq" column="xxqad_seq" type="string"></property>
+		<property name="xxqad_table" column="xxqad_table" type="string"></property>
+		<property name="xxqad_table_qty" column="xxqad_table_qty" type="big_decimal"></property>
+		<property name="xxqad_qad" column="xxqad_qad" type="string"></property>
+		<property name="xxqad_mes" column="xxqad_mes" type="string"></property>
+		<property name="xxqad_portal" column="xxqad_portal" type="string"></property>
+		<property name="xxqad_edi" column="xxqad_edi" type="string"></property>
+		<property name="xxqad_rmks" column="xxqad_rmks" type="string"></property>
+		<property name="xxqad_domain" column="xxqad_domain" type="string"></property>
+	</class>
+
+	<class name="QADPortalCtrl" table="xxportal_ctrl">
+		<id name="xxportal_id" column="xxportal_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxportal_ctrl_id" column="xxportal_ctrl_id" type="integer"></property>
+		<property name="xxportal_site" column="xxportal_site" type="string"></property>
+		<property name="xxportal_seq" column="xxportal_seq" type="string"></property>
+		<property name="xxportal_table" column="xxportal_table" type="string"></property>
+		<property name="xxportal_table_qty" column="xxportal_table_qty" type="big_decimal"></property>
+		<property name="xxportal_qad" column="xxportal_qad" type="string"></property>
+		<property name="xxportal_mes" column="xxportal_mes" type="string"></property>
+		<property name="xxportal_portal" column="xxportal_portal" type="string"></property>
+		<property name="xxportal_edi" column="xxportal_edi" type="string"></property>
+		<property name="xxportal_rmks" column="xxportal_rmks" type="string"></property>
+
+	</class>
+
+
+	<class name="QADShCtrl" table="xxsh_ctrl">
+
+		<id name="xxsh_id" column="xxsh_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxsh_seq" column="xxsh_seq" type="string"></property>
+		<property name="xxsh_table" column="xxsh_table" type="string"></property>
+		<property name="xxsh_table_qty" column="xxsh_table_qty" type="big_decimal"></property>
+		<property name="xxsh_qad" column="xxsh_qad" type="string"></property>
+		<property name="xxsh_mes" column="xxsh_mes" type="string"></property>
+		<property name="xxsh_portal" column="xxsh_portal" type="string"></property>
+		<property name="xxsh_edi" column="xxsh_edi" type="string"></property>
+		<property name="xxsh_rmks" column="xxsh_rmks" type="string"></property>
+
+		<property name="xxsh_ctrl_id" column="xxsh_ctrl_id" type="integer"></property>
+		<property name="xxsh_site" column="xxsh_site" type="string"></property>
+
+	</class>
+
+
+
+
+
+
+
+	<!-- 物料信息 -->
+	<class name="QADWmsPart" table="xxqad_pt_mstr">
+
+		<id name="xxqad_pt_id" column="xxqad_pt_id">
+
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_pt__char1" column="xxqad_pt__char1" type="string"></property>
+		<property name="xxqad_pt__char2" column="xxqad_pt__char2" type="string"></property>
+		<property name="xxqad_pt_abc" column="xxqad_pt_abc" type="string"></property>
+		<property name="xxqad_pt_mstr_id" column="xxqad_pt_mstr_id" type="integer"></property>
+		<property name="xxqad_pt_rev" column="xxqad_pt_rev" type="string"></property>
+
+
+		<property name="xxqad_pt_part" column="xxqad_pt_part" type="string"></property>
+		<property name="xxqad_pt_seq" column="xxqad_pt_seq" type="string"></property>
+		<property name="xxqad_pt_um" column="xxqad_pt_um" type="string" />
+		<property name="xxqad_pt_desc1" column="xxqad_pt_desc1" type="string" />
+		<property name="xxqad_pt_desc2" column="xxqad_pt_desc2" type="string" />
+		<property name="xxqad_pt_dsgn_grp" column="xxqad_pt_dsgn_grp" type="string" />
+		<property name="xxqad_pt_promo" column="xxqad_pt_promo" type="string" />
+		<property name="xxqad_pt_part_type" column="xxqad_pt_part_type" type="string" />
+		<property name="xxqad_pt_prod_line" column="xxqad_pt_prod_line" type="string" />
+
+		<property name="xxqad_pt_status" column="xxqad_pt_status" type="string" />
+		<property name="xxqad_pt_ord_mult" column="xxqad_pt_ord_mult" type="string" />
+
+		<property name="xxqad_pt_site" column="xxqad_pt_site" type="string" />
+		<property name="xxqad_pt_domain" column="xxqad_pt_domain" type="string" />
+		<property name="xxqad_pt_qadread" column="xxqad_pt_qadread" type="string" />
+		<property name="xxqad_pt_mesread" column="xxqad_pt_mesread" type="string" />
+
+		<property name="xxqad_pt_portalread" column="xxqad_pt_portalread" type="string" />
+		<property name="xxqad_pt_ediread" column="xxqad_pt_ediread" type="string" />
+		<property name="xxqad_pt_rmks" column="xxqad_pt_rmks" type="string" />
+
+
+		<property name="xxqad_pt_createdt" column="xxqad_pt_createdt" type="date" />
+		<property name="xxqad_pt_createdt1" column="xxqad_pt_createdt-1" type="integer" />
+		<property name="xxqad_pt_createur" column="xxqad_pt_createur" type="string" />
+		<property name="xxqad_pt_updatedt" column="xxqad_pt_updatedt" type="date" />
+		<property name="xxqad_pt_updatedt1" column="xxqad_pt_updatedt-1" type="integer" />
+		<property name="xxqad_pt_updateur" column="xxqad_pt_updateur" type="string" />
+
+
+	</class>
+
+	<class name="QADSupplier" table="xxqad_vd_mstr">
+		<id name="xxqad_vd_id" column="xxqad_vd_id">
+			<generator class="identity"></generator>
+
+		</id>
+
+		<property name="xxqad_vd_mstr_id" column="xxqad_vd_mstr_id" type="integer"></property>
+		<property name="xxqad_vd_addr" column="xxqad_vd_addr" type="string"></property>
+		<property name="xxqad_pt_seq" column="xxqad_pt_seq" type="string"></property>
+		<property name="xxqad_vd_name" column="xxqad_vd_name" type="string" />
+		<property name="xxqad_vd_line1" column="xxqad_vd_line1" type="string" />
+		<property name="xxqad_vd_line2" column="xxqad_vd_line2" type="string" />
+		<property name="xxqad_vd_line3" column="xxqad_vd_line3" type="string" />
+		<property name="xxqad_vd_countr" column="xxqad_vd_countr" type="string" />
+		<property name="xxqad_vd_city" column="xxqad_vd_city" type="string" />
+		<property name="xxqad_vd_phone" column="xxqad_vd_phone" type="string" />
+
+		<property name="xxqad_vd_fax" column="xxqad_vd_fax" type="string" />
+		<property name="xxqad_vd_pst_id" column="xxqad_vd_pst_id" type="string" />
+
+		<property name="xxqad_vd_attn" column="xxqad_vd_attn" type="string" />
+
+		<property name="xxqad_vd_curr" column="xxqad_vd_curr" type="string" />
+		<property name="xxqad_vd_active" column="xxqad_vd_active" type="string" />
+		<property name="xxqad_vd_promo" column="xxqad_vd_promo" type="string" />
+
+		<property name="xxqad_vd_site" column="xxqad_vd_site" type="string" />
+		<property name="xxqad_vd_domain" column="xxqad_vd_domain" type="string" />
+		<property name="xxqad_vd_qadread" column="xxqad_vd_qadread" type="string" />
+		<property name="xxqad_vd_mesread" column="xxqad_vd_mesread" type="string" />
+		<property name="xxqad_vd_portalread" column="xxqad_vd_portalread" type="string" />
+		<property name="xxqad_vd_ediread" column="xxqad_vd_ediread" type="string" />
+		<property name="xxqad_vd_rmks" column="xxqad_vd_rmks" type="string" />
+		<property name="xxqad_vd_createdt" column="xxqad_vd_createdt" type="date" />
+		<property name="xxqad_vd_createdt1" column="xxqad_vd_createdt-1" type="integer" />
+		<property name="xxqad_vd_createur" column="xxqad_vd_createur" type="string" />
+		<property name="xxqad_vd_updatedt" column="xxqad_vd_updatedt" type="date" />
+		<property name="xxqad_vd_updatedt1" column="xxqad_vd_updatedt-1" type="integer" />
+		<property name="xxqad_vd_updateur" column="xxqad_vd_updateur" type="string" />
+
+
+	</class>
+
+
+
+	<class name="QADSupplierWmsPart" table="xxqad_vp_mstr">
+
+
+		<id name="xxqad_vp_id" column="xxqad_vp_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_vp_ctrl_id" column="xxqad_vp_ctrl_id" type="integer"></property>
+		<property name="xxqad_vp_seq" column="xxqad_vp_seq" type="string"></property>
+		<property name="xxqad_vp_addr" column="xxqad_vp_addr" type="string"></property>
+
+		<property name="xxqad_vp_part" column="xxqad_vp_part" type="string"></property>
+		<property name="xxqad_vp_site" column="xxqad_vp_site" type="string"></property>
+		<property name="xxqad_vp_comment" column="xxqad_vp_comment" type="big_decimal"></property>
+		<property name="xxqad_vp_domain" column="xxqad_vp_domain" type="string"></property>
+		<property name="xxqad_vp_qadread" column="xxqad_vp_qadread" type="string"></property>
+		<property name="xxqad_vp_mesread" column="xxqad_vp_mesread" type="string"></property>
+		<property name="xxqad_vp_portalread" column="xxqad_vp_portalread" type="string"></property>
+		<property name="xxqad_vp_ediread" column="xxqad_vp_ediread" type="string"></property>
+		<property name="xxqad_vp_rmks" column="xxqad_vp_rmks" type="string"></property>
+		<property name="xxqad_vp_createdt" column="xxqad_vp_createdt" type="date"></property>
+		<property name="xxqad_vp_createdt1" column="xxqad_vp_createdt-1" type="integer"></property>
+		<property name="xxqad_vp_createur" column="xxqad_vp_createur" type="string"></property>
+		<property name="xxqad_vp_updatedt" column="xxqad_vp_updatedt" type="date"></property>
+		<property name="xxqad_vp_updatedt1" column="xxqad_vp_updatedt-1" type="integer"></property>
+		<property name="xxqad_vp_updateur" column="xxqad_vp_updateur" type="string"></property>
+	</class>
+
+
+	<class name="QADCustomerWmsPart" table="xxqad_sche_det">
+		<id name="xxqad_sche_id" column="xxqad_sche_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_sche_det_id" column="xxqad_sche_det_id" type="integer"></property>
+		<property name="xxqad_sche_seq" column="xxqad_sche_seq" type="string"></property>
+		<property name="xxqad_sche_cust" column="xxqad_sche_cust" type="string"></property>
+		<property name="xxqad_sche_name" column="xxqad_sche_name" type="string"></property>
+		<property name="xxqad_sche_line" column="xxqad_sche_line" type="integer"></property>
+		<property name="xxqad_sche_part" column="xxqad_sche_part" type="string"></property>
+		<property name="xxqad_sche_shipto" column="xxqad_sche_shipto" type="string"></property>
+		<property name="xxqad_sche_desc" column="xxqad_sche_desc" type="string"></property>
+		<property name="xxqad_sche_site" column="xxqad_sche_site" type="string"></property>
+
+		<property name="xxqad_sche_comment" column="xxqad_sche_comment" type="big_decimal"></property>
+		<property name="xxqad_sche_domain" column="xxqad_sche_domain" type="string"></property>
+		<property name="xxqad_sche_qadread" column="xxqad_sche_qadread" type="string"></property>
+		<property name="xxqad_sche_mesread" column="xxqad_sche_mesread" type="string"></property>
+		<property name="xxqad_sche_portalread" column="xxqad_sche_portalread" type="string"></property>
+		<property name="xxqad_sche_ediread" column="xxqad_sche_ediread" type="string"></property>
+		<property name="xxqad_sche_rmks" column="xxqad_sche_rmks" type="string"></property>
+
+		<property name="xxqad_sche_createdt" column="xxqad_sche_createdt" type="date"></property>
+		<property name="xxqad_sche_createdt1" column="xxqad_sche_createdt-1" type="integer"></property>
+		<property name="xxqad_sche_createur" column="xxqad_sche_createur" type="string"></property>
+		<property name="xxqad_sche_updatedt" column="xxqad_sche_updatedt" type="date"></property>
+		<property name="xxqad_sche_updatedt1" column="xxqad_sche_updatedt-1" type="date"></property>
+		<property name="xxqad_sche_updateur" column="xxqad_sche_updateur" type="string"></property>
+
+
+	</class>
+
+
+
+	<class name="QADPurchaseOrder" table="xxqad_pod_det">
+
+		<id name="xxqad_pod_id" column="xxqad_pod_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_pod_due_date1" column="xxqad_pod_due_date-1" type="integer"></property>
+		<property name="xxqad_pod_status" column="xxqad_pod_status" type="string"></property>
+		<property name="xxqad_pod_seq" column="xxqad_pod_seq" type="string"></property>
+		<property name="xxqad_pod_line" column="xxqad_pod_line" type="integer"></property>
+		<property name="xxqad_pod_nbr" column="xxqad_pod_nbr" type="string"></property>
+		<property name="xxqad_pod_part" column="xxqad_pod_part" type="string"></property>
+		<property name="xxqad_pod_desc" column="xxqad_pod_desc" type="string"></property>
+		<property name="xxqad_pod_qty_ord" column="xxqad_pod_qty_ord" type="big_decimal"></property>
+		<property name="xxqad_pod_qty_std" column="xxqad_pod_qty_std" type="big_decimal"></property>
+		<property name="xxqad_pod_due_date" column="xxqad_pod_due_date" type="date"></property>
+		<property name="xxqad_pod_loc_um" column="xxqad_pod_loc_um" type="string"></property>
+		<property name="xxqad_pod_um" column="xxqad_pod_um" type="string"></property>
+		<property name="xxqad_pod_um_conv" column="xxqad_pod_um_conv" type="big_decimal"></property>
+		<property name="xxqad_pod_vend" column="xxqad_pod_vend" type="string"></property>
+		<property name="xxqad_pod_name" column="xxqad_pod_name" type="string"></property>
+		<property name="xxqad_pod_attn" column="xxqad_pod_attn" type="string"></property>
+		<property name="xxqad_pod_ship" column="xxqad_pod_ship" type="string"></property>
+		<property name="xxqad_pod_made" column="xxqad_pod_made" type="string"></property>
+		<property name="xxqad_pod_site" column="xxqad_pod_site" type="string"></property>
+		<property name="xxqad_pod_confirm" column="xxqad_pod_confirm" type="string"></property>
+		<property name="xxqad_pod_domain" column="xxqad_pod_domain" type="string"></property>
+		<property name="xxqad_pod_buyer" column="xxqad_pod_buyer" type="string"></property>
+		<property name="xxqad_pod_buyer_phone" column="xxqad_pod_buyer_phone" type="string"></property>
+		<property name="xxqad_pod_qadread" column="xxqad_pod_qadread" type="string"></property>
+		<property name="xxqad_pod_mesread" column="xxqad_pod_mesread" type="string"></property>
+		<property name="xxqad_pod_portalread" column="xxqad_pod_portalread" type="string"></property>
+		<property name="xxqad_pod_ediread" column="xxqad_pod_ediread" type="string"></property>
+		<property name="xxqad_pod_rmks" column="xxqad_pod_rmks" type="string"></property>
+
+		<property name="xxqad_pod_createdt" column="xxqad_pod_createdt" type="date"></property>
+		<property name="xxqad_pod_createdt1" column="xxqad_pod_createdt-1" type="integer"></property>
+		<property name="xxqad_pod_createur" column="xxqad_pod_createur" type="string"></property>
+		<property name="xxqad_pod_updatedt" column="xxqad_pod_updatedt" type="date"></property>
+		<property name="xxqad_pod_updatedt1" column="xxqad_pod_updatedt-1" type="integer"></property>
+		<property name="xxqad_pod_updateur" column="xxqad_pod_updateur" type="string"></property>
+
+
+
+	</class>
+
+
+	<class name="QADForecastPurchaseOrder" table="xxqad_splan_det">
+		<id name="xxqad_splan_id" column="xxqad_splan_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_splan_due_date1" column="xxqad_splan_due_date-1" type="integer"></property>
+		<property name="xxqad_splan_seq" column="xxqad_splan_seq" type="string"></property>
+		<property name="xxqad_splan_vend" column="xxqad_splan_vend" type="string"></property>
+
+		<property name="xxqad_splan_part" column="xxqad_splan_part" type="string"></property>
+
+		<property name="xxqad_splan_order" column="xxqad_splan_order" type="string"></property>
+
+		<property name="xxqad_splan_um" column="xxqad_splan_um" type="string"></property>
+
+		<property name="xxqad_splan_qty" column="xxqad_splan_qty" type="big_decimal"></property>
+
+		<property name="xxqad_splan_site" column="xxqad_splan_site" type="string"></property>
+
+		<property name="xxqad_splan_due_date" column="xxqad_splan_due_date" type="date"></property>
+
+		<property name="xxqad_splan_domain" column="xxqad_splan_domain" type="string"></property>
+
+		<property name="xxqad_splan_qadread" column="xxqad_splan_qadread" type="string"></property>
+
+		<property name="xxqad_splan_mesread" column="xxqad_splan_mesread" type="string"></property>
+
+		<property name="xxqad_splan_portalread" column="xxqad_splan_portalread" type="string"></property>
+
+		<property name="xxqad_splan_ediread" column="xxqad_splan_ediread" type="string"></property>
+
+		<property name="xxqad_splan_rmks" column="xxqad_splan_rmks" type="string"></property>
+
+		<property name="xxqad_splan_createdt" column="xxqad_splan_createdt" type="date"></property>
+		<property name="xxqad_splan_createdt1" column="xxqad_splan_createdt-1" type="integer"></property>
+
+		<property name="xxqad_splan_createur" column="xxqad_splan_createur" type="string"></property>
+		<property name="xxqad_splan_updatedt" column="xxqad_splan_updatedt" type="date"></property>
+		<property name="xxqad_splan_updatedt1" column="xxqad_splan_updatedt-1" type="integer"></property>
+		<property name="xxqad_splan_updateur" column="xxqad_splan_updateur" type="string"></property>
+
+
+	</class>
+
+
+
+
+
+	<class name="QADStorage" table="xxqad_loc_det">
+		<id name="xxqad_loc_id" column="xxqad_loc_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_loc_det_id" column="xxqad_loc_det_id" type="integer"></property>
+		<property name="xxqad_loc_seq" column="xxqad_loc_seq" type="string"></property>
+		<property name="xxqad_loc_loc" column="xxqad_loc_loc" type="string"></property>
+
+		<property name="xxqad_loc_desc" column="xxqad_loc_desc" type="string"></property>
+
+		<property name="xxqad_loc_type" column="xxqad_loc_type" type="string"></property>
+
+		<property name="xxqad_loc_site" column="xxqad_loc_site" type="string"></property>
+
+		<property name="xxqad_loc_domain" column="xxqad_loc_domain" type="big_decimal"></property>
+
+		<property name="xxqad_loc_qadread" column="xxqad_loc_qadread" type="string"></property>
+
+		<property name="xxqad_loc_mesread" column="xxqad_loc_mesread" type="date"></property>
+
+		<property name="xxqad_loc_portalread" column="xxqad_loc_portalread" type="string"></property>
+
+		<property name="xxqad_loc_ediread" column="xxqad_loc_ediread" type="string"></property>
+
+		<property name="xxqad_loc_rmks" column="xxqad_loc_rmks" type="string"></property>
+
+		<property name="xxqad_loc_createdt" column="xxqad_loc_createdt" type="date"></property>
+		<property name="xxqad_loc_createdt1" column="xxqad_loc_createdt-1" type="integer"></property>
+
+		<property name="xxqad_loc_createur" column="xxqad_loc_createur" type="string"></property>
+
+		<property name="xxqad_loc_updatedt" column="xxqad_loc_updatedt" type="date"></property>
+		<property name="xxqad_loc_updatedt1" column="xxqad_loc_updatedt-1" type="integer"></property>
+		<property name="xxqad_loc_updateur" column="xxqad_loc_updateur" type="string"></property>
+
+
+
+	</class>
+
+
+
+
+	<class name="QADDailyProductionSchedule" table="xxqad_wo_mstr">
+		<id name="xxqad_wo_id" column="xxqad_wo_is">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_wo_mstr_id" column="xxqad_wo_mstr_id" type="integer"></property>
+		<property name="xxqad_wo_rel_date1" column="xxqad_wo_rel_date-1" type="integer"></property>
+		<property name="xxqad_wo_due_date1" column="xxqad_wo_due_date-1" type="integer"></property>
+		<property name="xxqad_wo_seq" column="xxqad_wo_seq" type="string"></property>
+		<property name="xxqad_wo_nbr" column="xxqad_wo_nbr" type="string"></property>
+
+		<property name="xxqad_wo_lot" column="xxqad_wo_lot" type="string"></property>
+
+		<property name="xxqad_wo_part" column="xxqad_wo_part" type="string"></property>
+
+		<property name="xxqad_wo_type" column="xxqad_wo_type" type="string"></property>
+
+		<property name="xxqad_wo_property" column="xxqad_wo_property" type="string"></property>
+
+		<property name="xxqad_wo_site" column="xxqad_wo_site" type="string"></property>
+
+		<property name="xxqad_wo_line" column="xxqad_wo_line" type="string"></property>
+
+		<property name="xxqad_wo_qty_ord" column="xxqad_wo_qty_ord" type="big_decimal"></property>
+
+		<property name="xxqad_wo_rel_date" column="xxqad_wo_rel_date" type="date"></property>
+
+		<property name="xxqad_wo_due_date" column="xxqad_wo_due_date" type="date"></property>
+
+		<property name="xxqad_wo_routing" column="xxqad_wo_routing" type="string"></property>
+
+		<property name="xxqad_wo_bom_code" column="xxqad_wo_bom_code" type="string"></property>
+
+		<property name="xxqad_wo_shift" column="xxqad_wo_shift" type="string"></property>
+
+		<property name="xxqad_wo_note" column="xxqad_wo_note" type="string"></property>
+
+		<property name="xxqad_wo_domain" column="xxqad_wo_domain" type="string"></property>
+		<property name="xxqad_wo_qadread" column="xxqad_wo_qadread" type="string"></property>
+		<property name="xxqad_wo_mesread" column="xxqad_wo_mesread" type="string"></property>
+		<property name="xxqad_wo_portalread" column="xxqad_wo_portalread" type="string"></property>
+		<property name="xxqad_wo_ediread" column="xxqad_wo_ediread" type="string"></property>
+		<property name="xxqad_wo_rmks" column="xxqad_wo_rmks" type="string"></property>
+		<property name="xxqad_wo_createdt" column="xxqad_wo_createdt" type="date"></property>
+		<property name="xxqad_wo_createdt1" column="xxqad_wo_createdt-1" type="integer"></property>
+		<property name="xxqad_wo_createur" column="xxqad_wo_createur" type="string"></property>
+		<property name="xxqad_wo_updatedt" column="xxqad_wo_updatedt" type="date"></property>
+		<property name="xxqad_wo_updatedt1" column="xxqad_wo_updatedt-1" type="integer"></property>
+		<property name="xxqad_wo_updateur" column="xxqad_wo_updateur" type="string"></property>
+
+	</class>
+
+
+	<class name="QADDeliveryBill" table="xxptl_tx_det">
+
+
+		<id name="xxptl_tx_id" column="xxptl_tx_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxptl_tx_date_due1" column="xxptl_tx_date_due-1" type="integer"></property>
+		<property name="xxptl_tx_date_promise1" column="xxptl_tx_date_promise-1" type="integer"></property>
+		<property name="xxptl_tx_date_ship1" column="xxptl_tx_date_ship-1" type="integer"></property>
+		<property name="xxptl_tx_det_id" column="xxptl_tx_det_id" type="integer"></property>
+
+
+		<property name="xxptl_tx_seq" column="xxptl_tx_seq" type="string"></property>
+		<property name="xxptl_tx_nbr" column="xxptl_tx_nbr" type="string"></property>
+
+		<property name="xxptl_tx_po_nbr" column="xxptl_tx_po_nbr" type="string"></property>
+
+		<property name="xxptl_tx_po_line" column="xxptl_tx_po_line" type="string"></property>
+
+		<property name="xxptl_tx_part" column="xxptl_tx_part" type="string"></property>
+
+		<property name="xxptl_tx_qty_total" column="xxptl_tx_qty_total" type="string"></property>
+
+		<property name="xxptl_tx_qty_std" column="xxptl_tx_qty_std" type="string"></property>
+
+		<property name="xxptl_tx_qty_real" column="xxptl_tx_qty_real" type="string"></property>
+
+		<property name="xxptl_tx_date_ship" column="xxptl_tx_date_ship" type="date"></property>
+
+		<property name="xxptl_tx_date_Promise" column="xxptl_tx_date_Promise" type="date"></property>
+
+		<property name="xxptl_tx_date_due" column="xxptl_tx_date_due" type="date"></property>
+
+		<property name="xxptl_tx_site" column="xxptl_tx_site" type="string"></property>
+
+		<property name="xxptl_tx_vend" column="xxptl_tx_vend" type="string"></property>
+
+		<property name="xxptl_tx_boxcode" column="xxptl_tx_boxcode" type="string"></property>
+
+		<property name="xxptl_tx_ware_class" column="xxptl_tx_ware_class" type="string"></property>
+
+		<property name="xxptl_tx_ware" column="xxptl_tx_ware" type="string"></property>
+		<property name="xxptl_tx_loc" column="xxptl_tx_loc" type="string"></property>
+		<property name="xxptl_tx_po_um" column="xxptl_tx_po_um" type="string"></property>
+		<property name="xxptl_tx_loc_um" column="xxptl_tx_loc_um" type="string"></property>
+		<property name="xxptl_tx_conv" column="xxptl_tx_conv" type="big_decimal"></property>
+		<property name="xxptl_tx_type" column="xxptl_tx_type" type="string"></property>
+		<property name="xxptl_tx_vend_batch" column="xxptl_tx_vend_batch" type="string"></property>
+		<property name="xxptl_tx_qadread" column="xxptl_tx_qadread" type="string"></property>
+		<property name="xxptl_tx_mesread" column="xxptl_tx_mesread" type="string"></property>
+		<property name="xxptl_tx_portalread" column="xxptl_tx_portalread" type="string"></property>
+
+
+		<property name="xxptl_tx_ediread" column="xxptl_tx_ediread" type="string"></property>
+		<property name="xxptl_tx_rmks" column="xxptl_tx_rmks" type="string"></property>
+		<property name="xxptl_tx_createdt" column="xxptl_tx_createdt" type="date"></property>
+		<property name="xxptl_tx_createdt1" column="xxptl_tx_createdt-1" type="integer"></property>
+		<property name="xxptl_tx_createur" column="xxptl_tx_createur" type="string"></property>
+		<property name="xxptl_tx_updatedt" column="xxptl_tx_updatedt" type="date"></property>
+		<property name="xxptl_tx_updatedt-1" column="xxptl_tx_updatedt1" type="integer"></property>
+		<property name="xxptl_tx_updateur" column="xxptl_tx_updateur" type="string"></property>
+
+
+
+	</class>
+
+
+
+
+	<class name="QADForecastMonthPlan" table="xxedi_fcs_det">
+
+		<id name="xxedi_fcs_id" column="xxedi_fcs_id">
+			<generator class="identity"></generator>
+		</id>
+
+		<property name="xxedi_fcs_seq" column="xxedi_fcs_det_id" type="string"></property>
+		<property name="xxedi_fcs_det_id" column="xxedi_fcs_det_id" type="string"></property>
+		<property name="xxedi_fcs_addr" column="xxedi_fcs_addr" type="string"></property>
+
+		<property name="xxedi_fcs_ship_to" column="xxedi_fcs_ship_to" type="string"></property>
+
+		<property name="xxedi_fcs_part" column="xxedi_fcs_part" type="string"></property>
+
+		<property name="xxedi_fcs_desc" column="xxedi_fcs_desc" type="string"></property>
+		<property name="xxedi_fcs_qty_ord" column="xxedi_fcs_qty_ord" type="big_decimal"></property>
+
+		<property name="xxedi_fcs_interval" column="xxedi_fcs_interval" type="string"></property>
+
+		<property name="xxedi_fcs_date_ord" column="xxedi_fcs_date_ord" type="date"></property>
+		<property name="xxedi_fcs_date_ord1" column="xxedi_fcs_date_ord-1" type="integer"></property>
+
+		<property name="xxedi_fcs_um" column="xxedi_fcs_um" type="string"></property>
+
+		<property name="xxedi_fcs_domain" column="xxedi_fcs_domain" type="string"></property>
+
+		<property name="xxedi_fcs_qadread" column="xxedi_fcs_qadread" type="string"></property>
+
+		<property name="xxedi_fcs_mesread" column="xxedi_fcs_mesread" type="string"></property>
+
+		<property name="xxedi_fcs_portalread" column="xxedi_fcs_portalread" type="string"></property>
+
+		<property name="xxedi_fcs_ediread" column="xxedi_fcs_ediread" type="string"></property>
+
+		<property name="xxedi_fcs_rmks" column="xxedi_fcs_rmks" type="string"></property>
+
+		<property name="xxedi_fcs_createdt" column="xxedi_fcs_createdt" type="date"></property>
+		<property name="xxedi_fcs_createdt1" column="xxedi_fcs_createdt-1" type="integer"></property>
+		<property name="xxedi_fcs_createur" column="xxedi_fcs_createur" type="string"></property>
+		<property name="xxedi_fcs_updatedt" column="xxedi_fcs_updatedt" type="date"></property>
+		<property name="xxedi_fcs_updatedt1" column="xxedi_fcs_updatedt-1" type="integer"></property>
+		<property name="xxedi_fcs_updateur" column="xxedi_fcs_updateur" type="string"></property>
+
+	</class>
+
+	<class name="QADCustomerReturned" table="xxqad_tk_det">
+		<id name="xxqad_tk_id" column="xxqad_tk_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_tk_date1" column="xxqad_tk_date-1" type="integer"></property>
+		<property name="xxqad_tk_det_id" column="xxqad_tk_det_id" type="integer"></property>
+
+		<property name="xxqad_tk_seq" column="xxqad_tk_seq" type="string"></property>
+		<property name="xxqad_tk_nbr" column="xxqad_tk_nbr" type="string"></property>
+
+		<property name="xxqad_tk_part" column="xxqad_tk_part" type="string"></property>
+
+		<property name="xxqad_tk_loc" column="xxqad_tk_loc" type="string"></property>
+
+		<property name="xxqad_tk_date" column="xxqad_tk_date" type="date"></property>
+		<property name="xxqad_tk_qty" column="xxqad_tk_qty" type="big_decimal"></property>
+
+		<property name="xxqad_tk_cust" column="xxqad_tk_cust" type="string"></property>
+
+		<property name="xxqad_tk_site" column="xxqad_tk_site" type="string"></property>
+
+		<property name="xxqad_tk_domain" column="xxqad_tk_domain" type="string"></property>
+
+		<property name="xxqad_tk_qadread" column="xxqad_tk_qadread" type="string"></property>
+
+		<property name="xxqad_tk_mesread" column="xxqad_tk_mesread" type="string"></property>
+
+		<property name="xxqad_tk_portalread" column="xxqad_tk_portalread" type="string"></property>
+
+		<property name="xxqad_tk_ediread" column="xxqad_tk_ediread" type="string"></property>
+
+		<property name="xxqad_tk_rmks" column="xxqad_tk_rmks" type="string"></property>
+
+
+		<property name="xxqad_tk_createdt" column="xxqad_tk_createdt" type="date"></property>
+		<property name="xxqad_tk_createdt1" column="xxqad_tk_createdt-1" type="integer"></property>
+		<property name="xxqad_tk_createur" column="xxqad_tk_createur" type="string"></property>
+		<property name="xxqad_tk_updatedt" column="xxqad_tk_updatedt" type="date"></property>
+		<property name="xxqad_tk_updatedt1" column="xxqad_tk_updatedt-1" type="integer"></property>
+		<property name="xxqad_tk_updateur" column="xxqad_tk_updateur" type="string"></property>
+
+	</class>
+
+
+
+
+
+	<class name="QADShipOrder" table="xxedi_ship_det">
+		<id name="xxedi_ship_id" column="xxedi_ship_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxedi_ship_det_id" column="xxedi_ship_det_id" type="string"></property>
+
+		<property name="xxedi_ship_seq" column="xxedi_ship_no" type="string"></property>
+		<property name="xxedi_ship_no" column="xxedi_ship_no" type="string"></property>
+
+		<property name="xxedi_ship_line" column="xxedi_ship_line" type="integer"></property>
+
+		<property name="xxedi_ship_site" column="xxedi_ship_site" type="string"></property>
+
+		<property name="xxedi_ship_part" column="xxedi_ship_part" type="string"></property>
+
+		<property name="xxedi_ship_rmks2" column="xxedi_ship_rmks2" type="string"></property>
+
+		<property name="xxedi_ship_qty" column="xxedi_ship_qty" type="big_decimal"></property>
+
+		<property name="xxedi_ship_qty_std" column="xxedi_ship_qty_std" type="big_decimal"></property>
+
+		<property name="xxedi_ship_date" column="xxedi_ship_date" type="date"></property>
+		<property name="xxedi_ship_date1" column="xxedi_ship_date-1" type="integer"></property>
+
+		<property name="xxedi_ship_time" column="xxedi_ship_time" type="date"></property>
+		<property name="xxedi_ship_time1" column="xxedi_ship_time-1" type="integer"></property>
+
+		<property name="xxedi_ship_loc" column="xxedi_ship_loc" type="string"></property>
+
+		<property name="xxedi_ship_um" column="xxedi_ship_um" type="string"></property>
+
+		<property name="xxedi_ship_cust" column="xxedi_ship_cust" type="string"></property>
+
+		<property name="xxedi_ship_addr" column="xxedi_ship_addr" type="string"></property>
+
+		<property name="xxedi_ship_addr_desc" column="xxedi_ship_addr_desc" type="string"></property>
+
+		<property name="xxedi_ship_qadread" column="xxedi_ship_qadread" type="string"></property>
+		<property name="xxedi_ship_mesread" column="xxedi_ship_mesread" type="string"></property>
+		<property name="xxedi_ship_portalread" column="xxedi_ship_portalread" type="string"></property>
+		<property name="xxedi_ship_ediread" column="xxedi_ship_ediread" type="string"></property>
+		<property name="xxedi_ship_rmks" column="xxedi_ship_rmks" type="string"></property>
+		<property name="xxedi_ship_createdt" column="xxedi_ship_createdt" type="date"></property>
+		<property name="xxedi_ship_createdt1" column="xxedi_ship_createdt-1" type="integer"></property>
+		<property name="xxedi_ship_createur" column="xxedi_ship_createur" type="string"></property>
+		<property name="xxedi_ship_updatedt" column="xxedi_ship_updatedt" type="date"></property>
+		<property name="xxedi_ship_updatedt1" column="xxedi_ship_updatedt-1" type="integer"></property>
+		<property name="xxedi_ship_updateur" column="xxedi_ship_updateur" type="string"></property>
+
+
+	</class>
+
+
+
+
+
+
+	<class name="QADBom" table="xxqad_wod_det">
+
+		<id name="xxqad_wod_id" column="xxqad_wod_id">
+			<generator class="identity"></generator>
+		</id>
+
+
+		<property name="xxqad_wod_seq" column="xxqad_wod_seq" type="string"></property>
+		<property name="xxqad_wod_lot" column="xxqad_wod_lot" type="string"></property>
+
+		<property name="xxqad_wod_nbr" column="xxqad_wod_nbr" type="string"></property>
+
+		<property name="xxqad_wod_item" column="xxqad_wod_item" type="string"></property>
+
+		<property name="xxqad_wod_part" column="xxqad_wod_part" type="string"></property>
+
+		<property name="xxqad_wo_property" column="xxqad_wo_property" type="string"></property>
+
+		<property name="xxqad_wod_qty_req" column="xxqad_wod_qty_req" type="string"></property>
+
+		<property name="xxqad_wod_op" column="xxqad_wod_op" type="string"></property>
+
+		<property name="xxqad_wod_gw" column="xxqad_wod_gw" type="string"></property>
+
+		<property name="xxqad_wod_bom_qty" column="xxqad_wod_bom_qty" type="big_decimal"></property>
+
+		<property name="xxqad_wod_domain" column="xxqad_wod_domain" type="string"></property>
+		<property name="xxqad_wod_site" column="xxqad_wod_site" type="string"></property>
+
+		<property name="xxqad_wod_qadread" column="xxqad_wod_qadread" type="string"></property>
+
+		<property name="xxqad_wod_mesread" column="xxqad_wod_mesread" type="string"></property>
+
+		<property name="xxqad_wod_portalread" column="xxqad_wod_portalread" type="string"></property>
+
+		<property name="xxqad_wod_ediread" column="xxqad_wod_ediread" type="string"></property>
+
+		<property name="xxqad_wod_rmks" column="xxqad_wod_rmks" type="string"></property>
+		<property name="xxqad_wod_createdt" column="xxqad_wod_createdt" type="date"></property>
+		<property name="xxqad_wod_createdt1" column="xxqad_wod_createdt-1" type="integer"></property>
+		<property name="xxqad_wod_createur" column="xxqad_wod_createur" type="string"></property>
+		<property name="xxqad_wod_updatedt" column="xxqad_wod_updatedt" type="date"></property>
+		<property name="xxqad_wod_updatedt1" column="xxqad_wod_updatedt-1" type="integer"></property>
+		<property name="xxqad_wod_updateur" column="xxqad_wod_updateur" type="string"></property>
+
+
+
+	</class>
+
+
+	<!-- BOM 信息 -->
+
+	<class name="QADBomInfo" table="xxqad_ps_mstr">
+
+		<id name="xxqad_ps_id" column="xxqad_ps_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_ps_seq" column="xxqad_ps_seq" type="string"></property>
+		<property name="xxqad_ps_par" column="xxqad_ps_par" type="string"></property>
+		<property name="xxqad_ps_comp" column="xxqad_ps_comp" type="string"></property>
+		<property name="xxqad_ps_ref" column="xxqad_ps_ref" type="string"></property>
+		<property name="xxqad_ps_qty_per" column="xxqad_ps_qty_per" type="integer"></property>
+		<property name="xxqad_ps_ps_code" column="xxqad_ps_ps_code" type="string"></property>
+		<property name="xxqad_ps_start" column="xxqad_ps_start" type="date"></property>
+		<property name="xxqad_ps_end" column="xxqad_ps_end" type="date"></property>
+		<property name="xxqad_ps_rmks" column="xxqad_ps_rmks" type="string"></property>
+		<property name="xxqad_ps_op" column="xxqad_ps_op" type="integer"></property>
+
+		<!--<property name="xxqad_ps_site" column="xxqad_ps_site" type="string"></property>-->
+		<property name="xxqad_ps_domain" column="xxqad_ps_domain" type="string"></property>
+		<property name="xxqad_ps_qadread" column="xxqad_ps_qadread" type="string"></property>
+		<property name="xxqad_ps_mesread" column="xxqad_ps_mesread" type="string"></property>
+		<property name="xxqad_ps_portalread" column="xxqad_ps_portalread" type="string"></property>
+		<property name="xxqad_ps_ediread" column="xxqad_ps_ediread" type="string"></property>
+		<property name="xxqad_ps_createdt" column="xxqad_ps_createdt" type="date"></property>
+		<property name="xxqad_ps_createdt1" column="xxqad_ps_createdt-1" type="integer"></property>
+		<property name="xxqad_ps_createur" column="xxqad_ps_createur" type="string"></property>
+
+		<property name="xxqad_ps_updatedt" column="xxqad_ps_updatedt" type="date"></property>
+		<property name="xxqad_ps_updatedt1" column="xxqad_ps_updatedt-1" type="integer"></property>
+		<property name="xxqad_ps_updateur" column="xxqad_ps_updateur" type="string"></property>
+		<property name="xxqad_ps_mstr_id" column="xxqad_ps_mstr_id" type="string"></property>
+
+
+
+	</class>
+
+	<class name="QADProjectDet" table="xxqad_project_det">
+		<id name="xxqad_project_id" column="xxqad_project_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_project_seq" column="xxqad_project_seq" type="string"></property>
+		<property name="xxqad_project_code" column="xxqad_project_code" type="string"></property>
+		<property name="xxqad_project_createdt" column="xxqad_project_createdt" type="date"></property>
+		<property name="xxqad_project_createdt1" column="xxqad_project_createdt-1" type="integer"></property>
+		<property name="xxqad_project_createur" column="xxqad_project_createur" type="string"></property>
+		<property name="xxqad_project_desc" column="xxqad_project_desc" type="string"></property>
+		<property name="xxqad_project_det_id" column="xxqad_project_det_id" type="string"></property>
+		<property name="xxqad_project_domain" column="xxqad_project_domain" type="string"></property>
+		<property name="xxqad_project_ediread" column="xxqad_project_ediread" type="string"></property>
+		<property name="xxqad_project_endDate" column="xxqad_project_endDate" type="date"></property>
+
+		<property name="xxqad_project_endDate1" column="xxqad_project_endDate-1" type="integer"></property>
+		<property name="xxqad_project_mesread" column="xxqad_project_mesread" type="string"></property>
+		<property name="xxqad_project_portalread" column="xxqad_project_portalread" type="string"></property>
+		<property name="xxqad_project_qadread" column="xxqad_project_qadread" type="string"></property>
+		<property name="xxqad_project_rmks" column="xxqad_project_rmks" type="string"></property>
+
+		<property name="xxqad_project_site" column="xxqad_project_site" type="string"></property>
+		<property name="xxqad_project_startDate" column="xxqad_project_startDate" type="date"></property>
+		<property name="xxqad_project_startDate1" column="xxqad_project_startDate-1" type="integer"></property>
+
+		<property name="xxqad_project_updatedt" column="xxqad_project_updatedt" type="date"></property>
+		<property name="xxqad_project_updatedt1" column="xxqad_project_updatedt-1" type="integer"></property>
+		<property name="xxqad_project_updateur" column="xxqad_project_updateur" type="string"></property>
+		<property name="xxqad_project_userId" column="xxqad_project_userId" type="integer"></property>
+
+	</class>
+
+	<class name="QADDwoMstr" table="xxqad_dwo_mstr">
+		<id name="xxqad_dwo_id" column="xxqad_dwo_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_dwo_site" column="xxqad_dwo_site" type="string"></property>
+		<property name="xxqad_dwo_seq" column="xxqad_dwo_seq" type="string"></property>
+		<property name="xxqad_dwo_createdt" column="xxqad_dwo_createdt" type="date"></property>
+		<property name="xxqad_dwo_createdt1" column="xxqad_dwo_createdt-1" type="integer"></property>
+		<property name="xxqad_dwo_createur" column="xxqad_dwo_createur" type="string"></property>
+		<property name="xxqad_dwo_ediread" column="xxqad_dwo_ediread" type="string"></property>
+		<property name="xxqad_dwo_lot" column="xxqad_dwo_lot" type="string"></property>
+		<property name="xxqad_dwo_mesread" column="xxqad_dwo_mesread" type="string"></property>
+		<property name="xxqad_dwo_mstr_id" column="xxqad_dwo_mstr_id" type="integer"></property>
+		<property name="xxqad_dwo_nbr" column="xxqad_dwo_nbr" type="string"></property>
+		<property name="xxqad_dwo_portalread" column="xxqad_dwo_portalread" type="string"></property>
+		<property name="xxqad_dwo_qadread" column="xxqad_dwo_qadread" type="string"></property>
+		<property name="xxqad_dwo_rmks" column="xxqad_dwo_rmks" type="string"></property>
+		<property name="xxqad_dwo_updatedt" column="xxqad_dwo_updatedt" type="date"></property>
+		<property name="xxqad_dwo_updatedt1" column="xxqad_dwo_updatedt-1" type="integer"></property>
+		<property name="xxqad_dwo_updateur" column="xxqad_dwo_updateur" type="string"></property>
+	</class>
+
+	<class name="QADAdMstr" table="xxqad_ad_mstr">
+		<id name="xxqad_ad_seq" column="XXQAD_AD_SEQ">
+			<generator class="identity"></generator>
+		</id>
+		<property name="xxqad_ad_addr" column="xxqad_ad_addr" type="string" />
+		<property name="xxqadAdName" column="XXQAD_AD_NAME" type="string" />
+		<property name="xxqadAdLine1" column="XXQAD_AD_LINE1" type="string" />
+		<property name="xxqadAdLine2" column="XXQAD_AD_LINE2" type="string" />
+		<property name="xxqadAdLine3" column="XXQAD_AD_LINE3" type="string" />
+		<property name="xxqadAdCountry" column="XXQAD_AD_COUNTRY" type="string" />
+		<property name="xxqadAdCity" column="XXQAD_AD_CITY" type="string" />
+		<property name="xxqadAdPhone" column="XXQAD_AD_PHONE" type="string" />
+		<property name="xxqadAdFax" column="XXQAD_AD_FAX" type="string" />
+		<property name="xxqadAdPstId" column="XXQAD_AD_PST_ID" type="string" />
+		<property name="xxqadAdAttn" column="XXQAD_AD_ATTN" type="string" />
+		<property name="xxqadAdCurr" column="XXQAD_AD_CURR" type="string" />
+		<property name="xxqadAdActive" column="XXQAD_AD_ACTIVE" type="string" />
+		<property name="xxqadAdDomain" column="XXQAD_AD_DOMAIN" type="string" />
+		<property name="xxqadAdSite" column="XXQAD_AD_SITE" type="string" />
+		<property name="xxqadAdSeq" column="XXQAD_AD_SEQ" type="string" />
+		<property name="xxqad_ad_mesread" column="xxqad_ad_mesread" type="string" />
+	</class>
+</hibernate-mapping>

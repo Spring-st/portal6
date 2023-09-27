@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext-datasource.xml,
+			/WEB-INF/applicationContext-hibernate.xml,
+			/WEB-INF/applicationContext-service.xml,
+			/WEB-INF/applicationContext-webService.xml
+		</param-value>
+	</context-param>
+	
+	<!--spring configuration --> 
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			com.aof.web.domain.SessionListener
+		</listener-class>
+	</listener>
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 
+	<filter>
+		<filter-name>compressionFilter</filter-name>
+		<filter-class>com.aof.web.filter.GZIPFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>compressionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	-->
+	
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>
+			org.apache.struts.action.ActionServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+				/WEB-INF/struts-config.xml,
+				/WEB-INF/struts-config-rule.xml,
+				/WEB-INF/struts-config-filter.xml,
+				/WEB-INF/struts-config-kpi.xml,
+				/WEB-INF/struts-config-po.xml,
+				/WEB-INF/struts-config-basic.xml,
+				/WEB-INF/struts-config-schedule.xml,
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>download</servlet-name>
+		<servlet-class>
+			com.aof.web.servlet.DownloadServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>download</servlet-name>
+		<url-pattern>/download/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	    <servlet-name>CXFService</servlet-name>
+	    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+	</servlet>
+	 
+	<servlet-mapping>
+	    <servlet-name>CXFService</servlet-name>
+	    <url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+
+	 <servlet>
+  <servlet-name>CreateBarCode</servlet-name>
+  <servlet-class>com.aof.barcode.BarcodeServlet</servlet-class>
+ </servlet>
+	 <servlet-mapping>
+  <servlet-name>CreateBarCode</servlet-name>
+  <url-pattern>/CreateBarCode</url-pattern>
+ </servlet-mapping>
+	
+<servlet>
+  <servlet-name>CreateQrCode</servlet-name>
+  <servlet-class>com.aof.barcode.QrCodeServlet</servlet-class>
+ </servlet>
+	 <servlet-mapping>
+  <servlet-name>CreateQrCode</servlet-name>
+  <url-pattern>/CreateQrCode</url-pattern>
+ </servlet-mapping>
+	
+	<mime-mapping>  
+		<extension>mht</extension>  
+		<mime-type>text/x-mht</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	       <extension>rar</extension>  
+	       <mime-type>application/octet-stream</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	       <extension>iso</extension>  
+	       <mime-type>application/octet-stream</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	       <extension>ape</extension>  
+	       <mime-type>application/octet-stream</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	       <extension>rmvb</extension>  
+	       <mime-type>application/octet-stream</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	       <extension>ico</extension>  
+	       <mime-type>image/x-icon</mime-type>  
+	</mime-mapping>  
+	
+	<welcome-file-list><!--
+    <welcome-file>/WEB-INF/portal/portalIndex.jsp</welcome-file>-->
+     <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+	 <mime-mapping>
+	  <extension>cab</extension>
+	  <mime-type>application/octet-stream</mime-type>
+	 </mime-mapping>
+	 <mime-mapping>
+	  <extension>crx</extension>
+	  <mime-type>application/octet-stream</mime-type>
+	 </mime-mapping>
+	 <mime-mapping>
+	  <extension>xpi</extension>
+	  <mime-type>application/x-xpinstall</mime-type>
+	 </mime-mapping>
+	 
+ 
+  <login-config>
+  <auth-method>BASIC</auth-method>
+ </login-config>
+ 
+ <error-page>
+	 <error-code>500</error-code>
+	 <location>/WEB-INF/jsp/errors/500.jsp</location>
+</error-page>
+
+</web-app>

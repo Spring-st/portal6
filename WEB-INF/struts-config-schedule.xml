@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+ <form-beans type="com.shcnc.struts.form.config.BeanFormConfig">
+ 		<form-bean name="qadOrEdiQueryForm" type="com.aof.web.struts.form.schedule.QadOrEdiQueryForm" />
+		<form-bean name="qadOrEdiForm" type="com.aof.model.schedule.QadOrEdi" >
+			<set-property property="requires" value="models,qadPart.id" />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		
+ 		<form-bean name="ediProductionQueryForm" type="com.aof.web.struts.form.schedule.EdiProductionQueryForm">
+ 		</form-bean>
+		<form-bean name="ediProductionForm" type="com.aof.model.schedule.EdiProduction">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="ediProductionErrorLogQueryForm" type="com.aof.web.struts.form.schedule.EdiProductionErrorLogQueryForm">
+ 		</form-bean>
+		<form-bean name="ediProductionErrorLogForm" type="com.aof.model.schedule.EdiProductionErrorLog">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="jitProductionPlanQueryForm" type="com.aof.web.struts.form.schedule.JitProductionPlanQueryForm" />
+		<form-bean name="jitProductionPlanForm" type="com.aof.model.schedule.JitProductionPlan">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="projectedInventoryQueryForm" type="com.aof.web.struts.form.schedule.ProjectedInventoryQueryForm" />
+		<form-bean name="projectedInventoryForm" type="com.aof.model.schedule.ProjectedInventory" >
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="njitNpoPlanQueryForm" type="com.aof.web.struts.form.schedule.NjitNpoPlanQueryForm" />
+		<form-bean name="njitNpoPlanForm" type="com.aof.model.schedule.NjitNpoPlan" >
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="productionDayPlanQueryForm" type="com.aof.web.struts.form.schedule.ProductionDayPlanQueryForm">
+		</form-bean>
+		<form-bean name="productionDayPlanForm" type="com.aof.model.schedule.ProductionDayPlan">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="production72HourPlanQueryForm" type="com.aof.web.struts.form.schedule.Production72HourPlanQueryForm">
+		</form-bean>
+		<form-bean name="production72HourPlanForm" type="com.aof.model.schedule.Production72HourPlan">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		
+</form-beans>
+ <action-mappings  type="com.aof.web.struts.action.SecureActionMapping">
+ <!-- 生产计划业务start -->
+ 	<!-- QadOrEdi -->
+		<action parameter="list" path="/listQadOrEdiAction" scope="session"
+			name="qadOrEdiQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.QadOrEdiAction">
+			<set-property property="functionId" value="21161503" />
+			<set-property property="functionDescription" value="list qad or edi" />
+			<forward name="page" path="site.qadOrEdi.list" />
+		</action>
+		<action parameter="newObject" path="/newQadOrEdiAction" scope="request"
+			type="com.aof.web.struts.action.schedule.QadOrEdiAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161503" />
+			<forward name="page" path="site.qadOrEdi.new" />
+		</action>
+		<action parameter="edit" path="/editQadOrEdiAction" scope="request"
+			type="com.aof.web.struts.action.schedule.QadOrEdiAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161503" />
+			<forward name="page" path="site.qadOrEdi.edit" />
+		</action>
+		<action parameter="insert" path="/insertQadOrEdiAction" scope="request"
+			name="qadOrEdiForm"  validate="false" input="/newQadOrEdiAction.do"
+			type="com.aof.web.struts.action.schedule.QadOrEdiAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161503" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateQadOrEdiAction" scope="request"
+			name="qadOrEdiForm" validate="false" input="/editQadOrEdiAction.do"
+			type="com.aof.web.struts.action.schedule.QadOrEdiAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161503" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteQadOrEdiAction" scope="request"
+			type="com.aof.web.struts.action.schedule.QadOrEdiAction">
+			<set-property property="functionId" value="21161503" />
+		</action>
+		<!-- end -->
+	 	<!-- EdiProduction -->
+		<action parameter="list" path="/listEdiProductionAction" scope="session"
+			name="ediProductionQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="functionId" value="21161404" />
+			<set-property property="functionDescription" value="list edi production" />
+			<forward name="page" path="site.ediProduction.list" />
+		</action>
+		<action parameter="newObject" path="/newEdiProductionAction" scope="request"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161404" />
+			<forward name="page" path="site.ediProduction.new" />
+		</action>
+		<action parameter="edit" path="/editEdiProductionAction" scope="request"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161404" />
+			<forward name="page" path="site.ediProduction.edit" />
+		</action>
+		<action parameter="insert" path="/insertEdiProductionAction" scope="request"
+			name="ediProductionForm"  validate="false" input="/newEdiProductionAction.do"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161404" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateEdiProductionAction" scope="request"
+			name="ediProductionForm" validate="false" input="/editEdiProductionAction.do"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161404" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteEdiProductionAction" scope="request"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="functionId" value="21161404" />
+		</action>
+		<!-- end -->
+		<!-- ALC时段汇总报表 -->
+		<action parameter="listRawDataReport" path="/listEdiProductionRawDataReport" scope="session"
+			name="ediProductionQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="functionId" value="20171161" />
+			<set-property property="functionDescription" value="list edi production Raw Report" />
+			<forward name="page" path="site.ediProductionReport.RawData.list" />
+		</action>
+		
+		<action parameter="listRawData" path="/listEdiProductionRawDataAction" scope="session"
+			name="ediProductionQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="functionId" value="21161641" />
+			<set-property property="functionDescription" value="list edi production Raw Data" />
+			<forward name="page" path="site.ediProduction.RawData.list" />
+		</action>
+		<action parameter="startTimingTask" path="/startTimingTaskAction" scope="request"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+		</action>
+		
+		<action parameter="deleteEdiProduction" path="/deleteEdiProduction" scope="session"
+			name="ediProductionQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+		</action>
+		<action parameter="newEdiProduction" path="/newEdiProduction" scope="request" 
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161641" />
+			<forward name="page" path="site.ediProduction.new" />
+		</action>
+		<action parameter="insertEdiProdution" path="/insertEdiProduction" scope="request"
+			name="ediProductionForm"  validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161641" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		
+		<action parameter="editEdiProdution" path="/editEdiProduction" scope="request" 
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161641" />
+			<forward name="page" path="site.ediProduction.edit" />
+		</action>
+		<action parameter="updateEdiProduction" path="/updateEdiProduction" scope="request" 
+			name="ediProductionForm" input="/editEdiProduction.do"   
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161641" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- JitProductionPlan -->
+		<action parameter="list" path="/listJitProductionPlanAction" scope="session"
+			name="jitProductionPlanQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="functionId" value="21161528" />
+			<set-property property="functionDescription" value="list jit production plan" />
+			<forward name="page" path="site.jitProductionPlan.list" />
+		</action>
+		<action parameter="newObject" path="/newJitProductionPlanAction" scope="request"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161528" />
+			<forward name="page" path="site.jitProductionPlan.new" />
+		</action>
+		<action parameter="edit" path="/editJitProductionPlanAction" scope="request"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161528" />
+			<forward name="page" path="site.jitProductionPlan.edit" />
+		</action>
+		<action parameter="insert" path="/insertJitProductionPlanAction" scope="request"
+			name="jitProductionPlanForm"  validate="false" input="/newJitProductionPlanAction.do"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161528" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateJitProductionPlanAction" scope="request"
+			name="jitProductionPlanForm" validate="false" input="/editJitProductionPlanAction.do"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161528" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteJitProductionPlanAction" scope="request"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="functionId" value="21161528" />
+		</action>
+		<action parameter="combinePlan" path="/combineJitProductionPlanAction" scope="request"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="functionId" value="21161528" />
+		</action>
+		<action parameter="automaticCombinePlanAllAction" path="/automaticCombinePlanAllAction" scope="request"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="functionId" value="21161528" />
+		</action>
+		<action parameter="listView" path="/listJitProductionPlanViewAction" scope="session"
+			name="jitProductionPlanQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<forward name="page" path="site.jitProductionPlan.view.list" />
+		</action>
+		<action parameter="decompositionProduct" path="/decompositionJitProductionAction" scope="request" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="functionId" value="21161404" />
+		</action>
+		<!-- end -->
+		<action parameter="listMergerPlanSummary" path="/listMergerPlanSummary" scope="session"
+			name="jitProductionPlanQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="functionId" value="21161412" />
+			<set-property property="functionDescription" value="list merger plan summary" />
+			<forward name="page" path="site.MergerPlanSummary.list" />
+		</action>
+		<action parameter="listPurchaseMerge" path="/listPurchaseMerge"
+			scope="session" name="jitProductionPlanQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<set-property property="functionId" value="20161111" />
+			<set-property property="functionDescription" value="list supplierPurchaseOrder merge" />
+			<forward name="page" path="site.supplierPurchaseOrdermerge.list" />
+		</action>
+		<action 
+			parameter="computeCombinePlanByAjax" path="/computeCombinePlanByAjax" scope="request"
+			validate="false" type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+		</action>
+		<action parameter="listUnfinishPlanGroup" path="/listUnfinishPlanGroup" scope="session"
+			name="ediProductionQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<set-property property="functionId" value="21161424" />
+			<set-property property="functionDescription" value="list Unfinish Plan Group" />
+			<forward name="page" path="site.UnfinishPlan.Group.list" />
+		</action>
+		<action parameter="importeUnfinishPlan" path="/importeUnfinishPlan" scope="session"
+			name="ediProductionQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<forward name="add" path="site.UnfinishPlan.Group.add" />
+		</action>
+		<action parameter="drexcelmoban" path="/drexcelmoban" scope="request"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+		</action>
+		<action parameter="listUnfinishPlan" path="/listUnfinishPlan" scope="session"
+			name="ediProductionQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+			<forward name="page" path="site.UnfinishPlan.list" />
+		</action>
+		<action parameter="decompositiontUnfinishPlanAction" path="/decompositiontUnfinishPlanAction" scope="session"
+			type="com.aof.web.struts.action.schedule.EdiProductionAction">
+		</action>
+		<action parameter="listJitProductionPlanByUnfinishPlan" path="/listJitUnfinishPlanViewAction" scope="session"
+			name="jitProductionPlanQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.JitProductionPlanAction">
+			<forward name="page" path="site.UnfinishPlan.view.list" />
+		</action>
+		<!-- ProjectedInventory -->
+		<action parameter="listProjected" path="/listProjectedInventoryReportAction" scope="session"
+			name="projectedInventoryQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+			<set-property property="functionId" value="21161402" />
+			<set-property property="functionDescription" value="list ProjectedInventory report" />
+			<forward name="page" path="site.projectedInventory.report.list" />
+		</action>
+		<action parameter="listForecastPeriod" path="/listForecastPeriodInventoryReportAction" scope="session"
+			name="projectedInventoryQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+			<set-property property="functionId" value="21161419" />
+			<set-property property="functionDescription" value="list ForecastPeriodInventory report" />
+			<forward name="page" path="site.forecastPeriodInventory.report.list" />
+		</action>
+		<!--
+		<action parameter="newObject" path="/newProjectedInventoryAction" scope="request"
+			type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="page" path="site.projectedInventory.new" />
+		</action>
+		<action parameter="edit" path="/editProjectedInventoryAction" scope="request"
+			type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="page" path="site.projectedInventory.edit" />
+		</action>
+		<action parameter="insert" path="/insertProjectedInventoryAction" scope="request"
+			name="projectedInventoryForm"  validate="false" input="/newProjectedInventoryAction.do"
+			type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateProjectedInventoryAction" scope="request"
+			name="projectedInventoryForm" validate="false" input="/editProjectedInventoryAction.do"
+			type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteProjectedInventoryAction" scope="request"
+			type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+			<set-property property="functionId" value="21161402" />
+		</action>
+		--><!-- end -->
+		<!-- 生产计划业务end -->
+		<!-- 非JIT 非PO 计划 -->
+		
+		<action parameter="list" path="/listPurchaseItemWrong" scope="session"
+			name="njitNpoPlanQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.NjitNpoPlanAction">
+			<set-property property="functionId" value="20161107" />
+			<set-property property="functionDescription" value="site supplierPurchaseOrder listWrong" />
+			<forward name="page" path="site.njitNpoPlan.list" />
+		</action>
+		<!--
+		<action parameter="list" path="/listNjitNpoPlanAction" scope="session"
+			name="njitNpoPlanQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.NjitNpoPlanAction">
+			<set-property property="functionId" value="21161402" />
+			<set-property property="functionDescription" value="list NjitNpoPlan" />
+			<forward name="page" path="site.njitNpoPlan.list" />
+		</action>
+		<action parameter="newObject" path="/newNjitNpoPlanAction" scope="request"
+			type="com.aof.web.struts.action.schedule.NjitNpoPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="page" path="site.njitNpoPlan.new" />
+		</action>
+		<action parameter="edit" path="/editNjitNpoPlanAction" scope="request"
+			type="com.aof.web.struts.action.schedule.NjitNpoPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="page" path="site.njitNpoPlan.edit" />
+		</action>
+		<action parameter="insert" path="/insertNjitNpoPlanAction" scope="request"
+			name="njitNpoPlanForm"  validate="false" input="/newNjitNpoPlanAction.do"
+			type="com.aof.web.struts.action.schedule.NjitNpoPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateNjitNpoPlanAction" scope="request"
+			name="njitNpoPlanForm" validate="false" input="/editNjitNpoPlanAction.do"
+			type="com.aof.web.struts.action.schedule.NjitNpoPlanAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21161402" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteNjitNpoPlanAction" scope="request"
+			type="com.aof.web.struts.action.schedule.NjitNpoPlanAction">
+			<set-property property="functionId" value="21161402" />
+		</action>
+		--><!-- end -->
+		
+		<!-- 日计划报表  Start-->
+			<action parameter="list" path="/listProductionDayPlan" scope="session"
+				name="productionDayPlanQueryForm" validate="false"
+				type="com.aof.web.struts.action.schedule.ProductionDayPlanAction">
+				<set-property property="functionId" value="20161201" />
+				<set-property property="functionDescription" value="list ProductionDayPlan" />
+				<forward name="page" path="site.produtionDayPlan.list" />
+			</action>
+		<!-- 日计划报表 End -->
+		<!-- 72小时预计需求数量  Start-->
+			<action parameter="list" path="/listProduction72HourPlan" scope="session"
+				name="production72HourPlanQueryForm" validate="false"
+				type="com.aof.web.struts.action.schedule.Production72HourPlanAction">
+				<set-property property="functionId" value="20161220" />
+				<set-property property="functionDescription" value="list Production72HourPlan" />
+				<forward name="page" path="site.prodution72HourPlan.list" />
+			</action>
+		<!-- 72小时预计需求数量 End -->
+		<!-- 自动分解错误信息 -->
+			<action parameter="list" path="/listEdiProductionErrorLog" scope="session" validate="false" 
+			 	name="ediProductionErrorLogQueryForm" type="com.aof.web.struts.action.schedule.EdiProductionErrorLogAction">
+				<set-property property="functionId" value="20161230"/>
+				<set-property property="functionDescription" value="list EdiProductionErrorLog"/>
+				<forward name="page" path="site.ediProductionErrorLog.list"/>
+			</action>
+			
+			
+			
+			
+			
+			
+			
+			
+			<!-- 库存预警报表 -->
+			<action parameter="kucun" path="/listShippingOrderReporty" scope="session"
+					name="projectedInventoryQueryForm" validate="false"
+					type="com.aof.web.struts.action.schedule.ProjectedInventoryAction">
+				<set-property property="functionId" value="20170306" />
+				<set-property property="functionDescription" value="kucun yujing baobiao" />
+				<forward name="page" path="site.portalShipOrderReport.listy" />
+			</action>
+			
+			
+	</action-mappings>
+</struts-config>
+ 

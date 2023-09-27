@@ -1,0 +1,1918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+ <form-beans type="com.shcnc.struts.form.config.BeanFormConfig">
+ <form-bean name="purchaseOrderForm" type="com.aof.model.po.PurchaseOrder">
+			<set-property property="requires" value="
+				site.id 
+			" />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		<form-bean name="purchaseOrderQueryForm" type="com.aof.web.struts.form.po.PurchaseOrderQueryForm" />
+		<form-bean name="purchaseOrderInspectionPendingItemQueryForm"
+			type="com.aof.web.struts.form.po.PurchaseOrderInspectionPendingItemQueryForm" />
+		
+			
+		<form-bean name="purchaseOrderDetialForm" type="com.aof.model.po.PurchaseOrderDetial">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		
+		<form-bean name="portalShipOrderMainQueryForm"
+			type="com.aof.web.struts.form.admin.PortalShipOrderMainQueryForm" />
+		
+		
+		<form-bean name="purchaseOrderReceiptsForm" type="com.aof.model.po.PurchaseOrderReceipts">
+			<set-property property="requires" value="
+				site.id,
+			" />
+			<set-property property="includes" value="
+				*,site.id
+			" />
+		</form-bean>
+		<form-bean name="purchaseOrderReceiptsQueryForm" type="com.aof.web.struts.form.po.PurchaseOrderReceiptsQueryForm" />
+	  
+		<form-bean name="purchaseOrderRqcForm"	type="com.aof.model.po.PurchaseOrderRqc">
+			<set-property property="requires" value="
+				site.id
+			" />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+			<!-- customerPlan -->
+		<form-bean name="customerPlanForm" type="com.aof.model.product.CustomerPlan" >
+			<set-property property="requires" value="customer.id" />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="purchaseOrderRqcQueryForm" type="com.aof.web.struts.form.po.PurchaseOrderRQCQueryForm" />
+		 
+		<form-bean name="purchaseOrderPutInStorageForm" type="com.aof.model.po.PurchaseOrderPutInStorage">
+			<set-property property="requires" value="site.id" />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="purchaseOrderPutInStorageQueryForm"
+			type="com.aof.web.struts.form.po.PurchaseOrderPutInStorageQueryForm" />
+			
+			<form-bean name="boxQueryForm" type="com.aof.web.struts.form.po.BoxQueryForm" /> 
+			<form-bean name="boxForm"	type="com.aof.model.po.Box">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		<form-bean name="purchaseOrderCondimentSingleForm" type="com.aof.model.po.PurchaseOrderCondimentSingle">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		
+		<form-bean name="productOutStorageForm" type="com.aof.model.product.ProductOutStorage">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="storeroom.id,*" />
+		</form-bean>
+			
+		<form-bean name="productQueryForm" type="com.aof.web.struts.form.po.ProductQueryForm" />
+		
+		<form-bean name="inventoryQueryForm" type="com.aof.web.struts.form.basic.InventoryQueryForm" />
+		
+		<form-bean name="inventoryOccupiedDetialQueryForm" type="com.aof.web.struts.form.basic.InventoryOccupiedDetialQueryForm" />
+		
+		<form-bean name="produceRejectedMaterialQueryForm" type="com.aof.web.struts.form.po.ProduceRejectedMaterialQueryForm" />
+		
+		<form-bean name="produceBuckleMaterialQueryForm" type="com.aof.web.struts.form.po.ProduceBuckleMaterialQueryForm" />
+		
+		<form-bean name="inventoryTransitQueryForm" type="com.aof.web.struts.form.po.InventoryTransitQueryForm" />
+			
+		<form-bean name="poHighLineQueryForm" type="com.aof.web.struts.form.po.PoHighLineQueryForm" />
+		
+		<form-bean name="productBelowLineQueryForm" type="com.aof.web.struts.form.po.ProductBelowLineQueryForm" />
+		
+		<form-bean name="productGoLineQueryForm" type="com.aof.web.struts.form.po.ProductGoLineQueryForm" />
+		
+		<form-bean name="productOutStorageQueryForm" type="com.aof.web.struts.form.po.ProductOutStorageQueryForm" />
+		<form-bean name="productOutGolineQueryForm" type="com.aof.web.struts.form.po.ProductOutGolineQueryForm" />
+		<!-- customerPlan -->
+		<form-bean name="customerPlanQueryForm" type="com.aof.web.struts.form.product.CustomerPlanQueryForm" />
+		<!-- basicCustomer -->
+		<form-bean name="basicCustomerQueryForm" type="com.aof.web.struts.form.product.BasicCustomerQueryForm" />
+		<form-bean name="basicCustomerForm" type="com.aof.model.product.BasicCustomer">
+		<set-property property="requires" value=" siteId.id" />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		
+		<!-- dailyProductPlan -->
+		<form-bean name="dailyProductPlanQueryForm" type="com.aof.web.struts.form.product.DailyProductPlanQueryForm" />
+		<form-bean name="dailyProductPlanForm" type="com.aof.model.product.DailyProductPlan">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<!-- salesOrder -->
+		<form-bean name="salesOrderQueryForm" type="com.aof.web.struts.form.product.SalesOrderQueryForm" />
+		<form-bean name="salesOrderForm" type="com.aof.model.product.SalesOrder">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<!-- workOrderBom -->
+		<form-bean name="workOrderBomQueryForm" type="com.aof.web.struts.form.product.WorkOrderBomQueryForm" />
+		<form-bean name="workOrderBomForm" type="com.aof.model.product.WorkOrderBom">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="salesOrderItemQueryForm" type="com.aof.web.struts.form.product.SalesOrderItemQueryForm" />
+		<form-bean name="salesOrderItemForm" type="com.aof.model.product.SalesOrderItem" >
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="salesPreshiporderQueryForm" type="com.aof.web.struts.form.product.SalesPreshiporderQueryForm" />
+		<form-bean name="salesPreshiporderForm" type="com.aof.model.product.SalesPreshiporder">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="salesPreshiporderItemQueryForm" type="com.aof.web.struts.form.product.SalesPreshiporderItemQueryForm" />
+		<form-bean name="salesPreshiporderItemForm" type="com.aof.model.product.SalesPreshiporderItem">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<!-- salesPreshiporderBatch -->
+		<form-bean name="salesPreshiporderBatchQueryForm" type="com.aof.web.struts.form.product.SalesPreshiporderBatchQueryForm" />
+		<form-bean name="salesPreshiporderBatchForm" type="com.aof.model.product.SalesPreshiporderBatch">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<!-- salesWorkorder -->
+		<form-bean name="salesWorkorderQueryForm" type="com.aof.web.struts.form.product.SalesWorkorderQueryForm" />
+		<form-bean name="salesWorkorderForm" type="com.aof.model.product.SalesWorkorder" >
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<!-- 生产计划上传下载 -->
+		<form-bean name="ProductionplanningQueryForm" type="com.aof.web.struts.form.po.ProductionplanningQueryForm" />
+		<form-bean name="ProductionplanningForm" type="com.aof.model.po.Productionplanning">
+			<form-property name="fileContent" type="org.apache.struts.upload.FormFile"></form-property>
+		</form-bean>
+		<!-- 期初打印条码 -->
+		<form-bean name="purchaseManualCreateBarcodeQueryForm" type="com.aof.web.struts.form.po.PurchaseManualCreateBarcodeQueryForm">
+		</form-bean>
+		<form-bean name="purchaseManualCreateBarcodeForm" type="com.aof.model.po.PurchaseManualCreateBarcode">
+			<form-property name="fileContent" type="org.apache.struts.upload.FormFile"></form-property>
+		</form-bean>
+</form-beans>
+ <action-mappings  type="com.aof.web.struts.action.SecureActionMapping">
+ <!-- 采购单业务start -->
+	 	<action
+			parameter="list" path="/listPurchaseOrder" scope="session"
+			name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150002" />
+			<set-property property="functionDescription" value="site purchaseOrder maintenance" />
+			<forward name="page" path="site.purchaseOrder.list" />
+		</action>
+		<action     
+			parameter="select" path="/selectPurchaseOrder" scope="session" name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21150002" />
+			<forward name="page" path="site.purchaseOrder.selectPurchaseOrder" />
+		</action>
+		<action
+			parameter="newObject" path="/newPurchaseOrder" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150002" />
+			<forward name="page" path="site.purchaseOrder.new" /> 
+		</action>
+		<action
+			parameter="insert" path="/insertPurchaseOrder" scope="request"
+			name="purchaseOrderForm" input="/newPurchaseOrder.do"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150002" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editPurchaseOrder" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150002" />
+			<forward name="page" path="site.purchaseOrder.edit" />
+		</action>
+		<action
+			parameter="update" path="/updatePurchaseOrder" scope="request"
+			name="purchaseOrderForm" input="/editPurchaseOrder.do"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150002" />
+		</action>
+		<!-- 采购单业务end -->
+		<!-- 中转库调料单start-2015-02-03 -->
+		<action
+			parameter="listPortalShipOrder" path="/listPortalShipOrder" scope="session"
+			name="purchaseOrderQueryForm" validate="false" 
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150025" />
+			<set-property property="functionDescription" value="portalShipOrder maintenance" />
+			<forward name="page" path="portalShipOrder.list" />
+		</action>
+		<action 
+			parameter="insertCondiment" path="/insertPurchaseOrderCondimentByAjax" scope="request"
+			name="purchaseOrderCondimentSingleForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150025" />
+			<forward name="page" path="purchaseOrder.condiment.list" />
+		</action>
+		<action
+			parameter="listCondiment" path="/listPurchaseOrderCondiment" scope="session"
+			name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150011" />
+			<set-property property="functionDescription" value="purchaseOrder condiment maintenance" />
+			<forward name="page" path="purchaseOrder.condiment.list" />
+		</action>
+		<action 
+			parameter="insertReceiptsByAjax" path="/insertPurchaseOrderReceiptsByAjax" scope="request"
+			validate="false" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+		</action>
+		<action 
+			parameter="printPurchaseOrderCondiment" path="/printPurchaseOrderCondiment" scope="request"
+			validate="false" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150011" />
+			<forward name="page" path="purchaseOrder.condiment.printCode" />
+		</action>
+		<action 
+			parameter="updateCondimentIsPrint" path="/updateCondimentIsPrint" scope="request"
+			validate="false" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150011" />
+			<forward name="page" path="purchaseOrder.condiment.list" />
+		</action>
+		<action
+			parameter="listPortalShipOrderConfirm" path="/listPortalShipOrderConfirm" scope="session"
+			name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150072" />
+			<set-property property="functionDescription" value="portalShipOrder confirm maintenance" />
+			<forward name="page" path="portalShipOrderConfirm.list" />
+		</action>
+		<action
+			parameter="updatePurchaseOrderCondimentConfirmByAjax" path="/updatePurchaseOrderCondimentConfirmByAjax" scope="session"
+			name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150072" />
+		</action>
+		<action
+			parameter="updatePurchaseOrderCondiment" path="/updatePurchaseOrderCondiment" scope="session"
+			name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150099" />
+		</action>
+		
+		<action 
+			parameter="updatePortalShipOrderWithdraw" path="/updatePortalShipOrderWithdraw" scope="request"
+			validate="false" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150025" />
+		</action>
+		<!-- 中转库调料单end-2015-02-03-st -->
+		
+		<!-- 中转库库存查询 start-2015-03-18-st -->
+		<action
+			parameter="list" path="/listInventoryTransit" scope="session"
+			name="inventoryTransitQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.InventoryTransitAction">
+			<set-property property="functionId" value="21150073" />
+			<set-property property="functionDescription" value="inventory iransit" />
+			<forward name="page" path="inventory.iransit.list" />
+		</action>
+		
+		<!-- 中转库库存查询 start-2015-03-18-st -->
+		
+		<!-- 采购单条码补打-2015-02-08-st -->
+		<action
+			parameter="print" path="/purchaseOrderPrint" scope="session"
+			name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150047" />
+			<set-property property="functionDescription" value="site purchaseOrder boxPrint" />
+			<forward name="page" path="site.purchaseOrder.print" />
+		</action>
+		<!-- 中转库调料单条码补打-2015-02-08-st -->
+		<action
+			parameter="condimentPrint" path="/purchaseOrderCondimentPrint" scope="session" validate="false"
+			name="purchaseOrderQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150048" />
+			<set-property property="functionDescription" value="purchaseOrder condiment boxPrint" />
+			<forward name="page" path="purchaseOrder.condiment.print" />
+		</action>
+		<!-- 条码打印-2015-04-09-st -->
+		<action
+			parameter="listPurchaseOrderLotPrint" path="/listPurchaseOrderLotPrint" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150093" />
+			<set-property property="functionDescription" value="po lot print" />
+			<forward name="page" path="po.lot.print.list" />
+		</action>
+		
+		<action
+			parameter="purchaseOrderLotPrint" path="/purchaseOrderLotPrint" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150093" />
+			<forward name="page" path="po.lot.print" />
+		</action>
+		<action
+			parameter="purchaseOrderBoxIdPrint" path="/purchaseOrderBoxIdPrint" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150093" />
+			<forward name="page" path="po.lot.print" />
+		</action>
+		
+		<action
+			parameter="updateBoxIsPrint" path="/updateBoxIsPrint" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150093" />
+			<forward name="page" path="po.lot.print" />
+		</action>
+		
+		<!-- 采购收货业务start -->
+		<action
+			parameter="list" path="/listPurchaseOrderReceipts" scope="session"
+			name="purchaseOrderReceiptsQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150004" />
+			<set-property property="functionDescription" value="site purchaseOrderReceipts maintenance" />
+			<forward name="page" path="site.purchaseOrderReceipts.list" />
+		</action>
+		<action
+			parameter="report" path="/reportPurchaseOrderReceipts" scope="session"
+			name="purchaseOrderReceiptsQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150024" />
+			<set-property property="functionDescription" value="site purchaseOrderReceipts report" />
+			<forward name="page" path="site.purchaseOrderReceipts.report" />
+		</action>
+		<action
+			parameter="view" path="/viewPurchaseOrderReceipts" scope="session" validate="false"
+			name="poIpiBoxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150024" />
+			<forward name="page" path="site.purchaseOrderReceipts.view" />
+		</action>
+		<action
+			parameter="newObject" path="/newPurchaseOrderReceipts" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150004" />
+			<forward name="page" path="site.purchaseOrderReceipts.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertPurchaseOrderReceipts" scope="request"
+			name="purchaseOrderReceiptsForm" input="/newPurchaseOrderReceipts.do"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150004" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editPurchaseOrderReceipts" scope="session" validate="false"
+			name="poIpiBoxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150004" />
+			<forward name="page" path="site.purchaseOrderReceipts.edit" />
+		</action>
+		<!-- 采购收货业务end -->
+		<!-- 条码打印start 2015-02-04-st -->
+		<action
+			parameter="printBox" path="/purchaseOrderBoxPrint" scope="session"
+			validate="false" type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150004" />
+			<forward name="page" path="site.box.list" />
+		</action>
+		<!-- 条码打印end 2015-02-04-st -->
+		<!-- 质检业务start -->
+		<action
+			parameter="list" path="/listPurchaseOrderRQC" scope="session" validate="false"
+			name="purchaseOrderRqcQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150007" />
+			<set-property property="functionDescription" value="site purchaseOrderRQC maintenance" />
+			<forward name="page" path="site.purchaseOrderRQC.list" />
+		</action>
+		<action
+			parameter="itemList" path="/listQualityInspectionAnalysisReport" scope="session"
+			name="poIpiBoxQueryForm" validate="false" 
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction"> 
+			<set-property property="functionId" value="21150076" />
+			<set-property property="functionDescription" value="quality inspectionAnalysis report" />
+			<forward name="page" path="site.quality.reportList" />
+		</action>
+		<action
+			parameter="newObject" path="/newPurchaseOrderRQC" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150007" />
+			<forward name="page" path="site.purchaseOrderRQC.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertPurchaseOrderRQC" scope="request"
+			name="purchaseOrderRQCForm" input="/newPurchaseOrderRQC.do"
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150007" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editPurchaseOrderRQC" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150007" />
+			<forward name="page" path="site.purchaseOrderRQC.edit" />
+		</action>
+		<action
+			parameter="editPrint" path="/editPurchaseOrderRQCPrints" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150007" />
+			<forward name="page" path="site.purchaseOrderRQC.edit.prints" />
+		</action>
+        <action
+			parameter="close" path="/closePurchaseOrderRQC" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150007" />
+		</action>
+		<action
+			parameter="update" path="/updatePurchaseOrderRQC" scope="request"
+			name="purchaseOrderRQCForm" input="/editPurchaseOrderRQC.do"
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150007" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- 质检业务end -->
+		<!-- 采购质检扫描 2015-02-08-st -->
+		<action
+			parameter="list" path="/purchaseOrderRQCScanning" scope="session" validate="false"
+			name="purchaseOrderRqcQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150049" />
+			<set-property property="functionDescription" value="purchaseOrderRQC scanning" />
+			<forward name="page" path="purchaseOrderRQC.scanning" />
+		</action>
+		
+		<!-- 采购入库start -->
+		<action
+			parameter="list" path="/listPurchaseOrderReceiptsInbound" scope="session"
+			name="purchaseOrderReceiptsInboundQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsInboundAction">
+			<set-property property="functionId" value="21150008" />
+			<set-property property="functionDescription" value="site purchaseOrderReceiptsInbound maintenance" />
+			<forward name="page" path="site.purchaseOrderReceiptsInbound.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newPurchaseOrderReceiptsInbound" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsInboundAction">
+			<set-property property="functionId" value="21150008" />
+			<forward name="page" path="site.purchaseOrderReceiptsInbound.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertPurchaseOrderReceiptsInbound" scope="request"
+			name="purchaseOrderReceiptsInboundForm" input="/newPurchaseOrderReceiptsInbound.do"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsInboundAction">
+			<set-property property="functionId" value="21150008" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editPurchaseOrderReceiptsInbound" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsInboundAction">
+			<set-property property="functionId" value="21150008" />
+			<forward name="page" path="site.purchaseOrderReceiptsInbound.edit" />
+		</action>
+         	<action
+			parameter="editPrint" path="/editPurchaseOrderReceiptsInboundPrint" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsInboundAction">
+			<set-property property="functionId" value="21150008" />
+			<forward name="page" path="site.purchaseOrderReceiptsInbound.edit.print" />
+		</action>
+			<action
+			parameter="close" path="/closePurchaseOrderReceiptsInbound" scope="request"
+			type="com.aof.web.struts.action.po.PurchaseOrderReceiptsInboundAction">
+			<set-property property="functionId" value="21150008" />
+		</action>
+		<!-- 采购入库end -->
+		<!-- 系统扫描操作start-2015-02-04-st  -->
+		<!-- 采购收货start-2015-02-04-st -->
+		<action
+			parameter="purchaseOrderReceiptsBoxList" path="/purchaseOrderReceiptsBoxList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150046" />
+			<set-property property="functionDescription" value="purchaseOrder receipts box" />
+			<forward name="page" path="purchaseOrder.receipts.box" />
+		</action>
+		<action
+			parameter="purchaseReturnMaterialByAjax" path="/purchaseReturnMaterialByAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+		</action>
+		<action
+			parameter="purchaseOrderRqcDetermine" path="/purchaseOrderRqcDetermine" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150046" />
+			<forward name="page" path="purchaseOrder.rqcDetermine" />
+		</action>
+		 <action
+			parameter="scanningPurchaseOrderReceipts" path="/scanningPurchaseOrderReceipts" scope="session"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderReceiptsAction">
+			<set-property property="functionId" value="21150046" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		 </action>
+		 <!-- 质检判定结果start-2015-02-09-st --><!--
+		 <action
+			parameter="updatePurchaseOrderRqcDetermine" path="/updatePurchaseOrderRqcDetermine" scope="session"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150046" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		 </action>
+		  --><action
+			parameter="updatePurchaseOrderRqcDetermine" path="/updatePurchaseOrderRqcDetermine" scope="session"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150046" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveORerror.jsp" />
+		 </action>
+		 <!-- 采购收货end-2015-02-04-st -->
+		 <!-- 品质质检start-2015-02-04-st -->
+		 <action
+			parameter="poRqcBoxList" path="/purchaseOrderRqcBoxList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150081" />
+			<set-property property="functionDescription" value="po rqc box" />
+			<forward name="page" path="purchaseOrder.rqc.box" />
+		</action>
+		 <!-- 品质质检start-2015-02-04-st -->
+		 <!-- 仓储入库start-2015-02-04-st -->
+		 <action
+			parameter="poPutInStorageBoxList" path="/purchaseOrderPutInStorageBoxList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150082" />
+			<set-property property="functionDescription" value="po putInStorage box" />
+			<forward name="page" path="purchaseOrder.putInStorage.box" />
+		</action>
+		 <!-- 仓储入库end-2015-02-04-st -->
+		 <!-- 仓储出库start-2015-02-04-st -->
+		 <action
+			parameter="listInventory" path="/listInventory" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150052" />
+			<set-property property="functionDescription" value="inventory list" />
+			<forward name="page" path="purchaseOrder.out.box" />
+		</action>
+		 <action
+			parameter="listInventoryReport" path="/listInventoryReport" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21151160" />
+			<set-property property="functionDescription" value="list Inventory Report" />
+			<forward name="page" path="purchaseOrder.out.boxReport" />
+		</action>
+		<!-- 原材料退货start 2016-01-16- -->
+		<action
+			parameter="poPutInStorageMaterialBoxList" path="/listpurchaseOrderPutInStorageMaterialBoxList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21160116" />
+			<set-property property="functionDescription" value="po putinstorage material box" />
+			<forward name="page" path="po.putinstorageMaterial.box.list" />
+		</action>
+		<action
+			parameter="poPutInStorageMaterialBoxByAjax" path="/poPutInStorageMaterialBoxByAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+		</action>
+		<!-- 仓储出库end-2015-02-04-st -->
+		<!-- 系统扫描操作start-2015-02-04-st  -->
+		<!-- 成品出库2015-02-12-st -->
+		<action
+			parameter="productOutbound" path="/productOutbound" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150054" />
+			<set-property property="functionDescription" value="productOutbound box" />
+			<forward name="page" path="productOutbound.box" />
+		</action>
+		<action
+			parameter="scanningProductOutbound" path="/scanningProductOutbound" scope="request"  
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150054" />
+		</action>
+		<!-- 成品出库信息查看2015-02-12-st -->
+		<action
+			parameter="list" path="/listProductOutbound" scope="session" validate="false"
+			name="productQueryForm" type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150055" />
+			<set-property property="functionDescription" value="productOutbound list" />
+			<forward name="page" path="productOutbound.list" />
+		</action>
+		<!-- 采购入库2015-03-02-st -->
+		<action
+			parameter="list" path="/listPurchaseOrderPutInStorage" scope="session" validate="false"
+			name="purchaseOrderPutInStorageQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderPutInStorageAction">
+			<set-property property="functionId" value="21150057" />
+			<set-property property="functionDescription" value="po putInStorage list" />
+			<forward name="page" path="purchaseOrderPutInStorage.list" />
+		</action>
+		<action
+			parameter="selectBox" path="/selectBox" scope="session" validate="false"  
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<forward name="page" path="selectBox.list" />
+		</action>
+		<!-- 物料分解start 2015-03-06-st decomposition-->
+		<action
+			parameter="list" path="/listPartDecomposition" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PartDecompositionAction">
+			<set-property property="functionId" value="21150064" />
+			<set-property property="functionDescription" value="part decomposition list" />
+			<forward name="page" path="part.decomposition.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newPartDecomposition" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PartDecompositionAction">
+			<set-property property="functionId" value="21150064" />
+			<forward name="page" path="part.decomposition.new" />
+		</action>
+		<!-- 物料分解end 2015-03-06-st -->
+		<!-- 生成退料start 2015-03-10-st -->
+		<action
+			parameter="listProduceRejectedMaterialBoxList" path="/listProduceRejectedMaterialBoxList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150069" />
+			<set-property property="functionDescription" value="po rejected material box" />
+			<forward name="page" path="po.rejectedMaterial.box.list" />
+		</action>
+		<!-- 退货原因 -->
+		<action
+			parameter="produceRejectedMaterialBoxByReasons" path="/produceRejectedMaterialBoxByReasons" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150069" />
+			<forward name="page" path="po.rejectedMaterial.box.reasons" />
+		</action>
+		
+		 <action
+			parameter="updateProduceRejectedMaterialBoxByReasons" path="/updateProduceRejectedMaterialBoxByReasons" scope="session"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150069" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveORerror.jsp" />
+		 </action>
+		 
+		 <action
+			parameter="updateProduceRejectedMaterialBox" path="/updateProduceRejectedMaterialBox" scope="session"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150069" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveORerror.jsp" />
+		 </action>
+		<!--入库后退货记录报表-->
+		<action
+			parameter="list" path="/listProduceRejectedMaterial" scope="session" validate="false"
+			name="produceRejectedMaterialQueryForm" type="com.aof.web.struts.action.po.ProduceRejectedMaterialAction">
+			<set-property property="functionDescription" value="po rejected material" />
+			<set-property property="functionId" value="21150068" />
+			<forward name="page" path="po.rejectedMaterial.list" />
+		</action>
+		
+		<action
+			parameter="RecordPrint" path="/RecordPrint" scope="session" validate="false"
+			 name="produceRejectedMaterialQueryForm" type="com.aof.web.struts.action.po.ProduceRejectedMaterialAction">
+			<set-property property="functionId" value="21150068" />
+			<forward name="page" path="po.rejectedMaterial.print" />
+		</action>
+		<action
+			parameter="updateRejectedMaterialPrint" path="/updateRejectedMaterialPrint" scope="session" validate="false"
+			 type="com.aof.web.struts.action.po.ProduceRejectedMaterialAction">
+			<set-property property="functionId" value="21150068" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!--入库前退货记录报表-->
+		<action
+			parameter="listBefore" path="/listProduceRejectedMaterialBefore" scope="session" validate="false"
+			name="produceRejectedMaterialQueryForm" type="com.aof.web.struts.action.po.ProduceRejectedMaterialAction">
+			<set-property property="functionDescription" value="poRejected material before" />
+			<set-property property="functionId" value="21160332" />
+			<forward name="page" path="po.rejectedMaterialBefore.list" />
+		</action>
+		<action
+			parameter="RecordBeforePrint" path="/RecordBeforePrint" scope="session" validate="false"
+			 name="produceRejectedMaterialQueryForm" type="com.aof.web.struts.action.po.ProduceRejectedMaterialAction">
+			<set-property property="functionId" value="21160332" />
+			<forward name="page" path="po.rejectedMaterialBefore.print" />
+		</action>
+		<action
+			parameter="updateRejectedMaterialBeforePrint" path="/updateRejectedMaterialBeforePrint" scope="session" validate="false"
+			 type="com.aof.web.struts.action.po.ProduceRejectedMaterialAction">
+			<set-property property="functionId" value="21160332" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="poRejectedMaterialBoxByAjax" path="/poRejectedMaterialBoxByAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.ProduceRejectedMaterialAction">
+		</action>
+		
+		<!-- 生成退料end 2015-03-10-st -->
+		<!-- 库存报表start 2015-03-10-st -->
+		<action parameter="report" path="/inventoryReport" scope="session"
+			name="inventoryQueryForm" validate="false"
+			type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="functionDescription" value="inventory report" />
+			<set-property property="functionId" value="21150065" />
+			<forward name="page" path="site.inventory.report" />
+		</action>
+		<!-- 库存可用报表start 2016-06-05-llz -->
+		<action parameter="occupiedDetial" path="/inventoryOccupiedDetialReport" scope="session"
+			name="inventoryOccupiedDetialQueryForm" validate="false"
+			type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="functionDescription" value="inventory occupied detial report" />
+			<set-property property="functionId" value="20160605" />
+			<forward name="page" path="site.inventory.occupied.detial.report" />
+		</action>
+		<action
+			parameter="selectCustomerPlanDeliveryWmsPart" path="/selectCustomerPlanDeliveryWmsPart" scope="session"
+			name="inventoryQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<forward name="page" path="site.CustomerPlanDeliveryWmsPart.select" />
+		</action>
+		<action parameter="updateByBoxCout" path="/updateByBoxCout" scope="request"
+			type="com.aof.web.struts.action.inventory.InventoryAction" />
+			
+		<action parameter="inventoryMovingReport" path="/inventoryMovingReport" scope="session"
+			name="inventoryQueryForm" validate="false"
+			type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="functionDescription" value="inventory moving report" />
+			<set-property property="functionId" value="21150066" />
+			<forward name="page" path="site.inventoryMoving.report" />
+		</action>
+		<!-- 库存报表end 2015-03-10-st -->
+		<action
+			parameter="decomposedPart" path="/decomposedParts" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PartDecompositionAction">
+			<set-property property="functionId" value="21150064" />
+		</action>
+		<action
+			parameter="uselessdPart" path="/uselessdPart" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PartDecompositionAction">
+			<set-property property="functionId" value="21150064" />
+		</action>
+		<!-- 成品扣料报表start 2015-03-20-st -->
+		<action parameter="list" path="/listProduceBuckleMaterial" scope="session"
+			name="produceBuckleMaterialQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.ProduceBuckleMaterialAction">
+			<set-property property="functionDescription" value="produceBuckle material" />
+			<set-property property="functionId" value="21150078" />
+			<forward name="page" path="site.produceBuckleMaterial" />
+		</action>
+		<!-- 成品扣料报表end 2015-03-20-st -->
+		
+		<!-- 条码信息报表start 2015-03-31-st -->
+		<action parameter="listBoxReport" path="/listBoxReport" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionDescription" value="box report" />
+			<set-property property="functionId" value="21150083" />
+			<forward name="page" path="site.box.report" />
+		</action>
+		<!-- 条码信息报表end 2015-03-31-st -->
+		<!-- 库存明细报表start 2016-04-21-llz -->
+		<action parameter="listBoxDetailReport" path="/listBoxDetailReport" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionDescription" value="box detail report" />
+			<set-property property="functionId" value="21160421" />
+			<forward name="page" path="site.box.detail.report" />
+		<!-- 库存明细报表end 2016-04-21-llz -->
+		</action>
+		<!-- 移库start 2015-03-23-st -->
+		<action parameter="listMoveLibrary" path="/listMoveLibrary" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionDescription" value="move library list" />
+			<set-property property="functionId" value="21150079" />
+			<forward name="page" path="site.moveLibrary.list" />
+		</action>
+		<action parameter="newMoveLibrary" path="/newMoveLibrary" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150079" />
+			<forward name="page" path="site.moveLibrary.new" />
+		</action>
+		<!--<action parameter="insertMoveLibrary" path="/insertMoveLibrary" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150079" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		-->
+		<action parameter="insertMoveLibrary" path="/insertMoveLibrary" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150079" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveORerror.jsp" />
+		</action>
+		<action parameter="insertLFLibrary" path="/insertLFLibrary" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionDescription" value="po rqc unqualified" />
+			<set-property property="functionId" value="21150115" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		
+		<!-- 包装箱容量修改  2015-03-23-st -->
+		<action
+			parameter="listPurchaseOrderCapacity" path="/listPurchaseOrderCapacity" scope="session"
+			name="purchaseOrderQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150080" />
+			<set-property property="functionDescription" value="part capacity edit" />
+			<forward name="page" path="editCapacity.purchaseOrder.list" />
+		</action>
+		<action
+			parameter="editPurchaseOrderCapacity" path="/editPurchaseOrderCapacity" scope="request"
+			validate="false" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+		</action>
+		<!-- 条码废除start 2015-03-31-st -->
+		<action parameter="listBoxAbolition" path="/listBoxAbolition" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionDescription" value="box abolition" />
+			<set-property property="functionId" value="21150084" />
+			<forward name="page" path="site.box.abolition" />
+		</action>
+		<action parameter="boxAbolitionByAjax" path="/boxAbolitionByAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+		</action>
+		<action parameter="updateBoxByRemarkAjax" path="/updateBoxByRemarkAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+		</action>
+		<!-- 条码废除end 2015-03-31-st -->
+		<!-- 原材料上线扫描start 2015-04-02-st -->
+		<action
+			parameter="purchaseOrderHighLineBoxList" path="/purchaseOrderHighLineBoxList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150086" />
+			<set-property property="functionDescription" value="po highLine scann" />
+			<forward name="page" path="purchaseOrder.highLine.box" />
+		</action>
+		<action
+			parameter="highLineBoxOneSelect" path="/purchaseOrderHighLineBoxOneSelect" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150086" />
+			<forward name="page" path="purchaseOrder.highLine.one.select" />
+		</action>
+		<action
+			parameter="insertPurchaseOrderHighLineOne" path="/insertPurchaseOrderHighLineOne" scope="session" validate="false"
+			name="boxQueryForm" input="/highLineBoxOneSelect.do" 
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150086" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="insertPurchaseOrderHighLineTwo" path="/insertPurchaseOrderHighLineTwo" scope="session" validate="false"
+			name="poHighLineQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150086" />
+			<forward name="page" path="purchaseOrder.belowLine.box" />
+		</action>
+		<action
+			parameter="purchaseOrderHighTwoLineBoxList" path="/purchaseOrderHighTwoLineBoxList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150105" />
+			<set-property property="functionDescription" value="po highTwoLine scann" />
+			<forward name="page" path="purchaseOrder.highTwoLine.box" />
+		</action>
+		  <action
+			parameter="list" path="/poHighLineList" scope="session" validate="false"
+			name="poHighLineQueryForm" type="com.aof.web.struts.action.po.PoHighLineAction">
+			<set-property property="functionId" value="21150088" />
+			<set-property property="functionDescription" value="po highLine one list" />
+			<forward name="page" path="poHighLine.list" />
+		</action>
+		 <action
+			parameter="selectPoHighLine" path="/selectPoHighLine" scope="session" validate="false"
+			name="poHighLineQueryForm" type="com.aof.web.struts.action.po.PoHighLineAction">
+			<set-property property="functionId" value="21150104" />
+			<set-property property="functionDescription" value="po highLine one select" />
+			<forward name="page" path="poHighLine.select" />
+		</action>
+		<action
+			parameter="listPoHighLineTwo" path="/poHighLineTwoList" scope="session" validate="false"
+			name="poHighLineQueryForm" type="com.aof.web.struts.action.po.PoHighLineAction">
+			<set-property property="functionId" value="21150089" />
+			<set-property property="functionDescription" value="po highLine two list" />
+			<forward name="page" path="poHighLine.two.list" />
+		</action>
+		<action
+			parameter="validateHighLineTwoByAjax" path="/validatePurchaseOrderHighLineTwoByAjax" scope="request" 
+			validate="false" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+		</action>
+		<action
+			parameter="purchaseOrderHighLineBoxTwoSelect" path="/purchaseOrderHighLineBoxTwoSelect" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150086" />
+			<forward name="page" path="highLineBoxTwo.select" />
+		</action>
+		
+		 
+		<!-- 原材料上线扫描end 2015-04-02-st -->
+		<!-- 原材料下线扫描start 2015-04-02-st -->
+		 <action
+			parameter="listBelowLine" path="/listBelowLine" scope="session" validate="false"
+			name="poHighLineQueryForm" type="com.aof.web.struts.action.po.PoHighLineAction">
+			<set-property property="functionId" value="21150087" />
+			<set-property property="functionDescription" value="po belowLine scann" />
+			<forward name="page" path="purchaseOrder.belowLine.box" />
+		</action>
+		<!-- 原材料下线扫描end 2015-04-02-st -->
+		<!-- 关闭采购单start 04-08 -->
+	 	<action
+			parameter="listColse" path="/listPurchaseOrderColse" scope="session" validate="false"
+			name="purchaseOrderQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150090" />
+			<set-property property="functionDescription" value="po close" />
+			<forward name="page" path="site.purchaseOrderClose.list" />
+		</action>
+		<action
+			parameter="close" path="/purchaseOrderColse" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150090" />
+		</action>
+		<action
+			parameter="listOpen" path="/listPurchaseOrderOpen" scope="session" validate="false"
+			name="purchaseOrderQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150091" />
+			<set-property property="functionDescription" value="po open" />
+			<forward name="page" path="site.purchaseOrderOpen.list" />
+		</action>
+		<action
+			parameter="open" path="/purchaseOrderOpen" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderAction">
+			<set-property property="functionId" value="21150091" />
+		</action>
+		<!-- 关闭采购单end 04-08 -->
+		
+		<!-- 关闭质检单 04-08 -->
+		<action
+			parameter="listClose" path="/listPurchaseOrderRQCClose" scope="session" validate="false"
+			name="purchaseOrderRqcQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150092" />
+			<set-property property="functionDescription" value="po rqc close" />
+			<forward name="page" path="site.purchaseOrderRQCClose.list" />
+		</action>
+		<action
+			parameter="close" path="/purchaseOrderRQCClose" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderRQCAction">
+			<set-property property="functionId" value="21150092" />
+		</action>
+		<!-- 关闭采购单end 04-08 -->
+		<!-- 根据库位编号查找当前库存和最大库位库存 04-08 -->
+		<action
+			parameter="lookForLocationQtyByAjax" path="/lookForLocationQtyByAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+		</action>
+		<!-- 不良品移库 start 04-10-st -->
+		<action
+			parameter="listPurchaseOrderRQCUnqualified" path="/listPurchaseOrderRQCUnqualified" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150094" />
+			<set-property property="functionDescription" value="po rqc unqualified" />
+			<forward name="page" path="poRqc.unqualified.list" />
+		</action>
+		<!-- 不良品扫描 -->
+		<action parameter="newDefeScanning" path="/newDefeScanning" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150119" />
+			<set-property property="functionDescription" value="po rqc unqualified" />
+			<forward name="page" path="site.newDefeScanning.new" />
+		</action>
+		<!-- 不良品扫描    合格-->
+		 <action 
+			parameter="insertDefeScanningQua" path="/insertDefeScanningQua" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150120" />
+			<set-property property="functionDescription" value="po rqc unqualified" />
+		</action>
+		<!-- 不良品扫描   不合格-->
+		 <action 
+			parameter="insertDefeScanningNOtQua" path="/insertDefeScanningNOtQua" scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150120" />
+		</action>
+		
+		<!-- 不良品移库 end 04-10-st -->
+		
+		<!-- 成品下线绑容器 2015-04-09 start -->
+		<action
+			parameter="list" path="/listProductOffline" scope="session" validate="false"
+			name="productBelowLineQueryForm" type="com.aof.web.struts.action.product.ProductBelowLineAction">
+			<set-property property="functionId" value="21150053" />
+			<set-property property="functionDescription" value="product offline list" />
+			<forward name="page" path="site.productOffline.list" />
+		</action>
+		<action
+			parameter="newProductOffline" path="/newProductOffline" scope="request"
+			type="com.aof.web.struts.action.product.ProductBelowLineAction">
+			<set-property property="functionId" value="21150053" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.productOffline.new" />
+		</action>
+		<action
+			parameter="insertProductOffline" path="/insertProductOffline" scope="request" validate="false"
+			name="boxForm" input="/newProductOffline.do"
+			type="com.aof.web.struts.action.product.ProductBelowLineAction">
+			<set-property property="functionId" value="21150053" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- 条码冻结 start-2015-05-05-st -->
+		<action
+			parameter="listPurchaseOrderBoxFreeze" path="/purchaseOrderBoxFreezeList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150102" />
+			<set-property property="functionDescription" value="purchaseOrder box freeze" />
+			<forward name="page" path="purchaseOrder.box.freeze" />
+		</action>
+		<action
+			parameter="updatePurchaseOrderBoxFreeze" path="/updatePurchaseOrderBoxFreeze" 
+			scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+		</action>
+		<action
+			parameter="listPurchaseOrderBoxFreezeOpen" path="/purchaseOrderBoxFreezeOpenList" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150103" />
+			<set-property property="functionDescription" value="purchaseOrder box freeze open" />
+			<forward name="page" path="purchaseOrder.box.freeze.open" />
+		</action>
+		<action
+			parameter="updatePurchaseOrderBoxFreezeOpen" path="/updatePurchaseOrderBoxFreezeOpen" 
+			scope="request" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+		</action>
+		<!-- 条码冻结 end-2015-05-05-st -->
+		
+		<!-- 成品扫描出库start-2015-02-27-st -->
+		<action
+			parameter="productScanningOutbound" path="/productScanningOutbound" scope="request" validate="false"
+			type="com.aof.web.struts.action.inventory.InventoryAction">
+		</action>
+		<!-- 成品扫描出库end-2015-02-27-st -->
+		
+		<!-- 吴章松编写 start-2015-05-07-wzs -->
+		 <action 
+			parameter="listProduct" path="/listProductScanningOutbound" scope="session" validate="false"
+			name="productQueryForm" type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+			<set-property property="functionDescription" value="product scanning outbound" />
+			<forward name="page" path="product.scanningOutbound.list" />
+		</action>
+		 <action 
+			parameter="newProduct" path="/newProductOut" scope="session" validate="false"
+			type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+			<forward name="page" path="site.productOut.new" />
+		</action>
+		 <action 
+			parameter="updateProductOutStatus" path="/updateProductOutStatus" scope="session" validate="false"
+			type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+		</action>
+		 <action 
+			parameter="selectBigStorage" path="/selectBigStorage" scope="session" validate="false"
+			name="inventoryQueryForm"
+			type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+			<forward name="page" path="site.productOut.selectBig" />
+		</action>
+		<!-- listProductOut 成品出库 -->
+		 <action 
+			parameter="listProductOut" path="/listProductOut" scope="session" validate="false"
+			name="productQueryForm" type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21111051" />
+			<set-property property="functionDescription" value="product out list" />
+			<forward name="page" path="product.out.list" />
+		</action>
+		
+		<!-- listProductIn 成品入库 -->
+		<action 
+			parameter="listProductIn" path="/listProductIn" scope="session" validate="false"
+			name="productQueryForm" type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21111052" />
+			<set-property property="functionDescription" value="product in list" />
+			<forward name="page" path="product.in.list" />
+		</action>
+		
+		<action 
+			parameter="listProductBelowLine" path="/listProductBelowLine" scope="session" validate="false"
+			name="productBelowLineQueryForm"
+			type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+			<forward name="page" path="site.productOut.selectBig" />
+		</action>
+		<action 
+			parameter="printOutBoundCode" path="/printOutBoundCode" scope="session" validate="false"
+			type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+			<forward name="page" path="site.productOut.print" />
+		</action>
+		<action 
+			parameter="careateProductOut" path="/createProductOut" scope="session" validate="false"
+			type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+		</action>
+		<action 
+			parameter="cancleProductOut" path="/cancleProductOut" scope="session" validate="false"
+			type="com.aof.web.struts.action.product.ProductAction">
+			<set-property property="functionId" value="21150056" />
+		</action>
+		<!-- 吴章松编写 end-2015-05-07-wzs -->
+		<!-- 成品上线列表 -->
+		<action 
+			parameter="listProductGoline" path="/listProductGoline" scope="session" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="20150625" />
+			<set-property property="functionDescription" value="list ProductGoline"/>
+			<forward name="page" path="list.productGoline.site" />
+		</action>
+		<!-- 新增成品上线信息 -->
+		<action 
+			parameter="insertProductGoline" path="/insertProductGoline" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="20150625" />
+		</action>	
+		<!-- 成品上线-同步 -->
+		<action 
+			parameter="productGolineQAD" path="/productGolineQAD" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="20150625" />
+		</action>	
+		<!-- 成品上线-同步-查询错误数据 -->
+		<action 
+			parameter="productGolineNotQAD" path="/productGolineNotQAD" scope="session" validate="false"
+			name="productOutGolineQueryForm"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="20150625" />
+			<forward name="page" path="qad.productGoline.site" />
+		</action>		
+		<!-- 页面刷新 -->
+		<action 
+			parameter="connectSys" path="/connectSys" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="20150625" />
+		</action>
+		<!-- 扣料 -->
+		<action 
+			parameter="materialReduction" path="/productGolineMaterialReduction" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="20150625" />
+		</action>
+		<!-- 成品下线 -->
+		<action 
+			parameter="productDownlineList" path="/productDownlineList" scope="session" validate="false"
+			name="productGoLineQueryForm"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="21150058" />
+			<set-property property="functionDescription" value="productdownline in list" />
+			<forward name="page" path="site.productdownline.list" />
+		</action>
+		 <action 
+			parameter="productInObject" path="/productInObject" scope="session" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="21150058" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.productdownline.new" />
+		</action>
+		<action 
+			parameter="productDownInStorage" path="/productDownInStorage" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="21150058" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action 
+			parameter="checkhncCodeByAjax" path="/checkhncCodeByAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="21150058" />
+		</action>	
+		<action 
+			parameter="checkhncCountByAjax" path="/checkhncCountByAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21150058" />
+		</action>
+		<!-- 成品下线end -->
+		
+		<!-- 成品出库 -->
+		<action 
+			parameter="list" path="/productOutStorageList" scope="session" validate="false"
+			name="productOutStorageQueryForm"
+			type="com.aof.web.struts.action.product.ProductOutStorageAction">
+			<set-property property="functionId" value="21150059" />
+			<set-property property="functionDescription" value="productoutstorage in list" />
+			<forward name="page" path="site.productoutstorage.list" />
+		</action>
+		 <action 
+			parameter="productOutObject" path="/productOutObject" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductOutStorageAction">
+			<set-property property="functionId" value="21150059" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.productoutstorage.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertProductOutStorage" scope="request" validate="false"
+			name="productOutStorageForm" input="/productOutObject.do"
+			type="com.aof.web.struts.action.product.ProductOutStorageAction">
+			<set-property property="functionId" value="21150059" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action 
+			parameter="select" path="/selectProductGoline" scope="session" validate="false"
+			name="productGoLineQueryForm" type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="21150059" />
+			<forward name="page" path="site.productgoline.select" />
+		</action>
+		 <action 
+			parameter="confirmProductOutStorage" path="/confirmProductOutStorage" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductOutStorageAction">
+			<set-property property="functionId" value="21150059" />
+		</action>
+		 <action 
+			parameter="confirmProductOutStorageAjax" path="/confirmProductOutStorageAjax" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductOutStorageAction">
+			<set-property property="functionId" value="21150059" />
+		</action>
+		
+		
+		<!-- 成品出库end -->
+		<action 
+			parameter="TransferList" path="/TransferList" scope="session" validate="false"
+			name="productGoLineQueryForm" type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionDescription" value="Product transfer in" />
+			<set-property property="functionId" value="21150041" />
+			<forward name="page" path="site.productTransfer.select" />
+		</action>
+		<action 
+			parameter="TransferNew" path="/TransferNew" scope="session" validate="false"
+			name="productGoLineQueryForm" type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="21150041" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.ProductTransferNew.select" />
+			
+			
+		</action>
+			<action 
+			parameter="productTransferUpdate" path="/productTransferUpdate" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.ProductGolineAction">
+			<set-property property="functionId" value="21150041" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- customerPlan -->
+		<action parameter="list" path="/listCustomerPlan" scope="session" name="customerPlanQueryForm"
+			type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20162222" />
+			<set-property property="functionDescription" value="list customerPlan" />
+			<forward name="page" path="site.customerPlan.list" />
+		</action>
+		<action parameter="newObject" path="/newCustomerPlan" scope="request" validate="false" 
+			 name="customerPlanForm" type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20162222" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.customerPlan.new" />
+		</action>
+		<action parameter="insert" path="/insertCustomerPlan" scope="request" name="customerPlanForm"
+			validate="false"  type="com.aof.web.struts.action.product.CustomerPlanAction" input="/newCustomerPlan.do">
+			<set-property property="functionId" value="20162222" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editCustomerPlan" scope="request" name="customerPlanForm"
+			type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20162222" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.customerPlan.edit" />
+		</action>
+		<action parameter="update" path="/updateCustomerPlan" scope="request" input="/editCustomerPlan.do"
+			name="customerPlanForm" type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20162222" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeCustomerPlan" scope="request"
+			type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20162222" />
+			<set-property property="dialog" value="true" />
+		</action>
+		<action parameter="view" path="/viewCustomerPlan" scope="request"  validate="false" 
+			type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20162222" />
+			<forward name="page" path="site.customerPlan.view" />
+		</action>
+		
+		<!-- basicCustomer -->
+		<action parameter="list" path="/listBasicCustomer" scope="session" name="basicCustomerQueryForm"
+			type="com.aof.web.struts.action.product.BasicCustomerAction">
+			<set-property property="functionId" value="10151215" />
+			<set-property property="functionDescription" value="list basicCustomer" />
+			<forward name="page" path="site.basicCustomer.list" />
+		</action>
+		<action parameter="newObject" path="/newBasicCustomer" scope="request"
+			type="com.aof.web.struts.action.product.BasicCustomerAction">
+			<set-property property="functionId" value="10151215" />
+			<forward name="page" path="site.basicCustomer.new" />
+		</action>
+		<action parameter="insert" path="/insertBasicCustomer" scope="request" name="basicCustomerForm"
+			validate="false" type="com.aof.web.struts.action.product.BasicCustomerAction" input="/newBasicCustomer.do">
+			<set-property property="functionId" value="10151215" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editBasicCustomer" scope="request" name="basicCustomerForm"
+			validate="false" type="com.aof.web.struts.action.product.BasicCustomerAction">
+			<set-property property="functionId" value="10151215" />
+			<forward name="page" path="site.basicCustomer.edit" />
+		</action>
+		<action parameter="update" path="/updateBasicCustomer" scope="request" input="/editBasicCustomer.do"
+			validate="false" name="basicCustomerForm" type="com.aof.web.struts.action.product.BasicCustomerAction">
+			<set-property property="functionId" value="10151215" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeBasicCustomer" scope="request"
+			type="com.aof.web.struts.action.product.BasicCustomerAction">
+			<set-property property="functionId" value="10151215" />
+		</action>
+		<action parameter="select" path="/selectBasicCustomer" scope="session" name="basicCustomerQueryForm"
+			type="com.aof.web.struts.action.product.BasicCustomerAction">
+			<forward name="page" path="site.basicCustomer.select" />
+		</action>
+		<action parameter="AJAXCode" path="/AJAXCode" scope="request" validate="false"
+		        type="com.aof.web.struts.action.product.BasicCustomerAction">
+		</action>
+		
+		<action parameter="AJAXEdit" path="/AJAXEdit" scope="request" validate="false"
+		        type="com.aof.web.struts.action.product.BasicCustomerAction">
+		</action>
+		
+		<!-- dailyProductPlan -->
+		<action parameter="list" path="/listDailyProductPlan" scope="session" name="dailyProductPlanQueryForm"
+			type="com.aof.web.struts.action.product.DailyProductPlanAction">
+			<set-property property="functionId" value="12241537" />
+			<set-property property="functionDescription" value="list dailyProductPlan" />
+			<forward name="page" path="site.dailyProductPlan.list" />
+		</action>
+		<action parameter="newObject" path="/newDailyProductPlan" scope="request"
+			type="com.aof.web.struts.action.product.DailyProductPlanAction">
+			<set-property property="functionId" value="12241537" />
+			<forward name="page" path="site.dailyProductPlan.new" />
+		</action>
+		<action parameter="insert" path="/insertDailyProductPlan" scope="request" name="dailyProductPlanForm"
+			type="com.aof.web.struts.action.product.DailyProductPlanAction" input="/newDailyProductPlan.do">
+			<set-property property="functionId" value="12241537" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editDailyProductPlan" scope="request" name="dailyProductPlanForm"
+			type="com.aof.web.struts.action.product.DailyProductPlanAction">
+			<set-property property="functionId" value="12241537" />
+			<forward name="page" path="site.dailyProductPlan.edit" />
+		</action>
+		<action parameter="update" path="/updateDailyProductPlan" scope="request" input="/editDailyProductPlan.do"
+			name="dailyProductPlanForm" type="com.aof.web.struts.action.product.DailyProductPlanAction">
+			<set-property property="functionId" value="12241537" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeDailyProductPlan" scope="request"
+			type="com.aof.web.struts.action.product.DailyProductPlanAction">
+			<set-property property="functionId" value="12241537" />
+		</action>
+		<!-- salesOrder -->
+		<action parameter="list" path="/listSalesOrder" scope="session" name="salesOrderQueryForm"
+			type="com.aof.web.struts.action.product.SalesOrderAction">
+			<set-property property="functionId" value="12241539" />
+			<set-property property="functionDescription" value="list salesOrder" />
+			<forward name="page" path="site.salesOrder.list" />
+		</action>
+		<action parameter="newObject" path="/newSalesOrder" scope="request" 
+			type="com.aof.web.struts.action.product.SalesOrderAction">
+			<set-property property="functionId" value="12241539" />
+			<forward name="page" path="site.salesOrder.new" />
+		</action>
+		<action parameter="insert" path="/insertSalesOrder" scope="request" name="salesOrderForm"
+			type="com.aof.web.struts.action.product.SalesOrderAction" input="/newSalesOrder.do">
+			<set-property property="functionId" value="12241539" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editSalesOrder" scope="request" name="salesOrderForm"
+			type="com.aof.web.struts.action.product.SalesOrderAction">
+			<set-property property="functionId" value="12241539" />
+			<forward name="page" path="site.salesOrder.edit" />
+		</action>
+		<action parameter="update" path="/updateSalesOrder" scope="request" input="/editSalesOrder.do"
+			name="salesOrderForm" type="com.aof.web.struts.action.product.SalesOrderAction">
+			<set-property property="functionId" value="12241539" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeSalesOrder" scope="request"
+			type="com.aof.web.struts.action.product.SalesOrderAction">
+			<set-property property="functionId" value="12241539" />
+		</action>
+		<!-- workOrderBom -->
+		<action parameter="list" path="/listWorkOrderBom" scope="session" name="workOrderBomQueryForm"
+			type="com.aof.web.struts.action.product.WorkOrderBomAction">
+			<set-property property="functionId" value="12241540" />
+			<set-property property="functionDescription" value="list workOrderBom" />
+			<forward name="page" path="site.workOrderBom.list" />
+		</action>
+		<action parameter="newObject" path="/newWorkOrderBom" scope="request"
+			type="com.aof.web.struts.action.product.WorkOrderBomAction">
+			<set-property property="functionId" value="12241540" />
+			<forward name="page" path="site.workOrderBom.new" />
+		</action>
+		<action parameter="insert" path="/insertWorkOrderBom" scope="request" name="workOrderBomForm"
+			type="com.aof.web.struts.action.product.WorkOrderBomAction" input="/newWorkOrderBom.do">
+			<set-property property="functionId" value="12241540" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editWorkOrderBom" scope="request"  name="workOrderBomForm"
+			type="com.aof.web.struts.action.product.WorkOrderBomAction">
+			<set-property property="functionId" value="12241540" />
+			<forward name="page" path="site.workOrderBom.edit" />
+		</action>
+		<action parameter="update" path="/updateWorkOrderBom" scope="request" input="/editWorkOrderBom.do"
+			name="workOrderBomForm" type="com.aof.web.struts.action.product.WorkOrderBomAction">
+			<set-property property="functionId" value="12241540" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeWorkOrderBom" scope="request"
+			type="com.aof.web.struts.action.product.WorkOrderBomAction">
+			<set-property property="functionId" value="12241540" />
+		</action>
+		<!-- salesOrderItem -->
+		<action parameter="list" path="/listSalesOrderItem" scope="session" name="salesOrderItemQueryForm"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20160302" />
+			<set-property property="functionDescription" value="list salesOrderItem" />
+			<forward name="page" path="site.salesOrderItem.list" />
+		</action>
+		<action parameter="newObject" path="/newSalesOrderItem" scope="request"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20160302" />
+			<forward name="page" path="site.salesOrderItem.new" />
+		</action>
+		<action parameter="insert" path="/insertSalesOrderItem" scope="request" name="salesOrderItemForm"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction" input="/newSalesOrderItem.do">
+			<set-property property="functionId" value="20160302" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editSalesOrderItem" scope="request" name="salesOrderItemForm"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20160302" />
+			<forward name="page" path="site.salesOrderItem.edit" />
+		</action>
+		<action parameter="update" path="/updateSalesOrderItem" scope="request" input="/editSalesOrderItem.do"
+			name="salesOrderItemForm" type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20160302" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeSalesOrderItem" scope="request"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20160302" />
+		</action>
+		<!-- salesPreshiporder -->
+		<action parameter="list" path="/listSalesPreshiporder" scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160303" />
+			<set-property property="functionDescription" value="list salesPreshiporder" />
+			<forward name="page" path="site.salesPreshiporder.list" />
+		</action>
+		<action parameter="newObject" path="/newSalesPreshiporder" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160303" />
+			<forward name="page" path="site.salesPreshiporder.new" />
+		</action>
+		<action parameter="viewCreateSalesPreShipOrder" path="/viewCreateSalesPreShipOrder" scope="session" 
+			name="salesOrderItemQueryForm" type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160303" />
+			<forward name="page" path="site.createSalesPreShipOrder.view" />
+		</action>
+		<action parameter="selectSalesOrderItem" path="/selectSalesOrderItem"
+			scope="session" name="salesOrderItemQueryForm"  validate="false"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160303" />
+			<forward name="page" path="select.salesOrderItem" />
+		</action>
+		
+		<!--生成检料单-->
+		<action parameter="createSalesPreShipOrder" path="/createSalesPreShipOrder"
+			scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160303" />
+			<forward name="page" path="site.salesPreshiporder" />
+		</action>
+		<action parameter="createSalesPreShipOrderAJAX" path="/createSalesPreShipOrderAJAX"
+			scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+		</action>
+		<!-- 创建客户需求发货单 -->
+		<action parameter="list" path="/listCustomerPlanPreshiporder" scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.CustomerPlanPreshiporderAction">
+			<set-property property="functionId" value="20160407" />
+			<set-property property="functionDescription" value="list customerPlanPreshiporder" />
+			<forward name="page" path="site.customerPlanPreshiporder.list" />
+		</action>
+		<action parameter="newObject" path="/newCustomerPlanPreshiporder" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160407" />
+			<forward name="page" path="site.CustomerPlanPreshiporder.new" />
+		</action>
+		<action parameter="createCustomerPlanPreShipOrder" path="/createCustomerPlanPreShipOrder"
+			scope="session" name="salesPreshiporderQueryForm" 
+			type="com.aof.web.struts.action.product.CustomerPlanPreshiporderAction">
+			<set-property property="functionId" value="20160407" />
+			<forward name="page" path="site.salesPreshiporder" />
+		</action>
+		<action parameter="selectCustomerPlan" path="/selectCustomerPlan"
+			scope="session" name="customerPlanQueryForm"  validate="false"
+			type="com.aof.web.struts.action.product.CustomerPlanPreshiporderAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160407" />
+			<forward name="page" path="select.customerPlan" />
+		</action>
+		<action parameter="createCustomerPlanPreShipOrderAJAX" path="/createCustomerPlanPreShipOrderAJAX"
+			scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.CustomerPlanPreshiporderAction">
+		</action>
+		<action parameter="viewCreateCustomerPlanPreShipOrder" path="/viewCreateCustomerPlanPreShipOrder" scope="session" 
+			name="salesOrderItemQueryForm" type="com.aof.web.struts.action.product.CustomerPlanPreshiporderAction">
+			<set-property property="functionId" value="20160407" />
+			<forward name="page" path="site.createCustomerPlanPreShipOrder.view" />
+		</action>
+		<action parameter="deleteCustomerPlanPreShipOrder" path="/deleteCustomerPlanPreShipOrder" scope="session" 
+			name="salesPreshiporderQueryForm" type="com.aof.web.struts.action.product.CustomerPlanPreshiporderAction">
+			<set-property property="functionId" value="20160407" />
+		</action>
+		<action parameter="verificationCustomerPlanPreshiporderAJAX" path="/verificationCustomerPlanPreshiporderAJAX" scope="session" 
+			name="salesPreshiporderQueryForm" type="com.aof.web.struts.action.product.CustomerPlanPreshiporderAction">
+		</action>
+		<!-- 检料单list -->
+		<action parameter="salesPickingOrderList" path="/listSalesPickingOrder" scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160309" />
+			<set-property property="functionDescription" value="list salesPickingOrder" />
+			<forward name="page" path="site.salesPickingOrder.list" />
+		</action>
+		<!--显示检料单明细-->
+		<action parameter="viewSalesPickingOrderBatch" path="/viewalesPickingOrderBatch" scope="session" name="salesOrderItemQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160309" />
+			<forward name="page" path="site.SalesPickingOrderBatch.view" />
+		</action>
+		<!--打印检料单页面-->
+		<action parameter="printSalesPickingOrderBatch" path="/printSalesPickingOrderBatch"
+			scope="request" name="salesPreshiporderForm" type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160309" />
+			<forward name="page" path="site.SalesPickingOrderBatch.print" />
+			<forward name="page2" path="site.SalesPickingOrderBatch.print2" />
+		</action>
+		<action parameter="SalesPickingOrderReplaceBatch" path="/SalesPickingOrderReplaceBatch"
+			scope="request" type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160309" />
+		</action>
+		<!--打印检料单-操作  -->
+		<action parameter="updatePirntSalesPickingOrderBatch" path="/updatePirntSalesPickingOrderBatch"
+			scope="session" type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160309" />
+		</action>
+		
+		<action parameter="insert" path="/insertSalesPreshiporder" scope="request" name="salesPreshiporderForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction" input="/newSalesPreshiporder.do">
+			<set-property property="functionId" value="20160303" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editSalesPreshiporder" scope="request" name="salesPreshiporderForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160303" />
+			<forward name="page" path="site.salesPreshiporder.edit" />
+		</action>
+		<action parameter="update" path="/updateSalesPreshiporder" scope="request" input="/editSalesPreshiporder.do"
+			name="salesPreshiporderForm" type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160303" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeSalesPreshiporder" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160303" />
+		</action>
+		<!-- 发货单明细 -->
+		<action parameter="list" path="/listSalesPreshiporderItem" scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderItemAction">
+			<set-property property="functionId" value="20160348" />
+			<set-property property="functionDescription" value="list salesPreshiporderItem" />
+			<forward name="page" path="site.salesPreshiporderItem.list" />
+		</action>
+		<action parameter="newObject" path="/newSalesPreshiporderItem" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderItemAction">
+			<set-property property="functionId" value="20160348" />
+			<forward name="page" path="site.salesPreshiporderItem.new" />
+		</action>
+		<action parameter="insert" path="/insertSalesPreshiporderItem" scope="request" name="salesPreshiporderItemForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderItemAction" input="/newSalesPreshiporderItem.do">
+			<set-property property="functionId" value="20160348" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editSalesPreshiporderItem" scope="request" name="salesPreshiporderItemForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderItemAction">
+			<set-property property="functionId" value="20160348" />
+			<forward name="page" path="site.salesPreshiporderItem.edit" />
+		</action>
+		<action parameter="update" path="/updateSalesPreshiporderItem" scope="request" input="/editSalesPreshiporderItem.do"
+			name="salesPreshiporderItemForm" type="com.aof.web.struts.action.product.SalesPreshiporderItemAction">
+			<set-property property="functionId" value="20160348" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeSalesPreshiporderItem" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderItemAction">
+			<set-property property="functionId" value="20160348" />
+		</action>
+		<!-- salesPreshiporderBatch -->
+		<action parameter="list" path="/listSalesPreshiporderBatch" scope="session" name="salesPreshiporderBatchQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderBatchAction">
+			<set-property property="functionId" value="20160304" />
+			<set-property property="functionDescription" value="list salesPreshiporderBatch" />
+			<forward name="page" path="site.salesPreshiporderBatch.list" />
+		</action>
+		<action parameter="newObject" path="/newSalesPreshiporderBatch" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderBatchAction">
+			<set-property property="functionId" value="20160304" />
+			<forward name="page" path="site.salesPreshiporderBatch.new" />
+		</action>
+		<action parameter="insert" path="/insertSalesPreshiporderBatch" scope="request" name="salesPreshiporderBatchForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderBatchAction" input="/newSalesPreshiporderBatch.do">
+			<set-property property="functionId" value="20160304" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editSalesPreshiporderBatch" scope="request" name="salesPreshiporderBatchForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderBatchAction">
+			<set-property property="functionId" value="20160304" />
+			<forward name="page" path="site.salesPreshiporderBatch.edit" />
+		</action>
+		<action parameter="update" path="/updateSalesPreshiporderBatch" scope="request" input="/editSalesPreshiporderBatch.do"
+			name="salesPreshiporderBatchForm" type="com.aof.web.struts.action.product.SalesPreshiporderBatchAction">
+			<set-property property="functionId" value="20160304" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeSalesPreshiporderBatch" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderBatchAction">
+			<set-property property="functionId" value="20160304" />
+		</action>
+		<action parameter="salesShipOrderByBoxAJAX" path="/salesShipOrderByBoxAJAX" scope="request"
+			 type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+		</action>
+		<!-- salesWorkorder -->
+		<action parameter="list" path="/listSalesWorkorder" scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+			<set-property property="functionDescription" value="list salesWorkorder" />
+			<forward name="page" path="site.salesWorkorder.list" />
+		</action>
+		<action parameter="viewSalesPreShipOrder" path="/viewSalesPreShipOrder" scope="session" 
+			name="salesOrderItemQueryForm" type="com.aof.web.struts.action.product.SalesPreshiporderAction">
+			<set-property property="functionId" value="20160349" />
+			<forward name="page" path="site.SalesPreShipOrder.view" />
+		</action>
+		<action parameter="printSalesWorkShipOrder" path="/printSalesWorkShipOrder"
+			scope="request" name="salesPreshiporderForm" type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+			<forward name="page" path="site.SalesWorkShipOrder.print" />
+		</action>
+		<action parameter="SalesWorkShipOrderClose" path="/SalesWorkShipOrderClose"
+			scope="request" name="salesPreshiporderForm" type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+		</action>
+		<action parameter="salesWorkShipOrderOpenAJAX" path="/salesWorkShipOrderOpenAJAX" scope="request"
+			 type="com.aof.web.struts.action.product.SalesWorkorderAction">
+		</action>
+		<action parameter="updatePirntSalesWorkShipOrder" path="/updatePirntSalesWorkShipOrder"
+			scope="session" type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+		</action>
+		<action parameter="newObject" path="/newSalesWorkorder" scope="request"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+			<forward name="page" path="site.salesWorkorder.new" />
+		</action>
+		<action parameter="insert" path="/insertSalesWorkorder" scope="request" name="salesWorkorderForm"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction" input="/newSalesWorkorder.do">
+			<set-property property="functionId" value="20160349" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="edit" path="/editSalesWorkorder" scope="request" name="salesWorkorderForm"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+			<forward name="page" path="site.salesWorkorder.edit" />
+		</action>
+		<action parameter="update" path="/updateSalesWorkorder" scope="request" input="/editSalesWorkorder.do"
+			name="salesWorkorderForm" type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="remove" path="/removeSalesWorkorder" scope="request"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+		</action>
+		<action parameter="salesWorkOrderIsMatchStatus" path="/salesWorkOrderIsMatchStatus" scope="request"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160349" />
+		</action>
+		
+		<!-- salesPreshiporder -->
+		<action parameter="list" path="/listSalesPreshiporderPlan" scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderPlanAction">
+			<set-property property="functionId" value="20160322" />
+			<set-property property="functionDescription" value="list salesPreshiporder Plan" />
+			<forward name="page" path="site.salesPreshiporderPlan.list" />
+		</action>
+		<action parameter="newObject" path="/newSalesPreshiporderPlan" scope="request"
+			type="com.aof.web.struts.action.product.SalesPreshiporderPlanAction">
+			<set-property property="functionId" value="20160322" />
+			<forward name="page" path="site.salesPreshiporderPlan.new" />
+		</action>
+		<action parameter="viewCreateSalesPreShipOrderPlan" path="/viewCreateSalesPreShipOrderPlan" scope="session" 
+			name="salesOrderItemQueryForm" type="com.aof.web.struts.action.product.SalesPreshiporderPlanAction">
+			<set-property property="functionId" value="20160322" />
+			<forward name="page" path="site.createSalesPreShipOrderPlan.view" />
+		</action>
+		<!--<action parameter="selectCustomerPlan" path="/selectCustomerPlan" scope="session"  validate="false"
+			name="customerPlanQueryForm" type="com.aof.web.struts.action.product.SalesPreshiporderPlanAction">
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.customerPlan.select" />
+		</action>
+		--><!--生成客户需求计划检料单-->
+		<action parameter="createSalesPreShipOrderPlan" path="/createSalesPreShipOrderPlan"
+			scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderPlanAction">
+			<set-property property="functionId" value="20160322" />
+			<forward name="page" path="site.salesPreshiporderPlan" />
+		</action>
+		<!-- 采购单-实收 -->
+		<action parameter="listShipOrderReport" path="/listPurchaseOrderActualReceipts"
+			scope="session" name="portalShipOrderMainQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PortalShipOrderAction">
+			<set-property property="functionId" value="20160325" />
+			<set-property property="functionDescription" value="list PurchaseOrder ActualReceipts" />
+			<forward name="page" path="list.shippingOrder.Actualreport" />
+		</action>
+		<action parameter="viewTwoReport" path="/viewPurchaseOrderActualReceipts"
+			scope="session" name="purchaseOrderInspectionPendingItemQueryForm" type="com.aof.web.struts.action.po.PortalShipOrderAction">
+			<set-property property="functionId" value="20160325" />
+			<forward name="page" path="view.shippingOrder.Actualreport" />
+		</action>
+			<action 
+			parameter="printPurchaseOrderActualReceipts" path="/printPurchaseOrderActualReceipts" scope="request"
+			validate="false" type="com.aof.web.struts.action.po.PortalShipOrderAction">
+			<set-property property="functionId" value="20160325" />
+			<forward name="page" path="print.PurchaseOrder.ActualReceipts" />
+		</action>
+		<action parameter="updatePortalShipOrderItem" path="/updatePortalShipOrderItem"
+			scope="session" type="com.aof.web.struts.action.po.PortalShipOrderAction">
+			<set-property property="functionId" value="20160325" />
+		</action>
+		<!-- 关闭销售订单 -->
+		<action parameter="closeSalesOrderItemList" path="/listCloseSalesOrderItem" scope="session" name="salesOrderItemQueryForm"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20160514" />
+			<set-property property="functionDescription" value="list Close salesOrderItem" />
+			<forward name="page" path="site.salesOrderItem.Close.list" />
+		</action>
+		<action
+			parameter="salesOrderItemClose" path="/salesOrderItemClose" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20160514" />
+		</action>
+		<!-- 打开销售订单 -->
+		<action parameter="openSalesOrderItemList" path="/listOpenSalesOrderItem" scope="session" name="salesOrderItemQueryForm"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20161514" />
+			<set-property property="functionDescription" value="list Open salesOrderItem" />
+			<forward name="page" path="site.salesOrderItem.Open.list" />
+		</action>
+		<action
+			parameter="salesOrderItemOpen" path="/salesOrderItemOpen" scope="request" validate="false"
+			type="com.aof.web.struts.action.product.SalesOrderItemAction">
+			<set-property property="functionId" value="20161514" />
+		</action>
+		<!-- 出库明细报表 -->
+		<action parameter="listOutStorageDetailReport" path="/listOutStorageDetailReport" scope="session" name="salesWorkorderQueryForm"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160627" />
+			<set-property property="functionDescription" value="list Out Storage Detail Report" />
+			<forward name="page" path="site.outStorageDetailReport.list" />
+		</action>
+		<!-- 关闭/打开客户需求计划 -->
+		<action parameter="customerPlanListCloseOrOpen" path="/listCustomerPlanCloseOrOpen" scope="session" name="customerPlanQueryForm"
+			type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20160713" />
+			<set-property property="functionDescription" value="list CustomerPlan Close Or Open" />
+			<forward name="page" path="site.customerPlan.CloseOrOpen.list" />
+		</action>
+		<action parameter="customerPlanCloseOrOpen" path="/customerPlanCloseOrOpen" scope="session" name="customerPlanQueryForm"
+			type="com.aof.web.struts.action.product.CustomerPlanAction">
+			<set-property property="functionId" value="20160713" />
+		</action>
+		<!-- 出库明细报表 -->
+		<action parameter="listSalesRecordReport" path="/listSalesRecordReport" scope="session" name="salesWorkorderQueryForm"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160714" />
+			<set-property property="functionDescription" value="list Sales Record Report" />
+			<forward name="page" path="site.salesRecordReport.list" />
+		</action>
+		<!-- 销售分析报表 -->
+		<action parameter="listSalesAnalysisReport" path="/listSalesAnalysisReport" scope="session" name="salesWorkorderQueryForm"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160825" />
+			<set-property property="functionDescription" value="list Sales Analysis Report" />
+			<forward name="page" path="site.salesAnalysisReport.list" />
+		</action>
+		<!-- 销售明细报表 -->
+		<action parameter="reportList" path="/listSalesDetailedReport" scope="session" name="salesPreshiporderItemQueryForm"
+			type="com.aof.web.struts.action.product.SalesPreshiporderItemAction">
+			<set-property property="functionId" value="20160701" />
+			<set-property property="functionDescription" value="list Sales Detailed Report" />
+			<forward name="page" path="site.salesDetailedReport.list" />
+		</action>
+		<!-- 销售汇总报表 -->
+		<action parameter="reportList" path="/listSalesSummaryReport" scope="session" name="salesPreshiporderQueryForm"
+			type="com.aof.web.struts.action.product.SalesWorkorderAction">
+			<set-property property="functionId" value="20160702" />
+			<set-property property="functionDescription" value="list Sales Summary Report" />
+			<forward name="page" path="site.salesSummaryReport.list" />
+		</action>
+		
+		<!-- 生产计划上传下载 -->
+		<action parameter="list" path="/listProductionplanning" scope="session" name="ProductionplanningQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.ProductionplanningAction">
+			<set-property property="functionId" value="20161103" />
+			<set-property property="functionDescription" value="list site Productionplanning" />
+			<forward name="page" path="site.Productionplanning.list" />
+		</action>
+		<action parameter="listDownload" path="/listProductionplanningDownload" scope="session" name="ProductionplanningQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.ProductionplanningAction">
+			<set-property property="functionId" value="20161131" />
+			<set-property property="functionDescription" value="list site ProductionplanningDownload" />
+			<forward name="page" path="site.ProductionplanningDownload.list" />
+		</action>
+		<action parameter="add" path="/newProductionplanning" scope="request" type="com.aof.web.struts.action.po.ProductionplanningAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20161103" />
+			<forward name="page" path="site.Productionplanning.new" />
+		</action>
+		
+		<action parameter="uploadFile" path="/insertProductionplanning" scope="request" name="ProductionplanningForm"
+			  type="com.aof.web.struts.action.po.ProductionplanningAction">
+			<set-property property="functionId" value="20161103" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="downloafAttach" path="/downloafAttach" scope="request" name="ProductionplanningForm"
+			  type="com.aof.web.struts.action.po.ProductionplanningAction">
+			<set-property property="functionId" value="20161103" />
+		</action>
+		<!-- 期初打印条码 -->
+		<action parameter="list" path="/listPurchaseManualCreateBarcode" scope="session" name="purchaseManualCreateBarcodeQueryForm" validate="false"
+			type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<set-property property="functionId" value="20161229" />
+			<set-property property="functionDescription" value="list site PurchaseManualCreateBarcode" />
+			<forward name="page" path="site.Purchasemanualcreatebarcode.list" />
+		</action>
+		<action parameter="purchaseManualCreateBarcodeMax" path="/purchaseManualCreateBarcodeMax" scope="session" name="purchaseManualCreateBarcodeQueryForm"
+			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<set-property property="functionId" value="20161229" />
+			<forward name="page" path="site.purchaseManualCreateBarcodeMax.list" />
+		</action>
+		<action parameter="purchaseManualCreateBarcodeZhong" path="/purchaseManualCreateBarcodeZhong" scope="session" name="purchaseManualCreateBarcodeQueryForm"
+			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<set-property property="functionId" value="20161229" />
+			<forward name="page" path="site.purchaseManualCreateBarcodeZhong.list" />
+		</action>
+		<action parameter="purchaseManualCreateBarcodeMin" path="/purchaseManualCreateBarcodeMin" scope="session" name="purchaseManualCreateBarcodeQueryForm"
+			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<set-property property="functionId" value="20161229" />
+			<forward name="page" path="site.purchaseManualCreateBarcodeMin.list" />
+		</action>
+		
+		
+		
+		
+		<action parameter="purchaseManualCreateBarQEcodeMin" path="/purchaseManualCreateBarQEcodeMin" scope="session" name="purchaseManualCreateBarcodeQueryForm"
+			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<set-property property="functionId" value="20161229" />
+			<forward name="page" path="site.purchaseManualCreateBarQEcodeMin.list" />
+		</action>
+		
+		<action parameter="purchaseManualCreateBarQEcodeMax" path="/purchaseManualCreateBarQEcodeMax" scope="session" name="purchaseManualCreateBarcodeQueryForm"
+			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<set-property property="functionId" value="20161229" />
+			<forward name="page" path="site.purchaseManualCreateBarQEcodeMax.list" />
+		</action>
+		
+		<action parameter="purchaseManualCreateBarQEcodeZhong" path="/purchaseManualCreateBarQEcodeZhong" scope="session" name="purchaseManualCreateBarcodeQueryForm"
+			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<set-property property="functionId" value="20161229" />
+			<forward name="page" path="site.purchaseManualCreateBarQEcodeZhong.list" />
+		</action>
+		
+		
+		<action parameter="importBarCode" path="/importBarCode"  scope="session" validate="false" name="purchaseManualCreateBarcodeQueryForm" 
+				type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			<forward name="add" path="site.barcode.Group.add" />
+		</action>
+		<action parameter="excelCreateBarcode" path="/excelCreateBarcode" scope="request" name="purchaseManualCreateBarcodeForm"
+			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+		</action>
+		<action parameter="updatePurchaseManualCreateBarcode" path="/updatePurchaseManualCreateBarcode" scope="request" name="purchaseManualCreateBarcodeForm"
+			type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
+			</action>
+	</action-mappings>
+</struts-config>
+ 

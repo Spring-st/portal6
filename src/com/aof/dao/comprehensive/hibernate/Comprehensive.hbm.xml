@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+	<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+	<!-- by MyEclipse Hibernate tool integration.                   -->
+	<!-- Created Fri Sep 23 14:49:10 CST 2005                         -->
+<hibernate-mapping package="com.aof.model.comprehensive">
+<!-- ==============================综合开始2015-01-29-st================================================ -->
+	<!-- 成品扣料  -->
+	<class name="ProduceBuckleMaterial" table="produce_buckle_material">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="assembly" column="assembly" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="bom_id" column="bom_id" class="Bom"/>
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		
+		<property name="domain" column="domain" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="is_sync" column="is_sync" type="com.aof.model.metadata.YesNo" />
+		<property name="is_sync_date" column="is_sync_date" type="date" />
+		<property name="remark" column="remark" type="string" />
+		<property name="growth" column="growth" type="integer"/>
+	</class>
+	<!-- 批次调整  -->
+	<class name="BoxAdjustment" table="box_adjustment">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="new_box_id" column="new_box_id" class="com.aof.model.po.Box" />
+		<many-to-one name="operation" column="operation" class="com.aof.model.admin.User" />
+		<many-to-one name="old_location" column="old_location" class="com.aof.model.basic.StorageLocation" />
+		
+		<property name="domain" column="domain" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="type" column="type" type="com.aof.model.metadata.BoxAdjustmentType" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	<!-- 批次调整  -->
+	<class name="BoxAdjustmentBox" table="box_adjustment_box">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		
+		<many-to-one name="box_id" column="box_id" class="com.aof.model.po.Box" />
+		<many-to-one name="box_adjustment_id" column="box_adjustment_id" class="BoxAdjustment" />
+	</class>
+	<!-- 库房盘点  -->
+	<class name="Stocking" table="stocking">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+        <many-to-one name="operation" column="operation" class="com.aof.model.admin.User" />
+        
+        <property name="domain" column="domain" type="string" />
+		<property name="code" column="code" type="string" />
+		<property name="name" column="name" type="string" />
+		<property name="start_date" column="start_date" type="date" />
+		<property name="end_date" column="end_date" type="date" />
+		<property name="status" column="status" type="com.aof.model.metadata.EnabledDisabled"  />
+		<property name="type" column="type" type="com.aof.model.metadata.YesNo"  />
+		<property name="remark" column="remark" type="string"  />
+		<property name="plan_sumQty" column="plan_sumQty" type="big_decimal"  />
+		<property name="confirmStatus" column="confirm_status" type="com.aof.model.metadata.YesNo"  />
+		<property name="actual_sumQty" column="actual_sumQty" type="big_decimal"  />
+		<property name="differences_sumQty" column="differences_sumQty" type="big_decimal"  />
+		<property name="inventoryType" column="inventoryType" type="integer"  />
+		
+	</class>
+	<!-- 盘点明细表 -->
+	<class name="StockingDetial" table="stocking_detail">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+        <many-to-one name="stocking" column="stocking" class="Stocking" />
+        <many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+        <many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart" />
+        
+		<property name="plan_sum_qty" column="plan_sum_qty" type="big_decimal" />
+        <property name="actual_sum_qty" column="actual_sum_qty" type="big_decimal" />
+        <property name="plan_num" column="plan_num" type="integer" />
+        <property name="actual_num" column="actual_num" type="integer" />
+	</class>
+	<!-- 盘库扫描记录表 -->
+	<class name="StockingSweepRecord" table="stocking_sweepRecord">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="stocking_detail_id" column="stocking_detail_id" class="StockingDetial" />
+		<many-to-one name="box" column="box" class="com.aof.model.po.Box" />
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="operation" column="operation" class="com.aof.model.admin.User" />
+		
+		<property name="qty" column="qty" type="big_decimal" />
+        <property name="date" column="date" type="date" />
+	</class>
+	<!-- 盘点差异表  -->
+	<class name="StockingRecord" table="stocking_record">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="stocking_id" column="stocking_id" class="Stocking" />
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="box" column="box" class="com.aof.model.po.Box" />
+		
+		<property name="inventory_qty" column="inventory_qty" type="big_decimal" />
+		<property name="stocking_qty" column="stocking_qty" type="big_decimal" />
+		<property name="differences" column="differences" type="big_decimal" />
+		<property name="createDate" column="createDate" type="date" />
+		<property name="is_sync" column="is_sync" type="com.aof.model.metadata.YesNo" />
+		<property name="is_sync_date" column="is_sync_date" type="date" />
+		<property name="type" column="handle_type" type="integer" />
+		<property name="status" column="handle_status" type="integer" />
+	</class>
+	<!-- 盘库扫描记录表 -->
+	<class name="StockingScanRecord" table="stocking_scanRecord">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<property name="stocking" column="stocking" type="string" />
+		<property name="location" column="location" type="string" />
+		<property name="lotSer" column="lot_Ser" type="string" />
+		<property name="userId" column="userId" type="string" />
+		<property name="date" column="date" type="timestamp" />
+	</class>
+	<!-- Bom  -->
+	<class name="Bom" table="basic_bom">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="product_no" column="product_no" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="father_part" column="father_part" class="com.aof.model.basic.WmsPart" />
+		<many-to-one name="child_part" column="child_part" class="com.aof.model.basic.WmsPart" />
+		
+		<property name="unit_qty" column="unit_qty" type="big_decimal" />
+		<property name="process" column="process" type="string" />
+		<property name="station" column="station" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="domain" column="domain" type="string" />
+		<property name="type" column="type" type="string" />
+		<property name="start_date" column="start_date" type="date" />
+		<property name="end_date" column="end_date" type="date" />
+		<property name="remark" column="remark" type="string" />
+		
+	</class>
+	
+	<!-- ==============================综合开始2015-01-29-st================================================ -->
+</hibernate-mapping>

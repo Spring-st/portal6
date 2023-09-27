@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+<hibernate-mapping package="com.aof.model.product">
+	<class name="BasicCustomer" table="basic_customer">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		
+		<many-to-one name="siteId" column="userSite" class="com.aof.model.admin.Site"  />
+		
+		<property name="code" column="CODE" type="string" />
+		<property name="name1" column="NAME1" type="string" />
+		<property name="name2" column="NAME2" type="string" />
+		<property name="address" column="ADDRESS" type="string" />
+		<property name="contacts" column="CONTACTS" type="string" />
+		<property name="phone" column="PHONE" type="string" />
+		<property name="email" column="EMAIL" type="string" />
+		<property name="product" column="PRODUCT" type="string" />
+		<property name="remarks" column="REMARKS" type="string" />
+		<property name="enabled" column="ENABLED" type="com.aof.model.metadata.EnabledDisabled" />
+		<property name="address2" column="address2" type="string" />
+		<property name="address3" column="address3" type="string" />
+		<property name="country" column="country" type="string" />
+		<property name="city" column="city" type="string" />
+		<property name="fax" column="fax" type="string" />
+		<property name="postId" column="post_id" type="string" />
+		<property name="currencyType" column="currency_type" type="string" />
+		<property name="domain" column="domain" type="string" />
+		<property name="site" column="site" type="string" />
+		<property name="seqNo" column="seq_no" type="string" />
+	</class>
+</hibernate-mapping>

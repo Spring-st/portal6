@@ -1,0 +1,1490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans type="com.shcnc.struts.form.config.BeanFormConfig">
+	<!-- 库位维护 -->
+		 <form-bean name="storageLocationForm"
+			type="com.aof.model.basic.StorageLocation">
+			
+				<set-property property="requires" value="
+				basic_storeroom_id.id,site.id
+			" />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		<form-bean name="storageLocationQueryForm" type="com.aof.web.struts.form.basic.StorageLocationQueryForm" />
+	<!-- 库房维护 -->		
+		<form-bean name="storeRoomForm" type="com.aof.model.basic.StoreRoom">
+			<set-property property="requires" value="
+				site.id,
+			" />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		<form-bean name="storeRoomQueryForm" type="com.aof.web.struts.form.basic.StoreRoomQueryForm" />
+		<!-- 物料维护 -->			
+			<form-bean name="wmsPartQueryForm" type="com.aof.web.struts.form.basic.WmsPartQueryForm" />
+			
+			<form-bean name="wmsPartForm" type="com.aof.model.basic.WmsPart">
+			<set-property property="requires" value="site.id,
+			" />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>	
+		<!-- 供应商物料维护 -->			
+		<form-bean name="supplierPartQueryForm" type="com.aof.web.struts.form.admin.SupplierPartQueryForm" />
+		<form-bean name="supplierPartForm" type="com.aof.model.basic.SupplierPart">
+			<set-property property="requires" value="supplierId.id,partId.id"/>
+			<set-property property="includes" value="*,supplierId.id,partId.id"/>
+		</form-bean>
+		<!-- 器具维护 -->
+		<form-bean name="wmsToolQueryForm" type="com.aof.web.struts.form.basic.WmsToolQueryForm" />
+			
+		<form-bean name="wmsToolForm" type="com.aof.model.basic.WmsTool">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>	
+		<!-- 不合格原因维护 -->
+		<form-bean name="badReasonsQueryForm" type="com.aof.web.struts.form.basic.BadReasonsQueryForm" />
+			
+		<form-bean name="badReasonsForm" type="com.aof.model.basic.BadReasons">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		<!-- 计划外出入库原因代码 -->
+		<form-bean name="unplannedReasonsQueryForm" type="com.aof.web.struts.form.basic.UnplannedReasonsQueryForm" />
+			
+		<form-bean name="unplannedReasonsForm" type="com.aof.model.basic.UnplannedReasons">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		<!-- 物料库位维护 -->
+		<form-bean name="partLocationQueryForm" type="com.aof.web.struts.form.basic.BasicPartLocationQueryForm" />
+			
+		<form-bean name="partLocationForm" type="com.aof.model.basic.BasicPartLocation">
+			<set-property property="requires" value="part.id,location.id" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		<!-- 库存信息 -->
+		<form-bean name="inventoryQueryForm" type="com.aof.web.struts.form.basic.InventoryQueryForm" />	
+		
+		<form-bean name="batchAdjustmentQueryForm" type="com.aof.web.struts.form.basic.BoxAdjustmentQueryForm" />
+		<form-bean name="wmsBatchAdjustment" type="com.aof.model.comprehensive.BoxAdjustment">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		
+		<form-bean name="wmsUnplannedWarehousingQueryForm" type="com.aof.web.struts.form.basic.WmsUnplannedWarehousingQueryForm" />
+		<form-bean name="wmsUnplannedWarehousingForm" type="com.aof.model.plantWarehouse.WmsUnplannedWarehousing">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		
+		<form-bean name="wmsPlanToGoOutQueryForm" type="com.aof.web.struts.form.basic.WmsPlanToGoOutQueryForm" />
+		<form-bean name="wmsPlanToGoOutForm" type="com.aof.model.plantWarehouse.WmsPlanToGoOut">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		
+		<form-bean name="scanLogQueryForm" type="com.aof.web.struts.form.basic.ScanLogQueryForm" />
+		<form-bean name="bomQueryForm" type="com.aof.web.struts.form.basic.BomQueryForm" />
+		<!-- 盘点  -->
+		<form-bean name="wmsStockingQueryForm" type="com.aof.web.struts.form.basic.WmsStockingQueryForm" />
+		<form-bean name="wmsStockingForm" type="com.aof.model.comprehensive.Stocking">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		<form-bean name="wmsStockingDetialQueryForm" type="com.aof.web.struts.form.basic.WmsStockingDetialQueryForm" />
+		<form-bean name="wmsStockingScanRecordQueryForm" type="com.aof.web.struts.form.basic.WmsStockingScanRecordQueryForm" />
+		
+		<form-bean name="expensesCourseQueryForm" type="com.aof.web.struts.form.basic.ExpensesCourseQueryForm" />
+		<form-bean name="expensesCourseForm" type="com.aof.model.basic.ExpensesCourse">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="costCenterQueryForm" type="com.aof.web.struts.form.basic.CostCenterQueryForm" />
+		<form-bean name="costCenterForm" type="com.aof.model.basic.CostCenter">
+			<set-property property="requires" value="
+			" />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		
+		<form-bean name="reportEntersSellsSavesQueryForm" type="com.aof.web.struts.form.basic.ReportEntersSellsSavesQueryForm" />
+		<form-bean name="reportEntersSellsSavesQuery" type="com.aof.model.basic.ReportEntersSellsSaves">
+			<set-property property="requires" value="" />
+			<set-property property="includes" value="*," />
+		</form-bean>
+		
+		<!-- 客户退货 -->
+		<form-bean name="customerreturnsQueryForm" type="com.aof.web.struts.form.basic.CustomerreturnsQueryForm" />
+		<form-bean name="customerreturnsForm" type="com.aof.model.basic.Customerreturns">
+		<set-property property="requires" value="basicCustomer.id" />
+		<set-property property="includes" value="*," />
+		</form-bean>
+		<!--<form-bean name="basicCustomerQueryForm" type="com.aof.web.struts.form.product.BasicCustomerQueryForm" />
+		<form-bean name="basicCustomerForm" type="com.aof.model.product.BasicCustomer">
+		<set-property property="requires" value=" " />
+			<set-property property="includes" value="
+				*
+			" />
+		</form-bean>
+		
+		
+		
+		--><!-- 客户退货明细 -->
+		<form-bean name="customerReturnItemQueryForm" type="com.aof.web.struts.form.basic.CustomerReturnItemQueryForm" />
+		<form-bean name="customerReturnItemForm" type="com.aof.model.basic.CustomerReturnItem">
+		<set-property property="requires" value="customerReturns.id,part.id" />
+		<set-property property="includes" value="*," />
+		</form-bean>
+		
+		
+		<form-bean name="salesPreshiporderQueryForm" type="com.aof.web.struts.form.product.SalesPreshiporderQueryForm" />
+		<form-bean name="salesPreshiporderForm" type="com.aof.model.product.SalesPreshiporder">
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		
+		<form-bean name="basicPartPriceQueryForm" type="com.aof.web.struts.form.basic.BasicPartPriceQueryForm" />
+		<form-bean name="basicPartPriceForm" type="com.aof.model.basic.BasicPartPrice" >
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+		<form-bean name="basicDataViewQueryForm" type="com.aof.web.struts.form.basicDataView.BasicDataViewQueryForm" />
+		
+		<form-bean name="sycSleepTimeQueryForm" type="com.aof.web.struts.form.basic.SycSleepTimeQueryForm" />
+		<form-bean name="sycSleepTimeForm" type="com.aof.model.basic.SycSleepTime" >
+			<set-property property="requires" value=" " />
+			<set-property property="includes" value="*" />
+		</form-bean>
+	</form-beans>
+	<action-mappings  type="com.aof.web.struts.action.SecureActionMapping">
+		<!-- 库位维护start -->
+		<action
+			parameter="list" path="/listStorageLocation" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<set-property property="functionId" value="21150015" />
+			<set-property property="functionDescription" value="site storage location list" />
+			<forward name="page" path="site.storageLocation.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newStorageLocation" scope="request"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<set-property property="functionId" value="21150015" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.storageLocation.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertStorageLocation" scope="request"
+			name="storageLocationForm" input="/newStorageLocation.do"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<set-property property="functionId" value="21150015" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editStorageLocation" scope="request"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<set-property property="functionId" value="21150015" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.storageLocation.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateStorageLocation" scope="request"
+			name="storageLocationForm" input="/editStorageLocation.do"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<set-property property="functionId" value="21150015" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="selectStorageLocationType" path="/selectStorageLocationType" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<forward name="page" path="site.storageLocationType.select" /> 
+		</action>
+		<action
+			parameter="select" path="/selectStorageLocation" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<forward name="page" path="site.storageLocation.select" /> 
+		</action>
+		<!-- 料废库 -->
+		<action
+			parameter="selectLF" path="/selectLFStorageLocation" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<forward name="page" path="site.storageLocationLF.select" /> 
+		</action>
+		
+		<action
+			parameter="select1" path="/selectStorageLocation1" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<forward name="page" path="site.storageLocation.select1" /> 
+		</action>
+		<!-- 查询库位信息 -->
+		<action
+			parameter="selectStorage1" path="/selectStorage1" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<forward name="page" path="site.storageLocation.selectStorage" /> 
+		</action>
+		
+		
+		<action
+			parameter="select" path="/selectStorageLocationRadio" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<forward name="page" path="site.storageLocation.select.radio" /> 
+		</action>
+		<!-- 退货库位 -->
+		<action
+			parameter="selectCustomerReturnLocation" path="/selectCustomerReturnLocation" scope="session"
+			name="storageLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<forward name="page" path="site.CustomerReturn.storageLocation.select" /> 
+		</action>
+		<action
+			parameter="print" path="/listStorageLocationPrint" scope="request"
+			type="com.aof.web.struts.action.basic.StorageLocationAction">
+			<set-property property="functionId" value="21150015" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.storageLocation.print" />
+		</action>
+		<!-- 库位维护end -->
+		<!-- 库区维护start -->
+		<action
+			parameter="list" path="/listStoreRoom" scope="session"
+			name="storeRoomQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.StoreRoomAction">
+			<set-property property="functionId" value="21150005" />
+			<set-property property="functionDescription" value="global storeRoom list" />
+			<forward name="page" path="site.storeRoom.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newStoreRoom" scope="request"
+			type="com.aof.web.struts.action.basic.StoreRoomAction">
+			<set-property property="functionId" value="21150005" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.storeRoom.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertStoreRoom" scope="request"
+			name="storeRoomForm" input="/newStoreRoom.do"
+			type="com.aof.web.struts.action.basic.StoreRoomAction">
+			<set-property property="functionId" value="21150005" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editStoreRoom" scope="request"
+			type="com.aof.web.struts.action.basic.StoreRoomAction">
+			<set-property property="functionId" value="21150005" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.storeRoom.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateStoreRoom" scope="request"
+			name="storeRoomForm" input="/editStoreRoom.do"
+			type="com.aof.web.struts.action.basic.StoreRoomAction">
+			<set-property property="functionId" value="21150005" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		 
+		<!-- 库区维护end -->
+		<!-- 物料维护start -->
+		<action
+			parameter="list" path="/listWmsPart" scope="session"
+			name="wmsPartQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<set-property property="functionId" value="21150023" />
+			<set-property property="functionDescription" value="basic part list" />
+			<forward name="page" path="site.wmsPart.list" />
+		</action>
+		<action
+			parameter="select" path="/selectWmsPart" scope="session"
+			name="wmsPartQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<forward name="page" path="site.wmsPart.select" />
+		</action>
+		<action
+			parameter="selectWmsPartStocking" path="/selectWmsPartStocking" scope="session"
+			name="basicDataViewQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<forward name="page" path="site.wmsPartStocking.select" />
+		</action>
+		<action
+			parameter="selectDeliveryWmsPart" path="/selectDeliveryWmsPart" scope="session"
+			name="wmsPartQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<forward name="page" path="site.wmsPartDelivery.select" />
+		</action>
+		<action
+			parameter="newObject" path="/newWmsPart" scope="request"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<set-property property="functionId" value="21150023" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsPart.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertWmsPart" scope="request"
+			name="wmsPartForm" input="/newWmsPart.do"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<set-property property="functionId" value="21150023" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editWmsPart" scope="request"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<set-property property="functionId" value="21150023" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsPart.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateWmsPart" scope="request"
+			name="wmsPartForm" input="/editWmsPart.do"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<set-property property="functionId" value="21150023" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="printBc" path="/wmsPartPrint" scope="request"
+			validate="false" type="com.aof.web.struts.action.basic.WmsPartAction">
+			<forward name="page" path="site.wmsPart.print" />
+		</action>
+		<!-- 物料维护end -->
+		
+		<!-- 供应商物料维护start -->
+		<action
+			parameter="list" path="/listSupplierPart" scope="request"
+			type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="functionId" value="11100010" />
+			<forward name="page" path="site.supplierPart.list" />
+		</action>
+		<action parameter="newObject" path="/newSupplierPart" scope="request"
+			 type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="11100010" />
+			<forward name="page" path="site.supplierPart.new" />
+		</action>
+		<action parameter="supplierPartProportionByAjax" path="/supplierPartProportionByAjax" scope="request"
+			 type="com.aof.web.struts.action.basic.SupplierPartAction">
+		</action>
+		<action
+			parameter="insert" path="/insertSupplierPart" scope="request"
+			name="supplierPartForm" input="/newSupplierPart.do"
+			type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="11100010" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editSupplierPart" scope="request"
+			type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="11100010" />
+			<forward name="page" path="site.supplierPart.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateSupplierPart" scope="request"
+			name="supplierPartForm" input="/editSupplierPart.do"
+			type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="11100010" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="remove" path="/deleteSupplierPart" scope="request"
+			type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="11100010" />
+			<forward name="success" path="/WEB-INF/jsp/operationSuccess.jsp" />
+		</action>
+		<!-- WmsTool基础数据-器具 start -->
+		<action
+			parameter="list" path="/listWmsTool" scope="session"
+			name="wmsToolQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsToolAction">
+			<set-property property="functionId" value="21150031" />
+			<set-property property="functionDescription" value="site wmsTool list" />
+			<forward name="page" path="site.wmsTool.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newWmsTool" scope="request" validate="false"
+			type="com.aof.web.struts.action.basic.WmsToolAction">
+			<set-property property="functionId" value="21150031" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsTool.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertWmsTool" scope="request"
+			name="wmsToolForm" input="/newWmsTool.do"  
+			type="com.aof.web.struts.action.basic.WmsToolAction">
+			<set-property property="functionId" value="21150031" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editWmsTool" scope="request"
+			type="com.aof.web.struts.action.basic.WmsToolAction">
+			<set-property property="functionId" value="21150031" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsTool.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateWmsTool" scope="request"
+			name="wmsToolForm" input="/editWmsTool.do"
+			type="com.aof.web.struts.action.basic.WmsToolAction">
+			<set-property property="functionId" value="21150031" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+			<action
+			parameter="pirntCodeItemReport" path="/pirntCodeWmsTool" scope="session"
+			name="wmsToolForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsToolAction">
+			<set-property property="functionId" value="21150031" />
+			<forward name="page" path="site.wmsTool.list.print" />
+		</action>
+		<action
+			parameter="updatePirntCodeItemReport" path="/updatePirntCodeWmsTool" scope="request"
+			 validate="false" type="com.aof.web.struts.action.basic.WmsToolAction">
+		</action>	
+		<action
+			parameter="selectTool" path="/selectTool" scope="session" validate="false"
+			name="wmsToolQueryForm" type="com.aof.web.struts.action.basic.WmsToolAction">
+			<forward name="page" path="site.selectTool.list" />
+		</action>
+		<action
+			parameter="selectToolNext" path="/selectToolNext" scope="request" validate="false"
+			type="com.aof.web.struts.action.basic.WmsToolAction">
+			<forward name="page" path="site.selectToolNext.list" />
+		</action>
+		<!-- end of  WmsTool -->
+		<!-- 供应商物料维护end -->
+		<!-- 不合格原因维护start-2015-02-09-st -->
+		<action
+			parameter="list" path="/listBadReasons" scope="session"
+			name="badReasonsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.BadReasonsAction">
+			<set-property property="functionId" value="21150050" />
+			<set-property property="functionDescription" value="badReasons list" />
+			<forward name="page" path="site.badReasons.list" />
+		</action>
+		<action
+			parameter="select" path="/listBadReasonsSelect" scope="session"
+			name="badReasonsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.BadReasonsAction">
+			<set-property property="functionId" value="21150050" />
+			<forward name="page" path="site.badReasons.select" />
+		</action>
+		<action
+			parameter="newObject" path="/newBadReasons" scope="request"
+			type="com.aof.web.struts.action.basic.BadReasonsAction">
+			<set-property property="functionId" value="21150050" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.badReasons.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertBadReasons" scope="request"
+			name="badReasonsForm" input="/newBadReasons.do"
+			type="com.aof.web.struts.action.basic.BadReasonsAction">
+			<set-property property="functionId" value="21150050" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editBadReasons" scope="request"
+			type="com.aof.web.struts.action.basic.BadReasonsAction">
+			<set-property property="functionId" value="21150050" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.badReasons.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateBadReasons" scope="request"
+			name="badReasonsForm" input="/editBadReasons.do"
+			type="com.aof.web.struts.action.basic.BadReasonsAction">
+			<set-property property="functionId" value="21150050" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- 不合格原因end -->
+		<!-- 物料库位维护start-2015-02-09-st -->
+		<action
+			parameter="list" path="/listPartLocation" scope="session"
+			name="partLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction">
+			<set-property property="functionId" value="21150051" />
+			<set-property property="functionDescription" value="partLocation list" />
+			<forward name="page" path="site.partLocation.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newPartLocation" scope="request"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction">
+			<set-property property="functionId" value="21150051" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.partLocation.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertPartLocation" scope="request"
+			name="partLocationForm" input="/newPartLocation.do"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction">
+			<set-property property="functionId" value="21150051" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editPartLocation" scope="request"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction">
+			<set-property property="functionId" value="21150051" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.partLocation.edit" />
+		</action>
+		<action
+			parameter="update" path="/updatePartLocation" scope="request"
+			name="partLocationForm" input="/editPartLocation.do"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction">
+			<set-property property="functionId" value="21150051" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action     
+			parameter="exportsPartLocation" path="/exportsPartLocation" scope="session"  validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction" >
+			<forward name="page" path="/WEB-INF/jsp/importOk.jsp"/>
+		</action>
+		<action parameter="showImportPartLocationNext" path="/showImportPartLocation" scope="session" 
+			validate="false" type="com.aof.web.struts.action.basic.BasicPartLocationAction" >
+			<forward name="page" path="/WEB-INF/jsp/wmsbasic/basicPartLocation/showImportToSa.jsp"/>
+		</action>
+		<!-- 导入  -->
+		<action  parameter="upLoadFile" path="/upLoadFilePartLocation" scope="session" 
+		    name="partLocationQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction" >
+			<forward name="page" path="/importePartLocation.do"/>
+		</action>
+		<action     
+			parameter="importePartLocation" path="/importePartLocation" scope="session"
+			 name="partLocationQueryForm"  validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartLocationAction" >
+			<set-property property="functionId" value="21150015" />
+			<forward name="page" path="/WEB-INF/jsp/rowSaveOK.jsp"/>
+		</action>
+		<!-- 物料库位维护end -->
+		
+		<!-- 原材料出库扫描start-2015-02-10-st -->
+		<action
+			parameter="checkLot" path="/outStorageCheckLot" scope="request" validate="false"
+			type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="functionId" value="21150052" />
+		</action>
+		<action
+			parameter="getRecommendLot" path="/getRecommendLot" scope="request" validate="false"
+			type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="functionId" value="21150052" />
+			<forward name="page" path="site.recommendLot" />
+		</action>
+		<action
+			parameter="purchaseOrderOutbound" path="/purchaseOrderOutbound" scope="session" validate="false"
+			name="inventoryQueryForm" type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="functionId" value="21150052" />
+			<forward name="page" path="/WEB-INF/jsp/rowSaveOK.jsp"/>
+		</action>
+		<!-- 综合业务start-2015-03-04-st -->
+		<!-- 批次拆分start-2015-03-04-st -->
+		<!-- 批次调整  --> 	
+		<action parameter="list" path="/listBatchAdjustment" scope="session"
+			name="batchAdjustmentQueryForm" validate="false"
+			type="com.aof.web.struts.action.comprehensive.BatchAdjustmentAction">
+			<set-property property="functionId" value="21150061" />
+			<set-property property="functionDescription" value="wms batchAdjustment list" />
+			<forward name="page" path="site.batchAdjustment.list" />
+		</action> 
+		<action parameter="view" path="/viewBatchAdjustment" scope="request" validate="false"
+			type="com.aof.web.struts.action.comprehensive.BatchAdjustmentAction">
+			<set-property property="functionId" value="21150061" />
+			<forward name="page" path="site.batchAdjustment.view" />
+		</action> 
+		<action
+			parameter="listBox" path="/listBatchAdjustmentByBox" scope="session" validate="false"
+			name="boxQueryForm" type="com.aof.web.struts.action.po.PurchaseOrderBoxAction">
+			<set-property property="functionId" value="21150060" />
+			<set-property property="functionDescription" value="batch Adjustment box" />
+			<forward name="page" path="batch.Adjustment.box" />
+		</action>
+		<action
+			parameter="newObject" path="/newBatchAdjustment" scope="request"
+			type="com.aof.web.struts.action.comprehensive.BatchAdjustmentAction">
+			<set-property property="functionId" value="21150060" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.batchAdjustment.new" />
+		</action> 
+		<action
+			parameter="insert" path="/insertBatchAdjustment" scope="request"
+			name="wmsBatchAdjustment" input="/newBatchAdjustment.do"
+			type="com.aof.web.struts.action.comprehensive.BatchAdjustmentAction">
+			<set-property property="functionId" value="21150060" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="print" path="/printBatchAdjustmentByBarcode" scope="request"
+			type="com.aof.web.struts.action.comprehensive.BatchAdjustmentAction">
+			<set-property property="functionId" value="21150060" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.batchAdjustment.print" />
+		</action>
+		
+		<!-- 非计划入库start-2015-03-04-st -->
+        <action parameter="list" path="/listWmsUnplannedWarehousing" scope="session"
+			name="wmsUnplannedWarehousingQueryForm" type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+			<set-property property="functionDescription" value="wms unplanned in" />
+			<forward name="page" path="site.unplannedWarehousing.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newWmsUnplannedWarehousing" scope="request"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsUnplannedWarehousing.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertWmsUnplannedWarehousing" scope="request"
+			name="wmsUnplannedWarehousingForm" input="/newWmsUnplannedWarehousing.do"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editWmsUnplannedWarehousing" scope="request"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsUnplannedWarehousing.edit" />
+		</action>
+		<action
+			parameter="view" path="/viewWmsUnplannedWarehousing" scope="request"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsUnplannedWarehousing.view" />
+		</action>
+		<action
+			parameter="update" path="/updateWmsUnplannedWarehousing" scope="request"
+			name="wmsUnplannedWarehousingForm" input="/editWmsUnplannedWarehousing.do"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+		</action>
+		<action
+			parameter="deleteWmsUWByBox" path="/deleteWmsUWByBox" scope="request"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+		</action>
+		<action     
+			parameter="createImportTemplate" path="/exportsTemplate" scope="session"  validate="false"
+			type="com.aof.web.struts.action.wms.WmsUWAction" >
+			<forward name="page" path="/WEB-INF/jsp/importOk.jsp"/>
+		</action>
+		<action parameter="showImportNext" path="/showImportWmsUW" scope="session" validate="false"
+			type="com.aof.web.struts.action.wms.WmsUWAction" >
+			<forward name="page" path="/WEB-INF/jsp/wmsComprehensive/unplannedWarehousing/showImport.jsp"/>
+		</action>
+		<action  parameter="upLoadFile" path="/upLoadFileWmsUnplannedWarehousing" scope="session" 
+		    name="wmsUnplannedWarehousingQueryForm" validate="false"
+			type="com.aof.web.struts.action.wms.WmsUWAction" >
+			<forward name="page" path="/importeWmsUnplannedWarehousing.do"/>
+		</action>
+		<action     
+			parameter="importeWmsUW" path="/importeWmsUnplannedWarehousing" scope="session"
+			 name="wmsUnplannedWarehousingQueryForm"  validate="false"
+			type="com.aof.web.struts.action.wms.WmsUWAction" >
+			<set-property property="functionId" value="21150062" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="confirm" path="/wmsUnplannedWarehousingConfirm" scope="request"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+		</action>
+		<action
+			parameter="print" path="/pirntUnplannedWarehousing" scope="request"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+			<forward name="page" path="site.wmsUnplannedWarehousing.print"/>
+		</action>
+		<action
+			parameter="printOrder" path="/unplannedWarehousingPrintOrder" scope="request" 
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150062" />
+			<forward name="page" path="site.wmsUnplannedWarehousing.printOrder"/>
+		</action>
+		<!-- 非计划出库start-2015-03-06-st -->
+        <action parameter="list" path="/listWmsPlanToGoOut" scope="session"
+			name="wmsPlanToGoOutQueryForm" type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150063" />
+			<set-property property="functionDescription" value="wms planToGoOut out" />
+			<forward name="page" path="site.wmsPlanToGoOut.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newWmsPlanToGoOut" scope="request"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150063" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsPlanToGoOut.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertWmsPlanToGoOut" scope="request"
+			name="wmsPlanToGoOutForm" input="/newWmsPlanToGoOut.do"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150063" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editWmsPlanToGoOut" scope="request"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150063" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsPlanToGoOut.edit" />
+		</action> 
+		<action
+			parameter="printOrder" path="/wmsPlantToGoOutPrintOrder" scope="request"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150063" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsPlanToGoOut.printOrder" />
+		</action> 
+		
+		<action  
+			parameter="update" path="/updateWmsPlantToGoOut" scope="request" validate="false"
+			name="wmsPlanToGoOutForm" input="/editWmsPlanToGoOut.do"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150063" />
+			<set-property property="dialog" value="true" />
+		</action>
+		<!-- 查找库存量  -->
+ 		<action  
+			parameter="lookForStocksByPartAJAX" path="/lookForStocksByPartAJAX" scope="session"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+		</action>
+		<action
+			parameter="plantGoOutItemByBox" path="/plantGoOutItemByBox" scope="request"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150063" />
+		</action>
+		<!-- 扫描日志 -->
+		<action     
+			parameter="list" path="/listScanLog" scope="session" validate="false" 
+			name="scanLogQueryForm" type="com.aof.web.struts.action.basic.ScanLogAction">
+			<set-property property="functionId" value="21150067" />
+			<set-property property="functionDescription" value="scann log" />
+			<forward name="page" path="site.scanLog.list" />
+		</action>
+		<!-- 非计划出入库扫描业务start-2015-03-11-st -->
+        <action parameter="listScann" path="/listWmsUnplannedWarehousingScann" scope="session"
+			name="wmsUnplannedWarehousingQueryForm" type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150070" />
+			<set-property property="functionDescription" value="scann unplanned in" />
+			<forward name="page" path="scann.unplannedWarehousing.list" />
+		</action>
+		<action parameter="getBox" path="/getUnplannedWarehousingByBox" scope="request"
+			type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150070" />
+			<forward name="page" path="scann.unplannedWarehousing.new" />
+		</action>
+		<action parameter="unplannedWarehousingScann" path="/unplannedWarehousingScann" scope="session"
+			validate="false" name="wmsUnplannedWarehousingQueryForm" type="com.aof.web.struts.action.wms.WmsUWAction">
+			<set-property property="functionId" value="21150070" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		
+		<action parameter="listScann" path="/listWmsPlanToGoOutScann" scope="session"
+			name="wmsPlanToGoOutQueryForm" type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150071" />
+			<set-property property="functionDescription" value="scann planToGoOut out" />
+			<forward name="page" path="scann.wmsPlanToGoOut.list" />
+		</action>
+		<action parameter="getBox" path="/getPlanToGoOutByBox" scope="request"
+			type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150071" />
+			<forward name="page" path="scann.planToGoOut.new" />
+		</action>
+		<action parameter="planToGoOutScann" path="/planToGoOutScann" scope="request"
+			name="wmsPlanToGoOutQueryForm"  type="com.aof.web.struts.action.wms.WmsPlanToGoOutAction">
+			<set-property property="functionId" value="21150071" />
+		</action>
+		<action     
+			parameter="listSupplierByPart" path="/listSupplierByPart" scope="session" validate="false"
+			name="supplierQueryForm" type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="11100010" />
+			<forward name="page" path="site.supplier.selectSupplierPart" />
+		</action>
+		<action  
+			parameter="list" path="/listBom" scope="session" validate="false"
+			name="bomQueryForm" type="com.aof.web.struts.action.basic.BomAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21150074" />
+			<set-property property="functionDescription" value="bom list" />
+			<forward name="page" path="site.bom.list" />
+		</action>
+		<!-- 库位库存 start-2015-03-19-st -->
+		<action  
+			parameter="listInventoryLocation" path="/listInventoryLocation" scope="session" validate="false"
+			name="inventoryQueryForm" type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21150075" />
+			<set-property property="functionDescription" value="inventory location" />
+			<forward name="page" path="site.inventory.location" />
+		</action>
+		<!-- 物料库存 start-2015-03-19-st -->
+		<action
+			parameter="listInventoryPart" path="/listInventoryPart" scope="session" validate="false"
+			name="inventoryQueryForm" type="com.aof.web.struts.action.inventory.InventoryAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="21150077" />
+			<set-property property="functionDescription" value="inventory part" />
+			<forward name="page" path="site.inventory.part" />
+		</action>
+		<!-- 供应商物料抽检比例维护 start-2015-04-02-st -->
+		<action 
+			parameter="listSamplingRatio" path="/listSupplierPartSamplingRatio" scope="session" validate="false"
+			name="supplierPartQueryForm" type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<set-property property="functionId" value="21150085" />
+			<set-property property="functionDescription" value="supplierPart samplingRatio" />
+			<forward name="page" path="site.samplingRatio.list" />
+		</action>
+		<action     
+			parameter="exportsSupplierPartSamplingRatio" path="/exportsSupplierPartSamplingRatio" scope="session"  validate="false"
+			type="com.aof.web.struts.action.basic.SupplierPartAction" >
+			<forward name="page" path="/WEB-INF/jsp/importOk.jsp"/>
+		</action>
+		<action parameter="showImportSupplierPartSamplingRatio" path="/showImportSupplierPartSamplingRatio" scope="session" 
+			validate="false" type="com.aof.web.struts.action.basic.SupplierPartAction" >
+			<forward name="page" path="/WEB-INF/jsp/wmsbasic/supplierPart/showImportToSa.jsp"/>
+		</action>
+		<!-- 导入  -->
+		<action  parameter="upLoadFile" path="/upLoadFileSupplierPartSamplingRatio" scope="session" validate="false"
+		    name="supplierPartQueryForm" type="com.aof.web.struts.action.basic.SupplierPartAction" >
+			<forward name="page" path="/importeSupplierPartSamplingRatio.do"/>
+		</action>
+		<action     
+			parameter="importeSupplierPartSamplingRatio" path="/importeSupplierPartSamplingRatio" scope="session" validate="false"
+			 name="supplierPartQueryForm" type="com.aof.web.struts.action.basic.SupplierPartAction" >
+			<set-property property="functionId" value="21150085" />
+			<forward name="page" path="/WEB-INF/jsp/rowSaveOK.jsp"/>
+		</action>
+		<!-- 供应商物料抽检比例维护 end-2015-04-02-st -->
+		
+		<!-- 盘点start-2015-04-13-st -->
+		<action
+			parameter="list" path="/listWmsStocking" scope="session" validate="false"
+			name="wmsStockingQueryForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="functionDescription" value="wms stocking" />
+			<forward name="page" path="site.wmsStocking.list" />
+		</action><!--
+		<action
+			parameter="exportEXCELAll" path="/exportWmsStockingEXCELAll" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+		</action>
+		--><action
+			parameter="exportEXCEL" path="/exportWmsStockingEXCELAll" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+		</action>
+		<action
+			parameter="newObject" path="/newWmsStocking" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsStocking.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertWmsStocking" scope="request"
+			name="wmsStockingForm" input="/newWmsStocking.do"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="startStockingAll" path="/startStockingAll" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editWmsStocking" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsStocking.edit" />
+		</action>
+		<action
+			parameter="editByPart" path="/editWmsStockingByPart" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsStockingByPart.edit" />
+		</action>
+		<action
+			parameter="view" path="/viewWmsStocking" scope="request" 
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.wmsStocking.view2" />
+		</action>
+		<action
+			parameter="updateWmsStockingConfirm" path="/updateWmsStockingConfirm" scope="request"
+			name="wmsStockingForm" validate="false" 
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="update" path="/updateWmsStocking" scope="request"
+			name="wmsStockingForm" validate="false" 
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="selectLocationById" path="/selectLocationById" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="dialog" value="true" />
+		</action>
+		<action
+			parameter="selectLocationByIdAll" path="/selectLocationByIdAll" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="dialog" value="true" />
+		</action>
+		<action
+			parameter="selectLocationByFreeae" path="/selectLocationByFreeae" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="dialog" value="true" />
+		</action>
+		
+		<action
+			parameter="detailDeleteLocation" path="/detailDeleteLocation" scope="request"
+			type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="dialog" value="true" />
+		</action>
+		<action
+			parameter="editWmsStockingAll" path="/editWmsStockingAll" scope="session" validate="false"
+			name="storageLocationQueryForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<forward name="page" path="site.WmsStockingAll.edit" />
+		</action>
+		<action
+			parameter="deletemsStocking" path="/deletemsStocking" scope="session" validate="false"
+			 type="com.aof.web.struts.action.wms.WmsStockingAction">
+		</action>
+		<action parameter="listWmsStockingItemByPart" path="/listWmsStockingItemByPart" scope="session" validate="false"
+			name="wmsStockingForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<forward name="page" path="site.stocking.item.list" />
+		</action>
+		<action parameter="listWmsStockingItem" path="/listWmsStockingItem" scope="session" validate="false"
+			name="wmsStockingForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<forward name="page" path="site.stocking.item.list" />
+		</action>
+		<action
+			parameter="selectScanRecord" path="/selectScanRecord" scope="session" validate="false"
+			name="wmsStockingScanRecordQueryForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150095" />
+			<forward name="page" path="site.ScanRecord.select" />
+		</action>
+		<!--<action
+			parameter="listDifference" path="/listWmsStockingDifference" scope="session" validate="false"
+			name="wmsStockingQueryForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150096" />
+			<set-property property="functionDescription" value="stocking difference" />
+			<forward name="page" path="wmsStocking.difference.list" />
+		</action>-->
+		<action
+			parameter="listDifference" path="/listWmsStockingDifference" scope="session" validate="false"
+			name="wmsStockingQueryForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150096" />
+			<set-property property="functionDescription" value="stocking difference" />
+			<forward name="page" path="wmsStocking.difference.list" />
+		</action>
+		<action
+			parameter="viewDifference" path="/viewDifference" scope="session" validate="false"
+			 name="wmsStockingDetialQueryForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150096" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.Difference.view" />
+		</action>
+		<action
+			parameter="viewDifferenceByPart" path="/viewDifferenceByPart" scope="session" validate="false"
+			 name="wmsStockingDetialQueryForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150096" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.DifferenceByPart.view" />
+		</action>
+		<action
+			parameter="updateRecordsByType" path="/updateRecordsByType" scope="session" validate="false"
+			 type="com.aof.web.struts.action.wms.WmsStockingAction">
+		</action>
+		<action
+			parameter="verifyWmsStockingDifference" path="/verifyWmsStockingDifference" scope="session" validate="false"
+			 type="com.aof.web.struts.action.wms.WmsStockingAction">
+		</action>
+		
+		<!-- 盘点结束 -->
+		<action
+			parameter="update" path="/wmsStockingfinish" scope="request" validate="false" 
+			name="wmsStockingForm" type="com.aof.web.struts.action.wms.WmsStockingAction">
+			<set-property property="functionId" value="21150106" />
+			<set-property property="functionDescription" value="stocking difference finish" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- 盘点end -2015-04-13-st -->
+		
+		<!-- 2015-04-19-st费用科目 -->
+		<action
+			parameter="list" path="/listExpensesCourse" scope="session"
+			name="expensesCourseQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.ExpensesCourseAction">
+			<set-property property="functionId" value="21150097" />
+			<set-property property="functionDescription" value="expensesCourse list" />
+			<forward name="page" path="site.expensesCourse.list" />
+		</action>
+		<action
+			parameter="select" path="/selectExpensesCourse" scope="session" validate="false"
+			name="expensesCourseQueryForm" type="com.aof.web.struts.action.basic.ExpensesCourseAction">
+			<forward name="page" path="site.expensesCourse.select" />
+		</action>
+		<action
+			parameter="newObject" path="/newExpensesCourse" scope="request"
+			type="com.aof.web.struts.action.basic.ExpensesCourseAction">
+			<set-property property="functionId" value="21150097" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.expensesCourse.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertExpensesCourse" scope="request"
+			name="expensesCourseForm" input="/newExpensesCourse.do"
+			type="com.aof.web.struts.action.basic.ExpensesCourseAction">
+			<set-property property="functionId" value="21150097" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editExpensesCourse" scope="request"
+			type="com.aof.web.struts.action.basic.ExpensesCourseAction">
+			<set-property property="functionId" value="21150097" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.expensesCourse.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateExpensesCourse" scope="request"
+			name="expensesCourseForm" input="/editExpensesCourse.do"
+			type="com.aof.web.struts.action.basic.ExpensesCourseAction">
+			<set-property property="functionId" value="21150097" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- CostCenter -->
+		<action 
+			parameter="list" path="/listCostCenter" scope="session"
+			name="costCenterQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CostCenterAction">
+			<set-property property="functionId" value="21150098" />
+			<set-property property="functionDescription" value="costCenter list" />
+			<forward name="page" path="site.costCenter.list" />
+		</action>
+		<action 
+			parameter="select" path="/selectCostCenter" scope="session" validate="false"
+			name="costCenterQueryForm" type="com.aof.web.struts.action.basic.CostCenterAction">
+			<forward name="page" path="site.costCenter.select" />
+		</action>
+		<action
+			parameter="newObject" path="/newCostCenter" scope="request"
+			type="com.aof.web.struts.action.basic.CostCenterAction">
+			<set-property property="functionId" value="21150098" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.costCenter.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertCostCenter" scope="request"
+			name="costCenterForm" input="/newCostCenter.do"
+			type="com.aof.web.struts.action.basic.CostCenterAction">
+			<set-property property="functionId" value="21150098" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editCostCenter" scope="request"
+			type="com.aof.web.struts.action.basic.CostCenterAction">
+			<set-property property="functionId" value="21150098" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.costCenter.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateCostCenter" scope="request"
+			name="costCenterForm" input="/editCostCenter.do"
+			type="com.aof.web.struts.action.basic.CostCenterAction">
+			<set-property property="functionId" value="21150098" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- end of CostCenter -->
+		<!-- 计划外原因代码start-2015-02-09-st -->
+		<action
+			parameter="list" path="/listUnplannedReasons" scope="session"
+			name="unplannedReasonsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.UnplannedReasonsAction">
+			<set-property property="functionId" value="21150099" />
+			<set-property property="functionDescription" value="unplanned reasons list" />
+			<forward name="page" path="site.unplannedReasons.list" />
+		</action>
+		<action
+			parameter="select" path="/listUnplannedReasonsSelect" scope="session"
+			name="unplannedReasonsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.UnplannedReasonsAction">
+			<set-property property="functionId" value="21150099" />
+			<forward name="page" path="site.unplannedReasons.select" />
+		</action>
+		<action
+			parameter="newObject" path="/newUnplannedReasons" scope="request"
+			type="com.aof.web.struts.action.basic.UnplannedReasonsAction">
+			<set-property property="functionId" value="21150099" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.unplannedReasons.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertUnplannedReasons" scope="request"
+			name="unplannedReasonsForm" input="/newUnplannedReasons.do"
+			type="com.aof.web.struts.action.basic.UnplannedReasonsAction">
+			<set-property property="functionId" value="21150099" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="edit" path="/editUnplannedReasons" scope="request"
+			type="com.aof.web.struts.action.basic.UnplannedReasonsAction">
+			<set-property property="functionId" value="21150099" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.unplannedReasons.edit" />
+		</action>
+		<action
+			parameter="update" path="/updateUnplannedReasons" scope="request"
+			name="unplannedReasonsForm" input="/editUnplannedReasons.do"
+			type="com.aof.web.struts.action.basic.UnplannedReasonsAction">
+			<set-property property="functionId" value="21150099" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- 计划外原因代码end -->
+		<!-- 进销存start 20115-04-27-st -->
+		<action
+			parameter="list" path="/listReportEntersSellsSaves" scope="session" validate="false"
+			name="reportEntersSellsSavesQueryForm" type="com.aof.web.struts.action.basic.ReportEntersSellsSavesAction">
+			<set-property property="functionId" value="21150101" />
+			<set-property property="functionDescription" value="report entersSellsSaves list" />
+			<forward name="page" path="site.entersSellsSaves.list" />
+		</action>
+		<action
+			parameter="newObject" path="/newReportEntersSellsSaves" scope="request"
+			type="com.aof.web.struts.action.basic.ReportEntersSellsSavesAction">
+			<set-property property="functionId" value="21150101" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.entersSellsSaves.new" />
+		</action>
+		<action
+			parameter="insert" path="/insertReportEntersSellsSaves" scope="request"
+			type="com.aof.web.struts.action.basic.ReportEntersSellsSavesAction">
+			<set-property property="functionId" value="21150101" />
+			<set-property property="dialog" value="true" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action
+			parameter="validateReportEntersSellsSaves" path="/validateReportEntersSellsSaves" scope="request"
+			type="com.aof.web.struts.action.basic.ReportEntersSellsSavesAction">
+		</action>
+		
+		<!-- 进销存end 20115-04-27-st -->
+		
+		
+		
+		<!-- 客户退货 -->
+		<action parameter="list" path="/listCustomerreturnsAction" scope="session"
+			name="customerreturnsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<set-property property="functionDescription" value="list Customerreturns" />
+			<forward name="page" path="site.customerreturns.list" />
+		</action>
+		<action parameter="newObject" path="/newListCustomerreturnsAction" scope="session"
+			name="customerreturnsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<forward name="page" path="site.customerreturns.new" />
+		</action>
+		
+		<action parameter="itemlist" path="/itemListCustomerreturnsAction" scope="session"
+			name="customerreturnsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.customerreturns.itemlist" />
+		</action>
+		<action parameter="edit" path="/editCustomerreturnsAction" scope="request"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160506" />
+			<forward name="page" path="site.customerreturns.edit" />
+		</action>
+		<action parameter="insert" path="/insertCustomerreturnsAction" scope="request"
+			name="customerreturnsForm"  validate="false" input="/newCustomerreturnsAction.do"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160506" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateCustomerreturnsAction" scope="request"
+			name="customerreturnsForm" validate="false" input="/editCustomerreturnsAction.do"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160506" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteCustomerreturnsAction" scope="request"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+		</action>
+		<action parameter="updateDelStatus" path="/updateDelStatusAction" scope="request"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160506" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="listCustomer" path="/listCustomerReturn" scope="session" 
+			name="basicCustomerQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<forward name="page" path="site.selectCustomerReturn.list" />
+		</action>
+		<!-- 产品编号 -->
+		<action parameter="listProduct" path="/listProductCode" scope="session" 
+			name="customerreturnsQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<forward name="page" path="site.selectProductCode.list" />
+		</action>
+		<!-- 客户退货明细 -->
+		<action parameter="list" path="/listCustomerReturnItemAction" scope="session"
+			name="customerReturnItemQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.CustomerReturnItemAction">
+			<set-property property="functionId" value="20160513" />
+			<set-property property="functionDescription" value="list CustomerReturnItem" />
+			<forward name="page" path="site.customerReturnItem.list" />
+		</action>
+		<action parameter="insertProduct" path="/insertProductAction" scope="request"
+			name="customerReturnItemForm"  validate="false" 
+			type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160513" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- 客户退货及明细view显示页面-->
+		<action parameter="view" path="/viewCustomerreturnsByItem" scope="session"
+			name="customerReturnItemQueryForm" type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<forward name="page" path="site.CustomerreturnsByItem.edit" />
+		</action>
+		<!-- 客户退货及明细print显示页面-->
+		<action parameter="print" path="/printCustomerreturnsByItem" scope="request"
+			 type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<set-property property="dialog" value="true" />
+			<forward name="page" path="site.CustomerreturnsByItem.print" />
+		</action>
+		<!-- 客户退货及明细修改print状态-->
+		<action parameter="updateCustomerreturnsByItemPrint" path="/updateCustomerreturnsByItemPrint" scope="request"
+			 type="com.aof.web.struts.action.basic.CustomerreturnsAction">
+			<set-property property="functionId" value="20160506" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<!-- BasicPartPrice 物料价格-->
+		<action parameter="list" path="/listBasicPartPriceAction" scope="session"
+			name="basicPartPriceQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartPriceAction">
+			<set-property property="functionId" value="20160623" />
+			<set-property property="functionDescription" value="list BasicPartPrice" />
+			<forward name="page" path="site.basicPartPrice.list" />
+		</action>
+		<!-- BasicPartPrice 物料价格   维护list-->
+		<action parameter="listMaintenance" path="/listBasicPartPriceMaintenanceAction" scope="session"
+			name="basicPartPriceQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartPriceAction">
+			<set-property property="functionId" value="20160706" />
+			<set-property property="functionDescription" value="list BasicPartPrice Maintenance" />
+			<forward name="page" path="site.BasicPartPriceMaintenance.list" />
+		</action>
+		<action parameter="newObject" path="/newBasicPartPriceMaintenanceAction" scope="request"
+			name="basicPartPriceForm" validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartPriceAction">
+			<set-property property="functionId" value="20160706" />
+			<forward name="page" path="site.BasicPartPriceMaintenance.new" />
+		</action>
+		<action parameter="edit" path="/editBasicPartPriceMaintenanceAction" scope="request"
+			type="com.aof.web.struts.action.basic.BasicPartPriceAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160706" />
+			<forward name="page" path="site.BasicPartPriceMaintenance.edit" />
+		</action>
+		<action parameter="insert" path="/insertBasicPartPriceMaintenanceAction" scope="request"
+			name="basicPartPriceForm"  validate="false" 
+			type="com.aof.web.struts.action.basic.BasicPartPriceAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160706" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateBasicPartPriceMaintenanceAction" scope="request"
+			name="basicPartPriceForm" validate="false"
+			type="com.aof.web.struts.action.basic.BasicPartPriceAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20160706" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteBasicPartPriceMaintenanceAction" scope="request"
+			type="com.aof.web.struts.action.basic.BasicPartPriceAction">
+			<set-property property="functionId" value="20160706" />
+		</action>
+		<!-- 客户退货报表 -->
+		<action parameter="reportList" path="/listCustomerReturnReport" scope="session" name="customerReturnItemQueryForm"
+			type="com.aof.web.struts.action.basic.CustomerReturnItemAction">
+			<set-property property="functionId" value="20160722" />
+			<set-property property="functionDescription" value="list Customer Return Report" />
+			<forward name="page" path="site.CustomerReturnReport.list" />
+		</action>
+		<!--发货单物料-->
+		<action
+			parameter="selectWmsPartShipOrder" path="/selectWmsPartShipOrder" scope="session"
+			name="basicDataViewQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<forward name="page" path="site.wmsPartShipOrder.select" />
+		</action>
+		<!-- 非po发货单创建 -->
+		<action
+			parameter="selectWmsPartByPortalShipOrder" path="/selectWmsPartByPortalShipOrder" scope="session"
+			name="wmsPartQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.WmsPartAction">
+			<forward name="page" path="site.selectWmsPartByPortalShipOrder.select" />
+		</action>
+		<!-- 选择供应商 -->
+		<action     
+			parameter="selectSupplierByPortalShipOrder" path="/selectSupplierByPortalShipOrder" scope="session" validate="false"
+			name="supplierQueryForm" type="com.aof.web.struts.action.basic.SupplierPartAction">
+			<forward name="page" path="site.selectSupperByPortalShipOrder.select" />
+		</action>
+		
+		<!--每日预计库存报表-->
+		<action
+			parameter="listExpectedInventory" path="/listExpectedInventoryReport" scope="session"
+			name="basicDataViewQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.PartForecastNeedReportAction">
+			<set-property property="functionId" value="20171132" />
+			<set-property property="functionDescription" value="list Part Expected Inventory Report" />
+			<forward name="page" path="site.partExpectedInventoryReport.list" />
+		</action>
+		
+		<!--原材料预计需求量报表-->
+		<action
+			parameter="listPartNeed" path="/listPartNeedReport" scope="session"
+			name="basicDataViewQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.PartForecastNeedReportAction">
+			<set-property property="functionId" value="20171133" />
+			<set-property property="functionDescription" value="list Part Need Report" />
+			<forward name="page" path="site.partNeedReport.list" />
+		</action>
+		
+		<!--原材料预计需求报表-->
+		<action
+			parameter="list" path="/listPartForecastNeedReportAction" scope="session"
+			name="basicDataViewQueryForm" validate="false"
+			type="com.aof.web.struts.action.schedule.PartForecastNeedReportAction">
+			<set-property property="functionId" value="21161847" />
+			<set-property property="functionDescription" value="list Part Forecast Need Report" />
+			<forward name="page" path="site.partForecastNeedReport.list" />
+		</action>
+		
+		
+		<!-- SycSleepTime 同步时间设置   维护list-->
+		<action parameter="listSycSleepTime" path="/listSycSleepTimeListAction" scope="session"
+			name="sycSleepTimeQueryForm" validate="false"
+			type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+			<set-property property="functionId" value="20170109" />
+			<set-property property="functionDescription" value="list sycSleepTime Maintenance" />
+			<forward name="page" path="site.SycSleepTime.list" />
+		</action>
+		<action parameter="newObject" path="/newSycSleepTimeMaintenanceAction" scope="request"
+			name="sycSleepTimeForm" validate="false"
+			type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+			<set-property property="functionId" value="20170109" />
+			<forward name="page" path="site.SycSleepTimeMaintenance.new" />
+		</action>
+		<action parameter="edit" path="/editSycSleepTimeMaintenanceAction" scope="request"
+			type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20170109" />
+			<forward name="page" path="site.SycSleepTimeMaintenance.edit" />
+		</action>
+		<action parameter="insert" path="/insertSycSleepTimeMaintenanceAction" scope="request"
+			name="sycSleepTimeForm"  validate="false" 
+			type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20170109" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="update" path="/updateSycSleepTimeMaintenanceAction" scope="request"
+			name="sycSleepTimeForm" validate="false"
+			type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+			<set-property property="dialog" value="true" />
+			<set-property property="functionId" value="20170109" />
+			<forward name="success" path="/WEB-INF/jsp/rowSaveOK.jsp" />
+		</action>
+		<action parameter="delete" path="/deleteSycSleepTimeMaintenanceAction" scope="request"
+			type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+			<set-property property="functionId" value="20170109" />
+		</action>
+		
+		<action parameter="AJAXType" path="/AJAXType" scope="request" validate="false"
+		        type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+		</action>
+		<action parameter="AJAXEdit" path="/AJAXEdit" scope="request" validate="false"
+		        type="com.aof.web.struts.action.basic.SycSleepTimeAction">
+		</action>
+		
+				
+		<!-- 库存预警报表 --><!--
+		
+		
+	--></action-mappings>
+</struts-config>
+
+

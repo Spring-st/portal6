@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="com.aof.model.schedule">
+    <class name="NjitNpoPlan" table="portalV6_mrp_part_plan">
+        <id name="id" column="ID" type="integer">
+            <generator class="native"/>
+        </id>
+		<many-to-one name="partId" column="PART_ID" class="com.aof.model.basic.WmsPart"  />
+		<property name="dataset" column="dataset" type="string" />
+		<property name="nbr" column="nbr" type="string" />
+		<property name="line" column="line" type="string" />
+		<property name="relDate" column="relDate" type="date" />
+		<property name="time" column="time" type="integer" />
+		<property name="type" column="type" type="string" />
+		<property name="detail" column="detail" type="string" />
+		<property name="version" column="version" type="string" />
+		<property name="qty" column="QTY" type="big_decimal" />
+		<property name="unit" column="UNIT" type="string" />
+		<property name="needDate" column="NEED_DATE" type="date" />
+		<property name="createDate" column="CREATE_DATE" type="timestamp" />
+		<property name="isEnabled" column="IS_ENABLED" type="com.aof.model.metadata.EnabledDisabled" />
+    </class>
+	<class name="Portalv6MrpPartPlanView" table="portalv6_mrp_part_plan_view">
+        <id name="partId" column="part_id" type="string">
+			<generator class="assigned" />
+		</id>
+		<property name="name" column="name" type="string" />
+		<property name="current_qty" column="current_qty" type="string" />
+		<property name="b" column="b" type="string" />
+		<property name="c" column="c" type="string" />
+		<property name="d" column="d" type="string" />
+		<property name="e" column="e" type="string" />
+		<property name="f" column="f" type="string" />
+		<property name="g" column="g" type="string" />
+		<property name="h" column="h" type="string" />
+		<property name="d1" column="d1" type="string" />
+		<property name="d2" column="d2" type="string" />
+		<property name="d3" column="d3" type="string" />
+		<property name="d4" column="d4" type="string" />
+		<property name="d5" column="d5" type="string" />
+		<property name="d6" column="d6" type="string" />
+		<property name="d7" column="d7" type="string" />
+		<property name="d8" column="d8" type="string" />
+		<property name="d9" column="d9" type="string" />
+		<property name="d10" column="d10" type="string" />
+		<property name="d11" column="d11" type="string" />
+		<property name="d12" column="d12" type="string" />
+		<property name="d13" column="d13" type="string" />
+		<property name="d14" column="d14" type="string" />
+		<property name="d15" column="d15" type="string" />
+		<property name="d16" column="d16" type="string" />
+		<property name="d17" column="d17" type="string" />
+		<property name="d18" column="d18" type="string" />
+		<property name="d19" column="d19" type="string" />
+		<property name="d20" column="d20" type="string" />
+		<property name="d21" column="d21" type="string" />
+		<property name="d22" column="d22" type="string" />
+		<property name="d23" column="d23" type="string" />
+		<property name="d24" column="d24" type="string" />
+		<property name="d25" column="d25" type="string" />
+		<property name="d26" column="d26" type="string" />
+		<property name="d27" column="d27" type="string" />
+		<property name="d28" column="d28" type="string" />
+		<property name="d29" column="d29" type="string" />
+		<property name="d30" column="d30" type="string" />
+		<property name="d31" column="d31" type="string" />
+		<property name="d32" column="d32" type="string" />
+		<property name="d33" column="d33" type="string" />
+		<property name="d34" column="d34" type="string" />
+		<property name="d35" column="d35" type="string" />
+		<property name="d36" column="d36" type="string" />
+		<property name="d37" column="d37" type="string" />
+		<property name="d38" column="d38" type="string" />
+		<property name="d39" column="d39" type="string" />
+		<property name="d40" column="d40" type="string" />
+		<property name="d41" column="d41" type="string" />
+		<property name="d42" column="d42" type="string" />
+		<property name="d43" column="d43" type="string" />
+		<property name="d44" column="d44" type="string" />
+		<property name="d45" column="d45" type="string" />
+    </class>
+</hibernate-mapping>

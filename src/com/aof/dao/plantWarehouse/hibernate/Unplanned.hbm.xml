@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration. -->
+<!-- Created Fri Sep 23 14:49:10 CST 2005 -->
+<hibernate-mapping package="com.aof.model.plantWarehouse">
+	<!-- ==============================非计划出入库开始2015-01-28-st================================================ -->
+	<!-- 计划外出库  -->
+	<class name="WmsPlanToGoOut" table="unplanned_outbound">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="applicant" column="applicant" class="com.aof.model.admin.User" />
+		<many-to-one name="department" column="department" class="com.aof.model.admin.Department"/>
+		
+		<property name="code" column="code" type="string" />
+		<property name="domain" column="domain" type="string" />
+		<property name="date" column="date" type="date" />
+		<many-to-one name="reason_code" column="reason_code" class="com.aof.model.basic.UnplannedReasons"/>
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="actual_qty" column="actual_qty" type="big_decimal" />
+		<property name="status" column="status" type="com.aof.model.metadata.UnplannedOutboundStatus" />
+		<property name="remark" column="remark" type="string" />
+		
+		<property name="departmentCost" column="department_cost" type="string" />
+		<property name="costAccount" column="cost_account" type="string" />
+	</class>
+	<!-- 计划外出库明细  -->
+	<class name="WmsPlanToGoOutItem" table="unplanned_outbound_detial">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="unplanned_outbound_id" column="unplanned_outbound_id" class="WmsPlanToGoOut" />
+		<many-to-one name="part" column="part" class="com.aof.model.basic.WmsPart"/>
+		
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="actual_qty" column="actual_qty" type="big_decimal" />
+		<property name="status" column="status" type="com.aof.model.metadata.YesNo" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	<!-- 计划外出库批次明细  -->
+	<class name="WmsPlanToGoOutSub" table="unplanned_outbound_sub">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="unplanned_outbound_detial_id" column="unplanned_outbound_detial_id" class="WmsPlanToGoOutItem" />
+		<many-to-one name="location" column="location" class="com.aof.model.basic.StorageLocation" />
+		<many-to-one name="box_id" column="box_id" class="com.aof.model.po.Box"/>
+		
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="is_sync" column="is_sync" type="com.aof.model.metadata.YesNo" />
+		<property name="is_sync_date" column="is_sync_date" type="date" />
+	</class>
+	<!-- 计划外入库  -->
+	<class name="WmsUnplannedWarehousing" table="unplanned_warehousing">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="site" column="site" class="com.aof.model.admin.Site" />
+		<many-to-one name="applicant" column="applicant" class="com.aof.model.admin.User" />
+		<many-to-one name="department" column="department" class="com.aof.model.admin.Department"/>
+		<many-to-one name="reason_code" column="reason_code" class="com.aof.model.basic.UnplannedReasons"/>
+		
+		<property name="code" column="code" type="string" />
+		<property name="domain" column="domain" type="string" />
+		<property name="date" column="date" type="date" />
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="actual_qty" column="actual_qty" type="big_decimal" />
+		<property name="status" column="status" type="com.aof.model.metadata.UnplannedWarehousingStatus" />
+		<property name="remark" column="remark" type="string" />
+		
+	</class>
+	<!-- 计划外入库明细  -->
+	<class name="WmsUnplannedWarehousingItem" table="unplanned_warehousing_detia">
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+		<many-to-one name="unplanned_warehousing_id" column="unplanned_warehousing_id" class="WmsUnplannedWarehousing" />
+		<many-to-one name="box_id" column="box_id" class="com.aof.model.po.Box"/>
+		
+		<property name="qty" column="qty" type="big_decimal" />
+		<property name="actual_qty" column="actual_qty" type="big_decimal" />
+		<property name="status" column="status" type="com.aof.model.metadata.YesNo" />
+		<property name="is_sync" column="is_sync" type="com.aof.model.metadata.YesNo" />
+		<property name="is_sync_date" column="is_sync_date" type="date" />
+		<property name="remark" column="remark" type="string" />
+	</class>
+	
+	<!-- ==============================非计划出入库结束2015-01-28-st================================================ -->
+</hibernate-mapping>
