@@ -9,7 +9,7 @@
 /*     */ import com.aof.model.metadata.YesNo;
 /*     */ import com.aof.service.admin.ExpenseCategoryManager;
 /*     */ import com.aof.service.admin.ExpenseSubCategoryManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.ExpenseSubCategoryQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -40,9 +40,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class ExpenseSubCategoryAction
-/*     */   extends BaseAction
-/*     */ {
+/*     */ public class ExpenseSubCategoryAction extends BaseAction2 {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  47 */     ExpenseSubCategoryManager fm = ServiceLocator.getExpenseSubCategoryManager(request);
 /*     */     

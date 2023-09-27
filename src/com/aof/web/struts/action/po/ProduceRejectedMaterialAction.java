@@ -14,7 +14,7 @@
 /*     */ import com.aof.service.po.ProduceRejectedMaterialManager;
 /*     */ import com.aof.service.po.PurchaseOrderInspectionPendingManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.ProduceRejectedMaterialQueryForm;
@@ -73,7 +73,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProduceRejectedMaterialAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  79 */     ProduceRejectedMaterialQueryForm queryForm = (ProduceRejectedMaterialQueryForm)form;
@@ -83,7 +83,7 @@
 /*     */     } 
 /*  84 */     BoxManager boxManager = ServiceLocator.getBoxManager(request);
 /*  85 */     ProduceRejectedMaterialManager fm = ServiceLocator.getProduceRejectedMaterialManager(request);
-/*  86 */     Map<ProduceRejectedMaterialQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  86 */     Map conditions = constructQueryMap(queryForm);
 /*  87 */     conditions.put(ProduceRejectedMaterialQueryCondition.TYPE_EQ, Integer.valueOf(2));
 /*  88 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
 /*     */     
@@ -98,7 +98,7 @@
 /*  98 */       String fileName = "ProduceRejectedMaterial";
 /*  99 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 102 */               MessageResources messages = ProduceRejectedMaterialAction.this.getResources(request);
 /* 103 */               row.add(messages.getMessage(ProduceRejectedMaterialAction.this.getLocale(request), "ProduceRejectedMaterial.box.po_supp"));
 /* 104 */               row.add(messages.getMessage(ProduceRejectedMaterialAction.this.getLocale(request), "ProduceRejectedMaterial.box.lot.id"));
@@ -112,7 +112,7 @@
 /* 112 */               row.add(messages.getMessage(ProduceRejectedMaterialAction.this.getLocale(request), "ProduceRejectedMaterial.isPrint"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 116 */               ProduceRejectedMaterial produceRejectedMaterial = (ProduceRejectedMaterial)data;
 /* 117 */               row.add(BeanHelper.getBeanPropertyValue(data, "box.po_supp"));
 /* 118 */               row.add(BeanHelper.getBeanPropertyValue(data, "box.lot.id"));
@@ -173,9 +173,9 @@
 /*     */     
 /* 174 */     ProduceRejectedMaterialManager fm = ServiceLocator.getProduceRejectedMaterialManager(request);
 /* 175 */     BoxManager boxManager = ServiceLocator.getBoxManager(request);
-/* 176 */     Map<ProduceRejectedMaterialQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/* 176 */     Map conditions = constructQueryMap(queryForm);
 /* 177 */     conditions.put(ProduceRejectedMaterialQueryCondition.TYPE_EQ, Integer.valueOf(1));
-/* 178 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 178 */     getConditionAndOrder(queryForm, conditions, request);
 /*     */     
 /* 180 */     String exportType = queryForm.getExportType();
 /* 181 */     if (StringUtils.isNotEmpty(exportType)) {
@@ -188,7 +188,7 @@
 /* 188 */       String fileName = "ProduceRejectedMaterial";
 /* 189 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 192 */               MessageResources messages = ProduceRejectedMaterialAction.this.getResources(request);
 /* 193 */               row.add(messages.getMessage(ProduceRejectedMaterialAction.this.getLocale(request), "ProduceRejectedMaterial.box.po_supp"));
 /* 194 */               row.add(messages.getMessage(ProduceRejectedMaterialAction.this.getLocale(request), "ProduceRejectedMaterial.box.lot.id"));
@@ -202,7 +202,7 @@
 /* 202 */               row.add(messages.getMessage(ProduceRejectedMaterialAction.this.getLocale(request), "ProduceRejectedMaterial.isPrint"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 206 */               ProduceRejectedMaterial produceRejectedMaterial = (ProduceRejectedMaterial)data;
 /* 207 */               row.add(BeanHelper.getBeanPropertyValue(data, "box.po_supp"));
 /* 208 */               row.add(BeanHelper.getBeanPropertyValue(data, "box.lot.id"));
@@ -369,7 +369,7 @@
 /*     */   
 /*     */   public ActionForward poRejectedMaterialBoxByAjax(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 371 */     response.setContentType("text/json");
-/* 372 */     response.setCharacterEncoding("UTF-8");
+///* 372 */     response.setCharacterEncoding("UTF-8");
 /* 373 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 375 */     ProduceRejectedMaterialManager manager = ServiceLocator.getProduceRejectedMaterialManager(request);
@@ -381,9 +381,6 @@
 /* 381 */     return null;
 /*     */   }
 /*     */ 
-/*     */ 
-/*     */ 
-/*     */   
 /*     */   public ActionForward RecordPrint(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 388 */     PurchaseOrderInspectionPendingManager fm = ServiceLocator.getPurchaseOrderInspectionPendingManager(request);
 /* 389 */     ProduceRejectedMaterialManager manager = ServiceLocator.getProduceRejectedMaterialManager(request);

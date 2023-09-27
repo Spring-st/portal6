@@ -9,7 +9,7 @@
 /*     */ import com.aof.model.metadata.RoleType;
 /*     */ import com.aof.service.admin.RoleManager;
 /*     */ import com.aof.service.admin.UserManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.shcnc.struts.action.ActionException;
 /*     */ import com.shcnc.struts.action.ActionUtils;
@@ -47,7 +47,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class UserRoleAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  53 */     UserManager um = ServiceLocator.getUserManager(request);

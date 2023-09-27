@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.schedule.query.QadOrEdiQueryOrder;
 /*     */ import com.aof.service.schedule.QadOrEdiManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.schedule.QadOrEdiQueryForm;
@@ -37,7 +37,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class QadOrEdiAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map getConditions(QadOrEdiQueryForm formBean) {
 /*  43 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -66,14 +66,14 @@
 /*  66 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  67 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /*  71 */               row.add(BeanUtils.getProperty(data, "models"));
 /*  72 */               row.add(BeanUtils.getProperty(data, "qadPart.id"));
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  77 */               MessageResources message = QadOrEdiAction.this.getResources(request);
 /*  78 */               row.add(message.getMessage(QadOrEdiAction.this.getLocale(request), "qadoredi.models"));
 /*  79 */               row.add(message.getMessage(QadOrEdiAction.this.getLocale(request), "qadoredi.qadpart"));

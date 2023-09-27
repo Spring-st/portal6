@@ -6,7 +6,7 @@
 /*     */ import com.aof.model.metadata.YesNo;
 /*     */ import com.aof.service.admin.FinishedSaiheRelationManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.admin.FinishedSaiheRelationQueryForm;
@@ -30,9 +30,7 @@
 /*     */ import org.apache.struts.util.MessageResources;
 /*     */ 
 /*     */ 
-/*     */ public class FinishedSaiheRelationAction
-/*     */   extends BaseAction
-/*     */ {
+/*     */ public class FinishedSaiheRelationAction extends BaseAction2 {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  37 */     FinishedSaiheRelationQueryForm queryForm = (FinishedSaiheRelationQueryForm)form;
 /*  38 */     FinishedSaiheRelationManager fm = 
@@ -52,7 +50,7 @@
 /*  52 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  53 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  56 */               MessageResources messages = FinishedSaiheRelationAction.this.getResources(request);
 /*  57 */               row.add(messages.getMessage(FinishedSaiheRelationAction.this.getLocale(request), 
 /*  58 */                     "finishedSaiheRelation.saihecode"));
@@ -64,8 +62,7 @@
 /*  64 */                     "finishedSaiheRelation.status"));
 /*     */             }
 /*     */ 
-/*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  69 */               row.add(BeanHelper.getBeanPropertyValue(data, 
 /*  70 */                     "saiheCode"));
 /*  71 */               row.add(BeanHelper.getBeanPropertyValue(data, 

@@ -9,7 +9,7 @@
 /*     */ import com.aof.service.admin.CurrencyManager;
 /*     */ import com.aof.service.admin.SiteManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.SiteQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -57,7 +57,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SiteAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  63 */     SiteManager sm = ServiceLocator.getSiteManager(request);
@@ -74,13 +74,13 @@
 /*  74 */       String fileName = "site";
 /*  75 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  78 */               MessageResources messages = SiteAction.this.getResources(request);
 /*  79 */               row.add(messages.getMessage(SiteAction.this.getLocale(request), "site.name"));
 /*  80 */               row.add(messages.getMessage(SiteAction.this.getLocale(request), "site.enabled"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  84 */               row.add(BeanUtils.getProperty(data, "name"));
 /*  85 */               String locale = SiteAction.this.getCurrentUser(request).getLocale();
 /*  86 */               if ("en".equals(locale)) {

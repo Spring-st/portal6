@@ -6,7 +6,7 @@
 /*     */ import com.aof.model.metadata.YesNo;
 /*     */ import com.aof.service.admin.FinishedToolPutnumberManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.admin.FinishedToolPutnumberQueryForm;
@@ -30,9 +30,7 @@
 /*     */ import org.apache.struts.util.MessageResources;
 /*     */ 
 /*     */ 
-/*     */ public class FinishedToolPutnumberAction
-/*     */   extends BaseAction
-/*     */ {
+/*     */ public class FinishedToolPutnumberAction extends BaseAction2 {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  37 */     FinishedToolPutnumberQueryForm queryForm = (FinishedToolPutnumberQueryForm)form;
 /*  38 */     FinishedToolPutnumberManager fm = 
@@ -52,7 +50,7 @@
 /*  52 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  53 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  56 */               MessageResources messages = FinishedToolPutnumberAction.this.getResources(request);
 /*  57 */               row.add(messages.getMessage(FinishedToolPutnumberAction.this.getLocale(request), 
 /*  58 */                     "finishedtoolputnumber.toolcode"));
@@ -65,7 +63,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  69 */               row.add(BeanHelper.getBeanPropertyValue(data, 
 /*  70 */                     "toolCode"));
 /*  71 */               row.add(BeanHelper.getBeanPropertyValue(data, 

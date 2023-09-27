@@ -7,7 +7,7 @@
 /*     */ import com.aof.service.admin.SiteManager;
 /*     */ import com.aof.service.kpi.KPIManager;
 /*     */ import com.aof.utils.DateUtils;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.util.Date;
@@ -37,7 +37,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class KPIAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward report(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  43 */     SiteManager siteManager = ServiceLocator.getSiteManager(request);

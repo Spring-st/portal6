@@ -7,7 +7,7 @@
 /*     */ import com.aof.model.metadata.SupplierPromoteStatus;
 /*     */ import com.aof.service.admin.SupplierContractManager;
 /*     */ import com.aof.service.admin.SupplierManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.SupplierContractQueryForm;
 /*     */ import com.shcnc.servlet.DownloadUploadHelper;
@@ -48,7 +48,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SupplierContractAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  54 */     SupplierContractQueryForm queryForm = (SupplierContractQueryForm)form;

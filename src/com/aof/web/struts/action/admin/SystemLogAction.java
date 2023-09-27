@@ -5,7 +5,7 @@
 /*     */ import com.aof.service.admin.SystemLogManager;
 /*     */ import com.aof.utils.SessionTempFile;
 /*     */ import com.aof.web.struts.action.ActionUtils2;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.SystemLogQueryForm;
 /*     */ import com.shcnc.utils.BeanUtils;
@@ -40,7 +40,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SystemLogAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map constructQueryMap(SystemLogQueryForm queryForm) {
 /*  46 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -142,7 +142,7 @@
 /* 142 */       String fileName = "systemLog";
 /* 143 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 146 */               MessageResources messages = SystemLogAction.this.getResources(request);
 /* 147 */               row.add(messages.getMessage(SystemLogAction.this.getLocale(request), "systemLog.tablehead.site"));
 /* 148 */               row.add(messages.getMessage(SystemLogAction.this.getLocale(request), "systemLog.tablehead.userId"));
@@ -154,7 +154,7 @@
 /* 154 */               row.add(messages.getMessage(SystemLogAction.this.getLocale(request), "systemLog.tablehead.keyField"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 158 */               row.add(BeanUtils.getProperty(data, "site.name"));
 /* 159 */               row.add(BeanUtils.getProperty(data, "user.loginName"));
 /* 160 */               row.add(BeanUtils.getProperty(data, "user.name"));

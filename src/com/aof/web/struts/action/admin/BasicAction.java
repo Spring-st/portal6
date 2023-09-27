@@ -10,7 +10,7 @@
 /*     */ import com.aof.service.admin.UserManager;
 /*     */ import com.aof.utils.IpAddress;
 /*     */ import com.aof.web.domain.SessionList;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.LoginForm;
 /*     */ import com.shcnc.struts.action.BackToInputActionException;
@@ -54,7 +54,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BasicAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private static final String DEFAULT_LOCALE = "en";
 /*     */   public static final String CHANGE_PASSWORD_USER_KEY = "CHANGE_PASSWORD_USER";

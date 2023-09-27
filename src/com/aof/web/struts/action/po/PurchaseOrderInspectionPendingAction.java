@@ -18,7 +18,7 @@
 /*     */ import com.aof.service.po.PortalShipOrderItemManager;
 /*     */ import com.aof.service.po.PurchaseOrderInspectionPendingManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.PurchaseOrderInspectionPendingItemQueryForm;
@@ -68,14 +68,14 @@
 /*     */ 
 /*     */ 
 /*     */ public class PurchaseOrderInspectionPendingAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward listSupplierPurchaseOrder(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  74 */     PurchaseOrderInspectionPendingItemQueryForm queryForm = (PurchaseOrderInspectionPendingItemQueryForm)form;
 /*  75 */     PurchaseOrderInspectionPendingManager fm = 
 /*  76 */       ServiceLocator.getPurchaseOrderInspectionPendingManager(request);
-/*  77 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
-/*  78 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  77 */     Map conditions = new HashMap();
+/*  78 */     getConditionAndOrder(queryForm, conditions, request);
 /*  79 */     String exportType = queryForm.getExportType();
 /*     */ 
 /*     */ 
@@ -133,7 +133,7 @@
 /* 133 */       String fileName = "purchaseOrder";
 /* 134 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 138 */               MessageResources messages = PurchaseOrderInspectionPendingAction.this.getResources(request);
 /*     */               
@@ -150,7 +150,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 154 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.po_number"));
 /* 155 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.supplier.name"));
 /* 156 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.supplier.code"));
@@ -200,7 +200,7 @@
 /* 200 */     PurchaseOrderInspectionPendingItemQueryForm queryForm = (PurchaseOrderInspectionPendingItemQueryForm)form;
 /* 201 */     PurchaseOrderInspectionPendingManager fm = 
 /* 202 */       ServiceLocator.getPurchaseOrderInspectionPendingManager(request);
-/* 203 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/* 203 */     Map conditions = new HashMap<Object, Object>();
 /* 204 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
 /* 205 */     List<Site> siteList = getAndCheckGrantedSiteList(request);
 /* 206 */     conditions.put(PurchaseOrderInspectionPendingQueryCondition.SITE_ID_IN, getQuerySiteIdList(siteList));
@@ -212,7 +212,7 @@
 /* 212 */       String fileName = "purchaseOrderHeBing";
 /* 213 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 217 */               MessageResources messages = PurchaseOrderInspectionPendingAction.this.getResources(request);
 /*     */ 
@@ -239,7 +239,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 243 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.supplier.code"));
 /* 244 */               row.add(BeanHelper.getBeanPropertyValue(data, "itemNumber.id"));
 /* 245 */               row.add(BeanHelper.getBeanPropertyValue(data, "itemNumber.describe1"));
@@ -367,8 +367,8 @@
 /* 367 */     PurchaseOrderInspectionPendingItemQueryForm queryForm = (PurchaseOrderInspectionPendingItemQueryForm)form;
 /* 368 */     PurchaseOrderInspectionPendingManager fm = 
 /* 369 */       ServiceLocator.getPurchaseOrderInspectionPendingManager(request);
-/* 370 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
-/* 371 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 370 */     Map conditions = new HashMap();
+/* 371 */     getConditionAndOrder(queryForm, conditions, request);
 /* 372 */     String exportType = queryForm.getExportType();
 /*     */     
 /* 374 */     User user = getCurrentUser(request);
@@ -417,7 +417,7 @@
 /* 417 */       String fileName = "purchaseOrder";
 /* 418 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 422 */               MessageResources messages = PurchaseOrderInspectionPendingAction.this.getResources(request);
 /*     */               
@@ -430,7 +430,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 434 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.po_number"));
 /* 435 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.supplier.name"));
 /* 436 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.supplier.code"));
@@ -499,7 +499,7 @@
 /* 499 */     HSSFWorkbook wb = new HSSFWorkbook();
 /*     */     
 /* 501 */     HSSFSheet sheet = wb.createSheet();
-/* 502 */     wb.setSheetName(0, "PO计划查看模版", (short)1);
+/* 502 */     wb.setSheetName(0, "PO计划查看模版");
 /*     */     
 /* 504 */     sheet.setColumnWidth((short)0, (short)4000);
 /* 505 */     sheet.setColumnWidth((short)1, (short)7000);
@@ -532,7 +532,6 @@
 /* 532 */     row.setHeight((short)300);
 /*     */     
 /* 534 */     HSSFCell ce = row.createCell((short)0);
-/* 535 */     ce.setEncoding((short)1);
 /* 536 */     ce.setCellValue("物料号");
 /* 537 */     ce.setCellStyle(style);
 /*     */ 
@@ -543,22 +542,19 @@
 /*     */ 
 /*     */     
 /* 545 */     ce = row.createCell((short)1);
-/* 546 */     ce.setEncoding((short)1);
 /* 547 */     ce.setCellValue("描述");
 /* 548 */     ce.setCellStyle(style);
 /*     */     
 /* 550 */     ce = row.createCell((short)2);
-/* 551 */     ce.setEncoding((short)1);
 /* 552 */     ce.setCellValue("计划产量");
 /* 553 */     ce.setCellStyle(style);
 /*     */     
 /* 555 */     ce = row.createCell((short)3);
-/* 556 */     ce.setEncoding((short)1);
 /* 557 */     ce.setCellValue("生产日期");
 /* 558 */     ce.setCellStyle(style);
 /*     */     
 /* 560 */     response.setContentType("appliction/x-msdownload");
-/* 561 */     response.setCharacterEncoding("utf-8");
+///* 561 */     response.setCharacterEncoding("utf-8");
 /* 562 */     String fileName = "POJiHuaChaKan";
 /* 563 */     response.setHeader("Content-Disposition", "attachment; filename=" + 
 /* 564 */         new String(fileName.getBytes("UTF-8"), "UTF-8") + ".xls");

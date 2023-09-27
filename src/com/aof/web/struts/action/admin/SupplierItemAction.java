@@ -15,7 +15,7 @@
 /*     */ import com.aof.service.admin.SupplierItemManager;
 /*     */ import com.aof.service.admin.SupplierManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.SupplierItemQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -60,7 +60,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SupplierItemAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  66 */     Supplier supplier = getSupplierFromRequest(request);
@@ -107,7 +107,7 @@
 /* 107 */       String fileName = "supplierItem";
 /* 108 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 111 */               MessageResources messages = SupplierItemAction.this.getResources(request);
 /* 112 */               row.add(messages.getMessage(SupplierItemAction.this.getLocale(request), "supplierItem.purchaseCategory"));
 /* 113 */               row.add(messages.getMessage(SupplierItemAction.this.getLocale(request), "supplierItem.purchaseSubCategory"));
@@ -117,7 +117,7 @@
 /* 117 */               row.add(messages.getMessage(SupplierItemAction.this.getLocale(request), "supplierItem.status"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 121 */               row.add(BeanUtils.getProperty(data, "purchaseSubCategory.purchaseCategory.description"));
 /* 122 */               row.add(BeanUtils.getProperty(data, "purchaseSubCategory.description"));
 /* 123 */               row.add(BeanUtils.getProperty(data, "sepc"));

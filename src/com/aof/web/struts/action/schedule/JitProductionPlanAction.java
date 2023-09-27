@@ -11,7 +11,7 @@
 /*     */ import com.aof.service.schedule.JitProductionPlanManager;
 /*     */ import com.aof.service.schedule.ProjectedInventoryManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.schedule.JitProductionPlanQueryForm;
@@ -59,7 +59,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class JitProductionPlanAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map getConditions(JitProductionPlanQueryForm formBean) {
 /*  65 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -76,11 +76,11 @@
 /*  76 */     JitProductionPlanQueryForm queryForm = (JitProductionPlanQueryForm)form;
 /*  77 */     List<JitProductionPlan> planLists = new ArrayList<JitProductionPlan>();
 /*  78 */     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-/*  79 */     Map<JitProductionPlanQueryCondition, String> conditions = getConditions(queryForm);
+/*  79 */     Map conditions = getConditions(queryForm);
 /*  80 */     if (queryForm.getOrder() == "") {
 /*  81 */       queryForm.setDescend(true);
 /*     */     }
-/*  83 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  83 */     getConditionAndOrder(queryForm, conditions, request);
 /*     */     
 /*  85 */     conditions.put(JitProductionPlanQueryCondition.PRODUCTCLASS_EQ, "JIT");
 /*  86 */     conditions.put(JitProductionPlanQueryCondition.DATE_GE, format.format(new Date()));
@@ -95,7 +95,7 @@
 /*  95 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  96 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /* 100 */               row.add(BeanUtils.getProperty(data, "productionId.asnNo"));
 /* 101 */               row.add(BeanUtils.getProperty(data, "childPart.id"));
@@ -118,7 +118,7 @@
 /* 118 */               row.add(BeanUtils.getProperty(data, "hour24DemandQty"));
 /*     */             }
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 122 */               MessageResources message = JitProductionPlanAction.this.getResources(request);
 /* 123 */               row.add(message.getMessage(JitProductionPlanAction.this.getLocale(request), "ediproduction.asnno"));
 /* 124 */               row.add(message.getMessage(JitProductionPlanAction.this.getLocale(request), "jitproductionplan.childpart.id"));
@@ -178,7 +178,7 @@
 /* 178 */     ProjectedInventoryManager inventoryManager = ServiceLocator.getProjectedInventoryManager(request);
 /* 179 */     JitProductionPlanQueryForm queryForm = (JitProductionPlanQueryForm)form;
 /* 180 */     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-/* 181 */     Map<JitProductionPlanQueryCondition, String> conditions = getConditions(queryForm);
+/* 181 */     Map conditions = getConditions(queryForm);
 /* 182 */     if (queryForm.getOrder() == "") {
 /* 183 */       queryForm.setOrder("date");
 /* 184 */       queryForm.setDescend(false);
@@ -202,7 +202,7 @@
 /* 202 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 203 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /* 207 */               row.add(BeanUtils.getProperty(data, "childPart.id"));
 /* 208 */               row.add(BeanUtils.getProperty(data, "childPart.describe1"));
@@ -225,7 +225,7 @@
 /* 225 */               row.add(BeanUtils.getProperty(data, "hour24DemandQty"));
 /*     */             }
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 229 */               MessageResources message = JitProductionPlanAction.this.getResources(request);
 /* 230 */               row.add(message.getMessage(JitProductionPlanAction.this.getLocale(request), "jitproductionplan.childpart.id"));
 /* 231 */               row.add(message.getMessage(JitProductionPlanAction.this.getLocale(request), "jitproductionplan.childpart.describe1"));
@@ -373,7 +373,7 @@
 /*     */   public ActionForward listView(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 374 */     JitProductionPlanManager manager = ServiceLocator.getJitProductionPlanManager(request);
 /* 375 */     JitProductionPlanQueryForm queryForm = (JitProductionPlanQueryForm)form;
-/* 376 */     Map<JitProductionPlanQueryCondition, String> conditions = getConditions(queryForm);
+/* 376 */     Map conditions = getConditions(queryForm);
 /* 377 */     String productionId = request.getParameter("productionId");
 /* 378 */     if (queryForm.getOrder() == "") {
 /* 379 */       queryForm.setDescend(false);
@@ -392,7 +392,7 @@
 /* 392 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 393 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /* 397 */               row.add(BeanUtils.getProperty(data, "fatherPart.id"));
 /* 398 */               row.add(BeanUtils.getProperty(data, "childPart.id"));
@@ -403,7 +403,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 407 */               MessageResources message = JitProductionPlanAction.this.getResources(request);
 /* 408 */               row.add(message.getMessage(JitProductionPlanAction.this.getLocale(request), "qadoredi.qadpart"));
 /* 409 */               row.add(message.getMessage(JitProductionPlanAction.this.getLocale(request), "jitproductionplan.childpart.id"));
@@ -436,7 +436,7 @@
 /* 436 */     JitProductionPlanManager manager = ServiceLocator.getJitProductionPlanManager(request);
 /* 437 */     EdiProductionManager ediProductionManager = ServiceLocator.getEdiProductionManager(request);
 /* 438 */     JitProductionPlanQueryForm queryForm = (JitProductionPlanQueryForm)form;
-/* 439 */     Map<JitProductionPlanQueryCondition, String> conditions = getConditions(queryForm);
+/* 439 */     Map conditions = getConditions(queryForm);
 /* 440 */     String productionId = request.getParameter("productionId");
 /* 441 */     EdiProduction ediProduction = ediProductionManager.getEdiProduction(Integer.valueOf(Integer.parseInt(productionId)));
 /* 442 */     if (queryForm.getOrder() == "") {
@@ -456,13 +456,13 @@
 /* 456 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 457 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /* 461 */               row.add(BeanUtils.getProperty(data, "id"));
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 466 */               MessageResources message = JitProductionPlanAction.this.getResources(request);
 /* 467 */               row.add(message.getMessage(JitProductionPlanAction.this.getLocale(request), "mapping.id"));
 /*     */             }
@@ -514,7 +514,7 @@
 /*     */   
 /*     */   public ActionForward computeCombinePlanByAjax(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 516 */     response.setContentType("text/json");
-/* 517 */     response.setCharacterEncoding("UTF-8");
+///* 517 */     response.setCharacterEncoding("UTF-8");
 /* 518 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 520 */     JitProductionPlanManager manager = ServiceLocator.getJitProductionPlanManager(request);

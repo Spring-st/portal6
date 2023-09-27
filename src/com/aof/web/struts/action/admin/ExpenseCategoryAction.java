@@ -9,7 +9,7 @@
 /*     */ import com.aof.service.admin.ExpenseCategoryManager;
 /*     */ import com.aof.service.admin.ExpenseSubCategoryManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.ExpenseCategoryQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -23,7 +23,7 @@
 /*     */ import java.net.URLEncoder;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.List;
-/*     */ import java.util.Locale;
+/*     */
 /*     */ import java.util.Map;
 /*     */ import javax.servlet.http.HttpServletRequest;
 /*     */ import javax.servlet.http.HttpServletResponse;
@@ -57,7 +57,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ExpenseCategoryAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  63 */     ExpenseCategoryManager fm = ServiceLocator.getExpenseCategoryManager(request);
@@ -90,13 +90,13 @@
 /*  90 */       String fileName = "expenseCategory";
 /*  91 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  94 */               MessageResources messages = ExpenseCategoryAction.this.getResources(request);
 /*  95 */               row.add(messages.getMessage(ExpenseCategoryAction.this.getLocale(request), "expenseCategory.description"));
 /*  96 */               row.add(messages.getMessage(ExpenseCategoryAction.this.getLocale(request), "expenseCategory.enabled"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 100 */               row.add(BeanHelper.getBeanPropertyValue(data, "description"));
 /* 101 */               if (ExpenseCategoryAction.this.isEnglish(request)) {
 /* 102 */                 row.add(BeanHelper.getBeanPropertyValue(data, "enabled.engShortDescription"));

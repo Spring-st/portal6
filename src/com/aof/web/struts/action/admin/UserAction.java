@@ -16,7 +16,7 @@
 /*     */ import com.aof.service.admin.UserManager;
 /*     */ import com.aof.utils.PDFReport;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.UserQueryForm;
 /*     */ import com.lowagie.text.Document;
@@ -78,7 +78,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class UserAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private static final String DEFAULT_LOCALE = "en";
 /*     */   
@@ -245,7 +245,7 @@
 /* 245 */       String fileName = "user";
 /* 246 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 249 */               MessageResources messages = UserAction.this.getResources(request);
 /* 250 */               row.add(messages.getMessage(UserAction.this.getLocale(request), "user.loginName"));
 /* 251 */               row.add(messages.getMessage(UserAction.this.getLocale(request), "user.name"));
@@ -254,7 +254,7 @@
 /* 254 */               row.add(messages.getMessage(UserAction.this.getLocale(request), "user.enabled"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 258 */               row.add(BeanUtils.getProperty(data, "loginName"));
 /* 259 */               row.add(BeanUtils.getProperty(data, "name"));
 /* 260 */               row.add(BeanUtils.getProperty(data, "email"));

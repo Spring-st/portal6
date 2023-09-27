@@ -11,7 +11,7 @@
 /*     */ import com.aof.service.admin.FunctionManager;
 /*     */ import com.aof.service.admin.UserManager;
 /*     */ import com.aof.web.struts.action.ActionUtils2;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
 /*     */ import com.shcnc.struts.action.ActionException;
@@ -51,7 +51,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class CountryAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward promote(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  57 */     Country country = getCountryFromRequest(request);

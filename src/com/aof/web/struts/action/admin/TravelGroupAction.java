@@ -12,7 +12,7 @@
 /*     */ import com.aof.service.admin.ExpenseSubCategoryManager;
 /*     */ import com.aof.service.admin.TravelGroupManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.TravelGroupQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -64,7 +64,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class TravelGroupAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  70 */     TravelGroupManager fm = null;
@@ -97,13 +97,13 @@
 /*  97 */       String fileName = "travelGroup";
 /*  98 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 101 */               MessageResources messages = TravelGroupAction.this.getResources(request);
 /* 102 */               row.add(messages.getMessage(TravelGroupAction.this.getLocale(request), "travelGroup.name"));
 /* 103 */               row.add(messages.getMessage(TravelGroupAction.this.getLocale(request), "travelGroup.enabled"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 107 */               row.add(BeanHelper.getBeanPropertyValue(data, "name"));
 /* 108 */               if (TravelGroupAction.this.isEnglish(request)) {
 /* 109 */                 row.add(BeanHelper.getBeanPropertyValue(data, "enabled.engShortDescription"));

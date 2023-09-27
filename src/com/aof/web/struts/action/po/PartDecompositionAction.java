@@ -18,7 +18,7 @@
 /*     */ import com.aof.service.plantWarehouse.WmsUWManager;
 /*     */ import com.aof.service.po.BoxManager;
 /*     */ import com.aof.service.po.PurchaseOrderManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.po.BoxQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -62,7 +62,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PartDecompositionAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  68 */     BoxQueryForm queryForm = (BoxQueryForm)form;

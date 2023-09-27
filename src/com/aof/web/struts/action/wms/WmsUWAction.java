@@ -10,7 +10,7 @@
 /*     */ import com.aof.service.plantWarehouse.WmsUWManager;
 /*     */ import com.aof.service.po.BoxManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basic.WmsUnplannedWarehousingQueryForm;
@@ -33,7 +33,6 @@
 /*     */ import java.util.Date;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.List;
-/*     */ import java.util.Locale;
 /*     */ import java.util.Map;
 /*     */ import javax.servlet.http.HttpServletRequest;
 /*     */ import javax.servlet.http.HttpServletResponse;
@@ -41,14 +40,14 @@
 /*     */ import jxl.Sheet;
 /*     */ import jxl.Workbook;
 /*     */ import jxl.biff.DisplayFormat;
-/*     */ import jxl.format.Alignment;
+/*     */ import jxl.biff.FontRecord;
+import jxl.format.Alignment;
 /*     */ import jxl.format.Border;
 /*     */ import jxl.format.BorderLineStyle;
 /*     */ import jxl.format.CellFormat;
 /*     */ import jxl.format.Colour;
 /*     */ import jxl.format.UnderlineStyle;
 /*     */ import jxl.format.VerticalAlignment;
-/*     */ import jxl.write.Colour;
 /*     */ import jxl.write.Label;
 /*     */ import jxl.write.NumberFormat;
 /*     */ import jxl.write.WritableCell;
@@ -65,7 +64,7 @@
 /*     */ import org.apache.struts.upload.FormFile;
 /*     */ import org.apache.struts.util.MessageResources;
 /*     */ 
-/*     */ public class WmsUWAction extends BaseAction {
+/*     */ public class WmsUWAction extends BaseAction2 {
 /*     */   private File file;
 /*     */   
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -75,10 +74,10 @@
 /*  75 */       queryForm.setDescend(true);
 /*     */     } 
 /*  77 */     WmsUWManager uwManager = ServiceLocator.getWmsUWManager(request);
-/*  78 */     Map<WmsUnplannedWarehousingQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  78 */     Map conditions = constructQueryMap(queryForm);
 /*  79 */     conditions.put(WmsUnplannedWarehousingQueryCondition.USER_EQ, getCurrentUser(request).getId());
 /*     */     
-/*  81 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  81 */     getConditionAndOrder(queryForm, conditions, request);
 /*     */     
 /*  83 */     if (queryForm.isFirstInit()) {
 /*  84 */       queryForm.init(uwManager.getWmsUnplannedWarehousingListCount(conditions));
@@ -95,7 +94,7 @@
 /*  95 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  96 */           new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  99 */               MessageResources messages = WmsUWAction.this.getResources(request);
 /* 100 */               row.add(messages.getMessage(WmsUWAction.this.getLocale(request), "WmsUW.code"));
 /* 101 */               row.add(messages.getMessage(WmsUWAction.this.getLocale(request), "WmsUW.applicat_name"));
@@ -110,7 +109,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 114 */               WmsUnplannedWarehousing cusPlan = (WmsUnplannedWarehousing)data;
 /* 115 */               row.add(BeanUtils.getProperty(data, "code"));
 /* 116 */               row.add(BeanUtils.getProperty(data, "applicant.name"));
@@ -150,7 +149,7 @@
 /* 150 */       queryForm.setDescend(true);
 /*     */     } 
 /* 152 */     WmsUWManager uwManager = ServiceLocator.getWmsUWManager(request);
-/* 153 */     Map<WmsUnplannedWarehousingQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/* 153 */     Map conditions = constructQueryMap(queryForm);
 /* 154 */     conditions.put(WmsUnplannedWarehousingQueryCondition.USER_EQ, getCurrentUser(request).getId());
 /*     */     
 /* 156 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
@@ -426,7 +425,7 @@
 /*     */       
 /* 427 */       WritableCellFormat reds = new WritableCellFormat((DisplayFormat)nf);
 /* 428 */       reds.setBorder(Border.ALL, BorderLineStyle.THIN);
-/* 429 */       reds.setFont((FontRecord)red);
+/* 429 */       reds.setFont((FontRecord) red);
 /* 430 */       reds.setWrap(true);
 /* 431 */       reds.setAlignment(Alignment.CENTRE);
 /* 432 */       reds.setVerticalAlignment(VerticalAlignment.CENTRE);
@@ -525,7 +524,7 @@
 /* 525 */         this.file.mkdir();
 /*     */       }
 /* 527 */       request.setAttribute("filenames", String.valueOf(this.file.getPath()) + "\\" + uFrom.getMyFile().getFileName());
-/* 528 */       response.setCharacterEncoding("GBK");
+///* 528 */       response.setCharacterEncoding("GBK");
 /* 529 */       out = response.getWriter();
 /* 530 */       saveFile(uFrom.getMyFile(), this.file);
 /* 531 */       request.setAttribute("x_wmsuwid", wmsuwid);

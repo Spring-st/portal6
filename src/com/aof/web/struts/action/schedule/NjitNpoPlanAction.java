@@ -7,7 +7,7 @@
 /*     */ import com.aof.service.schedule.NjitNpoPlanManager;
 /*     */ import com.aof.service.schedule.Portalv6MrpPartPlanViewManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.schedule.NjitNpoPlanQueryForm;
@@ -44,7 +44,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class NjitNpoPlanAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map getConditions(NjitNpoPlanQueryForm formBean) {
 /*  50 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -60,8 +60,8 @@
 /*  60 */     Portalv6MrpPartPlanViewManager manager = ServiceLocator.getPortalv6MrpPartPlanViewManager(request);
 /*     */     
 /*  62 */     NjitNpoPlanQueryForm queryForm = (NjitNpoPlanQueryForm)form;
-/*  63 */     Map<NjitNpoPlanQueryCondition, String> conditions = getConditions(queryForm);
-/*  64 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  63 */     Map conditions = getConditions(queryForm);
+/*  64 */     getConditionAndOrder(queryForm, conditions, request);
 /*  65 */     if (!hasGlobalPower(request)) {
 /*  66 */       User user = getCurrentUser(request);
 /*  67 */       conditions.put(NjitNpoPlanQueryCondition.PARTID_VEND_EQ, user.getLoginName());
@@ -85,7 +85,7 @@
 /*  85 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  86 */           new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  89 */               MessageResources message = NjitNpoPlanAction.this.getResources(request);
 /*     */               
 /*  91 */               row.add("物料编码");
@@ -114,7 +114,7 @@
 /*     */               }
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 118 */               row.add(BeanUtils.getProperty(data, "partId"));
 /* 119 */               row.add(BeanUtils.getProperty(data, "name"));
 /* 120 */               row.add(BeanUtils.getProperty(data, "current_qty"));

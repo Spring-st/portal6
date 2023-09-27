@@ -4,7 +4,7 @@
 /*    */ import com.aof.model.schedule.query.EdiProductionErrorLogQueryOrder;
 /*    */ import com.aof.service.schedule.EdiProductionErrorLogManager;
 /*    */ import com.aof.utils.SessionTempFile;
-/*    */ import com.aof.web.struts.action.BaseAction;
+/*    */ import com.aof.web.struts.action.BaseAction2;
 /*    */ import com.aof.web.struts.action.ServiceLocator;
 /*    */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*    */ import com.aof.web.struts.form.schedule.EdiProductionErrorLogQueryForm;
@@ -27,13 +27,13 @@
 /*    */ 
 /*    */ 
 /*    */ public class EdiProductionErrorLogAction
-/*    */   extends BaseAction
+/*    */   extends BaseAction2
 /*    */ {
 /*    */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 33 */     EdiProductionErrorLogManager manager = ServiceLocator.getEdiProductionErrorLogManager(request);
 /* 34 */     EdiProductionErrorLogQueryForm queryForm = (EdiProductionErrorLogQueryForm)form;
 /* 35 */     Map conditions = getConditions(queryForm);
-/* 36 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 36 */     getConditionAndOrder(queryForm, conditions, request);
 /* 37 */     String exportType = queryForm.getExportType();
 /* 38 */     if (exportType != null && exportType.length() > 0) {
 /* 39 */       List datas = manager.getList(conditions, 0, -1, EdiProductionErrorLogQueryOrder.getEnum(queryForm.getOrder()), queryForm.isDescend());
@@ -43,7 +43,7 @@
 /* 43 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 44 */           new Exportable()
 /*    */           {
-/*    */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*    */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 47 */               row.add(BeanUtils.getProperty(data, "asnNo"));
 /* 48 */               row.add(BeanUtils.getProperty(data, "productlinecode"));
 /* 49 */               row.add(BeanUtils.getProperty(data, "shiftcode"));
@@ -57,7 +57,7 @@
 /* 57 */               EdiProductionErrorLog prodution = (EdiProductionErrorLog)data;
 /*    */             }
 /*    */             
-/*    */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*    */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 61 */               MessageResources message = EdiProductionErrorLogAction.this.getResources(request);
 /* 62 */               row.add(message.getMessage(EdiProductionErrorLogAction.this.getLocale(request), "ediproduction.asnno"));
 /* 63 */               row.add(message.getMessage(EdiProductionErrorLogAction.this.getLocale(request), "ediproduction.productlinecode"));

@@ -5,7 +5,7 @@
 /*     */ import com.aof.model.po.query.PurchaseOrderQueryOrder;
 /*     */ import com.aof.service.po.ProduceBuckleMaterialManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.ProduceBuckleMaterialQueryForm;
@@ -50,7 +50,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProduceBuckleMaterialAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  56 */     ProduceBuckleMaterialQueryForm queryForm = (ProduceBuckleMaterialQueryForm)form;
@@ -72,7 +72,7 @@
 /*  72 */       String fileName = "ProduceBuckleMaterial";
 /*  73 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  76 */               MessageResources messages = ProduceBuckleMaterialAction.this.getResources(request);
 /*  77 */               row.add(messages.getMessage(ProduceBuckleMaterialAction.this.getLocale(request), "ProduceBuckleMaterial.assembly.id"));
 /*  78 */               row.add(messages.getMessage(ProduceBuckleMaterialAction.this.getLocale(request), "ProduceBuckleMaterial.assembly.describe1"));
@@ -85,7 +85,7 @@
 /*  85 */               row.add(messages.getMessage(ProduceBuckleMaterialAction.this.getLocale(request), "ProduceBuckleMaterial.is_sync_date"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  89 */               row.add(BeanHelper.getBeanPropertyValue(data, "assembly.id"));
 /*  90 */               row.add(BeanHelper.getBeanPropertyValue(data, "assembly.describe1"));
 /*  91 */               row.add(BeanHelper.getBeanPropertyValue(data, "part.id"));

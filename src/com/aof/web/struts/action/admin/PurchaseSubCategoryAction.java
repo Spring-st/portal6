@@ -13,7 +13,7 @@
 /*     */ import com.aof.service.admin.SupplierManager;
 /*     */ import com.aof.service.admin.UserManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.PurchaseSubCategoryQueryForm;
 /*     */ import com.aof.web.struts.form.admin.UserQueryForm;
@@ -59,7 +59,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PurchaseSubCategoryAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  65 */     PurchaseSubCategoryQueryForm queryForm = (PurchaseSubCategoryQueryForm)form;
@@ -103,7 +103,7 @@
 /* 103 */       String fileName = "user";
 /* 104 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 107 */               MessageResources messages = PurchaseSubCategoryAction.this.getResources(request);
 /* 108 */               row.add(messages.getMessage(PurchaseSubCategoryAction.this.getLocale(request), "user.loginName"));
 /* 109 */               row.add(messages.getMessage(PurchaseSubCategoryAction.this.getLocale(request), "user.name"));
@@ -112,7 +112,7 @@
 /* 112 */               row.add(messages.getMessage(PurchaseSubCategoryAction.this.getLocale(request), "user.enabled"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 116 */               row.add(BeanUtils.getProperty(data, "loginName"));
 /* 117 */               row.add(BeanUtils.getProperty(data, "name"));
 /* 118 */               row.add(BeanUtils.getProperty(data, "email"));

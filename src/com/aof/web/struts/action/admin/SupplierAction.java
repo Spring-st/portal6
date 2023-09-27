@@ -27,7 +27,7 @@
 /*      */ import com.aof.service.admin.SupplierManager;
 /*      */ import com.aof.service.admin.UserManager;
 /*      */ import com.aof.utils.SessionTempFile;
-/*      */ import com.aof.web.struts.action.BaseAction;
+/*      */ import com.aof.web.struts.action.BaseAction2;
 /*      */ import com.aof.web.struts.action.ServiceLocator;
 /*      */ import com.aof.web.struts.form.admin.SupplierQueryForm;
 /*      */ import com.shcnc.hibernate.PersistentEnum;
@@ -81,7 +81,7 @@
 /*      */ 
 /*      */ 
 /*      */ public class SupplierAction
-/*      */   extends BaseAction
+/*      */   extends BaseAction2
 /*      */ {
 /*      */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*   87 */     List<Site> siteList = getAndCheckGrantedSiteList(request);
@@ -117,7 +117,7 @@
 /*  117 */       String fileName = "supplier";
 /*  118 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  121 */               MessageResources messages = SupplierAction.this.getResources(request);
 /*  122 */               row.add(messages.getMessage(SupplierAction.this.getLocale(request), "supplier.code"));
 /*  123 */               row.add(messages.getMessage(SupplierAction.this.getLocale(request), "supplier.name"));
@@ -130,7 +130,7 @@
 /*  130 */               row.add(messages.getMessage(SupplierAction.this.getLocale(request), "supplier.status"));
 /*      */             }
 /*      */             
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  134 */               row.add(BeanUtils.getProperty(data, "code"));
 /*  135 */               row.add(BeanUtils.getProperty(data, "name"));
 /*  136 */               row.add(BeanUtils.getProperty(data, "telephone1"));

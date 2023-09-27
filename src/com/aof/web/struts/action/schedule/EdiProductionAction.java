@@ -22,7 +22,7 @@
 /*      */ import com.aof.service.schedule.JitProductionPlanManager;
 /*      */ import com.aof.service.schedule.QadOrEdiManager;
 /*      */ import com.aof.utils.SessionTempFile;
-/*      */ import com.aof.web.struts.action.BaseAction;
+/*      */ import com.aof.web.struts.action.BaseAction2;
 /*      */ import com.aof.web.struts.action.ServiceLocator;
 /*      */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*      */ import com.aof.web.struts.form.schedule.EdiProductionQueryForm;
@@ -81,7 +81,7 @@
 /*      */ 
 /*      */ 
 /*      */ public class EdiProductionAction
-/*      */   extends BaseAction
+/*      */   extends BaseAction2
 /*      */ {
 /*      */   private Map getConditions(EdiProductionQueryForm formBean) {
 /*   87 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -96,7 +96,7 @@
 /*   96 */     EdiProductionManager manager = 
 /*   97 */       ServiceLocator.getEdiProductionManager(request);
 /*   98 */     EdiProductionQueryForm queryForm = (EdiProductionQueryForm)form;
-/*   99 */     Map<EdiProductionQueryCondition, Integer> conditions = getConditions(queryForm);
+/*   99 */     Map conditions = getConditions(queryForm);
 /*  100 */     if (queryForm.getOrder() == "") {
 /*  101 */       queryForm.setOrder("syncTime");
 /*  102 */       queryForm.setDescend(true);
@@ -118,7 +118,7 @@
 /*  118 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  119 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  122 */               row.add(BeanUtils.getProperty(data, "asnNo"));
 /*  123 */               row.add(BeanUtils.getProperty(data, 
 /*  124 */                     "productlinecode"));
@@ -140,7 +140,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  144 */               MessageResources message = EdiProductionAction.this.getResources(request);
 /*  145 */               row.add(message.getMessage(EdiProductionAction.this.getLocale(request), 
 /*  146 */                     "ediproduction.asnno"));
@@ -242,12 +242,12 @@
 /*  242 */     EdiProductionManager manager = 
 /*  243 */       ServiceLocator.getEdiProductionManager(request);
 /*  244 */     EdiProductionQueryForm queryForm = (EdiProductionQueryForm)form;
-/*  245 */     Map<EdiProductionQueryCondition, Integer> conditions = getConditions(queryForm);
+/*  245 */     Map conditions = getConditions(queryForm);
 /*  246 */     if (queryForm.getOrder() == "") {
 /*  247 */       queryForm.setOrder("syncTime");
 /*  248 */       queryForm.setDescend(true);
 /*      */     } 
-/*  250 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  250 */     getConditionAndOrder(queryForm, conditions, request);
 /*  251 */     conditions.put(EdiProductionQueryCondition.TYPE_EQ, Integer.valueOf(1));
 /*  252 */     conditions.put(EdiProductionQueryCondition.ENABLED_EQ, Integer.valueOf(0));
 /*  253 */     String exportType = queryForm.getExportType();
@@ -264,7 +264,7 @@
 /*  264 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  265 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  268 */               row.add(BeanUtils.getProperty(data, "asnNo"));
 /*  269 */               row.add(BeanUtils.getProperty(data, 
 /*  270 */                     "productlinecode"));
@@ -286,7 +286,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  290 */               MessageResources message = EdiProductionAction.this.getResources(request);
 /*  291 */               row.add(message.getMessage(EdiProductionAction.this.getLocale(request), 
 /*  292 */                     "ediproduction.asnno"));
@@ -417,7 +417,7 @@
 /*  417 */       str = String.valueOf(str) + "分解失败,ASN与总成对应关系找不到" + ediProduction.getAsnNo() + "\n";
 /*      */     } 
 /*      */     
-/*  420 */     response.setCharacterEncoding("utf-8");
+///*  420 */     response.setCharacterEncoding("utf-8");
 /*  421 */     response.setContentType("text/json");
 /*  422 */     PrintWriter out = response.getWriter();
 /*  423 */     json.put("str", str);
@@ -431,11 +431,11 @@
 /*  431 */     EdiProductionManager manager = 
 /*  432 */       ServiceLocator.getEdiProductionManager(request);
 /*  433 */     EdiProductionQueryForm queryForm = (EdiProductionQueryForm)form;
-/*  434 */     Map<EdiProductionQueryCondition, Integer> conditions = getConditions(queryForm);
+/*  434 */     Map conditions = getConditions(queryForm);
 /*  435 */     if (queryForm.getOrder() == "") {
 /*  436 */       queryForm.setDescend(false);
 /*      */     }
-/*  438 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  438 */     getConditionAndOrder(queryForm, conditions, request);
 /*  439 */     conditions.put(EdiProductionQueryCondition.TYPE_EQ, Integer.valueOf(2));
 /*  440 */     conditions.put(EdiProductionQueryCondition.ENABLED_EQ, Integer.valueOf(0));
 /*  441 */     conditions.put(EdiProductionQueryCondition.ID_IN, Integer.valueOf(2));
@@ -453,13 +453,13 @@
 /*  453 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  454 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  457 */               row.add(BeanUtils.getProperty(data, "id"));
 /*      */             }
 /*      */ 
 /*      */ 
 /*      */             
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  463 */               MessageResources message = EdiProductionAction.this.getResources(request);
 /*  464 */               row.add(message.getMessage(EdiProductionAction.this.getLocale(request), 
 /*  465 */                     "mapping.id"));
@@ -493,7 +493,7 @@
 /*  493 */     EdiProduction ediProduction = manager.getEdiProduction(
 /*  494 */         Integer.valueOf(Integer.parseInt(productionId)));
 /*  495 */     EdiProductionQueryForm queryForm = (EdiProductionQueryForm)form;
-/*  496 */     Map<EdiProductionQueryCondition, Integer> conditions = getConditions(queryForm);
+/*  496 */     Map conditions = getConditions(queryForm);
 /*  497 */     if (queryForm.getOrder() == "") {
 /*  498 */       queryForm.setDescend(true);
 /*      */     }
@@ -524,13 +524,13 @@
 /*  524 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  525 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  528 */               row.add(BeanUtils.getProperty(data, "id"));
 /*      */             }
 /*      */ 
 /*      */ 
 /*      */             
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  534 */               MessageResources message = EdiProductionAction.this.getResources(request);
 /*  535 */               row.add(message.getMessage(EdiProductionAction.this.getLocale(request), 
 /*  536 */                     "mapping.id"));
@@ -666,7 +666,7 @@
 /*  666 */     HSSFWorkbook wb = new HSSFWorkbook();
 /*      */     
 /*  668 */     HSSFSheet sheet = wb.createSheet();
-/*  669 */     wb.setSheetName(0, "半成品计划", (short)1);
+/*  669 */     wb.setSheetName(0, "半成品计划");
 /*      */     
 /*  671 */     sheet.setColumnWidth((short)0, (short)4000);
 /*  672 */     sheet.setColumnWidth((short)1, (short)7000);
@@ -712,38 +712,27 @@
 /*  712 */     row.setHeight((short)300);
 /*      */     
 /*  714 */     HSSFCell ce = row.createCell((short)0);
-/*  715 */     ce.setEncoding((short)1);
 /*  716 */     ce.setCellValue("物料号");
 /*  717 */     ce.setCellStyle(style);
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */     
+/*      */
 /*  725 */     ce = row.createCell((short)1);
-/*  726 */     ce.setEncoding((short)1);
 /*  727 */     ce.setCellValue("描述");
 /*  728 */     ce.setCellStyle(style);
 /*      */     
 /*  730 */     ce = row.createCell((short)2);
-/*  731 */     ce.setEncoding((short)1);
 /*  732 */     ce.setCellValue("计划产量");
 /*  733 */     ce.setCellStyle(style);
 /*      */     
 /*  735 */     ce = row.createCell((short)3);
-/*  736 */     ce.setEncoding((short)1);
 /*  737 */     ce.setCellValue("生产日期（yyyyMMdd）");
 /*  738 */     ce.setCellStyle(style);
 /*      */     
 /*  740 */     ce = row.createCell((short)4);
-/*  741 */     ce.setEncoding((short)1);
 /*  742 */     ce.setCellValue("时间（从当天0点到当前时间）（HHmmss）");
 /*  743 */     ce.setCellStyle(cellStyle2);
 /*      */     
 /*  745 */     response.setContentType("appliction/x-msdownload");
-/*  746 */     response.setCharacterEncoding("utf-8");
+///*  746 */     response.setCharacterEncoding("utf-8");
 /*  747 */     String fileName = "BanChengPinJiHua";
 /*  748 */     response.setHeader("Content-Disposition", "attachment; filename=" + 
 /*  749 */         new String(fileName.getBytes("UTF-8"), "UTF-8") + ".xls");
@@ -1029,29 +1018,7 @@
 /*      */     
 /* 1030 */     return null;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
 /*      */   private boolean isMergedRow(Sheet sheet, int row, int column) {
 /* 1056 */     int sheetMergeCount = sheet.getNumMergedRegions();
 /* 1057 */     for (int i = 0; i < sheetMergeCount; i++) {
@@ -1068,17 +1035,7 @@
 /*      */     
 /* 1069 */     return false;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
 /*      */   private boolean isMergedRegion(Sheet sheet, int row, int column) {
 /* 1083 */     int sheetMergeCount = sheet.getNumMergedRegions();
 /* 1084 */     for (int i = 0; i < sheetMergeCount; i++) {
@@ -1124,7 +1081,6 @@
 /*      */   
 /*      */   public ActionForward decompositiontUnfinishPlanAction(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1126 */     response.setContentType("text/json");
-/* 1127 */     response.setCharacterEncoding("UTF-8");
 /* 1128 */     JsonConfig cfg = new JsonConfig();
 /* 1129 */     EdiProductionManager manager = 
 /* 1130 */       ServiceLocator.getEdiProductionManager(request);
@@ -2571,7 +2527,7 @@
 /* 2571 */       ServiceLocator.getEdiProductionManager(request);
 /* 2572 */     EdiProductionQueryForm queryForm = (EdiProductionQueryForm)form;
 /* 2573 */     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-/* 2574 */     Map<JitProductionPlanQueryCondition, String> conditions = getConditions(queryForm);
+/* 2574 */     Map conditions = getConditions(queryForm);
 /* 2575 */     if (queryForm.getOrder() == "") {
 /* 2576 */       queryForm.setOrder("taskDate");
 /* 2577 */       queryForm.setDescend(true);
@@ -2594,7 +2550,7 @@
 /* 2594 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 2595 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 2598 */               row.add(BeanUtils.getProperty(data, "asnNo"));
 /* 2599 */               row.add(BeanUtils.getProperty(data, 
 /* 2600 */                     "productlinecode"));
@@ -2616,7 +2572,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 2620 */               MessageResources message = EdiProductionAction.this.getResources(request);
 /* 2621 */               row.add(message.getMessage(EdiProductionAction.this.getLocale(request), 
 /* 2622 */                     "ediproduction.asnno"));

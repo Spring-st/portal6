@@ -7,7 +7,7 @@
 /*     */ import com.aof.model.po.query.PurchaseOrderQueryOrder;
 /*     */ import com.aof.service.inventory.InventoryTransitManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.InventoryTransitQueryForm;
@@ -54,7 +54,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class InventoryTransitAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  60 */     InventoryTransitQueryForm queryForm = (InventoryTransitQueryForm)form;
@@ -75,7 +75,7 @@
 /*  75 */       String fileName = "InventoryTransit";
 /*  76 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  79 */               MessageResources messages = InventoryTransitAction.this.getResources(request);
 /*  80 */               row.add(messages.getMessage(InventoryTransitAction.this.getLocale(request), "InventoryTransit.part.id"));
 /*  81 */               row.add(messages.getMessage(InventoryTransitAction.this.getLocale(request), "InventoryTransit.location.code"));
@@ -85,7 +85,7 @@
 /*  85 */               row.add(messages.getMessage(InventoryTransitAction.this.getLocale(request), "InventoryTransit.qty"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  89 */               row.add(BeanHelper.getBeanPropertyValue(data, "part.id"));
 /*  90 */               row.add(BeanHelper.getBeanPropertyValue(data, "location.code"));
 /*  91 */               row.add("中转库");

@@ -8,7 +8,7 @@
 /*     */ import com.aof.service.po.ProductionplanningManager;
 /*     */ import com.aof.utils.SessionTempFile;
 /*     */ import com.aof.web.struts.action.ActionUtils2;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.ProductionplanningQueryForm;
@@ -48,14 +48,14 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProductionplanningAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  54 */     ProductionplanningManager manager = ServiceLocator.getProductionplanningManager(request);
 /*  55 */     ProductionplanningQueryForm queryForm = (ProductionplanningQueryForm)form;
-/*  56 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/*  56 */     Map conditions = new HashMap();
 /*     */     
-/*  58 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  58 */     getConditionAndOrder(queryForm, conditions, request);
 /*  59 */     String exportType = queryForm.getExportType();
 /*  60 */     if (exportType != null && exportType.length() > 0) {
 /*  61 */       List data = manager.list(conditions, 0, -1, ProductionplanningQueryOrder.productionPlanningNumber, true);
@@ -63,14 +63,14 @@
 /*  63 */       String fileName = "productionPlanningUpload";
 /*  64 */       String suffix = ExportUtil.export(exportType, data, request, 
 /*  65 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable() {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  67 */               MessageResources messages = ProductionplanningAction.this.getResources(request);
 /*  68 */               row.add(messages.getMessage(ProductionplanningAction.this.getLocale(request), "productionPlanning.number"));
 /*  69 */               row.add(messages.getMessage(ProductionplanningAction.this.getLocale(request), "productionPlanning.uploadDate"));
 /*  70 */               row.add(messages.getMessage(ProductionplanningAction.this.getLocale(request), "productionPlanning.uploadUser"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  74 */               row.add(BeanUtils.getProperty(data, "productionPlanningNumber"));
 /*  75 */               row.add(BeanUtils.getProperty(data, "uploadDate"));
 /*  76 */               row.add(BeanUtils.getProperty(data, "uploadUser.loginName"));
@@ -103,9 +103,9 @@
 /*     */   public ActionForward listDownload(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 104 */     ProductionplanningManager manager = ServiceLocator.getProductionplanningManager(request);
 /* 105 */     ProductionplanningQueryForm queryForm = (ProductionplanningQueryForm)form;
-/* 106 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/* 106 */     Map conditions = new HashMap();
 /*     */     
-/* 108 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 108 */     getConditionAndOrder(queryForm, conditions, request);
 /* 109 */     String exportType = queryForm.getExportType();
 /* 110 */     if (exportType != null && exportType.length() > 0) {
 /* 111 */       List data = manager.list(conditions, 0, -1, null, queryForm.isDescend());
@@ -113,14 +113,14 @@
 /* 113 */       String fileName = "productionPlanningDownload";
 /* 114 */       String suffix = ExportUtil.export(exportType, data, request, 
 /* 115 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable() {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 117 */               MessageResources messages = ProductionplanningAction.this.getResources(request);
 /* 118 */               row.add(messages.getMessage(ProductionplanningAction.this.getLocale(request), "productionPlanning.number"));
 /* 119 */               row.add(messages.getMessage(ProductionplanningAction.this.getLocale(request), "productionPlanning.uploadDate"));
 /* 120 */               row.add(messages.getMessage(ProductionplanningAction.this.getLocale(request), "productionPlanning.uploadUser"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 124 */               row.add(BeanUtils.getProperty(data, "productionPlanningNumber"));
 /* 125 */               row.add(BeanUtils.getProperty(data, "uploadDate"));
 /* 126 */               row.add(BeanUtils.getProperty(data, "uploadUser.loginName"));

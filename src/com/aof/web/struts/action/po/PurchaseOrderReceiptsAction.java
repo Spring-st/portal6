@@ -9,7 +9,7 @@
 /*     */ import com.aof.model.po.query.PurchaseOrderReceiptsQueryOrder;
 /*     */ import com.aof.service.po.PurchaseOrderReceiptsManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.po.PurchaseOrderReceiptsQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -57,7 +57,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PurchaseOrderReceiptsAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  63 */     PurchaseOrderReceiptsQueryForm queryForm = (PurchaseOrderReceiptsQueryForm)form;
@@ -75,12 +75,12 @@
 /*  75 */       String fileName = "purchaseOrder";
 /*  76 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  79 */               MessageResources messages = PurchaseOrderReceiptsAction.this.getResources(request);
 /*  80 */               row.add(messages.getMessage(PurchaseOrderReceiptsAction.this.getLocale(request), "purchaseOrder.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  84 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });
@@ -198,12 +198,12 @@
 /* 198 */       String fileName = "purchaseOrderReceipts";
 /* 199 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 202 */               MessageResources messages = PurchaseOrderReceiptsAction.this.getResources(request);
 /* 203 */               row.add(messages.getMessage(PurchaseOrderReceiptsAction.this.getLocale(request), "purchaseOrderReceipts.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 207 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });

@@ -8,7 +8,7 @@
 /*     */ import com.aof.model.po.query.PurchaseOrderPutInStorageQueryOrder;
 /*     */ import com.aof.service.po.PurchaseOrderPutInStorageManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.PurchaseOrderPutInStorageQueryForm;
@@ -60,7 +60,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PurchaseOrderPutInStorageAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  66 */     PurchaseOrderPutInStorageQueryForm queryForm = (PurchaseOrderPutInStorageQueryForm)form;
@@ -82,7 +82,7 @@
 /*  82 */       String fileName = "purchaseOrder";
 /*  83 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  86 */               MessageResources messages = PurchaseOrderPutInStorageAction.this.getResources(request);
 /*  87 */               row.add(messages.getMessage(PurchaseOrderPutInStorageAction.this.getLocale(request), "storageLocation.poNumber"));
 /*  88 */               row.add(messages.getMessage(PurchaseOrderPutInStorageAction.this.getLocale(request), "purchaseOrderPutInStorageBoxList.row"));
@@ -101,7 +101,7 @@
 /* 101 */               row.add(messages.getMessage(PurchaseOrderPutInStorageAction.this.getLocale(request), "purchaseOrder.is_sync"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 105 */               row.add(BeanHelper.getBeanPropertyValue(data, "po_number"));
 /* 106 */               row.add(BeanHelper.getBeanPropertyValue(data, "line"));
 /* 107 */               row.add(BeanHelper.getBeanPropertyValue(data, "lotSer.id"));

@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.metadata.MetadataType;
 /*     */ import com.aof.service.admin.MetadataManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.admin.MetadataForm;
@@ -47,7 +47,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class MetadataAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  53 */     MetadataManager mm = ServiceLocator.getMetadataManager(request);
@@ -61,13 +61,13 @@
 /*  61 */       String fileName = "metadata";
 /*  62 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  65 */               MessageResources messages = MetadataAction.this.getResources(request);
 /*  66 */               row.add(messages.getMessage(MetadataAction.this.getLocale(request), "metadata.code"));
 /*  67 */               row.add(messages.getMessage(MetadataAction.this.getLocale(request), "metadata.description"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  71 */               row.add(BeanUtils.getProperty(data, "id"));
 /*  72 */               row.add(BeanUtils.getProperty(data, "description"));
 /*     */             }

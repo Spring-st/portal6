@@ -8,7 +8,7 @@
 /*     */ import com.aof.model.metadata.EnabledDisabled;
 /*     */ import com.aof.service.admin.PurchaseCategoryManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.PurchaseCategoryQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -53,7 +53,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PurchaseCategoryAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  59 */     List<Site> siteList = new ArrayList();
@@ -79,14 +79,14 @@
 /*  79 */       String fileName = "purchaseCategory";
 /*  80 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  83 */               MessageResources messages = PurchaseCategoryAction.this.getResources(request);
 /*  84 */               row.add(messages.getMessage(PurchaseCategoryAction.this.getLocale(request), "purchaseCategory.id"));
 /*  85 */               row.add(messages.getMessage(PurchaseCategoryAction.this.getLocale(request), "purchaseCategory.description"));
 /*  86 */               row.add(messages.getMessage(PurchaseCategoryAction.this.getLocale(request), "purchaseCategory.status"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  90 */               row.add(BeanUtils.getProperty(data, "id"));
 /*  91 */               row.add(BeanUtils.getProperty(data, "description"));
 /*  92 */               String locale = PurchaseCategoryAction.this.getCurrentUser(request).getLocale();

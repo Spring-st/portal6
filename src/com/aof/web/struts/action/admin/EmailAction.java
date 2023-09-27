@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.admin.query.EmailQueryOrder;
 /*     */ import com.aof.service.admin.EmailManager;
 /*     */ import com.aof.web.struts.action.ActionUtils2;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.EmailQueryForm;
 /*     */ import java.util.Date;
@@ -16,32 +16,9 @@
 /*     */ import org.apache.struts.action.ActionForm;
 /*     */ import org.apache.struts.action.ActionForward;
 /*     */ import org.apache.struts.action.ActionMapping;
+/*     */
 /*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ public class EmailAction
-/*     */   extends BaseAction
-/*     */ {
+/*     */ public class EmailAction extends BaseAction2 {
 /*     */   private static final String FAKE_DATE_BEGIN = "1900/01/01";
 /*     */   private static final String FAKE_DATE_TO = "2099/01/01";
 /*     */   

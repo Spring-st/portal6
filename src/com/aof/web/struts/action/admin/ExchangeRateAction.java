@@ -9,7 +9,7 @@
 /*     */ import com.aof.service.admin.ExchangeRateManager;
 /*     */ import com.aof.service.admin.SiteManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.ExchangeRateQueryForm;
 /*     */ import com.shcnc.struts.action.ActionException;
@@ -52,7 +52,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ExchangeRateAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map constructQueryMap(ExchangeRateQueryForm queryForm) {
 /*  58 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -109,14 +109,14 @@
 /* 109 */       String fileName = "exchangeRate";
 /* 110 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 113 */               MessageResources messages = ExchangeRateAction.this.getResources(request);
 /* 114 */               row.add(messages.getMessage(ExchangeRateAction.this.getLocale(request), "exchangeRate.tablehead.code"));
 /* 115 */               row.add(messages.getMessage(ExchangeRateAction.this.getLocale(request), "exchangeRate.tablehead.name"));
 /* 116 */               row.add(messages.getMessage(ExchangeRateAction.this.getLocale(request), "exchangeRate.tablehead.exchangeRate"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 120 */               row.add(BeanUtils.getProperty(data, "currency.code"));
 /* 121 */               row.add(BeanUtils.getProperty(data, "currency.name"));
 /* 122 */               row.add(BeanUtils.getProperty(data, "exchangeRate"));

@@ -8,7 +8,7 @@
 /*     */ import com.aof.model.po.query.PurchaseOrderQueryOrder;
 /*     */ import com.aof.service.po.PoHighLineManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.PoHighLineQueryForm;
@@ -54,7 +54,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PoHighLineAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  60 */     PoHighLineQueryForm queryForm = (PoHighLineQueryForm)form;
@@ -76,12 +76,12 @@
 /*  76 */       String fileName = "purchaseOrder";
 /*  77 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  80 */               MessageResources messages = PoHighLineAction.this.getResources(request);
 /*  81 */               row.add(messages.getMessage(PoHighLineAction.this.getLocale(request), "purchaseOrder.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  85 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });
@@ -125,12 +125,12 @@
 /* 125 */       String fileName = "purchaseOrder";
 /* 126 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 129 */               MessageResources messages = PoHighLineAction.this.getResources(request);
 /* 130 */               row.add(messages.getMessage(PoHighLineAction.this.getLocale(request), "purchaseOrder.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 134 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });
@@ -174,12 +174,12 @@
 /* 174 */       String fileName = "purchaseOrder";
 /* 175 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 178 */               MessageResources messages = PoHighLineAction.this.getResources(request);
 /* 179 */               row.add(messages.getMessage(PoHighLineAction.this.getLocale(request), "purchaseOrder.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 183 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });
@@ -232,12 +232,12 @@
 /* 232 */       String fileName = "purchaseOrder";
 /* 233 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 236 */               MessageResources messages = PoHighLineAction.this.getResources(request);
 /* 237 */               row.add(messages.getMessage(PoHighLineAction.this.getLocale(request), "purchaseOrder.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 241 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });

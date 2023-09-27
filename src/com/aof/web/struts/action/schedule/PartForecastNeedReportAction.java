@@ -6,7 +6,7 @@
 /*     */ import com.aof.model.basicDataView.query.PartForecastNeedReportQueryOrder;
 /*     */ import com.aof.service.basicDataView.BasicDataViewManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basicDataView.BasicDataViewQueryForm;
@@ -38,7 +38,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PartForecastNeedReportAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map getConditions(BasicDataViewQueryForm formBean) {
 /*  44 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -57,7 +57,7 @@
 /*  57 */       queryForm.setDescend(true);
 /*  58 */       queryForm.setOrder("part_Id");
 /*     */     } 
-/*  60 */     Map<PartForecastNeedReportQueryCondition, String> conditions = getConditions(queryForm);
+/*  60 */     Map conditions = getConditions(queryForm);
 /*     */     
 /*  62 */     if (!hasGlobalPower(request)) {
 /*  63 */       User user = getCurrentUser(request);
@@ -66,7 +66,7 @@
 /*  66 */           user.getLoginName());
 /*     */     } 
 /*     */     
-/*  69 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  69 */     getConditionAndOrder(queryForm, conditions, request);
 /*  70 */     String exportType = queryForm.getExportType();
 /*  71 */     if (exportType != null && exportType.length() > 0) {
 /*  72 */       List datas = manager.getPartForecastNeedReportList(conditions, 0, 
@@ -81,7 +81,7 @@
 /*  81 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  82 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  85 */               MessageResources message = PartForecastNeedReportAction.this.getResources(request);
 /*  86 */               row.add("原材料号");
 /*  87 */               row.add("中文描述");
@@ -108,7 +108,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 112 */               row.add(BeanUtils.getProperty(data, "part.id"));
 /* 113 */               row.add(BeanUtils.getProperty(data, 
 /* 114 */                     "part.describe1"));
@@ -268,7 +268,7 @@
 /* 268 */       queryForm.setDescend(true);
 /* 269 */       queryForm.setOrder("partId");
 /*     */     } 
-/* 271 */     Map<PartForecastNeedReportQueryCondition, String> conditions = getConditions(queryForm);
+/* 271 */     Map conditions = getConditions(queryForm);
 /*     */     
 /* 273 */     if (!hasGlobalPower(request)) {
 /* 274 */       User user = getCurrentUser(request);
@@ -277,7 +277,7 @@
 /* 277 */           user.getLoginName());
 /*     */     } 
 /*     */     
-/* 280 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 280 */     getConditionAndOrder(queryForm, conditions, request);
 /* 281 */     String exportType = queryForm.getExportType();
 /* 282 */     if (exportType != null && exportType.length() > 0) {
 /* 283 */       List datas = manager.getPartForecastNeedReportList(conditions, 0, 
@@ -292,7 +292,7 @@
 /* 292 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 293 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 296 */               MessageResources message = PartForecastNeedReportAction.this.getResources(request);
 /* 297 */               row.add("原材料号");
 /* 298 */               row.add("中文描述");
@@ -319,7 +319,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 323 */               row.add(BeanUtils.getProperty(data, "part.id"));
 /* 324 */               row.add(BeanUtils.getProperty(data, 
 /* 325 */                     "part.describe1"));
@@ -466,7 +466,7 @@
 /* 466 */       queryForm.setDescend(true);
 /* 467 */       queryForm.setOrder("partId");
 /*     */     } 
-/* 469 */     Map<PartForecastNeedReportQueryCondition, String> conditions = getConditions(queryForm);
+/* 469 */     Map conditions = getConditions(queryForm);
 /*     */     
 /* 471 */     if (!hasGlobalPower(request)) {
 /* 472 */       User user = getCurrentUser(request);
@@ -475,7 +475,7 @@
 /* 475 */           user.getLoginName());
 /*     */     } 
 /*     */     
-/* 478 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 478 */     getConditionAndOrder(queryForm, conditions, request);
 /* 479 */     String exportType = queryForm.getExportType();
 /* 480 */     if (exportType != null && exportType.length() > 0) {
 /* 481 */       List datas = manager.getPartForecastNeedReportList(conditions, 0, 
@@ -490,7 +490,7 @@
 /* 490 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 491 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 494 */               MessageResources message = PartForecastNeedReportAction.this.getResources(request);
 /* 495 */               row.add("原材料号");
 /* 496 */               row.add("中文描述");
@@ -517,7 +517,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 521 */               row.add(BeanUtils.getProperty(data, "part.id"));
 /* 522 */               row.add(BeanUtils.getProperty(data, 
 /* 523 */                     "part.describe1"));

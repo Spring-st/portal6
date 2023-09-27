@@ -8,7 +8,7 @@
 /*     */ import com.aof.model.metadata.HotelPromoteStatus;
 /*     */ import com.aof.service.admin.HotelContractManager;
 /*     */ import com.aof.service.admin.HotelManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.HotelContractQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -51,7 +51,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class HotelContractAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  57 */     HotelContractQueryForm queryForm = (HotelContractQueryForm)form;

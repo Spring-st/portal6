@@ -5,7 +5,7 @@
 /*     */ import com.aof.model.admin.query.PriceQueryOrder;
 /*     */ import com.aof.model.metadata.EnabledDisabled;
 /*     */ import com.aof.service.admin.PriceManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.PriceQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -45,7 +45,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PriceAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  51 */     PriceManager fm = ServiceLocator.getPriceManager(request);

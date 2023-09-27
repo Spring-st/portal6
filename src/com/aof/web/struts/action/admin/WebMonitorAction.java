@@ -7,7 +7,7 @@
 /*     */ import com.aof.utils.SessionTempFile;
 /*     */ import com.aof.web.domain.SessionList;
 /*     */ import com.aof.web.domain.SessionListView;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.form.admin.WebMonitorQueryForm;
 /*     */ import com.shcnc.struts.action.ActionUtils;
 /*     */ import com.shcnc.utils.BeanHelper;
@@ -55,7 +55,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class WebMonitorAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  61 */     WebMonitorQueryForm queryForm = (WebMonitorQueryForm)form;
@@ -99,7 +99,7 @@
 /*  99 */         String fileName = "onlineUser";
 /* 100 */         String suffix = ExportUtil.export(exportType, list, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */             {
-/*     */               public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */               public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 103 */                 MessageResources messages = WebMonitorAction.this.getResources(request);
 /* 104 */                 if (WebMonitorAction.this.isGlobal(request))
 /* 105 */                   row.add(messages.getMessage(WebMonitorAction.this.getLocale(request), "webMonitor.site")); 
@@ -111,7 +111,7 @@
 /* 111 */                 row.add(messages.getMessage(WebMonitorAction.this.getLocale(request), "webMonitor.timeToLive"));
 /*     */               }
 /*     */               
-/*     */               public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */               public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 115 */                 if (WebMonitorAction.this.isGlobal(request))
 /* 116 */                   row.add(BeanHelper.getBeanPropertyValue(data, "user.primarySite.name")); 
 /* 117 */                 row.add(BeanHelper.getBeanPropertyValue(data, "user.loginName"));

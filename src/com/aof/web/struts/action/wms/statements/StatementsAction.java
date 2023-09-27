@@ -4,7 +4,7 @@
 /*     */ import com.aof.service.inventory.InventoryManager;
 /*     */ import com.aof.service.po.PurchaseOrderPutInStorageManager;
 /*     */ import com.aof.utils.XMLUtil;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import java.text.ParseException;
 /*     */ import java.text.SimpleDateFormat;
@@ -22,7 +22,7 @@
 /*     */ import org.dom4j.Element;
 /*     */ 
 /*     */ public class StatementsAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private int getMondayPlus(Date now) {
 /*  28 */     Calendar cd = Calendar.getInstance();
@@ -181,7 +181,7 @@
 /* 181 */       Element set = xml.addNode(datasetY, "set");
 /* 182 */       set.addAttribute("value", ((Integer)dataList.get(m)).toString());
 /*     */     } 
-/* 184 */     response.setCharacterEncoding("UTF-8");
+///* 184 */     response.setCharacterEncoding("UTF-8");
 /* 185 */     response.getWriter().print(xml.getXML());
 /* 186 */     return null;
 /*     */   }
@@ -251,7 +251,7 @@
 /* 251 */       Element set = xml.addNode(datasetY, "set");
 /* 252 */       set.addAttribute("value", ((Integer)dataList.get(m)).toString());
 /*     */     } 
-/* 254 */     response.setCharacterEncoding("UTF-8");
+///* 254 */     response.setCharacterEncoding("UTF-8");
 /* 255 */     response.getWriter().print(xml.getXML());
 /* 256 */     return null;
 /*     */   }
@@ -322,7 +322,7 @@
 /* 322 */       Element set = xml.addNode(datasetY, "set");
 /* 323 */       set.addAttribute("value", ((Integer)dataList.get(m)).toString());
 /*     */     } 
-/* 325 */     response.setCharacterEncoding("UTF-8");
+///* 325 */     response.setCharacterEncoding("UTF-8");
 /* 326 */     response.getWriter().print(xml.getXML());
 /* 327 */     return null;
 /*     */   }

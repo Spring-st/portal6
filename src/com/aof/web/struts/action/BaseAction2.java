@@ -19,33 +19,24 @@ import com.aof.utils.SessionTempFile;
 import com.aof.web.struts.form.BaseSessionQueryForm;
 import com.aof.web.struts.form.po.BoxQueryForm;
 import com.shcnc.struts.action.ActionException;
-import com.shcnc.struts.action.BaseAction;
 import com.shcnc.utils.BeanHelper;
+import org.apache.commons.collections.FastHashMap;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.struts.action.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.apache.commons.collections.FastHashMap;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
+import java.util.*;
 
-
-public abstract class BaseAction extends BaseAction {
+public class BaseAction2 extends com.shcnc.struts.action.BaseAction {
     protected Object getObjectFromRequest(String parameterName, Class clazz, String idName, HttpServletRequest request) throws Exception {
         String str_param_value = request.getParameter(parameterName);
         if (str_param_value == null)
@@ -76,13 +67,6 @@ public abstract class BaseAction extends BaseAction {
             throw new ActionException(String.valueOf(getSimpleClassName(clazz)) + ".notFound", request.getParameter(parameterName));
         return o;
     }
-
-
-
-
-
-
-
 
     protected int intCheng(Object obj) {
         if (obj == null || obj == "") {
@@ -116,7 +100,6 @@ public abstract class BaseAction extends BaseAction {
         return getCurrentUser(request).getLocale().equals("en");
     }
 
-
     protected void postGlobalMessage(String messageKey, Object arg, HttpSession session) {
         ActionMessage message = (arg == null) ? new ActionMessage(messageKey) : new ActionMessage(messageKey, arg);
         ActionMessages messages = new ActionMessages();
@@ -128,100 +111,35 @@ public abstract class BaseAction extends BaseAction {
         postGlobalMessage(messageKey, (Object)null, session);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     protected User getCurrentUser(HttpServletRequest request) {
         User currentUser = (User)request.getSession().getAttribute("LOGIN_USER");
         return currentUser;
     }
 
-
-
-
-
-
-
     protected Function getFunction(HttpServletRequest request) {
         return (Function)request.getAttribute("com.shcnc.struts.action.BaseAction.function");
     }
-
-
-
-
-
-
 
     protected boolean hasFunction(HttpServletRequest request) {
         return (getFunction(request) != null);
     }
 
-
-
-
-
-
-
     protected boolean isGlobal(HttpServletRequest request) {
         return getFunction(request).isGlobal();
     }
-
-
-
-
-
-
 
     protected boolean isSite(HttpServletRequest request) {
         return getFunction(request).isSite();
     }
 
-
-
-
-
-
-
     protected boolean isDepartment(HttpServletRequest request) {
         return getFunction(request).isDepartment();
     }
-
-
-
-
-
-
-
 
     protected List getGrantedSiteDeparmentList(HttpServletRequest request) {
         UserManager um = ServiceLocator.getUserManager(request);
         return um.getGrantedSiteDeparmentList(getCurrentUser(request), getFunction(request));
     }
-
-
-
-
-
-
-
-
 
     protected List getAndCheckGrantedSiteDeparmentList(HttpServletRequest request) {
         List list = getGrantedSiteDeparmentList(request);
@@ -230,12 +148,6 @@ public abstract class BaseAction extends BaseAction {
         }
         return list;
     }
-
-
-
-
-
-
 
     protected List getGrantedSiteList(HttpServletRequest request) {
         if (!isDepartment(request)) {
@@ -250,14 +162,6 @@ public abstract class BaseAction extends BaseAction {
         throw new RuntimeException("not with department level function");
     }
 
-
-
-
-
-
-
-
-
     protected List getAndCheckGrantedSiteList(HttpServletRequest request) {
         List list = getGrantedSiteList(request);
         if (list.isEmpty()) {
@@ -265,13 +169,6 @@ public abstract class BaseAction extends BaseAction {
         }
         return list;
     }
-
-
-
-
-
-
-
 
     protected void checkDepartment(Department department, HttpServletRequest request) {
         if (department.getEnabled().equals(EnabledDisabled.DISABLED)) {
@@ -288,29 +185,9 @@ public abstract class BaseAction extends BaseAction {
         }
     }
 
-
-
-
-
-
-
-
-
-
     protected Department getAndCheckDepartment(String paramterName, HttpServletRequest request) {
         return getAndCheckDepartment(ActionUtils2.parseInt(request.getParameter(paramterName)), request);
     }
-
-
-
-
-
-
-
-
-
-
-
 
     protected Department getAndCheckDepartment(Integer departmentId, HttpServletRequest request) {
         DepartmentManager dm = ServiceLocator.getDepartmentManager(request);
@@ -323,14 +200,6 @@ public abstract class BaseAction extends BaseAction {
         return department;
     }
 
-
-
-
-
-
-
-
-
     protected void checkUser(User user, HttpServletRequest request) {
         UserManager um = ServiceLocator.getUserManager(request);
         boolean hasPower = um.hasUserPower(user, getCurrentUser(request), getFunction(request));
@@ -339,25 +208,9 @@ public abstract class BaseAction extends BaseAction {
         }
     }
 
-
-
-
-
-
-
-
     protected void checkUser(Integer userId, HttpServletRequest request) {
         getAndCheckUser(userId, request);
     }
-
-
-
-
-
-
-
-
-
 
     protected User getAndCheckUser(Integer id, HttpServletRequest request) {
         UserManager um = ServiceLocator.getUserManager(request);
@@ -367,14 +220,6 @@ public abstract class BaseAction extends BaseAction {
         checkUser(user, request);
         return user;
     }
-
-
-
-
-
-
-
-
 
     protected void checkSite(Site site, HttpServletRequest request) {
         if (site.getEnabled().equals(EnabledDisabled.DISABLED)) {
@@ -387,40 +232,13 @@ public abstract class BaseAction extends BaseAction {
         }
     }
 
-
-
-
-
-
-
-
-
-
     protected Site getAndCheckSite(String parameterName, HttpServletRequest request) {
         return getAndCheckSite(ActionUtils2.parseInt(request.getParameter(parameterName)), request);
     }
 
-
-
-
-
-
-
-
-
     protected void checkSite(Integer site_id, HttpServletRequest request) {
         getAndCheckSite(site_id, request);
     }
-
-
-
-
-
-
-
-
-
-
 
     protected Site getAndCheckSite(Integer site_id, HttpServletRequest request) {
         SiteManager sm = ServiceLocator.getSiteManager(request);
@@ -432,34 +250,16 @@ public abstract class BaseAction extends BaseAction {
         return site;
     }
 
-
-
-
-
-
-
-
     protected boolean hasGlobalPower(HttpServletRequest request) {
         UserManager um = ServiceLocator.getUserManager(request);
         return um.hasGlobalPower(getCurrentUser(request), getFunction(request));
     }
-
-
-
-
-
-
 
     protected void checkGlobalPower(HttpServletRequest request) {
         if (!hasGlobalPower(request)) {
             throw new ActionException("errors.noGlobalPermission");
         }
     }
-
-
-
-
-
 
     private Map getTokenMap(HttpSession session) {
         FastHashMap fastHashMap = null;
@@ -470,13 +270,6 @@ public abstract class BaseAction extends BaseAction {
         }
         return (Map)fastHashMap;
     }
-
-
-
-
-
-
-
 
     private void validateToken(ActionMapping mapping, HttpServletRequest request) {
         Map toMap = (Map)this.servlet.getServletContext().getAttribute("com.shcnc.struts.PreventRepeatSubmitPlugIn.tomap");
@@ -491,20 +284,12 @@ public abstract class BaseAction extends BaseAction {
                         token.equals(saved)) {
                     invalid = false;
                 }
-
-
                 if (invalid) {
                     throw new ActionException("all.token.invalid");
                 }
             }
         }
     }
-
-
-
-
-
-
 
     private void saveToken(ActionMapping mapping, HttpServletRequest request) {
         Map fromMap = (Map)this.servlet.getServletContext().getAttribute("com.shcnc.struts.PreventRepeatSubmitPlugIn.frommap");
@@ -520,8 +305,6 @@ public abstract class BaseAction extends BaseAction {
         }
     }
 
-
-
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         FunctionManager fm = ServiceLocator.getFunctionManager(request);
         fm.initiate(mapping.getModuleConfig());
@@ -534,8 +317,6 @@ public abstract class BaseAction extends BaseAction {
                     throw new ActionException("login.timeout");
                 return new ActionForward("/login.do", true);
             }
-
-
             if (!isBack(request)) {
                 validateToken(mapping, request);
             }
@@ -559,15 +340,9 @@ public abstract class BaseAction extends BaseAction {
                 putVersionPostfixToRequest(request);
             }
         }
-
-
-
         ActionForward forward = super.execute(mapping, form, request, response);
-
         saveToken(mapping, request);
-
         putLangPostfixToRequest(request);
-
         return forward;
     }
 
@@ -580,10 +355,6 @@ public abstract class BaseAction extends BaseAction {
             request.setAttribute("x_lang", "chn");
         }
     }
-
-
-
-
 
     protected void putVersionPostfixToRequest(HttpServletRequest request) {
         if (isSite(request)) {
@@ -623,41 +394,6 @@ public abstract class BaseAction extends BaseAction {
         return new ActionForward("download/" + index + "/" + URLEncoder.encode(fileName, "UTF-8"), true);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     protected Map constructQueryMap2(BoxQueryForm queryForm) {
         Map<Object, Object> conditions = new HashMap<Object, Object>();
         String number = queryForm.getNumber();
@@ -690,25 +426,12 @@ public abstract class BaseAction extends BaseAction {
         return conditions;
     }
 
-
-
-
-
-
-
-
-
-
-
-
     protected Map putQuery(Map<Object, String> conditions, String from, Object object) {
         if (from != null && !from.equals("")) {
             conditions.put(object, from);
         }
         return conditions;
     }
-
-
 
     protected void getConditionAndOrder(BaseSessionQueryForm queryForm, Map<BasicQueryCondition, List<BasicConditionModel>> conditions, HttpServletRequest request) {
         List<BasicConditionModel> modelList = new ArrayList<BasicConditionModel>();
@@ -736,7 +459,6 @@ public abstract class BaseAction extends BaseAction {
                     throw new ActionException("query.fail3");
                 }
 
-
                 String fieldValue = (String)autoArrayList2.get(i);
                 if (fieldValue != null && fieldValue.trim().length() > 0) {
                     BasicConditionModel model = new BasicConditionModel(field,
@@ -752,7 +474,6 @@ public abstract class BaseAction extends BaseAction {
             }
         }
 
-
         if (isQurey.booleanValue()) {
             conditions
                     .put(BasicQueryCondition.BASIC_QUERY_CONDITION, modelList);
@@ -761,4 +482,3 @@ public abstract class BaseAction extends BaseAction {
         request.setAttribute("simQueryList", smodelList);
     }
 }
-

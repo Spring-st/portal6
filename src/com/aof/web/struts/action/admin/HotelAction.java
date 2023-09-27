@@ -22,7 +22,7 @@
 /*     */ import com.aof.service.admin.PriceManager;
 /*     */ import com.aof.service.admin.UserManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.HotelQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -63,9 +63,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class HotelAction
-/*     */   extends BaseAction
-/*     */ {
+/*     */ public class HotelAction extends BaseAction2 {
 /*     */   private List getEnabledCountryProvinceCityList(HttpServletRequest request) {
 /*  70 */     CountryManager cm = ServiceLocator.getCountryManager(request);
 /*  71 */     return cm.listEnabledCountryProvinceCity();
@@ -127,7 +125,7 @@
 /* 127 */       String fileName = "hotel";
 /* 128 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 131 */               MessageResources messages = HotelAction.this.getResources(request);
 /* 132 */               row.add(messages.getMessage(HotelAction.this.getLocale(request), "hotel.name"));
 /* 133 */               if (HotelAction.this.isGlobal(request))
@@ -141,7 +139,7 @@
 /* 141 */               row.add(messages.getMessage(HotelAction.this.getLocale(request), "hotel.status"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 145 */               row.add(BeanHelper.getBeanPropertyValue(data, "name"));
 /* 146 */               if (HotelAction.this.isGlobal(request)) {
 /* 147 */                 row.add(BeanHelper.getBeanPropertyValue(data, "site.name"));

@@ -8,7 +8,7 @@
 /*     */ import com.aof.model.metadata.EnabledDisabled;
 /*     */ import com.aof.service.basic.BadReasonsManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basic.BadReasonsQueryForm;
@@ -60,7 +60,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BadReasonsAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  66 */     BadReasonsQueryForm queryForm = (BadReasonsQueryForm)form;
@@ -81,7 +81,7 @@
 /*  81 */       String fileName = "BadReasons";
 /*  82 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  85 */               MessageResources messages = BadReasonsAction.this.getResources(request);
 /*  86 */               row.add(messages.getMessage(BadReasonsAction.this.getLocale(request), "BadReasons.describe"));
 /*  87 */               row.add(messages.getMessage(BadReasonsAction.this.getLocale(request), "BadReasons.type.chnShortDescription"));
@@ -90,7 +90,7 @@
 /*  90 */               row.add(messages.getMessage(BadReasonsAction.this.getLocale(request), "BadReasons.remark"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  94 */               row.add(BeanHelper.getBeanPropertyValue(data, "describe"));
 /*  95 */               row.add(BeanHelper.getBeanPropertyValue(data, "type.chnShortDescription"));
 /*  96 */               row.add(BeanHelper.getBeanPropertyValue(data, "user.name"));
@@ -139,12 +139,12 @@
 /* 139 */       String fileName = "BadReasons";
 /* 140 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 143 */               MessageResources messages = BadReasonsAction.this.getResources(request);
 /* 144 */               row.add(messages.getMessage(BadReasonsAction.this.getLocale(request), "BadReasons.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 148 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });

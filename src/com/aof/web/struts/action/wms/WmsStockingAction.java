@@ -28,7 +28,7 @@
 /*      */ import com.aof.service.plantWarehouse.WmsPlanToGoOutManager;
 /*      */ import com.aof.service.po.BoxManager;
 /*      */ import com.aof.utils.SessionTempFile;
-/*      */ import com.aof.web.struts.action.BaseAction;
+/*      */ import com.aof.web.struts.action.BaseAction2;
 /*      */ import com.aof.web.struts.action.ServiceLocator;
 /*      */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*      */ import com.aof.web.struts.form.basic.InventoryQueryForm;
@@ -55,7 +55,6 @@
 /*      */ import java.util.HashMap;
 /*      */ import java.util.Iterator;
 /*      */ import java.util.List;
-/*      */ import java.util.Locale;
 /*      */ import java.util.Map;
 /*      */ import javax.servlet.http.HttpServletRequest;
 /*      */ import javax.servlet.http.HttpServletResponse;
@@ -69,7 +68,6 @@
 /*      */ import jxl.format.Colour;
 /*      */ import jxl.format.UnderlineStyle;
 /*      */ import jxl.format.VerticalAlignment;
-/*      */ import jxl.write.Colour;
 /*      */ import jxl.write.Label;
 /*      */ import jxl.write.NumberFormat;
 /*      */ import jxl.write.WritableCell;
@@ -100,7 +98,7 @@
 /*      */ 
 /*      */ 
 /*      */ public class WmsStockingAction
-/*      */   extends BaseAction
+/*      */   extends BaseAction2
 /*      */ {
 /*      */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  106 */     WmsStockingQueryForm queryForm = (WmsStockingQueryForm)form;
@@ -125,7 +123,7 @@
 /*  125 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  126 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  129 */               MessageResources messages = WmsStockingAction.this.getResources(request);
 /*  130 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.id"));
 /*  131 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.operation.name"));
@@ -138,7 +136,7 @@
 /*  138 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "WmsUW.remark"));
 /*      */             }
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  142 */               row.add(BeanHelper.getBeanPropertyValue(data, "code"));
 /*  143 */               row.add(BeanHelper.getBeanPropertyValue(data, "operation.name"));
 /*  144 */               row.add(BeanHelper.getBeanPropertyValue(data, "start_date"));
@@ -189,9 +187,9 @@
 /*      */     } 
 /*      */     
 /*  191 */     StockingManager fm = ServiceLocator.getStockingManager(request);
-/*  192 */     Map<StockingQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  192 */     Map conditions = constructQueryMap(queryForm);
 /*  193 */     conditions.put(StockingQueryCondition.STATUS_EQ, Integer.valueOf(1));
-/*  194 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  194 */     getConditionAndOrder(queryForm, conditions, request);
 /*      */     
 /*  196 */     String exportType = queryForm.getExportType();
 /*  197 */     if (StringUtils.isNotEmpty(exportType)) {
@@ -204,7 +202,7 @@
 /*  204 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  205 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  208 */               MessageResources messages = WmsStockingAction.this.getResources(request);
 /*  209 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.id"));
 /*  210 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.operation.name"));
@@ -217,7 +215,7 @@
 /*  217 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "WmsUW.remark"));
 /*      */             }
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  221 */               row.add(BeanHelper.getBeanPropertyValue(data, "code"));
 /*  222 */               row.add(BeanHelper.getBeanPropertyValue(data, "operation.name"));
 /*  223 */               row.add(BeanHelper.getBeanPropertyValue(data, "start_date"));
@@ -248,66 +246,14 @@
 /*  248 */     request.setAttribute("x_selType", Integer.valueOf(86));
 /*  249 */     return mapping.findForward("page");
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
 /*      */   public ActionForward editWmsStockingAll(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  305 */     StorageLocationQueryForm queryForm = (StorageLocationQueryForm)form;
 /*  306 */     Stocking wmsStocking = getStocking(request);
 /*  307 */     StockingManager wsm = ServiceLocator.getStockingManager(request);
-/*  308 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/*  308 */     Map conditions = new HashMap();
 /*  309 */     conditions.put(StockingDetialQueryCondition.STOCKING_ID_EQ, wmsStocking.getId());
-/*  310 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  310 */     getConditionAndOrder(queryForm, conditions, request);
 /*  311 */     List<StockingDetial> stockingItems = wsm.getStockingDetialList(conditions, queryForm.getPageNoAsInt(), queryForm.getPageSizeAsInt(), null, true);
 /*  312 */     if (queryForm.isFirstInit()) {
 /*  313 */       queryForm.init(wsm.getStockingDetialListCount(conditions));
@@ -324,7 +270,7 @@
 /*  324 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  325 */           new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  328 */               MessageResources messages = WmsStockingAction.this.getResources(request);
 /*  329 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.location.code"));
 /*  330 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.location.address"));
@@ -332,7 +278,7 @@
 /*  332 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.location.description"));
 /*      */             }
 /*      */             
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  336 */               row.add(BeanUtils.getProperty(data, "location.code"));
 /*  337 */               row.add(BeanUtils.getProperty(data, "location.address"));
 /*  338 */               row.add(BeanUtils.getProperty(data, "location.basic_storeroom_id.code"));
@@ -363,7 +309,7 @@
 /*      */   
 /*      */   public ActionForward detailDeleteLocation(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  365 */     response.setContentType("text/json");
-/*  366 */     response.setCharacterEncoding("UTF-8");
+///*  366 */     response.setCharacterEncoding("UTF-8");
 /*  367 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /*  369 */     String stockingId = request.getParameter("stockingId");
@@ -390,9 +336,9 @@
 /*  390 */     Stocking wmsStocking = getStocking(request);
 /*  391 */     StockingManager wsm = ServiceLocator.getStockingManager(request);
 /*  392 */     List<StockingDetial> stockingItems = wsm.getStockingByMain(wmsStocking.getId());
-/*  393 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/*  393 */     Map conditions = new HashMap();
 /*  394 */     conditions.put(StockingQueryCondition.STOCKING_ID_EQ, wmsStocking.getId());
-/*  395 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  395 */     getConditionAndOrder(queryForm, conditions, request);
 /*  396 */     List<StockingRecord> records = wsm.getStockingRecordList(conditions, queryForm.getPageNoAsInt(), queryForm.getPageSizeAsInt(), StockingQueryOrder.LOCATION_ID, false);
 /*      */     
 /*  398 */     if (queryForm.isFirstInit()) {
@@ -410,7 +356,7 @@
 /*  410 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  411 */           new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  414 */               MessageResources messages = WmsStockingAction.this.getResources(request);
 /*  415 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "Stocking.box.location.code"));
 /*  416 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "Stocking.location.code"));
@@ -426,7 +372,7 @@
 /*  426 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "Stocking.type"));
 /*      */             }
 /*      */             
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  430 */               row.add(BeanUtils.getProperty(data, "box.location.code"));
 /*  431 */               row.add(BeanUtils.getProperty(data, "location.code"));
 /*  432 */               row.add(BeanUtils.getProperty(data, "box.part.id"));
@@ -474,9 +420,9 @@
 /*  474 */     Stocking wmsStocking = getStocking(request);
 /*  475 */     StockingManager wsm = ServiceLocator.getStockingManager(request);
 /*  476 */     List<StockingDetial> stockingItems = wsm.getStockingByMain(wmsStocking.getId());
-/*  477 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/*  477 */     Map conditions = new HashMap();
 /*  478 */     conditions.put(StockingQueryCondition.STOCKING_ID_EQ, wmsStocking.getId());
-/*  479 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  479 */     getConditionAndOrder(queryForm, conditions, request);
 /*  480 */     List<StockingRecord> records = wsm.getStockingRecordList(conditions, queryForm.getPageNoAsInt(), queryForm.getPageSizeAsInt(), StockingQueryOrder.LOCATION_ID, false);
 /*      */     
 /*  482 */     if (queryForm.isFirstInit()) {
@@ -494,7 +440,7 @@
 /*  494 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  495 */           new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  498 */               MessageResources messages = WmsStockingAction.this.getResources(request);
 /*  499 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "Stocking.box.location.code"));
 /*  500 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "Stocking.box.part.id"));
@@ -509,7 +455,7 @@
 /*  509 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "Stocking.type"));
 /*      */             }
 /*      */             
-/*      */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  513 */               row.add(BeanUtils.getProperty(data, "box.location.code"));
 /*  514 */               row.add(BeanUtils.getProperty(data, "box.part.id"));
 /*  515 */               row.add(BeanUtils.getProperty(data, "box.part.dpiNo"));
@@ -859,19 +805,6 @@
 /*  859 */     String s = request.getParameter("site_id");
 /*  860 */     return (s != null && !s.equals(""));
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
 /*      */   public ActionForward newObject(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  876 */     StockingManager wsm = ServiceLocator.getStockingManager(request);
 /*  877 */     if (!isBack(request)) {
@@ -890,7 +823,7 @@
 /*      */   
 /*      */   public ActionForward selectLocationById(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  892 */     response.setContentType("text/json");
-/*  893 */     response.setCharacterEncoding("UTF-8");
+///*  893 */     response.setCharacterEncoding("UTF-8");
 /*  894 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /*  896 */     StorageLocationManager locationManager = ServiceLocator.getStorageLocationManager(request);
@@ -963,47 +896,7 @@
 /*  963 */     putEnumListToRequest(request);
 /*  964 */     return mapping.findForward("page");
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
 /*      */   public ActionForward insert(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1008 */     String[] ids = request.getParameterValues("ids");
 /* 1009 */     String type = request.getParameter("type");
@@ -1043,17 +936,20 @@
 /* 1043 */     return new ActionForward("editWmsStocking.do?id=" + wmsStocking.getId(), true);
 /*      */   }
 /*      */   public String[] array_unique(String[] a) {
-/* 1046 */     Map<Object, Object> map = new HashMap<Object, Object>(); byte b; int i; String[] arrayOfString;
+/* 1046 */     Map<Object, Object> map = new HashMap<>();
+                byte b;
+                int i;
+                String[] arrayOfString;
 /* 1047 */     for (i = (arrayOfString = a).length, b = 0; b < i; ) { String string = arrayOfString[b];
 /* 1048 */       map.put(string, string); b++; }
 /*      */     
-/* 1050 */     List<String> list = new ArrayList<String>();
-/* 1051 */     Iterator<String> iterator = map.keySet().iterator();
+/* 1050 */     List<String> list = new ArrayList<>();
+/* 1051 */     Iterator<Object> iterator = map.keySet().iterator();
 /* 1052 */     while (iterator.hasNext()) {
-/* 1053 */       String value = iterator.next();
+/* 1053 */       String value = (String) iterator.next();
 /* 1054 */       list.add(value);
 /*      */     } 
-/* 1056 */     return list.<String>toArray(new String[list.size()]);
+/* 1056 */     return list.toArray(new String[list.size()]);
 /*      */   }
 /*      */ 
 /*      */ 
@@ -1136,7 +1032,7 @@
 /*      */   
 /*      */   public ActionForward deleteWmsPlanToGoOut(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1138 */     response.setContentType("text/json");
-/* 1139 */     response.setCharacterEncoding("UTF-8");
+///* 1139 */     response.setCharacterEncoding("UTF-8");
 /* 1140 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /* 1142 */     String id = request.getParameter("id");
@@ -1239,7 +1135,7 @@
 /* 1239 */       String fileName = "wmsStocking";
 /* 1240 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 1243 */               MessageResources messages = WmsStockingAction.this.getResources(request);
 /* 1244 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.id"));
 /* 1245 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.name"));
@@ -1249,7 +1145,7 @@
 /* 1249 */               row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.enabled"));
 /*      */             }
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 1253 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /* 1254 */               row.add(BeanHelper.getBeanPropertyValue(data, "name"));
 /* 1255 */               row.add(BeanHelper.getBeanPropertyValue(data, "createDate"));
@@ -1321,7 +1217,7 @@
 /* 1321 */     String suffix = ExportUtil.export(exportType, data, request, 
 /* 1322 */         new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*      */         {
-/*      */           public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */           public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 1325 */             MessageResources messages = WmsStockingAction.this.getResources(request);
 /* 1326 */             row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.location"));
 /* 1327 */             row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.wmsPart"));
@@ -1335,7 +1231,7 @@
 /*      */           }
 /*      */ 
 /*      */           
-/*      */           public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*      */           public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 1339 */             Map map = (Map)data;
 /* 1340 */             WmsPart wmsPart = (WmsPart)map.get("wmsPart");
 /* 1341 */             row.add(map.get("location"));
@@ -1376,7 +1272,7 @@
 /* 1376 */     String suffix = ExportUtil.export(exportType, data, request, 
 /* 1377 */         new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*      */         {
-/*      */           public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*      */           public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 1380 */             MessageResources messages = WmsStockingAction.this.getResources(request);
 /* 1381 */             row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "location"));
 /* 1382 */             row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.lotser"));
@@ -1389,7 +1285,7 @@
 /* 1389 */             row.add(messages.getMessage(WmsStockingAction.this.getLocale(request), "wmsStocking.person"));
 /*      */           }
 /*      */           
-/*      */           public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */           public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 1393 */             row.add(BeanHelper.getBeanPropertyValue(data, "location.code"));
 /* 1394 */             Box box = (Box)BeanHelper.getBeanPropertyValue(data, "orderBox");
 /* 1395 */             if (box != null) {
@@ -1613,7 +1509,7 @@
 /*      */   
 /*      */   public ActionForward selectLocationByFreeae(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1615 */     response.setContentType("text/json");
-/* 1616 */     response.setCharacterEncoding("UTF-8");
+///* 1616 */     response.setCharacterEncoding("UTF-8");
 /* 1617 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /* 1619 */     StorageLocationManager locationManager = ServiceLocator.getStorageLocationManager(request);
@@ -1642,7 +1538,7 @@
 /*      */   
 /*      */   public ActionForward updateRecordsByType(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1644 */     response.setContentType("text/json");
-/* 1645 */     response.setCharacterEncoding("UTF-8");
+///* 1645 */     response.setCharacterEncoding("UTF-8");
 /* 1646 */     JsonConfig cfg = new JsonConfig();
 /* 1647 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
 /* 1648 */     StockingManager wsm = ServiceLocator.getStockingManager(request);
@@ -1672,9 +1568,9 @@
 /*      */     
 /* 1673 */     Stocking stocking = getStocking(request);
 /* 1674 */     StockingManager fm = ServiceLocator.getStockingManager(request);
-/* 1675 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/* 1675 */     Map conditions = new HashMap();
 /* 1676 */     conditions.put(StockingScanRecordQueryCondition.STOCKING_EQ, stocking.getCode());
-/* 1677 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 1677 */     getConditionAndOrder(queryForm, conditions, request);
 /*      */     
 /* 1679 */     if (queryForm.isFirstInit()) {
 /* 1680 */       queryForm.init(fm.getStockingScanRecordListCount(conditions));
@@ -1695,7 +1591,7 @@
 /*      */   
 /*      */   public ActionForward verifyWmsStockingDifference(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1697 */     response.setContentType("text/json");
-/* 1698 */     response.setCharacterEncoding("UTF-8");
+///* 1698 */     response.setCharacterEncoding("UTF-8");
 /* 1699 */     JsonConfig cfg = new JsonConfig();
 /* 1700 */     StockingManager fm = ServiceLocator.getStockingManager(request);
 /* 1701 */     Stocking stocking = getStocking(request);
@@ -1716,9 +1612,3 @@
 /* 1716 */     return null;
 /*      */   }
 /*      */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/web/struts/action/wms/WmsStockingAction.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

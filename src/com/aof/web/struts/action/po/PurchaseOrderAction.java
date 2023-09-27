@@ -38,7 +38,7 @@
 /*      */ import com.aof.service.quartz.job.DeliverMinuteSyncJob;
 /*      */ import com.aof.service.quartz.job.RedMinuteSyncJob;
 /*      */ import com.aof.utils.SessionTempFile;
-/*      */ import com.aof.web.struts.action.BaseAction;
+/*      */ import com.aof.web.struts.action.BaseAction2;
 /*      */ import com.aof.web.struts.action.ServiceLocator;
 /*      */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*      */ import com.aof.web.struts.form.po.PurchaseOrderQueryForm;
@@ -99,7 +99,7 @@
 /*      */ 
 /*      */ 
 /*      */ public class PurchaseOrderAction
-/*      */   extends BaseAction
+/*      */   extends BaseAction2
 /*      */ {
 /*      */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  105 */     RedMinuteSyncJob sss = 
@@ -136,7 +136,7 @@
 /*  136 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  137 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /*  141 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /*  142 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), "purchaseOrder.poip_number.po_number"));
@@ -155,7 +155,7 @@
 /*      */ 
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  159 */               row.add(BeanHelper.getBeanPropertyValue(data, "poip_number.po_number"));
 /*  160 */               row.add(BeanHelper.getBeanPropertyValue(data, "line"));
 /*  161 */               row.add(BeanHelper.getBeanPropertyValue(data, "itemNumber.id"));
@@ -221,7 +221,7 @@
 /*  221 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  222 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /*  226 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /*  227 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), 
@@ -229,7 +229,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  233 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*      */             }
 /*      */           });
@@ -258,7 +258,7 @@
 /*      */   
 /*      */   public ActionForward editPurchaseOrderCapacity(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  260 */     response.setContentType("text/json");
-/*  261 */     response.setCharacterEncoding("UTF-8");
+/*  261 */     //response.setCharacterEncoding("UTF-8");
 /*  262 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /*  264 */     PurchaseOrderInspectionPendingManager manager = 
@@ -322,7 +322,7 @@
 /*  322 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  323 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /*  327 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /*  328 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), 
@@ -330,7 +330,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  334 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*      */             }
 /*      */           });
@@ -366,11 +366,11 @@
 /*      */     
 /*  367 */     PortalShipOrderItemManager fm = 
 /*  368 */       ServiceLocator.getPortalShipOrderItemManager(request);
-/*  369 */     Map<PortalShipOrderQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  369 */     Map conditions = constructQueryMap(queryForm);
 /*  370 */     conditions.put(PortalShipOrderQueryCondition.STATUS_EQ, Integer.valueOf(1));
 /*  371 */     conditions.put(PortalShipOrderQueryCondition.STATUS_CONFIRM_EQ, Integer.valueOf(1));
 /*      */     
-/*  373 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  373 */     getConditionAndOrder(queryForm, conditions, request);
 /*      */     
 /*  375 */     String exportType = queryForm.getExportType();
 /*  376 */     if (StringUtils.isNotEmpty(exportType)) {
@@ -387,7 +387,7 @@
 /*  387 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  388 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /*  392 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /*  393 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), 
@@ -395,7 +395,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  399 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*      */             }
 /*      */           });
@@ -422,7 +422,7 @@
 /*      */   
 /*      */   public ActionForward updatePurchaseOrderCondimentConfirmByAjax(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  424 */     response.setContentType("text/json");
-/*  425 */     response.setCharacterEncoding("UTF-8");
+/*  425 */     //response.setCharacterEncoding("UTF-8");
 /*  426 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /*  428 */     PurchaseOrderCondimentSingleManager manager = 
@@ -449,10 +449,10 @@
 /*      */     
 /*  450 */     PortalShipOrderItemManager fm = 
 /*  451 */       ServiceLocator.getPortalShipOrderItemManager(request);
-/*  452 */     Map<PortalShipOrderQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  452 */     Map conditions = constructQueryMap(queryForm);
 /*  453 */     conditions.put(PortalShipOrderQueryCondition.STATUS_EQ, Integer.valueOf(1));
 /*  454 */     conditions.put(PortalShipOrderQueryCondition.STATUS_CONFIRM_EQ, Integer.valueOf(0));
-/*  455 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  455 */     getConditionAndOrder(queryForm, conditions, request);
 /*  456 */     String exportType = queryForm.getExportType();
 /*  457 */     if (StringUtils.isNotEmpty(exportType)) {
 /*  458 */       List data = fm.getPortalShipOrderItemList(conditions, 0, -1, 
@@ -468,7 +468,7 @@
 /*  468 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  469 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /*  473 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /*  474 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), 
@@ -501,7 +501,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  505 */               row.add(BeanHelper.getBeanPropertyValue(data, 
 /*  506 */                     "portalShipOrder.code"));
 /*  507 */               row.add(BeanHelper.getBeanPropertyValue(data, 
@@ -572,10 +572,10 @@
 /*      */     } 
 /*  573 */     PurchaseOrderCondimentSingleManager manager = 
 /*  574 */       ServiceLocator.getPurchaseOrderCondimentSingleManager(request);
-/*  575 */     Map<PurchaseOrderCondimentSingleQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  575 */     Map conditions = constructQueryMap(queryForm);
 /*  576 */     conditions.put(PurchaseOrderCondimentSingleQueryCondition.ENABLED_EQ, Integer.valueOf(1));
 /*      */     
-/*  578 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  578 */     getConditionAndOrder(queryForm, conditions, request);
 /*      */     
 /*  580 */     String exportType = queryForm.getExportType();
 /*  581 */     if (StringUtils.isNotEmpty(exportType)) {
@@ -593,7 +593,7 @@
 /*  593 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  594 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /*  598 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /*  599 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), 
@@ -632,7 +632,7 @@
 /*      */ 
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  636 */               row.add(BeanHelper.getBeanPropertyValue(data, 
 /*  637 */                     "code"));
 /*  638 */               row.add(BeanHelper.getBeanPropertyValue(data, 
@@ -728,38 +728,6 @@
 /*      */   }
 /*      */ 
 /*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
 /*      */   public ActionForward condimentPrint(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  764 */     PurchaseOrderQueryForm queryForm = (PurchaseOrderQueryForm)form;
 /*  765 */     if (StringUtils.isEmpty(queryForm.getOrder())) {
@@ -769,10 +737,10 @@
 /*      */     
 /*  770 */     PurchaseOrderCondimentSingleManager manager = 
 /*  771 */       ServiceLocator.getPurchaseOrderCondimentSingleManager(request);
-/*  772 */     Map<PortalShipOrderQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  772 */     Map conditions = constructQueryMap(queryForm);
 /*  773 */     conditions.put(PortalShipOrderQueryCondition.STATUS_EQ, Integer.valueOf(1));
 /*      */     
-/*  775 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  775 */     getConditionAndOrder(queryForm, conditions, request);
 /*      */     
 /*  777 */     String exportType = queryForm.getExportType();
 /*  778 */     if (StringUtils.isNotEmpty(exportType)) {
@@ -790,7 +758,7 @@
 /*  790 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  791 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /*  795 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /*  796 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), 
@@ -798,7 +766,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  802 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*      */             }
 /*      */           });
@@ -930,70 +898,14 @@
 /*  930 */     request.setAttribute("x_status", 
 /*  931 */         PersistentEnum.getEnumList(PurchaseOrderStatus.class));
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
 /*      */   public ActionForward edit(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  975 */     putEnumListToRequest(request);
 /*  976 */     return mapping.findForward("page");
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
 /*      */   public ActionForward delete(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  992 */     return mapping.findForward("success");
 /*      */   }
 /*      */ 
-/*      */ 
-/*      */   
 /*      */   public ActionForward update(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  998 */     BeanForm purchaseOrderForm = (BeanForm)form;
 /*  999 */     PurchaseOrder purchaseOrder = new PurchaseOrder();
@@ -1002,50 +914,19 @@
 /* 1002 */     PurchaseOrderManager purchaseOrderManager = 
 /* 1003 */       ServiceLocator.getPurchaseOrderManager(request);
 /*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */     
 /* 1009 */     return new ActionForward("editPurchaseOrder.do?id=" + 
 /* 1010 */         purchaseOrder.getId(), true);
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
 /*      */   
 /*      */   public ActionForward closeds(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1027 */     return null;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
 /*      */   
 /*      */   public ActionForward createPurchaseOrderIP(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1044 */     return null;
 /*      */   }
 /*      */ 
-/*      */   
-/*      */   private Site getSiteFromRequestAndCheckPower(HttpServletRequest request) throws Exception {
+private Site getSiteFromRequestAndCheckPower(HttpServletRequest request) throws Exception {
 /* 1049 */     return getAndCheckSite("site_id", request);
 /*      */   }
 /*      */   
@@ -1213,7 +1094,7 @@
 /*      */   
 /*      */   public ActionForward insertCondiment(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1215 */     response.setContentType("text/json");
-/* 1216 */     response.setCharacterEncoding("UTF-8");
+/* 1216 */     //response.setCharacterEncoding("UTF-8");
 /* 1217 */     JsonConfig cfg = new JsonConfig();
 /*      */ 
 /*      */     
@@ -1243,7 +1124,7 @@
 /*      */   
 /*      */   public ActionForward insertReceiptsByAjax(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1245 */     response.setContentType("text/json");
-/* 1246 */     response.setCharacterEncoding("UTF-8");
+/* 1246 */     //response.setCharacterEncoding("UTF-8");
 /* 1247 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /* 1249 */     PurchaseOrderReceiptsManager manager = 
@@ -1288,11 +1169,11 @@
 /*      */     
 /* 1289 */     PurchaseOrderInspectionPendingManager fm = 
 /* 1290 */       ServiceLocator.getPurchaseOrderInspectionPendingManager(request);
-/* 1291 */     Map<PurchaseOrderInspectionPendingQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/* 1291 */     Map conditions = constructQueryMap(queryForm);
 /* 1292 */     conditions.put(PurchaseOrderInspectionPendingQueryCondition.STATUS_EQ, 
 /* 1293 */         Integer.valueOf(1));
 /*      */     
-/* 1295 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 1295 */     getConditionAndOrder(queryForm, conditions, request);
 /*      */     
 /* 1297 */     String exportType = queryForm.getExportType();
 /* 1298 */     if (StringUtils.isNotEmpty(exportType)) {
@@ -1311,7 +1192,7 @@
 /* 1311 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 1312 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /* 1316 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /* 1317 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), "purchaseOrder.po_number"));
@@ -1325,7 +1206,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 1329 */               row.add(BeanHelper.getBeanPropertyValue(data, "po_number"));
 /* 1330 */               row.add(BeanHelper.getBeanPropertyValue(data, "supplier.code"));
 /* 1331 */               row.add(BeanHelper.getBeanPropertyValue(data, "supplier.name"));
@@ -1363,7 +1244,7 @@
 /*      */   
 /*      */   public ActionForward close(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1365 */     response.setContentType("text/json");
-/* 1366 */     response.setCharacterEncoding("UTF-8");
+/* 1366 */     //response.setCharacterEncoding("UTF-8");
 /* 1367 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /* 1369 */     PurchaseOrderInspectionPendingManager manager = 
@@ -1403,7 +1284,7 @@
 /*      */     
 /* 1404 */     PurchaseOrderInspectionPendingManager fm = 
 /* 1405 */       ServiceLocator.getPurchaseOrderInspectionPendingManager(request);
-/* 1406 */     Map<PurchaseOrderInspectionPendingQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/* 1406 */     Map conditions = constructQueryMap(queryForm);
 /* 1407 */     conditions.put(PurchaseOrderInspectionPendingQueryCondition.STATUS_EQ, 
 /* 1408 */         Integer.valueOf(2));
 /*      */     
@@ -1426,7 +1307,7 @@
 /* 1426 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 1427 */               request)), new Exportable()
 /*      */           {
-/*      */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*      */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*      */             {
 /* 1431 */               MessageResources messages = PurchaseOrderAction.this.getResources(request);
 /* 1432 */               row.add(messages.getMessage(PurchaseOrderAction.this.getLocale(request), "purchaseOrder.po_number"));
@@ -1440,7 +1321,7 @@
 /*      */             }
 /*      */ 
 /*      */             
-/*      */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*      */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 1444 */               row.add(BeanHelper.getBeanPropertyValue(data, "po_number"));
 /* 1445 */               row.add(BeanHelper.getBeanPropertyValue(data, "supplier.code"));
 /* 1446 */               row.add(BeanHelper.getBeanPropertyValue(data, "supplier.name"));
@@ -1478,7 +1359,7 @@
 /*      */   
 /*      */   public ActionForward open(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1480 */     response.setContentType("text/json");
-/* 1481 */     response.setCharacterEncoding("UTF-8");
+/* 1481 */     //response.setCharacterEncoding("UTF-8");
 /* 1482 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /* 1484 */     PurchaseOrderInspectionPendingManager manager = 
@@ -1500,7 +1381,7 @@
 /*      */   
 /*      */   public ActionForward updateCondimentIsPrint(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1502 */     response.setContentType("text/json");
-/* 1503 */     response.setCharacterEncoding("UTF-8");
+/* 1503 */     ////response.setCharacterEncoding("UTF-8");
 /* 1504 */     JsonConfig cfg = new JsonConfig();
 /*      */     
 /* 1506 */     String ids = request.getParameter("ids");
@@ -1524,7 +1405,7 @@
 /*      */   
 /*      */   public ActionForward updatePurchaseOrderCondiment(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 1526 */     response.setContentType("text/json");
-/* 1527 */     response.setCharacterEncoding("UTF-8");
+///* 1527 */     ////response.setCharacterEncoding("UTF-8");
 /* 1528 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
 /*      */     
 /* 1530 */     PurchaseOrderCondimentSingleManager manager = ServiceLocator.getPurchaseOrderCondimentSingleManager(request);
@@ -1600,9 +1481,3 @@
 /* 1600 */     return null;
 /*      */   }
 /*      */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/web/struts/action/po/PurchaseOrderAction.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

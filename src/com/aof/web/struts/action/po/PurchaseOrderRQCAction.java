@@ -8,7 +8,7 @@
 /*     */ import com.aof.model.po.query.PurchaseOrderRqcQueryOrder;
 /*     */ import com.aof.service.po.PurchaseOrderRQCManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.PurchaseOrderRQCQueryForm;
@@ -62,7 +62,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PurchaseOrderRQCAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  68 */     PurchaseOrderRQCQueryForm queryForm = (PurchaseOrderRQCQueryForm)form;
@@ -83,7 +83,7 @@
 /*  83 */       String fileName = "purchaseOrder";
 /*  84 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  87 */               MessageResources messages = PurchaseOrderRQCAction.this.getResources(request);
 /*  88 */               row.add(messages.getMessage(PurchaseOrderRQCAction.this.getLocale(request), "purchaseOrderPutInStorageBoxList.number"));
 /*  89 */               row.add(messages.getMessage(PurchaseOrderRQCAction.this.getLocale(request), "purchaseOrderPutInStorageBoxList.row"));
@@ -103,7 +103,7 @@
 /* 103 */               row.add(messages.getMessage(PurchaseOrderRQCAction.this.getLocale(request), "WmsUW.status.chnShortDescription"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 107 */               row.add(BeanHelper.getBeanPropertyValue(data, "po_number"));
 /* 108 */               row.add(BeanHelper.getBeanPropertyValue(data, "line"));
 /* 109 */               row.add(BeanHelper.getBeanPropertyValue(data, "boxId.lot.id"));
@@ -165,7 +165,7 @@
 /* 165 */       String fileName = "purchaseOrder";
 /* 166 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 169 */               MessageResources messages = PurchaseOrderRQCAction.this.getResources(request);
 /* 170 */               row.add(messages.getMessage(PurchaseOrderRQCAction.this.getLocale(request), "purchaseOrder.id"));
 /* 171 */               row.add(messages.getMessage(PurchaseOrderRQCAction.this.getLocale(request), "customer.line"));
@@ -184,7 +184,7 @@
 /* 184 */               row.add(messages.getMessage(PurchaseOrderRQCAction.this.getLocale(request), "WmsUW.status.chnShortDescription"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 188 */               row.add(BeanHelper.getBeanPropertyValue(data, "po_number"));
 /* 189 */               row.add(BeanHelper.getBeanPropertyValue(data, "line"));
 /* 190 */               row.add(BeanHelper.getBeanPropertyValue(data, "part.id"));
@@ -226,7 +226,7 @@
 /*     */   
 /*     */   public ActionForward close(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 228 */     response.setContentType("text/json");
-/* 229 */     response.setCharacterEncoding("UTF-8");
+///* 229 */     response.setCharacterEncoding("UTF-8");
 /* 230 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 232 */     PurchaseOrderRQCManager manager = ServiceLocator.getPurchaseOrderRQCManager(request);
@@ -274,12 +274,12 @@
 /* 274 */       String fileName = "purchaseOrder";
 /* 275 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 278 */               MessageResources messages = PurchaseOrderRQCAction.this.getResources(request);
 /* 279 */               row.add(messages.getMessage(PurchaseOrderRQCAction.this.getLocale(request), "purchaseOrder.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 283 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });

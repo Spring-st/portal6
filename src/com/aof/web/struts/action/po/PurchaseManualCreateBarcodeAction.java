@@ -8,7 +8,7 @@
 /*     */ import com.aof.service.admin.SupplierManager;
 /*     */ import com.aof.service.po.PurchaseManualCreateBarcodeManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.PurchaseManualCreateBarcodeQueryForm;
@@ -64,7 +64,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class PurchaseManualCreateBarcodeAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  70 */     PurchaseManualCreateBarcodeManager manager = ServiceLocator.getPurchaseManualCreateBarcodeManager(request);
@@ -73,15 +73,15 @@
 /*  73 */       queryForm.setOrder(PurchaseManualCreateBarcodeQueryOrder.id.getName());
 /*  74 */       queryForm.setDescend(true);
 /*     */     } 
-/*  76 */     Map<Object, Object> conditions = constructQueryMap(queryForm);
-/*  77 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  76 */     Map conditions = constructQueryMap(queryForm);
+/*  77 */     getConditionAndOrder(queryForm, conditions, request);
 /*  78 */     String exportType = queryForm.getExportType();
 /*  79 */     if (exportType != null && exportType.length() > 0) {
 /*  80 */       List data = manager.list(conditions, 0, -1, null, queryForm.isDescend());
 /*  81 */       int index = SessionTempFile.createNewTempFile(request);
 /*  82 */       String fileName = "CadStage";
 /*  83 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable() {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  85 */               MessageResources messages = PurchaseManualCreateBarcodeAction.this.getResources(request);
 /*  86 */               row.add(messages.getMessage(PurchaseManualCreateBarcodeAction.this.getLocale(request), "customer.materialCode"));
 /*  87 */               row.add(messages.getMessage(PurchaseManualCreateBarcodeAction.this.getLocale(request), "customer.materialName"));
@@ -94,7 +94,7 @@
 /*  94 */               row.add(messages.getMessage(PurchaseManualCreateBarcodeAction.this.getLocale(request), "salesOrderItem.isprintlabels"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  98 */               row.add(BeanUtils.getProperty(data, "part"));
 /*  99 */               row.add(BeanUtils.getProperty(data, "partName"));
 /* 100 */               row.add(BeanUtils.getProperty(data, "partUnit"));
@@ -447,7 +447,7 @@
 /* 447 */     HSSFWorkbook wb = new HSSFWorkbook();
 /*     */     
 /* 449 */     HSSFSheet sheet = wb.createSheet();
-/* 450 */     wb.setSheetName(0, "期初打印条码", (short)1);
+/* 450 */     wb.setSheetName(0, "期初打印条码");
 /*     */     
 /* 452 */     sheet.setColumnWidth((short)0, (short)4000);
 /* 453 */     sheet.setColumnWidth((short)1, (short)7000);
@@ -492,45 +492,37 @@
 /* 492 */     row.setHeight((short)300);
 /*     */     
 /* 494 */     HSSFCell ce = row.createCell((short)0);
-/* 495 */     ce.setEncoding((short)1);
 /* 496 */     ce.setCellValue("物料号");
 /* 497 */     ce.setCellStyle(style);
 /* 498 */     ce = row.createCell((short)1);
-/* 499 */     ce.setEncoding((short)1);
 /* 500 */     ce.setCellValue("物料名称");
 /* 501 */     ce.setCellStyle(style);
 /*     */     
 /* 503 */     ce = row.createCell((short)2);
-/* 504 */     ce.setEncoding((short)1);
 /* 505 */     ce.setCellValue("单位");
 /* 506 */     ce.setCellStyle(style);
 /*     */     
 /* 508 */     ce = row.createCell((short)3);
-/* 509 */     ce.setEncoding((short)1);
 /* 510 */     ce.setCellValue("车型");
 /* 511 */     ce.setCellStyle(style);
 /*     */     
 /* 513 */     ce = row.createCell((short)4);
-/* 514 */     ce.setEncoding((short)1);
 /* 515 */     ce.setCellValue("供应商名称");
 /* 516 */     ce.setCellStyle(cellStyle2);
 /*     */     
 /* 518 */     ce = row.createCell((short)5);
-/* 519 */     ce.setEncoding((short)1);
 /* 520 */     ce.setCellValue("日期(yyyyMMdd)");
 /* 521 */     ce.setCellStyle(style);
 /*     */     
 /* 523 */     ce = row.createCell((short)6);
-/* 524 */     ce.setEncoding((short)1);
 /* 525 */     ce.setCellValue("流水号");
 /* 526 */     ce.setCellStyle(cellStyle2);
 /*     */     
 /* 528 */     ce = row.createCell((short)7);
-/* 529 */     ce.setEncoding((short)1);
 /* 530 */     ce.setCellValue("数量");
 /* 531 */     ce.setCellStyle(style);
 /* 532 */     response.setContentType("appliction/x-msdownload");
-/* 533 */     response.setCharacterEncoding("utf-8");
+///* 533 */     response.setCharacterEncoding("utf-8");
 /* 534 */     String fileName = "printBarCode";
 /* 535 */     response.setHeader("Content-Disposition", "attachment; filename=" + new String(fileName.getBytes("UTF-8"), "UTF-8") + 
 /* 536 */         ".xls");

@@ -6,7 +6,7 @@
 /*     */ import com.aof.model.schedule.query.ProjectedInventoryQueryOrder;
 /*     */ import com.aof.service.schedule.ProjectedInventoryManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.schedule.ProjectedInventoryQueryForm;
@@ -44,12 +44,12 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProjectedInventoryAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward kucun(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  50 */     ProjectedInventoryManager manager = ServiceLocator.getProjectedInventoryManager(request);
 /*  51 */     ProjectedInventoryQueryForm queryForm = (ProjectedInventoryQueryForm)form;
-/*  52 */     Map<String, String> conditions = getConditions(queryForm);
+/*  52 */     Map conditions = getConditions(queryForm);
 /*  53 */     if (queryForm.getOrder() == "") {
 /*  54 */       queryForm.setOrder(ProjectedInventoryQueryOrder.ID.getName());
 /*  55 */       queryForm.setDescend(false);
@@ -83,7 +83,7 @@
 /*  83 */       String suffix = ExportUtil.export(exportType, datas, request, 
 /*  84 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  85 */           new Exportable() {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  87 */               MessageResources message = ProjectedInventoryAction.this.getResources(request);
 /*  88 */               row.add("物料");
 /*  89 */               row.add("描述");
@@ -98,7 +98,7 @@
 /*  98 */               row.add("安全库存");
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 102 */               row.add(BeanUtils.getProperty(data, "part.id"));
 /* 103 */               row.add(BeanUtils.getProperty(data, "part.name"));
 /* 104 */               row.add(BeanUtils.getProperty(data, "part.unit"));
@@ -158,12 +158,12 @@
 /*     */   public ActionForward listProjected(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 159 */     ProjectedInventoryManager manager = ServiceLocator.getProjectedInventoryManager(request);
 /* 160 */     ProjectedInventoryQueryForm queryForm = (ProjectedInventoryQueryForm)form;
-/* 161 */     Map<ProjectedInventoryQueryCondition, String> conditions = getConditions(queryForm);
+/* 161 */     Map conditions = getConditions(queryForm);
 /* 162 */     if (queryForm.getOrder() == "") {
 /* 163 */       queryForm.setOrder(ProjectedInventoryQueryOrder.ID.getName());
 /* 164 */       queryForm.setDescend(false);
 /*     */     } 
-/* 166 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 166 */     getConditionAndOrder(queryForm, conditions, request);
 /* 167 */     if (!hasGlobalPower(request)) {
 /* 168 */       User user = getCurrentUser(request);
 /* 169 */       conditions.put(ProjectedInventoryQueryCondition.Part_VEND_EQ, user.getLoginName());
@@ -177,7 +177,7 @@
 /* 177 */       String suffix = ExportUtil.export(exportType, datas, request, 
 /* 178 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 179 */           new Exportable() {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 181 */               MessageResources message = ProjectedInventoryAction.this.getResources(request);
 /* 182 */               row.add("物料编码");
 /* 183 */               row.add("物料名称");
@@ -190,7 +190,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 194 */               row.add(BeanUtils.getProperty(data, "part.id"));
 /* 195 */               row.add(BeanUtils.getProperty(data, "part.name"));
 /* 196 */               row.add(BeanUtils.getProperty(data, "part.vend"));
@@ -239,13 +239,13 @@
 /* 239 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 240 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /* 244 */               row.add(BeanUtils.getProperty(data, "id"));
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 249 */               MessageResources message = ProjectedInventoryAction.this.getResources(request);
 /* 250 */               row.add(message.getMessage(ProjectedInventoryAction.this.getLocale(request), "mapping.id"));
 /*     */             }

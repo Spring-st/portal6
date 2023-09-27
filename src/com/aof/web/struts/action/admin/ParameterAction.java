@@ -14,7 +14,7 @@
 /*     */ import com.aof.service.admin.ParameterManager;
 /*     */ import com.aof.service.admin.SiteManager;
 /*     */ import com.aof.web.struts.action.ActionUtils2;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
 /*     */ import com.shcnc.struts.form.BeanForm;
@@ -49,7 +49,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ParameterAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*  54 */   protected static DateConverter timeConverter = new DateConverter(); static {
 /*  55 */     timeConverter.setFormat("HH:mm");

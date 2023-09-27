@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.schedule.query.ProductionDayPlanQueryOrder;
 /*     */ import com.aof.service.schedule.ProductionDayPlanManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.schedule.ProductionDayPlanQueryForm;
@@ -34,7 +34,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProductionDayPlanAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  40 */     ProductionDayPlanManager planManager = ServiceLocator.getProductionDayPlanManager(request);
@@ -54,7 +54,7 @@
 /*  54 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  55 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /*  59 */               row.add(BeanUtils.getProperty(data, "carkind"));
 /*  60 */               row.add(BeanUtils.getProperty(data, "asnNo"));
@@ -118,7 +118,7 @@
 /* 118 */               row.add(BeanUtils.getProperty(data, "planAll"));
 /*     */             }
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 122 */               MessageResources message = ProductionDayPlanAction.this.getResources(request);
 /* 123 */               List<String> list = new ArrayList<String>();
 /* 124 */               Date date = new Date();

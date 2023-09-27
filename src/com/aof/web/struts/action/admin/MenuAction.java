@@ -3,7 +3,7 @@
 /*     */ import com.aof.model.admin.Menu;
 /*     */ import com.aof.service.admin.FunctionManager;
 /*     */ import com.aof.service.admin.MenuManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.shcnc.struts.action.ActionException;
 /*     */ import com.shcnc.struts.action.ActionUtils;
@@ -39,7 +39,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class MenuAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  45 */     MenuManager mm = ServiceLocator.getMenuManager(request);

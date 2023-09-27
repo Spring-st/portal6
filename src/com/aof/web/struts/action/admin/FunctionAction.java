@@ -5,7 +5,7 @@
 /*     */ import com.aof.model.admin.query.FunctionQueryOrder;
 /*     */ import com.aof.service.admin.FunctionManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.FunctionQueryForm;
 /*     */ import com.shcnc.struts.action.ActionException;
@@ -49,9 +49,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class FunctionAction
-/*     */   extends BaseAction
-/*     */ {
+/*     */ public class FunctionAction extends BaseAction2 {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  56 */     FunctionManager fm = ServiceLocator.getFunctionManager(request);
 /*     */     
@@ -66,14 +64,14 @@
 /*  66 */       String fileName = "function";
 /*  67 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  70 */               MessageResources messages = FunctionAction.this.getResources(request);
 /*  71 */               row.add(messages.getMessage(FunctionAction.this.getLocale(request), "function.id"));
 /*  72 */               row.add(messages.getMessage(FunctionAction.this.getLocale(request), "function.name"));
 /*  73 */               row.add(messages.getMessage(FunctionAction.this.getLocale(request), "function.description"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  77 */               row.add(BeanUtils.getProperty(data, "id"));
 /*  78 */               row.add(BeanUtils.getProperty(data, "name"));
 /*  79 */               row.add(BeanUtils.getProperty(data, "description"));
