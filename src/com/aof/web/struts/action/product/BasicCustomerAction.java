@@ -1,6 +1,5 @@
 /*     */ package com.aof.web.struts.action.product;
 /*     */ 
-/*     */ import com.aof.model.admin.User;
 /*     */ import com.aof.model.metadata.EnabledDisabled;
 /*     */ import com.aof.model.product.BasicCustomer;
 /*     */ import com.aof.model.product.query.BasicCustomerQueryCondition;
@@ -8,7 +7,7 @@
 /*     */ import com.aof.service.Product.BasicCustomerManager;
 /*     */ import com.aof.service.admin.SiteManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.BasicCustomerQueryForm;
@@ -22,7 +21,6 @@
 /*     */ import java.net.URLEncoder;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.List;
-/*     */ import java.util.Locale;
 /*     */ import java.util.Map;
 /*     */ import javax.servlet.http.HttpServletRequest;
 /*     */ import javax.servlet.http.HttpServletResponse;
@@ -33,9 +31,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class BasicCustomerAction
-/*     */   extends BaseAction
-/*     */ {
+/*     */ public class BasicCustomerAction extends BaseAction2 {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  40 */     BasicCustomerManager basicCustomerManager = 
 /*  41 */       ServiceLocator.getBasicCustomerManager(request);
@@ -55,7 +51,7 @@
 /*  55 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  56 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /*  60 */               MessageResources messages = BasicCustomerAction.this.getResources(request);
 /*  61 */               row.add(messages.getMessage(BasicCustomerAction.this.getLocale(request), 
@@ -103,7 +99,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 107 */               row.add(BeanUtils.getProperty(data, "code"));
 /* 108 */               row.add(BeanUtils.getProperty(data, "name1"));
 /* 109 */               row.add(BeanUtils.getProperty(data, "name2"));
@@ -248,8 +244,8 @@
 /* 248 */     BasicCustomerManager basicCustomerManager = 
 /* 249 */       ServiceLocator.getBasicCustomerManager(request);
 /* 250 */     BasicCustomerQueryForm queryForm = (BasicCustomerQueryForm)form;
-/* 251 */     Map<BasicCustomerQueryCondition, EnabledDisabled> conditions = getQueryConditions(queryForm);
-/* 252 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 251 */     Map conditions = getQueryConditions(queryForm);
+/* 252 */     getConditionAndOrder(queryForm, conditions, request);
 /* 253 */     conditions.put(BasicCustomerQueryCondition.ENABLED_EQ, EnabledDisabled.ENABLED);
 /* 254 */     if (queryForm.isFirstInit()) {
 /* 255 */       queryForm.init(basicCustomerManager.getListCount(conditions));
@@ -277,7 +273,6 @@
 /* 277 */     BasicCustomerManager basicCustomerManager = ServiceLocator.getBasicCustomerManager(request);
 /* 278 */     int result = basicCustomerManager.getListCount(conditions);
 /* 279 */     response.setContentType("text/html;charset=utf-8");
-/* 280 */     response.setCharacterEncoding("UTF-8");
 /* 281 */     response.getWriter().print(result);
 /*     */     
 /* 283 */     return null;
@@ -296,15 +291,8 @@
 /* 296 */     BasicCustomerManager basicCustomerManager = ServiceLocator.getBasicCustomerManager(request);
 /* 297 */     int result = basicCustomerManager.getListCount(conditions);
 /* 298 */     response.setContentType("text/html;charset=utf-8");
-/* 299 */     response.setCharacterEncoding("UTF-8");
 /* 300 */     response.getWriter().print(result);
 /*     */     
 /* 302 */     return null;
 /*     */   }
 /*     */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/web/struts/action/product/BasicCustomerAction.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

@@ -21,7 +21,7 @@
 /*     */ import com.aof.service.basic.WmsPartManager;
 /*     */ import com.aof.service.inventory.InventoryManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basic.InventoryQueryForm;
@@ -75,7 +75,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProductAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  81 */     ProductQueryForm queryForm = (ProductQueryForm)form;
@@ -96,12 +96,12 @@
 /*  96 */       String fileName = "product";
 /*  97 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 100 */               MessageResources messages = ProductAction.this.getResources(request);
 /* 101 */               row.add(messages.getMessage(ProductAction.this.getLocale(request), "Product.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 105 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });
@@ -568,9 +568,3 @@
 /* 568 */     return new ActionForward("listProductScanningOutbound.do", true);
 /*     */   }
 /*     */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/web/struts/action/product/ProductAction.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

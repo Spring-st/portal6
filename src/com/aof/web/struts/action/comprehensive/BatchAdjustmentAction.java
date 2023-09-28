@@ -14,7 +14,7 @@
 /*     */ import com.aof.service.po.BoxManager;
 /*     */ import com.aof.service.po.PurchaseOrderManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basic.BoxAdjustmentQueryForm;
@@ -141,7 +141,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BatchAdjustmentAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 147 */     BoxAdjustmentQueryForm queryForm = (BoxAdjustmentQueryForm)form;
@@ -163,7 +163,7 @@
 /* 163 */       String fileName = "purchaseOrder";
 /* 164 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 167 */               MessageResources messages = BatchAdjustmentAction.this.getResources(request);
 /* 168 */               row.add(messages.getMessage(BatchAdjustmentAction.this.getLocale(request), "purchaseOrderPutInStorageBoxList.id"));
 /* 169 */               row.add(messages.getMessage(BatchAdjustmentAction.this.getLocale(request), "purchaseOrderPutInStorageBoxList.number"));
@@ -181,7 +181,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 185 */               row.add(BeanHelper.getBeanPropertyValue(data, "new_box_id.lot.id"));
 /* 186 */               row.add(BeanHelper.getBeanPropertyValue(data, "new_box_id.psoItem.poipItem.poip_number.po_number"));
 /* 187 */               row.add(BeanHelper.getBeanPropertyValue(data, "new_box_id.psoItem.poipItem.line"));

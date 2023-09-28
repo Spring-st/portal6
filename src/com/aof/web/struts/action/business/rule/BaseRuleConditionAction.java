@@ -17,7 +17,7 @@
 /*     */ import com.aof.model.metadata.TravellingMode;
 /*     */ import com.aof.model.metadata.YesNo;
 /*     */ import com.aof.service.business.rule.RuleManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
 /*     */ import com.shcnc.struts.action.ActionException;
@@ -44,7 +44,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BaseRuleConditionAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   protected ActionForward list(ActionMapping mapping, HttpServletRequest request, HttpServletResponse response, RuleType type) throws Exception {
 /*  50 */     RuleManager rm = ServiceLocator.getRuleManager(request);

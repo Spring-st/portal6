@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.product.SalesPreshiporderBatch;
 /*     */ import com.aof.service.Product.SalesPreshiporderBatchManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.product.SalesPreshiporderBatchQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -17,7 +17,6 @@
 /*     */ import java.net.URLEncoder;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.List;
-/*     */ import java.util.Locale;
 /*     */ import java.util.Map;
 /*     */ import javax.servlet.http.HttpServletRequest;
 /*     */ import javax.servlet.http.HttpServletResponse;
@@ -30,7 +29,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SalesPreshiporderBatchAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  36 */     SalesPreshiporderBatchManager salesPreshiporderBatchManager = ServiceLocator.getSalesPreshiporderBatchManager(request);
@@ -45,7 +44,7 @@
 /*  45 */       String suffix = ExportUtil.export(exportType, data, request, 
 /*  46 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  49 */               MessageResources messages = SalesPreshiporderBatchAction.this.getResources(request);
 /*  50 */               row.add(messages.getMessage(SalesPreshiporderBatchAction.this.getLocale(request), ""));
 /*     */             }
@@ -54,7 +53,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  58 */               row.add(BeanUtils.getProperty(data, ""));
 /*     */             }
 /*     */           });

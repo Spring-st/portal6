@@ -26,7 +26,7 @@
 /*     */ import com.aof.service.Product.SalesPreshiporderManager;
 /*     */ import com.aof.service.Product.SalesWorkorderManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.CustomerPlanQueryForm;
@@ -58,7 +58,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SalesPreshiporderPlanAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  64 */     SalesPreshiporderManager salesPreshiporderManager = 
@@ -79,7 +79,7 @@
 /*  79 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  80 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /*  84 */               MessageResources messages = SalesPreshiporderPlanAction.this.getResources(request);
 /*  85 */               row.add(messages.getMessage(SalesPreshiporderPlanAction.this.getLocale(request), "salesPreshiporder.id"));
@@ -94,7 +94,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  98 */               row.add(BeanUtils.getProperty(data, "code"));
 /*  99 */               row.add(BeanUtils.getProperty(data, "arrivaldate"));
 /* 100 */               row.add(BeanUtils.getProperty(data, "remark"));
@@ -142,7 +142,7 @@
 /* 142 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 143 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 147 */               MessageResources messages = SalesPreshiporderPlanAction.this.getResources(request);
 /* 148 */               row.add(messages.getMessage(SalesPreshiporderPlanAction.this.getLocale(request), ""));
@@ -153,7 +153,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 157 */               row.add(BeanUtils.getProperty(data, ""));
 /*     */             }
 /*     */           });
@@ -277,7 +277,7 @@
 /* 277 */       ServiceLocator.getCustomerPlanManager(request);
 /* 278 */     String idString = queryForm.getPlanId();
 /* 279 */     String[] ids = idString.split(";");
-/* 280 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/* 280 */     Map conditions = new HashMap<Object, Object>();
 /*     */     
 /* 282 */     conditions.put(CustomerPlanQueryCondition.QTYOPEN_DT, Integer.valueOf(0));
 /* 283 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
@@ -348,7 +348,6 @@
 /*     */   
 /*     */   public ActionForward salesShipOrderPlanByBoxAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 350 */     response.setContentType("text/json");
-/* 351 */     response.setCharacterEncoding("UTF-8");
 /* 352 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 354 */     String itemId = request.getParameter("itemId");

@@ -12,7 +12,7 @@
 /*     */ import com.aof.model.metadata.YesNo;
 /*     */ import com.aof.service.admin.UserManager;
 /*     */ import com.aof.service.business.rule.RuleManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.admin.UserQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -41,7 +41,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BaseRuleConsequenceAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   protected ActionForward newObject(ActionMapping mapping, HttpServletRequest request, RuleType type) throws Exception {
 /*  47 */     ConsequenceType ct = type.getConsequenceType();
@@ -171,7 +171,7 @@
 /*     */     
 /* 172 */     UserManager um = ServiceLocator.getUserManager(request);
 /*     */     
-/* 174 */     Map<UserQueryCondition, EnabledDisabled> conditions = constructQueryMap(queryForm);
+/* 174 */     Map conditions = constructQueryMap(queryForm);
 /* 175 */     conditions.put(UserQueryCondition.ENABLED_EQ, EnabledDisabled.ENABLED);
 /*     */     
 /* 177 */     if (f != null) {

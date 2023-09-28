@@ -9,7 +9,7 @@
 /*     */ import com.aof.model.metadata.RuleType;
 /*     */ import com.aof.service.business.rule.RuleManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.business.rule.RuleQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -43,7 +43,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BaseRuleAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   protected ActionForward list(ActionMapping mapping, RuleQueryForm queryForm, HttpServletRequest request, HttpServletResponse response, RuleType type) throws Exception {
 /*  49 */     RuleManager rm = ServiceLocator.getRuleManager(request);
@@ -63,14 +63,14 @@
 /*  63 */       String fileName = String.valueOf(type.getPrefixUrl()) + "Rules";
 /*  64 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  67 */               MessageResources messages = BaseRuleAction.this.getResources(request);
 /*  68 */               row.add(messages.getMessage(BaseRuleAction.this.getLocale(request), "rule.id"));
 /*  69 */               row.add(messages.getMessage(BaseRuleAction.this.getLocale(request), "rule.description"));
 /*  70 */               row.add(messages.getMessage(BaseRuleAction.this.getLocale(request), "rule.enabled"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  74 */               row.add(BeanUtils.getProperty(data, "id"));
 /*  75 */               row.add(BeanUtils.getProperty(data, "description"));
 /*  76 */               String locale = BaseRuleAction.this.getCurrentUser(request).getLocale();

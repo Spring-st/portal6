@@ -27,7 +27,7 @@
 /*     */ import com.aof.service.Product.SalesPreshiporderManager;
 /*     */ import com.aof.service.Product.SalesWorkorderManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.SalesOrderItemQueryForm;
@@ -63,14 +63,14 @@
 /*     */ 
 /*     */ 
 /*     */ public class SalesPreshiporderAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  69 */     SalesPreshiporderManager salesPreshiporderManager = 
 /*  70 */       ServiceLocator.getSalesPreshiporderManager(request);
 /*  71 */     SalesPreshiporderQueryForm queryForm = (SalesPreshiporderQueryForm)form;
-/*  72 */     Map<SalesPreshiporderQueryCondition, Integer> conditions = getQueryConditions(queryForm);
-/*  73 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  72 */     Map conditions = getQueryConditions(queryForm);
+/*  73 */     getConditionAndOrder(queryForm, conditions, request);
 /*  74 */     conditions.put(SalesPreshiporderQueryCondition.TYPE_EQ, Integer.valueOf(1));
 /*  75 */     String exportType = queryForm.getExportType();
 /*  76 */     if (exportType != null && exportType.length() > 0) {
@@ -85,7 +85,7 @@
 /*  85 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  86 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /*  90 */               MessageResources messages = SalesPreshiporderAction.this.getResources(request);
 /*  91 */               row.add(messages.getMessage(SalesPreshiporderAction.this.getLocale(request), "salesPreshiporder.id"));
@@ -95,7 +95,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  99 */               SalesPreshiporder salesPreshiporder = (SalesPreshiporder)data;
 /*     */ 
 /*     */ 
@@ -150,7 +150,7 @@
 /* 150 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 151 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 155 */               MessageResources messages = SalesPreshiporderAction.this.getResources(request);
 /* 156 */               row.add(messages.getMessage(SalesPreshiporderAction.this.getLocale(request), "salesPickingOrderList.code"));
@@ -167,7 +167,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 171 */               row.add(BeanUtils.getProperty(data, "code"));
 /* 172 */               row.add(BeanUtils.getProperty(data, "createDate"));
 /* 173 */               row.add(BeanUtils.getProperty(data, "customerName"));
@@ -310,11 +310,11 @@
 /* 310 */       ServiceLocator.getSalesOrderItemManager(request);
 /* 311 */     String idString = queryForm.getSelectSoipitemId();
 /* 312 */     String[] ids = idString.split(";");
-/* 313 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/* 313 */     Map conditions = new HashMap<Object, Object>();
 /*     */     
 /* 315 */     conditions.put(SalesOrderItemQueryCondition.QTYOPEN_DT, Integer.valueOf(0));
 /* 316 */     conditions.put(SalesOrderItemQueryCondition.STATUS_OPEN_EQ, Integer.valueOf(0));
-/* 317 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 317 */     getConditionAndOrder(queryForm, conditions, request);
 /* 318 */     if (queryForm.isFirstInit()) {
 /* 319 */       queryForm.init(soim.getListCount(conditions));
 /*     */     } else {
@@ -382,7 +382,6 @@
 /*     */   
 /*     */   public ActionForward salesShipOrderByBoxAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 384 */     response.setContentType("text/json");
-/* 385 */     response.setCharacterEncoding("UTF-8");
 /* 386 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 388 */     String itemId = request.getParameter("itemId");

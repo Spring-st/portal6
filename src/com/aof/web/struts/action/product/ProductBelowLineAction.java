@@ -9,7 +9,7 @@
 /*     */ import com.aof.service.Product.ProductManager;
 /*     */ import com.aof.service.po.BoxManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.ProductBelowLineQueryForm;
@@ -56,7 +56,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProductBelowLineAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  62 */     ProductBelowLineQueryForm queryForm = (ProductBelowLineQueryForm)form;
@@ -78,12 +78,12 @@
 /*  78 */       String fileName = "product";
 /*  79 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  82 */               MessageResources messages = ProductBelowLineAction.this.getResources(request);
 /*  83 */               row.add(messages.getMessage(ProductBelowLineAction.this.getLocale(request), "Product.id"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  87 */               row.add(BeanHelper.getBeanPropertyValue(data, "id"));
 /*     */             }
 /*     */           });

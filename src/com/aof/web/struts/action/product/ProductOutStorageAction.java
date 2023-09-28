@@ -21,7 +21,7 @@
 /*     */ import com.aof.service.basic.StoreRoomManager;
 /*     */ import com.aof.service.basic.WmsPartManager;
 /*     */ import com.aof.service.inventory.InventoryManager;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.po.ProductOutStorageQueryForm;
@@ -46,15 +46,15 @@
 /*     */ 
 /*     */ 
 /*     */ public class ProductOutStorageAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  52 */     ProductOutStorageManager manager = ServiceLocator.getProductOutStorageManager(request);
 /*  53 */     ProductOutStorageQueryForm queryForm = (ProductOutStorageQueryForm)form;
-/*  54 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
+/*  54 */     Map conditions = new HashMap();
 /*  55 */     conditions.put(ProductGolineQueryCondition.STATUS_EQ, Integer.valueOf(2));
 /*     */     
-/*  57 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  57 */     getConditionAndOrder(queryForm, conditions, request);
 /*  58 */     if (queryForm.isFirstInit()) {
 /*  59 */       queryForm.init(manager.getProductOutStorageListCount(conditions));
 /*     */     } else {
@@ -102,7 +102,7 @@
 /* 102 */       itManager.insertInventoryDetial(detial);
 /*     */     } 
 /*     */     
-/* 105 */     InventoryDetial indl = itManager.getInventoryDetialList(conditions, 0, 1, null, false).get(0);
+/* 105 */     InventoryDetial indl = (InventoryDetial) itManager.getInventoryDetialList(conditions, 0, 1, null, false).get(0);
 /*     */     
 /* 107 */     indl.setNumber(indl.getNumber().add(qty));
 /* 108 */     itManager.updateInventoryDetial(indl);
@@ -194,7 +194,6 @@
 /*     */   
 /*     */   public ActionForward confirmProductOutStorageAjax(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 196 */     response.setContentType("text/json");
-/* 197 */     response.setCharacterEncoding("UTF-8");
 /* 198 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 200 */     ProductOutStorageManager posManager = ServiceLocator.getProductOutStorageManager(request);

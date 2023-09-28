@@ -7,7 +7,7 @@
 /*     */ import com.aof.model.metadata.EnabledDisabled;
 /*     */ import com.aof.service.basic.BasicPartLocationManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basic.BasicPartLocationQueryForm;
@@ -31,7 +31,6 @@
 /*     */ import java.util.Date;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.List;
-/*     */ import java.util.Locale;
 /*     */ import java.util.Map;
 /*     */ import javax.servlet.http.HttpServletRequest;
 /*     */ import javax.servlet.http.HttpServletResponse;
@@ -46,7 +45,6 @@
 /*     */ import jxl.format.Colour;
 /*     */ import jxl.format.UnderlineStyle;
 /*     */ import jxl.format.VerticalAlignment;
-/*     */ import jxl.write.Colour;
 /*     */ import jxl.write.Label;
 /*     */ import jxl.write.NumberFormat;
 /*     */ import jxl.write.WritableCell;
@@ -76,7 +74,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BasicPartLocationAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private File file;
 /*     */   private String filename;
@@ -101,7 +99,7 @@
 /* 101 */       String fileName = "BasicPartLocation";
 /* 102 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 105 */               MessageResources messages = BasicPartLocationAction.this.getResources(request);
 /* 106 */               row.add(messages.getMessage(BasicPartLocationAction.this.getLocale(request), "BasicPartLocation.id"));
 /* 107 */               row.add(messages.getMessage(BasicPartLocationAction.this.getLocale(request), "BasicPartLocation.location.code"));
@@ -115,7 +113,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<Object> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 119 */               row.add(BeanHelper.getBeanPropertyValue(data, "part.id"));
 /* 120 */               row.add(BeanHelper.getBeanPropertyValue(data, "location.code"));
 /* 121 */               row.add(BeanHelper.getBeanPropertyValue(data, "location.basic_storeroom_id.code"));
@@ -441,7 +439,6 @@
 /* 441 */         this.file.mkdir();
 /*     */       }
 /* 443 */       request.setAttribute("filenames", String.valueOf(this.file.getPath()) + "\\" + uFrom.getMyFile().getFileName());
-/* 444 */       response.setCharacterEncoding("GBK");
 /* 445 */       out = response.getWriter();
 /* 446 */       saveFile(uFrom.getMyFile(), this.file);
 /* 447 */     } catch (Exception e) {

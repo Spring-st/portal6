@@ -11,13 +11,14 @@
 /*     */ import com.aof.model.plantWarehouse.query.WmsPlanToGoOutQueryCondition;
 /*     */ import com.aof.model.plantWarehouse.query.WmsPlanToGoOutQueryOrder;
 /*     */ import com.aof.model.po.Box;
-/*     */ import com.aof.service.basic.UnplannedReasonsManager;
+/*     */ import com.aof.service.admin.InventoryMovingManager;
+import com.aof.service.basic.UnplannedReasonsManager;
 /*     */ import com.aof.service.basic.WmsPartManager;
 /*     */ import com.aof.service.inventory.InventoryManager;
 /*     */ import com.aof.service.plantWarehouse.WmsPlanToGoOutManager;
 /*     */ import com.aof.service.po.BoxManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.action.product.ProductGolineAction;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
@@ -60,7 +61,6 @@
 /*     */ import jxl.format.Colour;
 /*     */ import jxl.format.UnderlineStyle;
 /*     */ import jxl.format.VerticalAlignment;
-/*     */ import jxl.write.Colour;
 /*     */ import jxl.write.Label;
 /*     */ import jxl.write.NumberFormat;
 /*     */ import jxl.write.WritableCell;
@@ -80,7 +80,7 @@
 /*     */ import org.apache.struts.upload.FormFile;
 /*     */ import org.apache.struts.util.MessageResources;
 /*     */ 
-/*     */ public class WmsPlanToGoOutAction extends BaseAction {
+/*     */ public class WmsPlanToGoOutAction extends BaseAction2 {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  85 */     WmsPlanToGoOutQueryForm queryForm = (WmsPlanToGoOutQueryForm)form;
 /*  86 */     if (StringUtils.isEmpty(queryForm.getOrder())) {
@@ -88,10 +88,10 @@
 /*  88 */       queryForm.setDescend(false);
 /*     */     } 
 /*  90 */     WmsPlanToGoOutManager uwManager = ServiceLocator.getWmsPlanToGoOutManager(request);
-/*  91 */     Map<WmsPlanToGoOutQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/*  91 */     Map conditions = constructQueryMap(queryForm);
 /*  92 */     conditions.put(WmsPlanToGoOutQueryCondition.USER_EQ, getCurrentUser(request).getId());
 /*     */     
-/*  94 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  94 */     getConditionAndOrder(queryForm, conditions, request);
 /*     */     
 /*  96 */     if (queryForm.isFirstInit()) {
 /*  97 */       queryForm.init(uwManager.getWmsPlanToGoOutListCount(conditions));
@@ -109,7 +109,7 @@
 /* 109 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 110 */           new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 113 */               MessageResources messages = WmsPlanToGoOutAction.this.getResources(request);
 /* 114 */               row.add(messages.getMessage(WmsPlanToGoOutAction.this.getLocale(request), "WmsPlanToGoOut.code"));
 /* 115 */               row.add(messages.getMessage(WmsPlanToGoOutAction.this.getLocale(request), "WmsUW.applicat_name"));
@@ -123,7 +123,7 @@
 /* 123 */               row.add(messages.getMessage(WmsPlanToGoOutAction.this.getLocale(request), "WmsUW.remark"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 127 */               WmsPlanToGoOut wmsPlanToGoOut = (WmsPlanToGoOut)data;
 /* 128 */               row.add(BeanUtils.getProperty(data, "code"));
 /* 129 */               row.add(BeanUtils.getProperty(data, "applicant.name"));
@@ -159,10 +159,10 @@
 /* 159 */       queryForm.setDescend(false);
 /*     */     } 
 /* 161 */     WmsPlanToGoOutManager uwManager = ServiceLocator.getWmsPlanToGoOutManager(request);
-/* 162 */     Map<WmsPlanToGoOutQueryCondition, Integer> conditions = constructQueryMap(queryForm);
+/* 162 */     Map conditions = constructQueryMap(queryForm);
 /* 163 */     conditions.put(WmsPlanToGoOutQueryCondition.USER_EQ, getCurrentUser(request).getId());
 /*     */     
-/* 165 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 165 */     getConditionAndOrder(queryForm, conditions, request);
 /*     */     
 /* 167 */     if (queryForm.isFirstInit()) {
 /* 168 */       queryForm.init(uwManager.getWmsPlanToGoOutListCount(conditions));
@@ -265,7 +265,6 @@
 /*     */   
 /*     */   public ActionForward lookForStocksByPartAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 267 */     response.setContentType("text/json");
-/* 268 */     response.setCharacterEncoding("UTF-8");
 /* 269 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 271 */     String part = request.getParameter("part");
@@ -304,10 +303,6 @@
 /*     */   public ActionForward update(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 305 */     int num = 0;
 /* 306 */     Box box = null;
-/* 307 */     ProductGolineAction action = new ProductGolineAction();
-/*     */     
-/* 309 */     InventoryManager inventoryManager = ServiceLocator.getInventoryManager(request);
-/* 310 */     InventoryMovingManager inventoryMovingManager = ServiceLocator.getInventoryMovingManager(request);
 /* 311 */     WmsPlanToGoOutManager planToGoOutManager = ServiceLocator.getWmsPlanToGoOutManager(request);
 /* 312 */     WmsPlanToGoOut planToGoOut = getWmsPlantGoOut(request);
 /*     */     
@@ -330,27 +325,6 @@
 /*     */       b++; }
 /*     */     
 /* 332 */     planToGoOutManager.updateWmsPlanToGoOutByBox(planToGoOut, arrayList);
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */     
 /* 354 */     return new ActionForward("/editWmsPlanToGoOut.do?id=" + planToGoOut.getId(), true);
 /*     */   }
 /*     */   public String[] array_unique(String[] a) {
@@ -359,23 +333,14 @@
 /* 359 */       map.put(string, string); b++; }
 /*     */     
 /* 361 */     List<String> list = new ArrayList<String>();
-/* 362 */     Iterator<String> iterator = map.keySet().iterator();
+/* 362 */     Iterator<Object> iterator = map.keySet().iterator();
 /* 363 */     while (iterator.hasNext()) {
-/* 364 */       String value = iterator.next();
+/* 364 */       String value = (String) iterator.next();
 /* 365 */       list.add(value);
 /*     */     } 
 /* 367 */     return list.<String>toArray(new String[list.size()]);
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+/*     */
 /*     */   
 /*     */   public ActionForward printOrder(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 381 */     WmsPlanToGoOutManager manager = ServiceLocator.getWmsPlanToGoOutManager(request);
@@ -446,7 +411,6 @@
 /*     */   
 /*     */   public ActionForward plantGoOutItemByBox(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 448 */     response.setContentType("text/json");
-/* 449 */     response.setCharacterEncoding("UTF-8");
 /* 450 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 452 */     String str = request.getParameter("ids");
@@ -461,7 +425,6 @@
 /*     */   
 /*     */   public ActionForward checkByAjax(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 463 */     response.setContentType("text/json");
-/* 464 */     response.setCharacterEncoding("UTF-8");
 /* 465 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 467 */     String arrayList = request.getParameter("arrayList");
@@ -486,7 +449,6 @@
 /*     */   
 /*     */   public ActionForward recommendLotset(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 488 */     response.setContentType("text/json");
-/* 489 */     response.setCharacterEncoding("UTF-8");
 /* 490 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 492 */     WmsPlanToGoOutManager goOutManager = ServiceLocator.getWmsPlanToGoOutManager(request);
@@ -660,7 +622,6 @@
 /* 660 */         this.file.mkdir();
 /*     */       }
 /* 662 */       request.setAttribute("filenames", String.valueOf(this.file.getPath()) + "\\" + uFrom.getMyFile().getFileName());
-/* 663 */       response.setCharacterEncoding("GBK");
 /* 664 */       out = response.getWriter();
 /* 665 */       saveFile(uFrom.getMyFile(), this.file);
 /* 666 */       request.setAttribute("x_wmsuwid", wmsuwid);

@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.product.WorkOrderBom;
 /*     */ import com.aof.service.Product.WorkOrderBomManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.WorkOrderBomQueryForm;
@@ -30,7 +30,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class WorkOrderBomAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  36 */     WorkOrderBomManager workOrderBomManager = ServiceLocator.getWorkOrderBomManager(request);
@@ -45,7 +45,7 @@
 /*  45 */       String suffix = ExportUtil.export(exportType, data, request, 
 /*  46 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  49 */               MessageResources messages = WorkOrderBomAction.this.getResources(request);
 /*  50 */               row.add(messages.getMessage(WorkOrderBomAction.this.getLocale(request), "workorderbom.workorderno"));
 /*  51 */               row.add(messages.getMessage(WorkOrderBomAction.this.getLocale(request), "workorderbom.productno"));
@@ -58,7 +58,7 @@
 /*  58 */               row.add(messages.getMessage(WorkOrderBomAction.this.getLocale(request), "workorderbom.domain"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  62 */               row.add(BeanUtils.getProperty(data, "workOrderNo"));
 /*  63 */               row.add(BeanUtils.getProperty(data, "productNo"));
 /*  64 */               row.add(BeanUtils.getProperty(data, "partNo"));

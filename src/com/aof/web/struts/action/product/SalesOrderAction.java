@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.product.SalesOrder;
 /*     */ import com.aof.service.Product.SalesOrderManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.SalesOrderQueryForm;
@@ -30,7 +30,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SalesOrderAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  36 */     SalesOrderManager salesOrderManager = ServiceLocator.getSalesOrderManager(request);
@@ -45,7 +45,7 @@
 /*  45 */       String suffix = ExportUtil.export(exportType, data, request, 
 /*  46 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  49 */               MessageResources messages = SalesOrderAction.this.getResources(request);
 /*  50 */               row.add(messages.getMessage(SalesOrderAction.this.getLocale(request), "salesorder.id"));
 /*  51 */               row.add(messages.getMessage(SalesOrderAction.this.getLocale(request), "salesorder.customername"));
@@ -59,7 +59,7 @@
 /*  59 */               row.add(messages.getMessage(SalesOrderAction.this.getLocale(request), "salesorder.domain"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  63 */               row.add(BeanUtils.getProperty(data, "customerCode"));
 /*  64 */               row.add(BeanUtils.getProperty(data, "customerName"));
 /*  65 */               row.add(BeanUtils.getProperty(data, "lineNo"));

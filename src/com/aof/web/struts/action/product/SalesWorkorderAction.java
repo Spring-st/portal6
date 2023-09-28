@@ -29,7 +29,7 @@
 /*     */ import com.aof.service.basic.BasicPartPriceManager;
 /*     */ import com.aof.service.po.BoxManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.SalesPreshiporderQueryForm;
@@ -77,7 +77,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SalesWorkorderAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  83 */     SalesPreshiporderManager salesPreshiporderManager = 
@@ -98,7 +98,7 @@
 /*  98 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  99 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 103 */               MessageResources messages = SalesWorkorderAction.this.getResources(request);
 /* 104 */               row.add(messages.getMessage(SalesWorkorderAction.this.getLocale(request), "Box.psoItem"));
@@ -112,7 +112,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 116 */               row.add(BeanUtils.getProperty(data, "code"));
 /* 117 */               row.add(BeanUtils.getProperty(data, "createDate"));
 /* 118 */               row.add(BeanUtils.getProperty(data, "customerName"));
@@ -424,7 +424,6 @@
 /*     */   
 /*     */   public ActionForward salesWorkShipOrderOpenAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 426 */     response.setContentType("text/json");
-/* 427 */     response.setCharacterEncoding("UTF-8");
 /* 428 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 430 */     String itemId = request.getParameter("id");
@@ -523,8 +522,8 @@
 /*     */   public ActionForward listOutStorageDetailReport(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 524 */     SalesWorkorderManager salesWorkorderManager = ServiceLocator.getSalesWorkorderManager(request);
 /* 525 */     SalesWorkorderQueryForm queryForm = (SalesWorkorderQueryForm)form;
-/* 526 */     Map<SalesWorkorderQueryCondition, SalesPreshiporderBatchStatus> conditions = getQueryConditions(queryForm);
-/* 527 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 526 */     Map conditions = getQueryConditions(queryForm);
+/* 527 */     getConditionAndOrder(queryForm, conditions, request);
 /* 528 */     conditions.put(SalesWorkorderQueryCondition.SHIPWORKORDER_STATUS_EQ, SalesPreshiporderBatchStatus.IN_DELIVERYBATCH);
 /* 529 */     String exportType = queryForm.getExportType();
 /* 530 */     if (exportType != null && exportType.length() > 0) {
@@ -536,7 +535,7 @@
 /* 536 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 537 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 541 */               MessageResources messages = SalesWorkorderAction.this.getResources(request);
 /* 542 */               row.add(messages.getMessage(SalesWorkorderAction.this.getLocale(request), "salesWorkorder.shipId"));
@@ -550,7 +549,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 554 */               row.add(BeanUtils.getProperty(data, "shipId.code"));
 /* 555 */               row.add(BeanUtils.getProperty(data, "lotSer.id"));
 /* 556 */               row.add(BeanUtils.getProperty(data, "part.id"));
@@ -593,8 +592,8 @@
 /* 593 */       queryForm.setOrder(SalesWorkorderQueryOrder.ID.getName());
 /* 594 */       queryForm.setDescend(true);
 /*     */     } 
-/* 596 */     Map<SalesWorkorderQueryCondition, SalesPreshiporderBatchStatus> conditions = getQueryConditions(queryForm);
-/* 597 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 596 */     Map conditions = getQueryConditions(queryForm);
+/* 597 */     getConditionAndOrder(queryForm, conditions, request);
 /* 598 */     conditions.put(SalesWorkorderQueryCondition.SHIPWORKORDER_STATUS_EQ, SalesPreshiporderBatchStatus.IN_DELIVERYBATCH);
 /* 599 */     String exportType = queryForm.getExportType();
 /* 600 */     if (exportType != null && exportType.length() > 0) {
@@ -606,7 +605,7 @@
 /* 606 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 607 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 611 */               MessageResources messages = SalesWorkorderAction.this.getResources(request);
 /* 612 */               row.add(messages.getMessage(SalesWorkorderAction.this.getLocale(request), "salesWorkorder.shipId"));
@@ -622,7 +621,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 626 */               row.add(BeanUtils.getProperty(data, "shipId.code"));
 /* 627 */               row.add(BeanUtils.getProperty(data, "shipItemId.customerPlanId.customer.name1"));
 /* 628 */               row.add(BeanUtils.getProperty(data, "shipItemId.customerPlanId.operation"));
@@ -658,7 +657,7 @@
 /* 658 */     final SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 /* 659 */     SalesWorkorderManager salesWorkorderManager = ServiceLocator.getSalesWorkorderManager(request);
 /* 660 */     SalesWorkorderQueryForm queryForm = (SalesWorkorderQueryForm)form;
-/* 661 */     Map<SalesWorkorderQueryCondition, SalesPreshiporderBatchStatus> conditions = getQueryConditions(queryForm);
+/* 661 */     Map conditions = getQueryConditions(queryForm);
 /* 662 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
 /* 663 */     conditions.put(SalesWorkorderQueryCondition.SHIPWORKORDER_STATUS_EQ, SalesPreshiporderBatchStatus.IN_DELIVERYBATCH);
 /* 664 */     String exportType = queryForm.getExportType();
@@ -671,7 +670,7 @@
 /* 671 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 672 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 676 */               MessageResources messages = SalesWorkorderAction.this.getResources(request);
 /* 677 */               row.add("客户编码");
@@ -690,7 +689,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 694 */               row.add(BeanUtils.getProperty(data, "shipItemId.customerPlanId.customer.code"));
 /* 695 */               row.add(BeanUtils.getProperty(data, "shipItemId.customerPlanId.customer.name1"));
 /* 696 */               row.add(BeanUtils.getProperty(data, "shipItemId.customerPlanId.operation"));
@@ -751,8 +750,8 @@
 /* 751 */       ServiceLocator.getSalesPreshiporderManager(request);
 /* 752 */     SalesPreshiporderItemManager salesPreshiporderItemManager = ServiceLocator.getSalesPreshiporderItemManager(request);
 /* 753 */     SalesPreshiporderQueryForm queryForm = (SalesPreshiporderQueryForm)form;
-/* 754 */     Map<SalesPreshiporderItemQueryCondition, Integer> conditions = getQueryConditionsa(queryForm);
-/* 755 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 754 */     Map conditions = getQueryConditionsa(queryForm);
+/* 755 */     getConditionAndOrder(queryForm, conditions, request);
 /* 756 */     if (StringUtils.isEmpty(queryForm.getOrder())) {
 /*     */       
 /* 758 */       queryForm.setOrder(SalesPreshiporderQueryOrder.ID.getName());
@@ -776,7 +775,7 @@
 /* 776 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 777 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 781 */               MessageResources messages = SalesWorkorderAction.this.getResources(request);
 /* 782 */               row.add(messages.getMessage(SalesWorkorderAction.this.getLocale(request), "salesWorkorder.shipId"));
@@ -789,7 +788,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 793 */               SalesPreshiporder salesPreshiporder = (SalesPreshiporder)data;
 /* 794 */               List<SalesPreshiporderItem> customerPlanList = salesPreshiporder.getCustomerPlanList();
 /* 795 */               BigDecimal sumamount = new BigDecimal(0);

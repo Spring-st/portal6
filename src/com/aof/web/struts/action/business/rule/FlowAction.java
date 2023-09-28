@@ -12,7 +12,7 @@
 /*     */ import com.aof.service.business.rule.FlowManager;
 /*     */ import com.aof.service.business.rule.RuleManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.business.rule.FlowQueryForm;
 /*     */ import com.shcnc.hibernate.PersistentEnum;
@@ -52,7 +52,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class FlowAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private ActionForward list(ActionMapping mapping, FlowQueryForm queryForm, HttpServletRequest request, HttpServletResponse response, RuleType type) throws Exception {
 /*  58 */     FlowManager fm = ServiceLocator.getFlowManager(request);
@@ -72,14 +72,14 @@
 /*  72 */       String fileName = String.valueOf(type.getPrefixUrl()) + "Flows";
 /*  73 */       String suffix = ExportUtil.export(exportType, data, request, new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  76 */               MessageResources messages = FlowAction.this.getResources(request);
 /*  77 */               row.add(messages.getMessage(FlowAction.this.getLocale(request), "flow.id"));
 /*  78 */               row.add(messages.getMessage(FlowAction.this.getLocale(request), "flow.description"));
 /*  79 */               row.add(messages.getMessage(FlowAction.this.getLocale(request), "flow.enabled"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  83 */               row.add(BeanUtils.getProperty(data, "id"));
 /*  84 */               row.add(BeanUtils.getProperty(data, "description"));
 /*  85 */               String locale = FlowAction.this.getCurrentUser(request).getLocale();
@@ -182,7 +182,7 @@
 /*     */   private ActionForward update(ActionMapping mapping, BeanForm flowForm, HttpServletRequest request, RuleType type) throws Exception {
 /* 183 */     Flow f = getAndCheckFlow(type, request);
 /*     */     
-/* 185 */     flowForm.populateToBean(f, null, new String[] { "site.id" });
+/* 185 */     flowForm.populateToBean(f, (HttpServletRequest) null, new String[] { "site.id" });
 /*     */     
 /* 187 */     Set flowRules = getRulesFromRequest(f, request);
 /* 188 */     request.setAttribute("X_FLOWRULES", flowRules);

@@ -6,7 +6,7 @@
 /*     */ import com.aof.model.product.query.SalesOrderItemQueryCondition;
 /*     */ import com.aof.service.Product.SalesOrderItemManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.SalesOrderItemQueryForm;
@@ -39,7 +39,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SalesOrderItemAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  45 */     SalesOrderItemManager salesOrderItemManager = ServiceLocator.getSalesOrderItemManager(request);
@@ -54,7 +54,7 @@
 /*  54 */       String suffix = ExportUtil.export(exportType, data, request, 
 /*  55 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  58 */               MessageResources messages = SalesOrderItemAction.this.getResources(request);
 /*  59 */               row.add(messages.getMessage(SalesOrderItemAction.this.getLocale(request), "salesOrderItem.soipnumber"));
 /*  60 */               row.add(messages.getMessage(SalesOrderItemAction.this.getLocale(request), "salesOrderItem.soId.custName"));
@@ -79,7 +79,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  83 */               row.add(BeanUtils.getProperty(data, "soipNumber"));
 /*  84 */               row.add(BeanUtils.getProperty(data, "soId.custName"));
 /*  85 */               row.add(BeanUtils.getProperty(data, "soId.custCode"));
@@ -200,8 +200,8 @@
 /*     */   public ActionForward closeSalesOrderItemList(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 201 */     SalesOrderItemManager salesOrderItemManager = ServiceLocator.getSalesOrderItemManager(request);
 /* 202 */     SalesOrderItemQueryForm queryForm = (SalesOrderItemQueryForm)form;
-/* 203 */     Map<SalesOrderItemQueryCondition, Integer> conditions = getQueryConditions(queryForm);
-/* 204 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 203 */     Map conditions = getQueryConditions(queryForm);
+/* 204 */     getConditionAndOrder(queryForm, conditions, request);
 /* 205 */     conditions.put(SalesOrderItemQueryCondition.STATUS_OPEN_EQ, Integer.valueOf(0));
 /* 206 */     if (queryForm.isFirstInit()) {
 /* 207 */       queryForm.init(salesOrderItemManager.getListCount(conditions));
@@ -221,8 +221,8 @@
 /*     */   public ActionForward openSalesOrderItemList(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 222 */     SalesOrderItemManager salesOrderItemManager = ServiceLocator.getSalesOrderItemManager(request);
 /* 223 */     SalesOrderItemQueryForm queryForm = (SalesOrderItemQueryForm)form;
-/* 224 */     Map<SalesOrderItemQueryCondition, Integer> conditions = getQueryConditions(queryForm);
-/* 225 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 224 */     Map conditions = getQueryConditions(queryForm);
+/* 225 */     getConditionAndOrder(queryForm, conditions, request);
 /* 226 */     conditions.put(SalesOrderItemQueryCondition.STATUS_EQ, Integer.valueOf(1));
 /* 227 */     if (queryForm.isFirstInit()) {
 /* 228 */       queryForm.init(salesOrderItemManager.getListCount(conditions));
@@ -242,7 +242,6 @@
 /*     */   
 /*     */   public ActionForward salesOrderItemClose(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 244 */     response.setContentType("text/json");
-/* 245 */     response.setCharacterEncoding("UTF-8");
 /* 246 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 248 */     SalesOrderItemManager salesOrderItemManager = ServiceLocator.getSalesOrderItemManager(request);
@@ -262,7 +261,6 @@
 /*     */   
 /*     */   public ActionForward salesOrderItemOpen(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 264 */     response.setContentType("text/json");
-/* 265 */     response.setCharacterEncoding("UTF-8");
 /* 266 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 268 */     SalesOrderItemManager salesOrderItemManager = ServiceLocator.getSalesOrderItemManager(request);
@@ -279,9 +277,3 @@
 /* 279 */     return null;
 /*     */   }
 /*     */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/web/struts/action/product/SalesOrderItemAction.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

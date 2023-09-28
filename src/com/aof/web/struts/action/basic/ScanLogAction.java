@@ -5,7 +5,7 @@
 /*     */ import com.aof.model.basic.query.ScanLogQueryOrder;
 /*     */ import com.aof.service.basic.ScanLogManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basic.ScanLogQueryForm;
@@ -36,7 +36,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class ScanLogAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map constructQueryMap(ScanLogQueryForm queryForm) {
 /*  42 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -81,7 +81,7 @@
 /*  81 */       String suffix = ExportUtil.export(exportType, data, request, 
 /*  82 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  85 */               MessageResources messages = ScanLogAction.this.getResources(request);
 /*  86 */               row.add(messages.getMessage(ScanLogAction.this.getLocale(request), "ScanLog.userId.name"));
 /*  87 */               row.add(messages.getMessage(ScanLogAction.this.getLocale(request), "ScanLog.date"));
@@ -89,7 +89,7 @@
 /*  89 */               row.add(messages.getMessage(ScanLogAction.this.getLocale(request), "ScanLog.describe"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  93 */               ScanLog sl = (ScanLog)data;
 /*  94 */               row.add(BeanUtils.getProperty(sl, "userId.name"));
 /*  95 */               row.add(BeanUtils.getProperty(sl, "date"));

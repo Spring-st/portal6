@@ -8,7 +8,7 @@
 /*     */ import com.aof.service.Product.CustomerPlanManager;
 /*     */ import com.aof.service.basic.WmsPartManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.CustomerPlanQueryForm;
@@ -42,7 +42,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class CustomerPlanAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  48 */     CustomerPlanManager customerPlanManager = ServiceLocator.getCustomerPlanManager(request);
@@ -60,7 +60,7 @@
 /*  60 */       String suffix = ExportUtil.export(exportType, data, request, 
 /*  61 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  64 */               MessageResources messages = CustomerPlanAction.this.getResources(request);
 /*  65 */               row.add(messages.getMessage(CustomerPlanAction.this.getLocale(request), "customer.line"));
 /*  66 */               row.add(messages.getMessage(CustomerPlanAction.this.getLocale(request), "customer.planNumbers"));
@@ -80,7 +80,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /*  84 */               CustomerPlan custPlan = (CustomerPlan)data;
 /*  85 */               row.add(BeanUtils.getProperty(data, "line"));
 /*  86 */               row.add(BeanUtils.getProperty(data, "planNumbers"));
@@ -272,7 +272,7 @@
 /* 272 */       String suffix = ExportUtil.export(exportType, data, request, 
 /* 273 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 276 */               MessageResources messages = CustomerPlanAction.this.getResources(request);
 /* 277 */               row.add(messages.getMessage(CustomerPlanAction.this.getLocale(request), "customer.line"));
 /* 278 */               row.add(messages.getMessage(CustomerPlanAction.this.getLocale(request), "customer.planNumbers"));
@@ -291,7 +291,7 @@
 /* 291 */               row.add(messages.getMessage(CustomerPlanAction.this.getLocale(request), "customer.status"));
 /*     */             }
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 295 */               CustomerPlan custPlan = (CustomerPlan)data;
 /* 296 */               row.add(BeanUtils.getProperty(data, "line"));
 /* 297 */               row.add(BeanUtils.getProperty(data, "planNumbers"));

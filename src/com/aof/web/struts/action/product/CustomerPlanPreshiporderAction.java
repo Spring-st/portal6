@@ -27,7 +27,7 @@
 /*     */ import com.aof.service.Product.SalesPreshiporderManager;
 /*     */ import com.aof.service.Product.SalesWorkorderManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.product.CustomerPlanQueryForm;
@@ -68,7 +68,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class CustomerPlanPreshiporderAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /*  74 */     SalesPreshiporderManager salesPreshiporderManager = 
@@ -77,8 +77,8 @@
 /*  77 */     if (queryForm.getOrder() == "") {
 /*  78 */       queryForm.setDescend(true);
 /*     */     }
-/*  80 */     Map<SalesPreshiporderQueryCondition, Integer> conditions = getQueryConditions(queryForm);
-/*  81 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/*  80 */     Map conditions = getQueryConditions(queryForm);
+/*  81 */     getConditionAndOrder(queryForm, conditions, request);
 /*  82 */     conditions.put(SalesPreshiporderQueryCondition.TYPE_EQ, Integer.valueOf(2));
 /*  83 */     String exportType = queryForm.getExportType();
 /*  84 */     if (exportType != null && exportType.length() > 0) {
@@ -93,7 +93,7 @@
 /*  93 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /*  94 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /*  98 */               MessageResources messages = CustomerPlanPreshiporderAction.this.getResources(request);
 /*  99 */               row.add(messages.getMessage(CustomerPlanPreshiporderAction.this.getLocale(request), "salesPreshiporder.id"));
@@ -103,7 +103,7 @@
 /*     */             }
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 107 */               SalesPreshiporder salesPreshiporder = (SalesPreshiporder)data;
 /*     */ 
 /*     */ 
@@ -155,7 +155,7 @@
 /* 155 */           new FileOutputStream(SessionTempFile.getTempFile(index, 
 /* 156 */               request)), new Exportable()
 /*     */           {
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception
 /*     */             {
 /* 160 */               MessageResources messages = CustomerPlanPreshiporderAction.this.getResources(request);
 /* 161 */               row.add(messages.getMessage(CustomerPlanPreshiporderAction.this.getLocale(request), "salesPickingOrderList.code"));
@@ -172,7 +172,7 @@
 /*     */ 
 /*     */ 
 /*     */             
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception {
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception {
 /* 176 */               row.add(BeanUtils.getProperty(data, "code"));
 /* 177 */               row.add(BeanUtils.getProperty(data, "createDate"));
 /* 178 */               row.add(BeanUtils.getProperty(data, "customerName"));
@@ -313,8 +313,8 @@
 /* 313 */     CustomerPlanManager customerPlanManager = ServiceLocator.getCustomerPlanManager(request);
 /* 314 */     CustomerPlanQueryForm queryForm = (CustomerPlanQueryForm)form;
 /* 315 */     String idString = request.getParameter("customerPlamId");
-/* 316 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
-/* 317 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 316 */     Map conditions = new HashMap();
+/* 317 */     getConditionAndOrder(queryForm, conditions, request);
 /*     */     
 /* 319 */     conditions.put(CustomerPlanQueryCondition.QTYOPEN_DT, Integer.valueOf(0));
 /* 320 */     conditions.put(CustomerPlanQueryCondition.STATUS_OPEN_EQ, Integer.valueOf(0));
@@ -387,7 +387,6 @@
 /*     */   
 /*     */   public ActionForward salesShipOrderByBoxAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 389 */     response.setContentType("text/json");
-/* 390 */     response.setCharacterEncoding("UTF-8");
 /* 391 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 393 */     String itemId = request.getParameter("itemId");
@@ -602,7 +601,6 @@
 /*     */   
 /*     */   public ActionForward createCustomerPlanPreShipOrderAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 604 */     response.setContentType("text/json");
-/* 605 */     response.setCharacterEncoding("UTF-8");
 /* 606 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 608 */     SalesPreshiporderManager spsom = ServiceLocator.getSalesPreshiporderManager(request);
@@ -674,7 +672,6 @@
 /*     */   
 /*     */   public ActionForward verificationCustomerPlanPreshiporderAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 676 */     response.setContentType("text/json");
-/* 677 */     response.setCharacterEncoding("UTF-8");
 /* 678 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 680 */     SalesPreshiporderManager spsom = ServiceLocator.getSalesPreshiporderManager(request);
@@ -713,9 +710,3 @@
 /* 713 */     return null;
 /*     */   }
 /*     */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/web/struts/action/product/CustomerPlanPreshiporderAction.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

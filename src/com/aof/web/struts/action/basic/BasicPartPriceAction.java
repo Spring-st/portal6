@@ -4,7 +4,7 @@
 /*     */ import com.aof.model.basic.query.BasicPartPriceQueryOrder;
 /*     */ import com.aof.service.basic.BasicPartPriceManager;
 /*     */ import com.aof.utils.SessionTempFile;
-/*     */ import com.aof.web.struts.action.BaseAction;
+/*     */ import com.aof.web.struts.action.BaseAction2;
 /*     */ import com.aof.web.struts.action.ServiceLocator;
 /*     */ import com.aof.web.struts.form.BaseSessionQueryForm;
 /*     */ import com.aof.web.struts.form.basic.BasicPartPriceQueryForm;
@@ -18,7 +18,6 @@
 /*     */ import java.util.Date;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.List;
-/*     */ import java.util.Locale;
 /*     */ import java.util.Map;
 /*     */ import javax.servlet.http.HttpServletRequest;
 /*     */ import javax.servlet.http.HttpServletResponse;
@@ -38,7 +37,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BasicPartPriceAction
-/*     */   extends BaseAction
+/*     */   extends BaseAction2
 /*     */ {
 /*     */   private Map getConditions(BasicPartPriceQueryForm formBean) {
 /*  44 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -64,7 +63,7 @@
 /*  64 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /*  65 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /*  69 */               row.add(BeanUtils.getProperty(data, "customer"));
 /*  70 */               row.add(BeanUtils.getProperty(data, "sotaxc"));
@@ -80,7 +79,7 @@
 /*  80 */               row.add(BeanUtils.getProperty(data, "rmks"));
 /*     */             }
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /*  84 */               MessageResources message = BasicPartPriceAction.this.getResources(request);
 /*  85 */               row.add(message.getMessage(BasicPartPriceAction.this.getLocale(request), "basicpartprice.customer"));
 /*  86 */               row.add(message.getMessage(BasicPartPriceAction.this.getLocale(request), "basicpartprice.sotaxc"));
@@ -129,7 +128,7 @@
 /* 129 */           new FileOutputStream(SessionTempFile.getTempFile(index, request)), 
 /* 130 */           new Exportable()
 /*     */           {
-/*     */             public void exportRow(List<String> row, Object data, HttpServletRequest request) throws Exception
+/*     */             public void exportRow(List row, Object data, HttpServletRequest request) throws Exception
 /*     */             {
 /* 134 */               row.add(BeanUtils.getProperty(data, "customer"));
 /* 135 */               row.add(BeanUtils.getProperty(data, "sotaxc"));
@@ -145,7 +144,7 @@
 /* 145 */               row.add(BeanUtils.getProperty(data, "rmks"));
 /*     */             }
 /*     */             
-/*     */             public void exportHead(List<String> row, HttpServletRequest request) throws Exception {
+/*     */             public void exportHead(List row, HttpServletRequest request) throws Exception {
 /* 149 */               MessageResources message = BasicPartPriceAction.this.getResources(request);
 /* 150 */               row.add(message.getMessage(BasicPartPriceAction.this.getLocale(request), "basicpartprice.customer"));
 /* 151 */               row.add(message.getMessage(BasicPartPriceAction.this.getLocale(request), "basicpartprice.sotaxc"));

@@ -19,6 +19,7 @@ import com.aof.utils.SessionTempFile;
 import com.aof.web.struts.form.BaseSessionQueryForm;
 import com.aof.web.struts.form.po.BoxQueryForm;
 import com.shcnc.struts.action.ActionException;
+import com.shcnc.struts.action.BaseAction;
 import com.shcnc.utils.BeanHelper;
 import org.apache.commons.collections.FastHashMap;
 import org.apache.commons.lang.StringUtils;
@@ -81,7 +82,9 @@ public class BaseAction2 extends com.shcnc.struts.action.BaseAction {
         if (index != -1) name = name.substring(index + 1);
         return StringUtils.uncapitalize(name);
     }
-    public static final String ATTR_VERSION = "x_version"; public static final String ATTR_LANG = "x_lang"; public static final String LANG_CHN = "chn"; public static final String LANG_ENG = "eng"; protected static Log log = LogFactory.getLog(BaseAction.class); public static final String POSTFIX_GLOBAL = ""; public static final String POSTFIX_SITE = "_site"; public static final String POSTFIX_DEPARTMENT = "_department";
+    public static final String ATTR_VERSION = "x_version"; public static final String ATTR_LANG = "x_lang"; public static final String LANG_CHN = "chn"; public static final String LANG_ENG = "eng";
+    protected static Log log = LogFactory.getLog(BaseAction.class);
+    public static final String POSTFIX_GLOBAL = ""; public static final String POSTFIX_SITE = "_site"; public static final String POSTFIX_DEPARTMENT = "_department";
     public static final String FORWARD_PAGE = "page";
 
     protected String[] getParameterValues(String parameterName, HttpServletRequest request) {
