@@ -1,96 +1,49 @@
-/*    */ package com.aof.utils;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ public class IpAddress
-/*    */ {
-/* 18 */   private int[] address = new int[4];
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public int getAddress(int index) {
-/* 26 */     return this.address[index];
-/*    */   }
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public IpAddress(String addressString) throws Exception {
-/* 36 */     String[] part = addressString.split("[.]");
-/* 37 */     if (part.length != this.address.length)
-/* 38 */       throw new Exception("Error ip address format"); 
-/* 39 */     for (int i = 0; i < this.address.length; i++) {
-/* 40 */       this.address[i] = Integer.parseInt(part[i]);
-/*    */     }
-/*    */   }
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public int compareTo(IpAddress anotherIpAddress) {
-/* 54 */     for (int index = 0; index < this.address.length; index++) {
-/* 55 */       int dif = getAddress(index) - anotherIpAddress.getAddress(index);
-/* 56 */       if (dif != 0)
-/* 57 */         return dif; 
-/*    */     } 
-/* 59 */     return 0;
-/*    */   }
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public boolean equals(Object rhs) {
-/* 68 */     if (rhs == null)
-/* 69 */       return false; 
-/* 70 */     if (this == rhs)
-/* 71 */       return true; 
-/* 72 */     if (!(rhs instanceof IpAddress))
-/* 73 */       return false; 
-/* 74 */     IpAddress that = (IpAddress)rhs;
-/* 75 */     for (int index = 0; index < this.address.length; index++) {
-/* 76 */       if (getAddress(index) != that.getAddress(index))
-/* 77 */         return false; 
-/* 78 */     }  return true;
-/*    */   }
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public String toString() {
-/*    */     String str;
-/* 85 */     int i = this.address[0];
-/* 86 */     for (int index = 1; index < this.address.length; index++)
-/* 87 */       str = String.valueOf(i) + "." + this.address[index]; 
-/* 88 */     return str;
-/*    */   }
-/*    */ }
+package com.aof.utils;
 
+public class IpAddress {
+    private int[] address = new int[4];
 
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/utils/IpAddress.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */
+    public int getAddress(int index) {
+        return this.address[index];
+    }
+
+    public IpAddress(String addressString) throws Exception {
+        String[] part = addressString.split("[.]");
+        if (part.length != this.address.length)
+            throw new Exception("Error ip address format");
+        for (int i = 0; i < this.address.length; i++)
+            this.address[i] = Integer.parseInt(part[i]);
+    }
+
+    public int compareTo(IpAddress anotherIpAddress) {
+        for (int index = 0; index < this.address.length; index++) {
+            int dif = getAddress(index) - anotherIpAddress.getAddress(index);
+            if (dif != 0)
+                return dif;
+        }
+        return 0;
+    }
+
+    public boolean equals(Object rhs) {
+        if (rhs == null)
+            return false;
+        if (this == rhs)
+            return true;
+        if (!(rhs instanceof IpAddress))
+            return false;
+        IpAddress that = (IpAddress)rhs;
+        for (int index = 0; index < this.address.length; index++) {
+            if (getAddress(index) != that.getAddress(index))
+                return false;
+        }
+        return true;
+    }
+
+    public String toString() {
+        String str = "";
+        int i = this.address[0];
+        for (int index = 1; index < this.address.length; index++)
+            str = String.valueOf(i) + "." + this.address[index];
+        return str;
+    }
+}
