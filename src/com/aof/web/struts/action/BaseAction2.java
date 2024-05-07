@@ -43,7 +43,7 @@ public class BaseAction2 extends com.shcnc.struts.action.BaseAction {
         if (str_param_value == null)
             throw new ActionException("errors.parameter.notSet", parameterName);
         Class idType = BeanHelper.getProperyType(clazz, idName);
-        BeanLoader loader = ServiceLocator.getBeanLoader(request);
+        BeanLoader2 loader = ServiceLocator.getBeanLoader(request);
         Object o = null;
         Serializable idValue = null;
         if (idType.equals(String.class)) {

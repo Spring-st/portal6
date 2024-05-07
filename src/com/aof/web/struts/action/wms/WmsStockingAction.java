@@ -936,14 +936,14 @@
 /* 1043 */     return new ActionForward("editWmsStocking.do?id=" + wmsStocking.getId(), true);
 /*      */   }
 /*      */   public String[] array_unique(String[] a) {
-/* 1046 */     Map<Object, Object> map = new HashMap<>();
+/* 1046 */     Map<Object, Object> map = new HashMap();
                 byte b;
                 int i;
                 String[] arrayOfString;
 /* 1047 */     for (i = (arrayOfString = a).length, b = 0; b < i; ) { String string = arrayOfString[b];
 /* 1048 */       map.put(string, string); b++; }
 /*      */     
-/* 1050 */     List<String> list = new ArrayList<>();
+/* 1050 */     List<String> list = new ArrayList();
 /* 1051 */     Iterator<Object> iterator = map.keySet().iterator();
 /* 1052 */     while (iterator.hasNext()) {
 /* 1053 */       String value = (String) iterator.next();

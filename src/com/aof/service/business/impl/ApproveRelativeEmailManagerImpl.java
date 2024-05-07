@@ -72,7 +72,7 @@
 /*     */   public void sendRejectedEmail(Approvable target, BaseApproveRequest approveRequest) {
 /*  73 */     User rejecter = approveRequest.getApprover();
 /*  74 */     User requestor = target.getRequestor();
-/*  75 */     Map<String, User> context = target.getRejectedNotifyEmailContext();
+/*  75 */     Map context = target.getRejectedNotifyEmailContext();
 /*  76 */     context.put("user", requestor);
 /*  77 */     context.put("rejecterName", rejecter.getName());
 /*  78 */     context.put("comment", approveRequest.getComment());
@@ -80,7 +80,7 @@
 /*     */     
 /*  81 */     User creator = target.getCreator();
 /*  82 */     if (creator != null && !requestor.equals(creator)) {
-/*  83 */       Map<String, User> context2 = target.getRejectedNotifyEmailContext();
+/*  83 */       Map context2 = target.getRejectedNotifyEmailContext();
 /*  84 */       context2.put("user", creator);
 /*  85 */       context2.put("rejecterName", rejecter.getName());
 /*  86 */       context2.put("comment", approveRequest.getComment());
@@ -89,7 +89,7 @@
 /*     */   }
 /*     */   
 /*     */   public void sendRejectedEmail(Approvable target, String rejecterName, String comment) {
-/*  92 */     Map<String, User> context = target.getRejectedNotifyEmailContext();
+/*  92 */     Map context = target.getRejectedNotifyEmailContext();
 /*  93 */     User requestor = target.getRequestor();
 /*  94 */     context.put("user", requestor);
 /*  95 */     context.put("rejecterName", rejecterName);
@@ -98,7 +98,7 @@
 /*     */     
 /*  99 */     User creator = target.getCreator();
 /* 100 */     if (creator != null && !requestor.equals(creator)) {
-/* 101 */       Map<String, User> context2 = target.getRejectedNotifyEmailContext();
+/* 101 */       Map context2 = target.getRejectedNotifyEmailContext();
 /* 102 */       context2.put("user", creator);
 /* 103 */       context2.put("rejecterName", rejecterName);
 /* 104 */       context2.put("comment", comment);

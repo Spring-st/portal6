@@ -479,7 +479,7 @@
 /*  479 */       sl.setF_in_f_out_status(YesNo.YES);
 /*  480 */       dao.updateObject(sl);
 /*      */     } else {
-/*  482 */       Site site = dao.getObjectList(
+/*  482 */       Site site = (Site) dao.getObjectList(
 /*  483 */           "from Site site where site.name='" + siteName + "' ")
 /*  484 */         .get(0);
 /*      */ 
@@ -672,7 +672,7 @@
 /*      */     } 
 /*      */ 
 /*      */     
-/*  675 */     InventoryDetial indl = dao.getObjectList(
+/*  675 */     InventoryDetial indl = (InventoryDetial) dao.getObjectList(
 /*  676 */         "from InventoryDetial ind  where ind.part.id ='" + part.getId() + 
 /*  677 */         "' and ind.location.id ='" + sl.getId() + "'").get(0);
 /*      */     

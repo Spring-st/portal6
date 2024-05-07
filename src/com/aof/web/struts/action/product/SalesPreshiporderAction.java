@@ -602,7 +602,6 @@
 /*     */   
 /*     */   public ActionForward createSalesPreShipOrderAJAX(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 605 */     response.setContentType("text/json");
-/* 606 */     response.setCharacterEncoding("UTF-8");
 /* 607 */     JsonConfig cfg = new JsonConfig();
 /*     */     
 /* 609 */     SalesPreshiporderManager spsom = ServiceLocator.getSalesPreshiporderManager(request);

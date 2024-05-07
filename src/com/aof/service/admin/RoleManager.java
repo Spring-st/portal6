@@ -1,5 +1,6 @@
 package com.aof.service.admin;
 
+import com.aof.model.admin.Function;
 import com.aof.model.admin.Role;
 import com.aof.model.admin.query.RoleQueryOrder;
 import java.util.List;
@@ -20,11 +21,5 @@ public interface RoleManager {
   
   List getFunctionListByRole(Role paramRole) throws Exception;
   
-  void saveFunctionListForRole(Role paramRole, List paramList) throws Exception;
+  void saveFunctionListForRole(Role paramRole, List<Function> paramList) throws Exception;
 }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/service/admin/RoleManager.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

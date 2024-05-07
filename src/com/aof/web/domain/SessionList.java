@@ -33,7 +33,7 @@
 /*     */ 
 /*     */ public class SessionList
 /*     */ {
-/*  36 */   private static final List sessionList = new ArrayList();
+/*  36 */   private static final List<HttpSession> sessionList = new ArrayList();
 /*     */   
 /*  38 */   private static int totalUserVisitCount = 0;
 /*     */   

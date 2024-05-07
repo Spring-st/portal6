@@ -2,6 +2,7 @@ package com.aof.dao.admin;
 
 import com.aof.dao.DAO;
 import com.aof.model.admin.Department;
+import com.aof.model.admin.Site;
 import com.aof.model.admin.query.DepartmentQueryOrder;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public interface DepartmentDAO extends DAO {
   
   List getDepartmentList(Map paramMap, int paramInt1, int paramInt2, DepartmentQueryOrder paramDepartmentQueryOrder, boolean paramBoolean);
   
-  void fillSiteDepartment(List paramList, boolean paramBoolean);
+  void fillSiteDepartment(List<Site> paramList, boolean paramBoolean);
 }
 
 

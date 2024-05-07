@@ -26,7 +26,7 @@
 /*    */   extends AbstractUser
 /*    */   implements Serializable
 /*    */ {
-/*    */   private List userRoleList;
+/*    */   private List<UserRole> userRoleList;
 /*    */   
 /*    */   public User() {}
 /*    */   

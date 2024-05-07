@@ -32,7 +32,7 @@
 		</property>
 	</bean>
 
-	<bean id="beanLoader" class="com.aof.web.struts.action.BeanLoader">
+	<bean id="beanLoader" class="com.aof.web.struts.action.BeanLoader2">
 		<property name="universalManager">
 			<ref bean="universalManager" />
 		</property>

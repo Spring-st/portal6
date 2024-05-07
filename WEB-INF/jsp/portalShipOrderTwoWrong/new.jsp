@@ -136,7 +136,15 @@ function updateDa(){
 			</td>
 			
 		</tr>
+		<tr class="odd">
+			<td class="lesta-35"><font color="red">*</font>&nbsp;请选择导入的文件</td>
+			<td class="lestb">
+				<input name="upFile" type="file" onchange="clearResultMsg()" />
+				<input type="button" class="btn_list_view" value="开始上传" onclick="doOk()">
+			</td>
+		</tr>
 	</table>
+
 <h3 style="color:blue"><bean:message key="purchaseOrderPart.item"/></h3>
 	<table  class="data" width="100%" style="display: inline;">
 					<thead>
@@ -174,6 +182,21 @@ function updateDa(){
 		</tr>
 	</table>
 </html:form>
+
+<html:form action="/importeUnfinishPlan.do" enctype="multipart/form-data" onsubmit="return validateForm()">
+	<table width=100% border=0 cellpadding=4 cellspacing=0>
+		<tr>
+			<td width="20%"><html:file property="fileContent" size="40"></html:file></td>
+			<td width="5%" align="left"><html:submit>导入</html:submit></td>
+			<td align="left"><input type="button" value="<bean:message key="template.import"/>"
+									onClick="dcexcel()" /></td>
+		</tr>
+	</table>
+</html:form>
+<script type="text/javascript">
+    applyRowStyle(document.all('datatable2'));
+</script>
+
 <script type="text/javascript">
     applyRowStyle(document.all('datatable2'));
 </script>

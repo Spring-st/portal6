@@ -127,7 +127,6 @@
 /*     */   
 /*     */   public ActionForward ajaxGetpoInData(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 129 */     PurchaseOrderPutInStorageManager inboundManager = ServiceLocator.getPurchaseOrderPutInStorageManager(request);
-/* 130 */     request.setCharacterEncoding("utf-8");
 /* 131 */     SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 /* 132 */     List<String> dateList = getBeforeDateList();
 /* 133 */     Map<Object, Object> conditions = new HashMap<Object, Object>();
@@ -197,7 +196,6 @@
 /*     */   
 /*     */   public ActionForward ajaxGetpoOutData(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 /* 199 */     PurchaseOrderPutInStorageManager inboundManager = ServiceLocator.getPurchaseOrderPutInStorageManager(request);
-/* 200 */     request.setCharacterEncoding("utf-8");
 /* 201 */     SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 /* 202 */     List<String> dateList = getBeforeDateList();
 /* 203 */     Map<Object, Object> conditions = new HashMap<Object, Object>();

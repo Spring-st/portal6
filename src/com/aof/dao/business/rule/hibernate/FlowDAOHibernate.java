@@ -122,9 +122,3 @@
 /* 122 */     getHibernateTemplate().delete(fr);
 /*     */   }
 /*     */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/dao/business/rule/hibernate/FlowDAOHibernate.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

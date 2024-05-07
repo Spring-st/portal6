@@ -528,7 +528,7 @@
 /*  528 */     SimpleDateFormat format = new SimpleDateFormat(lotDateSDF);
 /*  529 */     String time = format.format(date);
 /*      */     
-/*  531 */     List<E> list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + time + "%'");
+/*  531 */     List list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + time + "%'");
 /*  532 */     String maxnumber = "";
 /*  533 */     String lot = "";
 /*  534 */     if (list.size() == 0) {
@@ -564,7 +564,7 @@
 /*  564 */     DecimalFormat df = new DecimalFormat("0000");
 /*  565 */     SimpleDateFormat format = new SimpleDateFormat(lotDateSDF);
 /*  566 */     String lotSer = lotBox.substring(5, 13);
-/*  567 */     List<E> list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + lotSer + "%'");
+/*  567 */     List list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + lotSer + "%'");
 /*  568 */     String maxnumber = "";
 /*  569 */     String lot = "";
 /*  570 */     if (list.size() == 0) {
@@ -600,7 +600,7 @@
 /*  600 */     SimpleDateFormat format = new SimpleDateFormat(lotDateSDF);
 /*      */     
 /*  602 */     String lotSer = format.format(new Date());
-/*  603 */     List<E> list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + lotSer + "%'");
+/*  603 */     List list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + lotSer + "%'");
 /*  604 */     String maxnumber = "";
 /*  605 */     String lot = "";
 /*  606 */     if (list.size() == 0) {
@@ -647,7 +647,7 @@
 /*  647 */     SimpleDateFormat format = new SimpleDateFormat(lotDateSDF);
 /*  648 */     String time = format.format(date);
 /*      */     
-/*  650 */     List<E> list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + time + "%'");
+/*  650 */     List list = this.dao.getObjectList("select max(lot.id) from WmsLot lot where lot.id like '" + suppCode + time + "%'");
 /*  651 */     String maxnumber = "";
 /*  652 */     String lot = "";
 /*  653 */     if (list.size() == 0) {

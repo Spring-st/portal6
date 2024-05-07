@@ -1065,6 +1065,9 @@
 		<put name="body" value="/WEB-INF/jsp/portalBackLoadWrong/purchaseItemTwo.jsp"/>
 		<put name="pageMainTitle"  value="purchaseItem.list"/>
 	</definition>
+	<definition name="site.portalShipOrderTwoWrong.add" extends="dialog.mainLayout">
+		<put name="body"	value="/WEB-INF/jsp/portalShipOrderTwoWrong/mesgadd.jsp"/>
+	</definition>
 	
 	<!-- 创建成品发货单 -->
 	<definition name="site.portalShipOrderProduct.list" extends="site.mainFrameLayout">

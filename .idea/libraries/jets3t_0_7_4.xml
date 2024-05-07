@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="jets3t-0.7.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/jets3t-0.7.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/kettle-vfs-20100924.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/libbase-1.2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/pentaho-formula-editor-0.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/pentaho-s3-vfs-1.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/pentaho-vfs-browser-2.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/pentaho-xul-core-3.3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/pentaho-xul-swt-3.3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/sqleonardo-swt-wrapper.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/pentaho/sqleonardo.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

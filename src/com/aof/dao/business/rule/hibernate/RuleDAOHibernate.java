@@ -215,7 +215,7 @@
 /*     */ 
 /*     */   
 /*     */   public Integer getMaxConsequenceSeqNoForRuleId(Integer ruleId) {
-/* 218 */     return getHibernateTemplate().find("select max(rc.seq) from RuleConsequence rc where rc.rule.id = ?", ruleId, (Type)Hibernate.INTEGER).get(0);
+/* 218 */     return (Integer) getHibernateTemplate().find("select max(rc.seq) from RuleConsequence rc where rc.rule.id = ?", ruleId, (Type)Hibernate.INTEGER).get(0);
 /*     */   }
 /*     */ 
 /*     */ 
@@ -232,9 +232,3 @@
 /* 232 */     return getHibernateTemplate().find("from RuleConsequence rc where rc.rule.id = ? order by rc.seq", ruleId, (Type)Hibernate.INTEGER);
 /*     */   }
 /*     */ }
-
-
-/* Location:              /Users/chentao/Desktop/portal-s/portalV6/WEB-INF/classes/!/com/aof/dao/business/rule/hibernate/RuleDAOHibernate.class
- * Java compiler version: 5 (49.0)
- * JD-Core Version:       1.1.3
- */

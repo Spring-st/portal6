@@ -1907,6 +1907,12 @@
 				type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
 			<forward name="add" path="site.barcode.Group.add" />
 		</action>
+
+	 <action parameter="importPortalShipOrder" path="/importPortalShipOrder" scope="session" validate="false" name="purchaseManualCreateBarcodeQueryForm"
+			 type="com.aof.web.struts.action.po.PortalShipOrderImportAction">
+		 <forward name="add" path="site.barcode.Group.add" />
+	 </action>
+
 		<action parameter="excelCreateBarcode" path="/excelCreateBarcode" scope="request" name="purchaseManualCreateBarcodeForm"
 			  type="com.aof.web.struts.action.po.PurchaseManualCreateBarcodeAction">
 		</action>

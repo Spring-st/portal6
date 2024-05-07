@@ -44,7 +44,7 @@
 /*     */ {
 /*     */   boolean canUse = false;
 /*  46 */   ThreadLocal locking = new ThreadLocal();
-/*  47 */   private List rules = new ArrayList();
+/*  47 */   private List<EngineRule> rules = new ArrayList();
 /*  48 */   private RWLock lock = new RWLock();
 /*  49 */   private Map externalIdToRules = new HashMap<Object, Object>();
 /*     */ 
@@ -142,7 +142,7 @@
 /* 142 */         throw new RuntimeException("Cannot execute flow on null target");
 /*     */       }
 /* 144 */       List<Object> result = new ArrayList();
-/* 145 */       EngineRule currentRule = this.rules.get(0);
+/* 145 */       EngineRule currentRule = (EngineRule) this.rules.get(0);
 /* 146 */       while (currentRule != null) {
 /* 147 */         int executeResult = 0;
 /* 148 */         for (Iterator<EngineCondition> itor = currentRule.getConditions().iterator(); itor.hasNext(); ) {

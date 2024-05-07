@@ -127,7 +127,7 @@
 /*     */   private void renderHiddenFields() throws JspException {
 /* 128 */     QueryForm form = (QueryForm)this.pageContext.getAttribute("org.apache.struts.taglib.html.BEAN", 2);
 /*     */     try {
-/* 130 */       Map<Object, Object> map = new HashMap<Object, Object>();
+/* 130 */       Map<String, Object> map = new HashMap();
 /*     */       
 /* 132 */       if (form instanceof DynaBean) {
 /*     */         

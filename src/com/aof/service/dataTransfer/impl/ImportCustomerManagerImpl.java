@@ -52,7 +52,7 @@
 /*     */   private static final String CUSTOMER = "1";
 /*     */   
 /*     */   public void importFromTextFile(Site site, String localFileName) throws Exception {
-/*  55 */     Map<Object, Object> customerMap = new HashMap<Object, Object>();
+/*  55 */     Map<String, Customer> customerMap = new HashMap<String, Customer>();
 /*  56 */     for (Iterator<Customer> itor = this.dao.getCustomerList(site).iterator(); itor.hasNext(); ) {
 /*  57 */       Customer customer = itor.next();
 /*  58 */       customerMap.put(customer.getCode(), customer);
@@ -64,7 +64,7 @@
 /*  64 */         if (line.length() < 69)
 /*  65 */           continue;  String code = getCode(line);
 /*  66 */         boolean insert = false;
-/*  67 */         Customer customer = (Customer)customerMap.remove(code);
+/*  67 */         Customer customer = customerMap.remove(code);
 /*  68 */         if (customer == null) {
 /*  69 */           insert = true;
 /*  70 */           customer = new Customer();

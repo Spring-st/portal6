@@ -1439,7 +1439,7 @@
 /* 1439 */         belowLine.setTest3(lotSer);
 /*      */         
 /* 1441 */         if (tool == null) {
-/* 1442 */           StorageLocation location = this.boxDAO.getObjectList(
+/* 1442 */           StorageLocation location = (StorageLocation)this.boxDAO.getObjectList(
 /* 1443 */               "from StorageLocation sl where sl.code = 'CCP-00A' ").get(0);
 /* 1444 */           belowLine.setLocation(location);
 /* 1445 */           if (location != null) {
@@ -1517,7 +1517,7 @@
 /* 1517 */           StorageLocation poLocation = poLineList.get(0);
 /*      */ 
 /*      */           
-/* 1520 */           StorageLocation linelocation = this.boxDAO.getObjectList(
+/* 1520 */           StorageLocation linelocation = (StorageLocation)this.boxDAO.getObjectList(
 /* 1521 */               "from StorageLocation sl where sl.basic_storeroom_id.type = 5").get(0);
 /*      */ 
 /*      */           
@@ -1551,7 +1551,7 @@
 /* 1551 */             ProduceBuckleMaterial material2 = new ProduceBuckleMaterial();
 /* 1552 */             material2.setAssembly(part);
 /* 1553 */             material2.setPart(lineTwo.getChild_part());
-/* 1554 */             material2.setLocation(this.boxDAO.getObjectList(
+/* 1554 */             material2.setLocation((StorageLocation)this.boxDAO.getObjectList(
 /* 1555 */                   "from StorageLocation sl where sl.basic_storeroom_id.type = 5").get(0));
 /* 1556 */             material2.setDate(new Date());
 /* 1557 */             material2.setIs_sync(YesNo.NO);

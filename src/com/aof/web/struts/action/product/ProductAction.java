@@ -448,8 +448,8 @@
 /* 448 */       queryForm.setOrder(ProductBelowLineQueryOrder.ID.getName());
 /* 449 */       queryForm.setDescend(false);
 /*     */     } 
-/* 451 */     Map<ProductBelowLineQueryCondition, String> conditions = constructConditions(queryForm);
-/* 452 */     getConditionAndOrder((BaseSessionQueryForm)queryForm, conditions, request);
+/* 451 */     Map conditions = constructConditions(queryForm);
+/* 452 */     getConditionAndOrder(queryForm, conditions, request);
 /* 453 */     if (type.equals("0")) {
 /* 454 */       conditions.put(ProductBelowLineQueryCondition.LOCATION_EQ, "CCP-00A");
 /*     */     }

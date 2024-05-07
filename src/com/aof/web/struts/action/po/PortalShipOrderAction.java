@@ -69,6 +69,11 @@ import org.apache.struts.util.MessageResources;
 public class PortalShipOrderAction
         extends BaseAction2
 {
+
+    public void importst(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        System.out.println("---------------------st--------------------");
+    }
+
     public ActionForward shippingOrder(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         PortalShipOrderMainQueryForm queryForm = (PortalShipOrderMainQueryForm)form;
         PortalShipOrderManager fm =

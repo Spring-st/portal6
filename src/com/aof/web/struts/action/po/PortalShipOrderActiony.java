@@ -1042,7 +1042,7 @@ public class PortalShipOrderActiony
                 queryForm.setOrder("id");
                 queryForm.setDescend(true);
             }
-            Map conditions = new HashMap<>();
+            Map conditions = new HashMap();
             getConditionAndOrder(queryForm, conditions, request);
             getConditionsFrom(queryForm, conditions);
 

@@ -523,7 +523,8 @@ function selectEXCEL(val) {
 					test="${x_selType == '181'}">每日预计库存量报表</c:if><c:if
 					test="${x_selType == '182'}">原材料预计需求量报表</c:if><c:if
 					test="${x_selType == '183'}">ALC时段汇总报表</c:if><c:if
-					test="${x_selType == '184'}">库存预警报表</c:if>
+					test="${x_selType == '184'}">库存预警报表</c:if><c:if
+					test="${x_selType == '185'}">导入发货物料</c:if>
 					</span> </a>
 	</li>
 

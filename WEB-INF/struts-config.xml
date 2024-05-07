@@ -240,6 +240,9 @@
 		<form-bean name="purchaseOrderInspectionPendingQueryForm"
 			type="com.aof.web.struts.form.po.PurchaseOrderInspectionPendingQueryForm">
 		</form-bean>
+		<form-bean name="purchaseOrderInspectionPendingImportForm"
+				   type="com.aof.web.struts.form.schedule.EdiProductionQueryForm">
+		</form-bean>
 		<form-bean name="supplierHistoryForm" type="com.aof.model.admin.SupplierHistory">
 			<set-property property="requires"
 				value="
@@ -377,7 +380,7 @@
                path="/WEB-INF/jsp/errors/500.jsp" scope="request"> 
     	</exception>
     	 
-		<exception handler="com.aof.web.struts.action.ExceptionHandler"
+		<exception handler="com.aof.web.struts.action.ExceptionHandler2"
 			key="key" type="java.lang.Exception"  path="/WEB-INF/jsp/errors/error.jsp" scope="request" />
 	</global-exceptions>
 
@@ -2254,6 +2257,15 @@
 			<set-property property="functionId" value="20161171" />
 			<forward name="page" path="site.portalShipOrderTwoWrong.new" />
 		</action>
+
+		<!--发货物料明细导入-->
+		<action parameter="importPortalShipOrder" path="/importPortalShipOrder" scope="session"
+				name="purchaseOrderInspectionPendingImportForm" validate="false"
+				type="com.aof.web.struts.action.po.PortalShipOrderImportAction">
+			<forward name="add" path="site.portalShipOrderTwoWrong.add" />
+		</action>
+
+
 		<action parameter="createPortalShipTwoWrong" path="/createPortalShipOrderTwoWrong"
 			scope="session" name="purchaseOrderInspectionPendingQueryForm"
 			type="com.aof.web.struts.action.po.PortalShipOrderAction">

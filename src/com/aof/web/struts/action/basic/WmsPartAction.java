@@ -961,7 +961,8 @@ public class WmsPartAction extends BaseAction2 {
         } else {
             conditions.put(PartForecastNeedReportQueryCondition.PART_SUPPLIER_EQ, "0");
         }
-        List<PartForecastNeedReport> partForecas = viewManager.getPartForecastNeedReportList(conditions, 0, -1, PartForecastNeedReportQueryOrder.getEnum(queryForm.getOrder()), queryForm.isDescend());
+        List<PartForecastNeedReport> partForecas = viewManager.getPartForecastNeedReportList(
+                conditions, 0, -1, PartForecastNeedReportQueryOrder.getEnum(queryForm.getOrder()), queryForm.isDescend());
         List<PartForecastNeedReport> result = new ArrayList<PartForecastNeedReport>();
         for (PartForecastNeedReport partForecastNeedReport : partForecas) {
 
@@ -1003,48 +1004,11 @@ public class WmsPartAction extends BaseAction2 {
                             partForecastNeedReport.setNoNeedqty(xuQiu);
                         }
                     }
-
-
                     result.add(partForecastNeedReport);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     break;
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         for (PartForecastNeedReport partForecastNeedReport : result) {
             NjitNpoPlan njitNpoPlan = njitNpoPlanManager.getNjitNpoPlanByPart(partForecastNeedReport.getPart().getId());
             if (njitNpoPlan != null) {
@@ -1052,7 +1016,6 @@ public class WmsPartAction extends BaseAction2 {
             }
             partForecastNeedReport.part.setNeedQty(new BigDecimal(0));
         }
-
 
         if (idString != null &&
                 !idString.equals("")) {
@@ -1068,16 +1031,12 @@ public class WmsPartAction extends BaseAction2 {
                             isClose = Boolean.valueOf(true);
                         }
                     }
-
-
                     if (isClose.booleanValue()) {
                         partForecastNeedReport.part.setChecked("checked");
                     }
                 }
             }
         }
-
-
         int totalCount = result.size();
 
         int pageCount = 0;
@@ -1099,11 +1058,7 @@ public class WmsPartAction extends BaseAction2 {
         if (totalCount > 0) {
             if (startNum <= pageCount) {
                 if (startNum == 1) {
-
-                    if (totalCount > endNum)
-                    {
-
-
+                    if (totalCount > endNum) {
                         result = result.subList(0, endNum);
                     }
                 } else {
